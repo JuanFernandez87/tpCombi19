@@ -82,6 +82,14 @@ public class ControladoraPersistencia {
         rutaJpa.create(nuevaRuta);
     }
 
+    public List getRutas() {
+         return rutaJpa.findRutaEntities();
+    }
+
+    public List getViaje() {
+        return viajeJpa.findViajeEntities();
+    }
+
 
 
 

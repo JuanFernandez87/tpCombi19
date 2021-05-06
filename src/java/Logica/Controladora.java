@@ -204,6 +204,17 @@ public class Controladora {
         return listaLugares;
     }
     
+    public List<Ruta> devolverRutas(){
+        List listaRuta = controlPersis.getRutas();
+        return listaRuta;
+    }
+    
+      public List<Viaje> devolverListaViajes() {
+        List listaViajes = controlPersis.getViaje();
+        return listaViajes;
+    }
+    
+    
     public void crearRuta(String origen, String destino, String patenteCombi, int distancia) {
         Ruta unaRuta = new Ruta();
         int idOrigen = 0;

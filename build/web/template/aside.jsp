@@ -33,7 +33,7 @@
                                          <li><a href="sesionAdminCombi.jsp">Alta de Combi</a></li><!--Con este codigo se redirige al registro de Combi-->
                                            <li><a href="sesionAdminCombi.jsp">Baja de Combi</a></li>
                                             <li><a href="sesionAdminCombi.jsp">Modificacion de Combi</a></li>
-                                            <li><a href="sesionAdminCombi.jsp">Listado de Combi</a></li>
+                                            <li><a href="listadoCombi.jsp">Listado de Combi</a></li>
 				</ul>
 
 			</li>
@@ -44,7 +44,7 @@
                                         <li><a href="sesionAdminLugar.jsp">Alta de lugar</a>
                                           <li><a href="sesionAdminLugar.jsp">Baja de lugar</a>
                                            <li><a href="sesionAdminLugar.jsp">Modificacion de lugar</a>
-                                               <li><a href="sesionAdminLugar.jsp">Listado de lugar</a></li>
+                                               <li><a href="listadoLugar.jsp">Listado de lugar</a></li>
 				</ul>
 
 			</li>                        
@@ -55,7 +55,7 @@
 					<li><a href="sesionAdminRuta.jsp">Alta de ruta</a></li>
 					<li><a href="sesionAdminRuta.jsp">Baja de ruta</a></li>
 					<li><a href="sesionAdminRuta.jsp">Modificacion de ruta</a></li>
-                                        <li><a href="sesionAdminRuta.jsp">Listado de ruta</a></li>
+                                        <li><a href="listadoRuta.jsp">Listado de ruta</a></li>
 				</ul>
 
 			</li>
@@ -66,7 +66,7 @@
 					<li><a href="sesionAdminViaje.jsp">Alta de viaje</a></li>
 					<li><a href="sesionAdminViaje.jsp">Baja de viaje</a></li>
 					<li><a href="sesionAdminViaje.jsp">Modificacion de viaje</a></li>
-                                        <li><a href="sesionAdminViaje.jsp">Listado de viaje</a></li>
+                                        <li><a href="listadoViajes.jsp">Listado de viaje</a></li>
 				</ul>
 
 			</li>
