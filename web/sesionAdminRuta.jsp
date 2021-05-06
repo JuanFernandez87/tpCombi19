@@ -1,9 +1,3 @@
-<%-- 
-    Document   : sesionAdminRuta
-    Created on : 03/05/2021, 19:33:07
-    Author     : juanf
---%>
-
 <%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="java.util.List"%>
@@ -14,7 +8,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
-    <title> Menu lateral </title> 
+        <link rel="icon" href="images/logoCombi19.png" type="image/png" />
+        <title>Combi 19</title>
     <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="css/sesiones.css" >
 	 
@@ -142,9 +137,9 @@
  
 </div>
 
-	<footer>
-		footer &copy
-	</footer>  
+        <footer>
+            <%@include file="/template/footer.jsp"%>
+        </footer> 
 
   </body>
 </html>

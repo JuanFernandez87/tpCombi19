@@ -1,63 +1,32 @@
-<%-- 
-    Document   : sesionAdmin
-    Created on : 22/04/2021, 23:14:51
-    Author     : Esteban
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="icon" href="images/logoCombi19.png" type="image/png" />
-    <title>Combi 19</title>      
-    <meta charset="utf-8">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" href="images/logoCombi19.png" type="image/png" />
+        <title>Combi 19</title>  
+        <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
+        
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
-    <title> Menu lateral </title> 
     <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
-     <link rel="stylesheet" href="css/sesiones.css" >
-    <link rel="stylesheet" type="css/fonts.css" href="">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sesiones.css" >
+    <link rel="stylesheet" href="css/estilosRegistro.css"> 
+       
+    </head>
+
 <body>
-	  <header>
-		  Combi-19
-	  </header>
+        <header>
+            <%@include file="/template/headerSesiones.jsp"%>
+        </header>
 	
-	<div class= "contenedor-menu">
+        <aside>
+            <%@include file="/template/asideUsuario.jsp"%>
+        </aside>
 
-		<a href="#" class="btn-menu">Menu<i class="icono fas fa-bars"></i></a>
-		<ul class="menu">
-			<li class="logo"><img src="images/logo2.png" alt="Logo Combi19" class="logo"></li>
-			<li><a href="index.jsp"><i class="icono izquierda fas fa-home"></i>Inicio</a></li>
-			<li><a href="#"><i class="icono izquierda fas fa-truck"></i>Gestionar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
-				<ul>
-					<li><a href="#">Buscar destino</a></li>
-					<li><a href="#">Mis proximos viajes</a></li>
-                                        <li><a href="#">Historial de viajes</a></li>
-                                        <li><a href="#">Cancelar un viaje</a></li>
-				</ul>
-
-			</li>
-			<li><a href="#"><i class="icono izquierda fas fa-id-badge"></i>Mi perfil<i class="icono derecha fas fa-chevron-down"></i></a>
-				<ul>
-					<li><a href="#">Modificar mis datos</a></li>
-					<li><a href="#">Mis pasajes</a></li>
-                                        <li><a href="#">Cargar nueva tarjeta</a></li>
-                                        <li><a href="#">Eliminar mi cuenta</a></li>
-					
-				</ul>
-		 	</li>
-			<li><a href="#"> <i class="icono izquierda fas fa-share-alt"></i>Redes Sociales</a> </li>
-			<li><a href="index.jsp"> <i class="icono izquierda fas fa-sign-out-alt"></i>Cerrar sesion</a> </li>
-		</ul>
-	
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/sesion.js"></script>
- 
-</div>
-
-	<footer>
-		footer &copy
-	</footer>  
+        <footer>
+            <%@include file="/template/footer.jsp"%>
+        </footer>
 
   </body>
    
