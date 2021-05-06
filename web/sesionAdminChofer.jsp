@@ -108,7 +108,7 @@
                 <label> Contraseña</label>
                 <input class="controls" type="password" name="pass" placeholder="Ingrese contraseña">
                 <label>Telefono de contacto</label>
-                <input class="controls" type="tel" name="tel" placeholder="Ingrese telefono">
+                <input class="controls" type="text" name="tel" placeholder="Ingrese telefono">
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

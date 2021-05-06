@@ -25,20 +25,8 @@
         
     </head>
     <body>
-        <header>
-            <div class="contenidoHeader">
-                <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>
+        <%@include file="/template/header.jsp"%>
                 
-                <nav>
-                    <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
-                    <a href="login.jsp"><i class="fas fa-user"></i>Mi cuenta</a>
-                    <a href="#"><i class="fas fa-address-book"></i>Contacto</a>
- 
-                </nav>
-            </div>
-        </header>
-        
-        
         <div class="formulario">
             <form class="form-register" action="LoginUsuarios" method="POST"> 
           <h4>Iniciar Sesion</h4>

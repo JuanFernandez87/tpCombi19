@@ -27,20 +27,8 @@
         <link rel="stylesheet" href="css/estilosRegistro_1.css">
         <title>Combi 19</title>
     </head>
-    <body>
-        <header>
-            <div class="contenidoHeader">
-                <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>
-                
-                <nav>
-                    <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
-                    <a href=""><i class="fas fa-user"></i>Mi cuenta</a>
-                    <a href="#"><i class="fas fa-address-book"></i>Contacto</a>
-
-                </nav>
-            </div>
-        </header>
-        
+    <%@include file="/template/header.jsp"%>
+    <body>      
         
         <div class="formulario">
                 <form action="RegistroCliente" method="post">

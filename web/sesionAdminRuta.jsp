@@ -4,6 +4,10 @@
     Author     : juanf
 --%>
 
+<%@page import="Logica.Lugar"%>
+<%@page import="Logica.Combi"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,15 +98,41 @@
 		</ul>
 		
         </div>
-		
+            <%
+                    Controladora control = new Controladora();
+                    List <Combi> listaCombis = control.devolverListaCombi(); 
+                    List <Lugar> listaOrigen = control.devolverListaLugares();
+                    List <Lugar> listaDestino = control.devolverListaLugares(); 
+             %> 		
             <form action="RegistroRuta" class="formulario" method="post">
 				<h4>Registrar ruta</h4>
                 <label>Origen</label>
-                <input class="controls" type="text" name="origen" placeholder="Ingrese el origen">
-                <label>Destino</label><br>
-                <input class="controls" type="text" name="destino" placeholder="Ingrese el destino">    
+                <select class="controls" type="text" name="origen" placeholder="Ingrese el origen">
+                        <option>Seleccione un origen</option>
+                <%
+                    for (Lugar origen: listaOrigen) {%>                        
+                        <option value="<%=origen.getIdLugar()%>"><%=origen.getNombre()%></option>               
+                 <%}%>
+                </select> 
+                
+                <label>Destino</label><br>              
+                <select class="controls" type="text" name="destino" placeholder="Ingrese el destino">               
+                        <option>Seleccione un destino</option>
+                <%
+                    for (Lugar destino: listaDestino) {%>                        
+                        <option value="<%=destino.getIdLugar()%>"><%=destino.getNombre()%></option>               
+                 <%}%>       
+                </select>
+                
                 <label>Combi</label>
-                <input class="controls" type="text" name="combi" placeholder="Ingrese patente de la combi">
+                <select class="controls" type="text" name="combi">
+                        <option>Seleccione una combi</option>
+                <%
+                    for (Combi comb: listaCombis) {%>                        
+                        <option value="<%=comb.getIdCombi()%>"><%=comb.getPatente()%></option>               
+                 <%}%> 
+                </select>
+                
                 <label>Distancia</label>
                 <input class="controls" type="number" name="distancia" placeholder="Ingrese distancia en Km">                
                 <input class="boton" type="submit" value="Dar de alta ">

@@ -116,16 +116,14 @@
                 
                 <label> Chofer</label>
                 <select class="controls" name="id">
-                <option>Seleccione un chofer</option>
+                    <option>Seleccione un chofer</option>
                 <%
-                   int i;
-                   for (  Chofer chof: listaChoferes) { 
+                   for (Chofer chof: listaChoferes) { 
                         if(chof.getOcupado() == 0){%>
-                        
-                   <option value="<%=chof.getIdChofer()%>"><%=chof.getApellido()%></option>
-        
+                    <option value="<%=chof.getIdChofer()%>"><%=chof.getApellido()%></option>
                  <%}}%>  
-                                  
+                </select>
+                
                  <label> Seleccione tipo de servicio</label><br>
                         <select class="controls" name="servicio">
                             <option>Comoda</option>
