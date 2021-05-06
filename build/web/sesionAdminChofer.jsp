@@ -24,6 +24,21 @@
         </aside>
         
             <form action="RegistroChofer" class="formulario" method="post">
+=======
+    <link rel="stylesheet" href="css/fonts.css" >
+    <link rel="stylesheet" href="css/sesiones.css" >
+    </head>
+    
+    <body>
+        <header>
+            <%@include file="/template/headerSesiones.jsp"%>
+        </header>
+        
+        <aside>
+            <%@include file="/template/aside.jsp"%>
+        </aside>
+        
+            <form action="RegistroChofer" class="formulario-sesiones" method="post">
 				<h4>Alta chofer </h4>
                 <label>Nombre</label>
                 <input class="controls" type="text" name="nombre" placeholder="Ingrese nombre">

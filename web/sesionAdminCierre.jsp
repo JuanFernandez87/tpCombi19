@@ -19,7 +19,7 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
 		
-        <div class="formulario">
+        <div class="formulario-sesiones">
             <form>
 	    <div class="divCierre">
                 <h3>Quiere cerrar sesion ?</h3>

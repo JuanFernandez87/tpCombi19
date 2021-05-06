@@ -32,7 +32,7 @@
                             <option>Basico</option>
                             <option>Gold</option>
                         </select>
-               <input class="botons" type="submit" value="Registrarme">
+               <input class="boton" type="submit" value="Registrarme">
 
                <p><a href="login.jsp">Ya tengo Cuenta</a></p>
                
