@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/tpCombi19/web/sesionAdmin.jsp</file>
-            <file>file:/D:/GitHub/tpCombi19/web/sesionAdminChofer.jsp</file>
+            <file>file:/D:/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/D:/GitHub/tpCombi19/web/sesionAdminCombi.jsp</file>
+            <file>file:/D:/GitHub/tpCombi19/src/java/Persistencia/ControladoraPersistencia.java</file>
         </group>
     </open-files>
 </project-private>

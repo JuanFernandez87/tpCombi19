@@ -4,6 +4,10 @@
     Author     : Esteban
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Logica.Chofer"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,9 +109,24 @@
                 <input class="controls" type="text" name="modelo" placeholder="Ingrese modelo">
                 <label> Cantidad asientos</label>
                 <input class="controls" type="mail" name="cantAsientos" placeholder="0">
+            <%
+                    Controladora control = new Controladora();
+                    List <Chofer> listaChoferes = control.devolverListaChoferes(); 
+             %> 
+                
                 <label> Chofer</label>
-                <input class="controls" type="num" name="id" placeholder="Ingrese chofer">
-                <label> Seleccione tipo de servicio</label><br>
+                <select class="controls" name="id">
+                <option>Seleccione un chofer</option>
+                <%
+                   int i;
+                   for (  Chofer chof: listaChoferes) { 
+                        if(chof.getOcupado() == 0){%>
+                        
+                   <option value="<%=chof.getIdChofer()%>"><%=chof.getApellido()%></option>
+        
+                 <%}}%>  
+                                  
+                 <label> Seleccione tipo de servicio</label><br>
                         <select class="controls" name="servicio">
                             <option>Comoda</option>
                             <option>Super comoda</option>

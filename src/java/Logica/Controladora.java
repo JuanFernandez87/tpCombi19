@@ -194,6 +194,11 @@ public class Controladora {
         return listaChoferes;
     }
 
+    public List<Combi> devolverListaCombi() {
+        List listaCombi = controlPersis.getCombi();
+        return listaCombi;
+    }
+    
     public void crearRuta(String origen, String destino, String patenteCombi, int distancia) {
         Ruta unaRuta = new Ruta();
         int idOrigen = 0;
