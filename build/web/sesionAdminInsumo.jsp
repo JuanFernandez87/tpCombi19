@@ -97,7 +97,7 @@
 		
         </div>
 		
-            <form action="RegistroInsumo" class="formulario" method="post">
+            <form action="RegistroInsumo" class="formulario-sesiones" method="post">
 				<h4>Registrar insumo </h4>
                 <label> Nombre</label>
                 <input class="controls" type="text" name="nombre" placeholder="Ingrese nombre">

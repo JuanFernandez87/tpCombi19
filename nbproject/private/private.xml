@@ -5,9 +5,12 @@
         <group>
             <file>file:/D:/Matias/Documents/web/tpCombi19/web/css/styles.css</file>
             <file>file:/D:/Matias/Documents/web/tpCombi19/web/css/sesiones.css</file>
+            <file>file:/D:/Matias/Documents/web/tpCombi19/web/template/header.jsp</file>
             <file>file:/D:/Matias/Documents/web/tpCombi19/web/sesionAdminChofer.jsp</file>
-            <file>file:/D:/Matias/Documents/web/tpCombi19/web/template/aside.jsp</file>
-            <file>file:/D:/Matias/Documents/web/tpCombi19/web/sesionAdmin.jsp</file>
+            <file>file:/D:/Matias/Documents/web/tpCombi19/web/index.jsp</file>
+            <file>file:/D:/Matias/Documents/web/tpCombi19/web/login.jsp</file>
+            <file>file:/D:/Matias/Documents/web/tpCombi19/web/js/sesion.js</file>
+            <file>file:/D:/Matias/Documents/web/tpCombi19/web/registro.jsp</file>
         </group>
     </open-files>
 </project-private>
