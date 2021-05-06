@@ -1,9 +1,3 @@
-<%-- 
-    Document   : sesionAdmin
-    Created on : 22/04/2021, 23:14:51
-    Author     : Esteban
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +6,6 @@
     <title>Combi 19</title>      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
-    <title> Menu lateral </title> 
     <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="css/sesiones.css" >
     <link rel="stylesheet" type="css/fonts.css" href="">
@@ -63,9 +56,9 @@
  
 </div>
 
-	<footer>
-		footer &copy
-	</footer>  
+        <footer>
+            <%@include file="/template/footer.jsp"%>
+        </footer>
 
   </body>
    
