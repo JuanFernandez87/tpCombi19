@@ -44,6 +44,8 @@ img{
     width: 15%;
     /*bottom: 0;*/
     position: absolute;
+    padding: 0px;
+    margin-top: 76px;
 }
 .contenedor-menu ul{
   list-style: none; 
@@ -76,6 +78,7 @@ img{
 }
 .contenedor-menu .menu ul{
   display:none;
+  margin-left: -33px;
 }
 .contenedor-menu .menu ul li {
   background: #424242;
@@ -194,3 +197,11 @@ font-family: 'calibri';
 color: white;
 box-shadow: 7px 13px 37px #000;
 }
+
+//div.conenedor-menu ul.menu li ul{
+  //  padding-left: 0rem;
+}
+//div.contenedor-menu ul.menu{
+  //  margin-top: 77px;
+    //margin-bottom: 1rem;
+//}
