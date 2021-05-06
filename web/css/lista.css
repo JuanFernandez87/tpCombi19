@@ -1,0 +1,33 @@
+.cajaListado{
+  background-color: #266aa7;
+    font-family: arial, sans-serif;
+    width: 50%;
+    margin: auto;
+    margin-top: 200px;
+    padding:10px;
+}
+
+.cajaListado h1{
+    color: white;
+    padding: 15px;
+}
+
+table {
+    background-color: white;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+   
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
