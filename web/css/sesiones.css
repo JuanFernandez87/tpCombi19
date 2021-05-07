@@ -178,8 +178,9 @@ h4 {
   color: white;
 }
 
-.formulario{
+.formulario-sesiones{
     margin-top: 200px;
+    display:grid;
 }
 
 form .boton{

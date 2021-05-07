@@ -21,7 +21,7 @@
 	
         <%@include file="/template/aside.jsp"%>
 		
-            <form action="RegistroCombi" class="formulario" method="post">
+            <form action="RegistroCombi" class="formulario-sesiones" method="post">
 				<h4>Alta combi </h4>
                 <label> Dominio</label>
                 <input class="controls" type="text" name="patente" placeholder="AA000AA">

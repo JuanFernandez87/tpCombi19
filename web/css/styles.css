@@ -106,11 +106,7 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-<<<<<<< Updated upstream
-    height: 70px;
-=======
-    height: 40px;
->>>>>>> Stashed changes
+    height: 47px;
     text-align: center;
     color: white;
     z-index: 100;
@@ -128,7 +124,7 @@ footer li{
 footer li i{
     background:none;
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     margin: 15px;
     padding: 0px;
 }
