@@ -8,23 +8,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">      
       
     <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
-     
-     	 
-    <link rel="stylesheet" href="css/fonts.css" >
-    <link rel="stylesheet" href="css/sesiones.css" >
-    </head>
-    
-    <body>
-        <header>
-            <%@include file="/template/headerSesiones.jsp"%>
-        </header>
-        
-        <aside>
-            <%@include file="/template/aside.jsp"%>
-        </aside>
-        
-            <form action="RegistroChofer" class="formulario" method="post">
-=======
+
     <link rel="stylesheet" href="css/fonts.css" >
     <link rel="stylesheet" href="css/sesiones.css" >
     </head>
