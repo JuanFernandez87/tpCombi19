@@ -31,34 +31,34 @@
             <form action="RegistroRuta" class="formulario-sesiones" method="post">
 				<h4>Registrar ruta</h4>
                 <label>Origen</label>
-                <select class="controls" type="text" name="origen" placeholder="Ingrese el origen">
+                <select class="controls" name="origen" required>
                         <option>Seleccione un origen</option>
                 <%
                     for (Lugar origen: listaOrigen) {%>                        
-                        <option value="<%=origen.getIdLugar()%>"><%=origen.getNombre()%></option>               
+                        <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
                  <%}%>
                 </select> 
                 
-                <label>Destino</label><br>              
-                <select class="controls" type="text" name="destino" placeholder="Ingrese el destino">               
+                <label>Destino</label>              
+                <select class="controls" name="destino" required>               
                         <option>Seleccione un destino</option>
                 <%
                     for (Lugar destino: listaDestino) {%>                        
-                        <option value="<%=destino.getIdLugar()%>"><%=destino.getNombre()%></option>               
+                        <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
                  <%}%>       
                 </select>
                 
                 <label>Combi</label>
-                <select class="controls" type="text" name="combi">
+                <select class="controls" name="combi" required>
                         <option>Seleccione una combi</option>
                 <%
                     for (Combi comb: listaCombis) {%>                        
-                        <option value="<%=comb.getIdCombi()%>"><%=comb.getPatente()%></option>               
+                        <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
                  <%}%> 
                 </select>
                 
                 <label>Distancia</label>
-                <input class="controls" type="number" name="distancia" placeholder="Ingrese distancia en Km">                
+                <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km">                
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

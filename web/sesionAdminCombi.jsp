@@ -22,20 +22,20 @@
         <%@include file="/template/aside.jsp"%>
 		
             <form action="RegistroCombi" class="formulario-sesiones" method="post">
-				<h4>Alta combi </h4>
+				<h4>Registrar combi </h4>
                 <label> Dominio</label>
-                <input class="controls" type="text" name="patente" placeholder="AA000AA">
+                <input class="controls" type="text" name="patente" required placeholder="AA000AA">
                 <label> Modelo</label>
-                <input class="controls" type="text" name="modelo" placeholder="Ingrese modelo">
+                <input class="controls" type="text" name="modelo" required placeholder="Ingrese modelo">
                 <label> Cantidad asientos</label>
-                <input class="controls" type="mail" name="cantAsientos" placeholder="0">
+                <input class="controls" type="number" name="cantAsientos" required placeholder="0">
             <%
                     Controladora control = new Controladora();
                     List <Chofer> listaChoferes = control.devolverListaChoferes(); 
              %> 
                 
                 <label> Chofer</label>
-                <select class="controls" name="id">
+                <select class="controls" name="id" required>
                     <option>Seleccione un chofer</option>
                 <%
                    for (Chofer chof: listaChoferes) { 
@@ -44,11 +44,11 @@
                  <%}}%>  
                 </select>
                 
-                 <label> Seleccione tipo de servicio</label><br>
-                        <select class="controls" name="servicio">
+                 <label> Seleccione tipo de servicio</label>
+                        <select class="controls" name="servicio" required>
                             <option>Comoda</option>
                             <option>Super comoda</option>
-                        </select><br/><br/>
+                        </select>
                 
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>

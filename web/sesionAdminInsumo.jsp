@@ -31,14 +31,14 @@
             <form action="RegistroInsumo" class="formulario-sesiones" method="post">
 				<h4>Registrar insumo </h4>
                 <label> Nombre</label>
-                <input class="controls" type="text" name="nombre" placeholder="Ingrese nombre">
-                <label> Tipo</label><br>
-                        <select class="controls" name="tipo">
+                <input class="controls" type="text" name="nombre" required placeholder="Ingrese nombre">
+                <label> Tipo</label>
+                        <select class="controls" name="tipo" required>
                             <option>Dulce</option>
                             <option>Salado</option>
-                        </select><br/><br/>
+                        </select>
                 <label> Precio</label>
-                <input class="controls" type="tel" name="precio" placeholder="Ingrese precio">
+                <input class="controls" type="number" name="precio" required placeholder="Ingrese precio">
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

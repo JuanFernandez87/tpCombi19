@@ -17,67 +17,67 @@
 		<a href="#" class="btn-menu">Menu<i class="icono fas fa-bars"></i></a>
 		<ul class="menu">
                         <!-- boton con menu para Chofer.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-male" ></i>Administrar chofer<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-male" ></i>Administrar choferes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminChofer.jsp">Alta de chofer</a></li>
-					<li><a href="sesionAdminChofer.jsp">Baja de chofer</a></li>
-					<li><a href="sesionAdminChofer.jsp">Modificacion de chofer</a></li>
-                                        <li><a href="listado.jsp">Listado de chofer</a></li>
+					<li><a href="sesionAdminChofer.jsp">Registrar</a></li>
+					<li><a href="sesionAdminChofer.jsp">Baja</a></li>
+					<li><a href="sesionAdminChofer.jsp">Modificar</a></li>
+                                        <li><a href="listado.jsp">Listado</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Combi.-->
-                             <li ><a href="#"><i class="icono izquierda fas fa-shuttle-van" ></i>Administrar Combi<i class="icono derecha fas fa-chevron-down"></i></a>
+                             <li ><a href="#"><i class="icono izquierda fas fa-shuttle-van" ></i>Administrar combis<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                         <li><a href="sesionAdminCombi.jsp">Alta de Combi</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                           <li><a href="sesionAdminCombi.jsp">Baja de Combi</a></li>
-                                            <li><a href="sesionAdminCombi.jsp">Modificacion de Combi</a></li>
-                                            <li><a href="listadoCombi.jsp">Listado de Combi</a></li>
+                                         <li><a href="sesionAdminCombi.jsp">Registrar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                           <li><a href="sesionAdminCombi.jsp">Baja</a></li>
+                                            <li><a href="sesionAdminCombi.jsp">Modificar</a></li>
+                                            <li><a href="listadoCombi.jsp">Listado</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Lugar.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-map-marker-alt" ></i>Administrar lugar<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-map-marker-alt" ></i>Administrar lugares<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                        <li><a href="sesionAdminLugar.jsp">Alta de lugar</a>
-                                          <li><a href="sesionAdminLugar.jsp">Baja de lugar</a>
-                                           <li><a href="sesionAdminLugar.jsp">Modificacion de lugar</a>
-                                               <li><a href="listadoLugar.jsp">Listado de lugar</a></li>
+                                        <li><a href="sesionAdminLugar.jsp">Registrar</a>
+                                          <li><a href="sesionAdminLugar.jsp">Baja</a>
+                                           <li><a href="sesionAdminLugar.jsp">Modificar</a>
+                                               <li><a href="listadoLugar.jsp">Listado</a></li>
 				</ul>
 
 			</li>                        
                         
                         <!-- boton con menu para Rutas.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-globe-americas"" ></i>Administrar Rutas<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-globe-americas"" ></i>Administrar rutas<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminRuta.jsp">Alta de ruta</a></li>
-					<li><a href="sesionAdminRuta.jsp">Baja de ruta</a></li>
-					<li><a href="sesionAdminRuta.jsp">Modificacion de ruta</a></li>
+					<li><a href="sesionAdminRuta.jsp">Registrar</a></li>
+					<li><a href="sesionAdminRuta.jsp">Baja</a></li>
+					<li><a href="sesionAdminRuta.jsp">Modificar</a></li>
                                         <li><a href="listadoRuta.jsp">Listado de ruta</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Viajes.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar Viajes<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminViaje.jsp">Alta de viaje</a></li>
-					<li><a href="sesionAdminViaje.jsp">Baja de viaje</a></li>
-					<li><a href="sesionAdminViaje.jsp">Modificacion de viaje</a></li>
-                                        <li><a href="listadoViajes.jsp">Listado de viaje</a></li>
+					<li><a href="sesionAdminViaje.jsp">Registrar</a></li>
+					<li><a href="sesionAdminViaje.jsp">Baja</a></li>
+					<li><a href="sesionAdminViaje.jsp">Modificar</a></li>
+                                        <li><a href="listadoViajes.jsp">Listado</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Insumos.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-apple-alt" ></i>Administrar Insumos<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-apple-alt" ></i>Administrar insumos<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminInsumo.jsp">Alta de insumo</a></li>
-					<li><a href="sesionAdminInsumo.jsp">Baja de insumo</a></li>
-					<li><a href="sesionAdminInsumo.jsp"></i>Modificacion de insumo</a></li>
-                                        <li><a href="sesionAdminInsumo.jsp">Listado de insumo</a></li>
+					<li><a href="sesionAdminInsumo.jsp">Registrar</a></li>
+					<li><a href="sesionAdminInsumo.jsp">Baja</a></li>
+					<li><a href="sesionAdminInsumo.jsp"></i>Modificar</a></li>
+                                        <li><a href="sesionAdminInsumo.jsp">Listado</a></li>
 				</ul>
 			</li>
 		</ul>

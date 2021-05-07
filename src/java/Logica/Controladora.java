@@ -240,10 +240,10 @@ public class Controladora {
                 unaCombi = combis.getIdCombi();
             }
         }    
-        /*unaRuta.setOrigen(idOrigen);
+        unaRuta.setOrigen(idOrigen);
         unaRuta.setDestino(idDestino);
         unaRuta.setIdCombi(unaCombi);
-        unaRuta.setDistancia(distancia); */
+        unaRuta.setDistancia(distancia); 
         controlPersis.crearRuta(unaRuta);
     }
     

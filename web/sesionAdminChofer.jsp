@@ -23,19 +23,19 @@
         </aside>
         
             <form action="RegistroChofer" class="formulario-sesiones" method="post">
-				<h4>Alta chofer </h4>
+				<h4>Registrar chofer </h4>
                 <label>Nombre</label>
-                <input class="controls" type="text" name="nombre" placeholder="Ingrese nombre">
+                <input class="controls" type="text" name="nombre" required placeholder="Ingrese nombre">
                 <label>Apellido</label>
-                <input class="controls" type="text" name="apellido" placeholder="Ingrese apellido">
+                <input class="controls" type="text" name="apellido" required placeholder="Ingrese apellido">
                 <label>Dni</label>
-                <input class="controls" type="tel" name="dni" placeholder="Ingrese Dni">
+                <input class="controls" type="tel" name="dni" required placeholder="Ingrese Dni">
                 <label>Mail</label>
-                <input class="controls" type="mail" name="mail" placeholder="Ingrese mail">
+                <input class="controls" type="mail" name="mail" required placeholder="Ingrese mail">
                 <label>Contraseña</label>
-                <input class="controls" type="password" name="pass" placeholder="Ingrese contraseña">
+                <input class="controls" type="password" name="pass" required placeholder="Ingrese contraseña">
                 <label>Telefono de contacto</label>
-                <input class="controls" type="text" name="tel" placeholder="Ingrese telefono">
+                <input class="controls" type="text" name="tel" required placeholder="Ingrese telefono">
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>
         
