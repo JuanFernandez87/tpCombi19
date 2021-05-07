@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="css/sesiones.css" >
     </head>
     
+<<<<<<< Updated upstream
+=======
+  
+>>>>>>> Stashed changes
     <body>
         <header>
             <%@include file="/template/headerSesiones.jsp"%>
@@ -24,8 +28,11 @@
         </aside>
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <form action="RegistroChofer" class="formulario" method="post">
 =======
+=======
+>>>>>>> Stashed changes
             <form action="RegistroChofer" class="formulario-sesiones" method="post">
 >>>>>>> Stashed changes
 				<h4>Alta chofer </h4>

@@ -77,7 +77,7 @@
 					<li><a href="sesionAdminInsumo.jsp">Alta de insumo</a></li>
 					<li><a href="sesionAdminInsumo.jsp">Baja de insumo</a></li>
 					<li><a href="sesionAdminInsumo.jsp"></i>Modificacion de insumo</a></li>
-                                        <li><a href="sesionAdminInsumo.jsp">Listado de insumo</a></li>
+                                        <li><a href="listadoInsumo.jsp">Listado de insumo</a></li>
 				</ul>
 			</li>
 		</ul>

@@ -3,6 +3,8 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
+<%@page import="Logica.Insumo"%>
+<%@page import="Logica.Combi"%>
 <%@page import="Logica.Chofer"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
@@ -35,8 +37,8 @@
             int pag=1;
             
             Controladora control = new Controladora();
-            List <Chofer> listaChoferes = control.devolverListaChoferes(); 
-            int maxPag = (control.devolverListaChoferes().size()/10)+1; 
+            List <Insumo> listaInsumos = control.devolverListaInsumos(); 
+            int maxPag = (control.devolverListaInsumos().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
                    pag = Integer.valueOf(request.getParameter("pg"));
@@ -46,22 +48,20 @@
             int regMax = pag * 10;
             
             if(pag==maxPag){
-                regMax=regMin+control.devolverListaChoferes().size()%10;
+                regMax=regMin+control.devolverListaInsumos().size()%10;
             }
           
         %> 
-        
-        
       
         <div class="cajaListado">
-            <h1>Lista choferes</h1>
+            <h1>Lista insumos</h1>
         <table>
             <tr>
-                <td>Apellido</td> 
+                <td>Marca</td> 
                 <td>Nombre</td> 
-                <td>Dni</td> 
-                <td>Telefono</td> 
-                <td>Mail</td> 
+                <td>Tipo</td> 
+                <td>Precio</td> 
+                
             </tr>
                <%
                    
@@ -72,11 +72,11 @@
                      
                          
                     
-                        <td><%= listaChoferes.get(i).getApellido() %></td>
-                        <td><%= listaChoferes.get(i).getNombre() %></td>
-                        <td><%= listaChoferes.get(i).getDni() %></td>
-                        <td><%= listaChoferes.get(i).getTelefono()%></td>
-                        <td><%= listaChoferes.get(i).getMail()%></td>
+                        <td><%= listaInsumos.get(i).getMarca()%></td>
+                        <td><%= listaInsumos.get(i).getNombre() %></td>
+                        <td><%= listaInsumos.get(i).getTipo() %></td>
+                        <td><%= listaInsumos.get(i).getPrecio() %></td>
+                       
 
                 </tr>
                  
@@ -88,7 +88,7 @@
                     if (maxPag >= 1) {
              
                         if(pag!=1){%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=pag - 1%>">&lt;</a></li>
+                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=pag - 1%>">&lt;</a></li>
                         <%}%>
                         <%
                             for ( i = 0; i < maxPag; i++) {
@@ -97,11 +97,11 @@
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><span><%=i+1%></span></li>
                         <%  }
                             else{%>
-                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
+                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
                         <%}}
                         
                         if(pag!=maxPag){%>
-                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=pag + 1%>">&gt;</a></li>
+                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=pag + 1%>">&gt;</a></li>
                 <%}}
                     else {%>
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;" class="active"><span>1</span></li>

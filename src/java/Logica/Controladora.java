@@ -209,9 +209,14 @@ public class Controladora {
         return listaRuta;
     }
     
-      public List<Viaje> devolverListaViajes() {
+    public List<Viaje> devolverListaViajes() {
         List listaViajes = controlPersis.getViaje();
         return listaViajes;
+    }
+    
+    public List<Insumo> devolverListaInsumos(){
+        List listaInsumos = controlPersis.getInsumo();
+        return listaInsumos;
     }
     
     
