@@ -23,7 +23,11 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
         
+<<<<<<< Updated upstream
             <form action="RegistroChofer" class="formulario" method="post">
+=======
+            <form action="RegistroChofer" class="formulario-sesiones" method="post">
+>>>>>>> Stashed changes
 				<h4>Alta chofer </h4>
                 <label>Nombre</label>
                 <input class="controls" type="text" name="nombre" placeholder="Ingrese nombre">
@@ -36,7 +40,7 @@
                 <label>Contraseña</label>
                 <input class="controls" type="password" name="pass" placeholder="Ingrese contraseña">
                 <label>Telefono de contacto</label>
-                <input class="controls" type="text" name="tel" placeholder="Ingrese telefono">
+                <input class="controls" type="tel" name="tel" placeholder="Ingrese telefono">
                 <input class="boton" type="submit" value="Dar de alta ">
             </form>
         
