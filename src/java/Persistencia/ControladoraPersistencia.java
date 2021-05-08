@@ -94,6 +94,10 @@ public class ControladoraPersistencia {
         return viajeJpa.findViajeEntities();
     }
 
+    public List getInsumo() {
+        return insumoJpa.findInsumoEntities();
+    }
+
 
 
 

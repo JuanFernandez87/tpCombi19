@@ -3,17 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/tpCombi19/web/sesionAdmin.jsp</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/styles.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/sesionAdminLugar.jsp</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/estilosRegistro_1.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/registroDeTarjeta.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/sesiones.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/sesionAdminChofer.jsp</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/fonts.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/estilosRegistro.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/cierre.css</file>
-            <file>file:/D:/GitHub/tpCombi19/web/css/lista.css</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Persistencia/ChoferJpaController.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Persistencia/ControladoraPersistencia.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listado.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoViajes.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Logica/Chofer.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionAdminChofer.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoInsumo.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/template/aside.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/detalleChofer.jsp</file>
         </group>
     </open-files>
 </project-private>

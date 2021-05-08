@@ -4,6 +4,14 @@
     padding: 0px;
 }
 
+body{
+  background-image: url('../images/sprinter3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  line-height: 18px;
+}
+
 .formulario{
     width: 40%;
     display: inline-block;
