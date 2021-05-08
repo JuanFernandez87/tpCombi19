@@ -37,7 +37,7 @@
                 <label>Telefono de contacto</label>
 <<<<<<< Updated upstream
                 <input class="controls" type="tel" name="tel" required placeholder="Ingrese telefono">
-                <input class="boton" type="submit" value="Dar de alta ">
+                <input class="botons" type="submit" value="Dar de alta ">
 
             </form>
         

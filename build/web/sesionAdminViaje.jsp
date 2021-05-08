@@ -65,7 +65,7 @@
                 </div>
                 <label>Ingrese el precio</label>
                 <input class="controls" type="number" name="precio" required placeholder="0">                 
-                <input class="boton" type="submit" value="Cargar viaje">
+                <input class="botons" type="submit" value="Cargar viaje">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>

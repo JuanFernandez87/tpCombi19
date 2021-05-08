@@ -49,7 +49,7 @@
                             <option>Tierra del Fuego</option>
                             <option>Tucumán</option>
                         </select>
-                <input class="boton" type="submit" value="Cargar lugar">
+                <input class="botons" type="submit" value="Cargar lugar">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
