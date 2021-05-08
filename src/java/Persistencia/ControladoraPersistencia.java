@@ -28,6 +28,10 @@ public class ControladoraPersistencia {
     
     public void crearCliente(Cliente nuevoC){  
         clienteJpa.create(nuevoC);
+    }
+    
+    public void crearViaje(Viaje nuevoV){  
+        viajeJpa.create(nuevoV);
     } 
     
     public void crearChofer(Chofer nuevoChofer) {
@@ -89,6 +93,7 @@ public class ControladoraPersistencia {
     public List getViaje() {
         return viajeJpa.findViajeEntities();
     }
+
 
 
 

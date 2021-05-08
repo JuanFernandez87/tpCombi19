@@ -246,5 +246,57 @@ public class Controladora {
         unaRuta.setDistancia(distancia); 
         controlPersis.crearRuta(unaRuta);
     }
+
+    public boolean verificarViaje(int idRuta, String fecha) {
+        boolean aux = false;
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje();
+        for(Viaje unViaje:listaViajes){
+            if((unViaje.getIdRuta() == idRuta) && (unViaje.getFecha().equals(fecha))){
+                aux = true;
+            }
+        } 
+        return aux;
+    }
+    
+    public boolean verificarAsientos(int cantAsientos, int idRuta) {
+        boolean aux = false;
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idCombi = 0;
+        for(Ruta unaRuta:listaRutas){
+            if(unaRuta.getIdRuta() == idRuta){
+                idCombi = unaRuta.getIdCombi();
+            }
+        }
+        List <Combi> listaCombis = new ArrayList <Combi>();
+        listaCombis = controlPersis.getCombi();        
+        for(Combi unaCombi:listaCombis){
+            if(unaCombi.getIdCombi() == idCombi){
+                if(unaCombi.getCantAsientos() >= cantAsientos){
+                    aux = true;
+                }
+            }
+        }
+        
+        
+        
+        return aux;
+    }    
+
+    public void crearViaje(int idRuta, int cantAsientos, String fechaViaje, int precio) {
+        Viaje nuevoViaje = new Viaje();
+        nuevoViaje.setIdViaje(idRuta);
+        nuevoViaje.setCantAsientos(cantAsientos);
+        Date date1;   
+        try {
+            date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaViaje);
+            nuevoViaje.setFecha(date1);
+        } catch (ParseException ex) {
+            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        nuevoViaje.setPrecio(precio);
+        controlPersis.crearViaje(nuevoViaje);
+    }
     
  }

@@ -40,7 +40,7 @@
                 <%
                    for (Chofer chof: listaChoferes) { 
                         if(chof.getOcupado() == 0){%>
-                    <option value="<%=chof.getIdChofer()%>"><%=chof.getApellido()%></option>
+                    <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
                  <%}}%>  
                 </select>
                 

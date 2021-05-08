@@ -72,28 +72,40 @@ public class RegistroViaje extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
         
-        String nombre = request.getParameter("nombre"); //Obtengo el nombre de usuario que se ingreso
-        String provincia = request.getParameter("provincia"); //Obtengo la contraseña que ingresen el usuario
-        
-        request.getSession().setAttribute("nombre", nombre);
-        request.getSession().setAttribute("provincia", provincia);
-                       
+        int idRuta = Integer.parseInt(request.getParameter("idRuta")); 
+        int cantAsientos = Integer.parseInt(request.getParameter("cantAsientos"));
+        String dia = request.getParameter("dia");
+        String mes = request.getParameter("mes");
+        String anio = request.getParameter("anio");        
+        int precio = Integer.parseInt(request.getParameter("precio"));
+
+        request.getSession().setAttribute("idRuta", idRuta);
+        request.getSession().setAttribute("cantAsientos", cantAsientos);               
+        request.getSession().setAttribute("dia", dia );
+        request.getSession().setAttribute("mes", mes );
+        request.getSession().setAttribute("anio", anio );
+        String fechaViaje = dia + "/" + mes + "/" + anio;        
+        request.getSession().setAttribute("precio", precio);
+  
         Controladora control = new Controladora();
         boolean existe = false;
-        existe = control.verificarLugar(nombre);
+        existe = control.verificarViaje(idRuta, fechaViaje);
+        
+        boolean hayLugar;
+        hayLugar = control.verificarAsientos(cantAsientos, idRuta);
+        
         if (!existe){
-            control.crearLugar(nombre, provincia);
-            response.sendRedirect ("sesionAdmin.jsp");
+             if(hayLugar){
+                control.crearViaje(idRuta, cantAsientos, fechaViaje, precio);
+                response.sendRedirect ("sesionAdmin.jsp");
+            }else{
+                response.sendRedirect ("index.jsp");
+            }            
         }else{
-            response.sendRedirect ("entradaInvalida.jsp");
+            response.sendRedirect ("login.jsp");
         }
-        }
+    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

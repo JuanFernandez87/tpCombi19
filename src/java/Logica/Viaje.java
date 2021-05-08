@@ -20,6 +20,7 @@ public class Viaje implements Serializable {
     @Basic
     int cantAsientos;
     double precio;
+    int idRuta;
     
     @Temporal(TemporalType.DATE)
     Date fecha;
@@ -36,11 +37,20 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int cantAsientos, Date fecha, double precio) {
+    public Viaje(int idViaje, int idRuta, int cantAsientos, Date fecha, double precio) {
         this.idViaje = idViaje;
+        this.idRuta = idRuta;
         this.cantAsientos = cantAsientos;
         this.fecha = fecha;
         this.precio = precio;
+    }
+
+    public int getIdRuta() {
+        return idRuta;
+    }
+
+    public void setIdRuta(int idRuta) {
+        this.idRuta = idRuta;
     }
 
     public int getIdViaje() {
