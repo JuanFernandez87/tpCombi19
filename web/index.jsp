@@ -24,9 +24,11 @@
                 <input class="controls" type="date" id="start" name="trip-start"
                 value="2020-07-22"
                 accept=""min="1960-01-01" max="2040-12-31">
-                <input class="boton" type="submit" value="Buscar Pasajes">
-                <input class="boton" href="login.jsp" type="submit" value="Iniciar sesión">
+              <div style="display: flex" >  
+                <input class="botons" type="submit" value="Buscar Pasajes" style="margin: 7px 20px;">
+                <input class="botons" href="login.jsp" type="submit" value="Iniciar sesión" style="margin: 7px 20px;">
             </form>
+            </div>
         </div>
             <div class="comentarios">
                 <div class="comentario">
