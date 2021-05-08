@@ -22,7 +22,7 @@
 					<li><a href="sesionAdminChofer.jsp">Registrar</a></li>
 					<li><a href="borrarChofer.jsp">Baja</a></li>
 					<li><a href="sesionAdminChofer.jsp">Modificar</a></li>
-                                        <li><a href="listado.jsp">Listado</a></li>
+                                        <li><a href="listadoChofer.jsp">Listado</a></li>
 				</ul>
 
 			</li>
@@ -31,7 +31,7 @@
                              <li ><a href="#"><i class="icono izquierda fas fa-shuttle-van" ></i>Administrar combis<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
                                          <li><a href="sesionAdminCombi.jsp">Registrar</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                           <li><a href="borrarCombi.jsp">Baja</a></li>
+                                           <li><a href="borrarChofer.jsp">Baja</a></li>
                                             <li><a href="sesionAdminCombi.jsp">Modificar</a></li>
                                             <li><a href="listadoCombi.jsp">Listado</a></li>
 				</ul>

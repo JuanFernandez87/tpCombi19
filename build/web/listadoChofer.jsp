@@ -62,26 +62,25 @@
                 <td>Dni</td> 
                 <td>Telefono</td> 
                 <td>Mail</td> 
+                <td></td> 
+                <td></td> 
             </tr>
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       
+                       if (listaChoferes.get(i).getDni() > 0){
                    %>
-                <tr>
-                     
-                         
-                    
+                <tr>   
                         <td><%= listaChoferes.get(i).getApellido() %></td>
                         <td><%= listaChoferes.get(i).getNombre() %></td>
                         <td><%= listaChoferes.get(i).getDni() %></td>
                         <td><%= listaChoferes.get(i).getTelefono()%></td>
                         <td><%= listaChoferes.get(i).getMail()%></td>
-
+                        <td> <a style="background-color: orange;color: white;padding: 5px;" action="EliminarChofer">Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="EliminarChofer" method="post" name="idChofer">Eliminar</a> </td>
                 </tr>
                  
-           <%}%>  
-    
+           <%}}%>  
         </table>
            <br>
                 <%

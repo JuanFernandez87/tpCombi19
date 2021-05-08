@@ -1,3 +1,4 @@
+<%@page import="Logica.Combi"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Logica.Chofer"%>
 <%@page import="java.util.List"%>
@@ -25,7 +26,8 @@
 				<h4>Eliminar chofer</h4>
             <%
                     Controladora control = new Controladora();
-                    List <Chofer> listaChoferes = control.devolverListaChoferes(); 
+                    List <Chofer> listaChoferes = control.devolverListaChoferes();
+                    List <Combi> listaCombis = control.devolverListaCombi(); 
              %> 
                 
                 <label> Chofer</label>
@@ -37,6 +39,15 @@
                     <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
                  <%}}%>  
                 </select>
+                
+                <label>Combi</label>
+                <select class="controls" name="combi" required>
+                        <option>Seleccione una combi</option>
+                <%
+                    for (Combi comb: listaCombis) {%>                        
+                        <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
+                 <%}%> 
+                </select>                
                 
                 <input class="boton" type="submit" value="Dar de baja">
             </form>
