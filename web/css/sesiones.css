@@ -9,7 +9,9 @@
   position: relative;
 }*/
 body{
-  background: #0b2027;
+  background-image: url('../images/sprinter3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: 'Roboto', sans-serif;
   line-height: 18px;
 }
