@@ -39,7 +39,7 @@
                         </select>
                 <label> Precio</label>
                 <input class="controls" type="number" name="precio" required placeholder="Ingrese precio">
-                <input class="boton" type="submit" value="Dar de alta ">
+                <input class="botons" type="submit" value="Dar de alta ">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
