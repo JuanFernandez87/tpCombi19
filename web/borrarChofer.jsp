@@ -1,3 +1,4 @@
+<%@page import="Logica.Viaje"%>
 <%@page import="Logica.Combi"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Logica.Chofer"%>
@@ -23,38 +24,47 @@
         <%@include file="/template/aside.jsp"%>
 		
             <form action="EliminarChofer" class="formulario-sesiones" method="post">
-				<h4>Eliminar chofer</h4>
+				<h4>Eliminar</h4>
             <%
                     Controladora control = new Controladora();
                     List <Chofer> listaChoferes = control.devolverListaChoferes();
                     List <Combi> listaCombis = control.devolverListaCombi(); 
+                    List <Viaje> listaViajes = control.devolverListaViajes(); 
              %> 
                 
-                <label> Chofer</label>
+             <label> Chofer</label>
                 <select class="controls" name="idChofer" required>
                     <option>Seleccione un chofer</option>
                 <%
                    for (Chofer chof: listaChoferes) { 
-                        if(chof.getIdCombi() == 0){%>
+                        //if(chof.getIdCombi() == 0){%>
                     <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
-                 <%}}%>  
+                 <%}/*}*/%>  
                 </select>
                 
-                <label>Combi</label>
-                <select class="controls" name="combi" required>
+                <%-- <label>Combi</label>
+                <select class="controls" name="idCombi" required>
                         <option>Seleccione una combi</option>
                 <%
                     for (Combi comb: listaCombis) {%>                        
                         <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
                  <%}%> 
-                </select>                
+                </select> 
+                
+                <label>Viaje</label>
+                <select class="controls" name="idViaje" required>
+                        <option>Seleccione un viaje</option>
+                <%
+                    for (Viaje viaje: listaViajes) {%>                        
+                        <option value="<%=viaje.getIdViaje()%>"><%=viaje.getIdViaje()%></option>               
+                 <%}%> 
+                </select>     --%>            
                 
                 <input class="boton" type="submit" value="Dar de baja">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
  
-</div>
 
 <%@include file="/template/footer.jsp"%>
 

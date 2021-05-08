@@ -74,9 +74,14 @@ public class EliminarChofer extends HttpServlet {
             int idChofer = Integer.parseInt(request.getParameter("idChofer")); 
             request.getSession().setAttribute("idChofer", idChofer);
             Controladora control = new Controladora();
-            control.eliminarChofer(idChofer);
-        
-            response.sendRedirect ("sesionAdmin.jsp");  
+            boolean libre = false;
+            libre = control.chequearChoferLibre(idChofer);
+            if(!libre){
+                control.eliminarChofer(idChofer);
+                response.sendRedirect ("borrarChofer.jsp");
+            }else{
+                response.sendRedirect ("index.jsp");  
+            }
     }
 
     /**

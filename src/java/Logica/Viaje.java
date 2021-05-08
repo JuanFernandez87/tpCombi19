@@ -44,7 +44,7 @@ public class Viaje implements Serializable {
         this.fecha = fecha;
         this.precio = precio;
     }
-
+    
     public int getIdRuta() {
         return idRuta;
     }
@@ -85,5 +85,7 @@ public class Viaje implements Serializable {
         this.precio = precio;
     }
 
- 
+     public void setBorradoLogico() {
+        this.idRuta = -1;
+    }
 }

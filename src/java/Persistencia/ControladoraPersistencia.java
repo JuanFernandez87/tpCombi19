@@ -61,6 +61,14 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
+
+    public void asignarViaje(Viaje unViaje){
+        try {
+            viajeJpa.edit(unViaje);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
     
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);

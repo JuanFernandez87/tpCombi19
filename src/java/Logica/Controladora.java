@@ -293,7 +293,7 @@ public class Controladora {
 
     public void crearViaje(int idRuta, int cantAsientos, String fechaViaje, int precio) {
         Viaje nuevoViaje = new Viaje();
-        nuevoViaje.setIdViaje(idRuta);
+        nuevoViaje.setIdRuta(idRuta);
         nuevoViaje.setCantAsientos(cantAsientos);
         Date date1;   
         try {
@@ -338,4 +338,46 @@ public class Controladora {
             }
         }
     }
+
+    public void eliminarViaje(int idViaje) {
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdViaje() == idViaje){
+                viaje.setBorradoLogico();
+                controlPersis.asignarViaje(viaje);
+            }
+        }
+    }
+
+    public boolean chequearChoferLibre(int idChofer) {
+        boolean aux = false;
+
+        List <Chofer> listaChoferes = new ArrayList <Chofer>();
+        listaChoferes = controlPersis.getChoferes(); 
+        int idCombi = 0;
+        for(Chofer chof:listaChoferes){
+            if(chof.getIdChofer() == idChofer){
+                idCombi = chof.getIdCombi();
+            }
+        }   
+        
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idRuta = 0;
+        for(Ruta unaRuta:listaRutas){
+            if(unaRuta.getIdCombi() == idCombi){
+                idRuta = unaRuta.getIdRuta();
+            }
+        }         
+        
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                aux = true;
+            }
+        }
+        return aux;        
+        }
  }

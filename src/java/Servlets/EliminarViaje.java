@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -70,7 +71,12 @@ public class EliminarViaje extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            int idViaje = Integer.parseInt(request.getParameter("idViaje")); 
+            request.getSession().setAttribute("idViaje", idViaje);
+            Controladora control = new Controladora();
+            control.eliminarViaje(idViaje);
+        
+            response.sendRedirect ("sesionAdmin.jsp");  
     }
 
     /**
