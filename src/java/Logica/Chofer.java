@@ -22,7 +22,7 @@ public class Chofer /*extends Persona*/{
     String mail;
     String contra;
     int dni;
-    int ocupado;
+    int idCombi;
     
     @Temporal(TemporalType.DATE)
     Date fecha_nac;    
@@ -30,7 +30,7 @@ public class Chofer /*extends Persona*/{
     public Chofer(){
     }
 
-    public Chofer(int idChofer, int telefono, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac, int ocupado) {
+    public Chofer(int idChofer, int telefono, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac, int idCombi) {
         this.idChofer = idChofer;
         this.telefono = telefono;
         this.dni = dni;
@@ -39,15 +39,19 @@ public class Chofer /*extends Persona*/{
         this.mail = mail;
         this.contra = contra;
         this.fecha_nac = fecha_nac;        
-        this.ocupado = 0;
-    }
-
-    public int getIdChofer() {
-        return idChofer;
+        this.idCombi = 0;
     }
 
     public void setIdChofer(int idChofer) {
         this.idChofer = idChofer;
+    }    
+    
+    public int getIdChofer() {
+        return idChofer;
+    }
+
+    public void setBorradoLogico() {
+        this.dni = -1;
     }
 
     public int getTelefono() {
@@ -106,15 +110,11 @@ public class Chofer /*extends Persona*/{
         this.fecha_nac = fecha_nac;
     }
 
-    public int getOcupado() {
-        return ocupado;
+    public int getIdCombi() {
+        return idCombi;
     }
 
-    public void setOcupado() {
-        this.ocupado = 1;
-    }
-
-    public void setLibre() {
-        this.ocupado = 0;
+    public void setIdCombi(int idCombi) {
+        this.idCombi = idCombi;
     }
 }

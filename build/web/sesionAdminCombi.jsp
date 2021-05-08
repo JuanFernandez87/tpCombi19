@@ -39,7 +39,7 @@
                     <option>Seleccione un chofer</option>
                 <%
                    for (Chofer chof: listaChoferes) { 
-                        if(chof.getOcupado() == 0){%>
+                        if(chof.getIdCombi() == 0){%>
                     <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
                  <%}}%>  
                 </select>

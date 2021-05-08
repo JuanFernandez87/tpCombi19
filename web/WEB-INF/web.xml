@@ -36,6 +36,30 @@
         <servlet-name>RegistroViaje</servlet-name>
         <servlet-class>Servlets.RegistroViaje</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarChofer</servlet-name>
+        <servlet-class>Servlets.EliminarChofer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCombi</servlet-name>
+        <servlet-class>Servlets.EliminarCombi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarLugar</servlet-name>
+        <servlet-class>Servlets.EliminarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarRuta</servlet-name>
+        <servlet-class>Servlets.EliminarRuta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarViaje</servlet-name>
+        <servlet-class>Servlets.EliminarViaje</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarInsumo</servlet-name>
+        <servlet-class>Servlets.EliminarInsumo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -71,6 +95,30 @@
     <servlet-mapping>
         <servlet-name>RegistroViaje</servlet-name>
         <url-pattern>/RegistroViaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarChofer</servlet-name>
+        <url-pattern>/EliminarChofer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCombi</servlet-name>
+        <url-pattern>/EliminarCombi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarLugar</servlet-name>
+        <url-pattern>/EliminarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarRuta</servlet-name>
+        <url-pattern>/EliminarRuta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarViaje</servlet-name>
+        <url-pattern>/EliminarViaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarInsumo</servlet-name>
+        <url-pattern>/EliminarInsumo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

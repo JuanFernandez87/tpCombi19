@@ -46,6 +46,22 @@ public class ControladoraPersistencia {
         }   
     }
 
+    public void asignarCombi(Combi unaCombi){
+        try {
+            combiJpa.edit(unaCombi);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    
+    public void asignarInsumo(Insumo unInsumo){
+        try {
+            insumoJpa.edit(unInsumo);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);
     }    

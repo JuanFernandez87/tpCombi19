@@ -69,5 +69,7 @@ public class Insumo implements Serializable {
         this.tipo = tipo;
     }
 
-
+    public void setBorradoLogico() {
+        this.idInsumo = -1;
+    }
 }

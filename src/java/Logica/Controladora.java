@@ -38,7 +38,7 @@ public class Controladora {
         nuevoChofer.setMail(mail);
         nuevoChofer.setContra(contra);
         nuevoChofer.setTelefono(tel);
-        nuevoChofer.setLibre();
+        nuevoChofer.setIdCombi(0);
         controlPersis.crearChofer(nuevoChofer);   
     }
     
@@ -63,19 +63,21 @@ public class Controladora {
         nuevaCombi.setModelo(modelo);
         nuevaCombi.setCantAsientos(cantAsientos);
         nuevaCombi.setTipoServicio(tipoServicio);
-        List <Chofer> listaChoferes = new ArrayList <Chofer>();
+        controlPersis.crearCombi(nuevaCombi);
+             
+        List <Chofer> listaChoferes = new ArrayList <Chofer>();             
         listaChoferes = controlPersis.getChoferes();
         Chofer unChofer = null;
-         
         for(Chofer chof:listaChoferes){
             if(chof.getIdChofer() == idChofer){
-                chof.setOcupado();
+                chof.setIdCombi(nuevaCombi.getIdCombi());
                 controlPersis.asignarChofer(chof);
                 unChofer = chof;
             }
         }
+        
         nuevaCombi.setUnChofer(unChofer);          
-        controlPersis.crearCombi(nuevaCombi);    //mirame juancho dame piernas
+        controlPersis.crearCombi(nuevaCombi);          
             }   
     
        
@@ -84,7 +86,7 @@ public class Controladora {
         List <Chofer> listaChoferes = new ArrayList <Chofer>();   
         listaChoferes = controlPersis.getChoferes();
         for(Chofer unChofer:listaChoferes){
-            if(unChofer.getIdChofer() == idChofer && unChofer.ocupado == 0){
+            if(unChofer.getIdChofer() == idChofer && unChofer.getIdCombi() == 0){
                 aux = true;
                 return aux;
                 
@@ -303,5 +305,37 @@ public class Controladora {
         nuevoViaje.setPrecio(precio);
         controlPersis.crearViaje(nuevoViaje);
     }
-    
+
+    public void eliminarChofer(int idChofer) {
+        List <Chofer> listaChoferes = new ArrayList <Chofer>();
+        listaChoferes = controlPersis.getChoferes(); 
+        for(Chofer chof:listaChoferes){
+            if(chof.getIdChofer() == idChofer){
+                chof.setBorradoLogico();
+                controlPersis.asignarChofer(chof);
+            }
+        }
+    }
+
+    public void eliminarCombi(int idCombi) {
+        List <Combi> listaCombis = new ArrayList <Combi>();
+        listaCombis = controlPersis.getCombi(); 
+        for(Combi comb:listaCombis){
+            if(comb.getIdCombi() == idCombi){
+                comb.setBorradoLogico();
+                controlPersis.asignarCombi(comb);
+            }
+        }
+    }
+
+    public void eliminarInsumo(int idInsumo) {
+        List <Insumo> listaInsumo = new ArrayList <Insumo>();
+        listaInsumo = controlPersis.getInsumo(); 
+        for(Insumo ins:listaInsumo){
+            if(ins.getIdInsumo() == idInsumo){
+                ins.setBorradoLogico();
+                controlPersis.asignarInsumo(ins);
+            }
+        }
+    }
  }

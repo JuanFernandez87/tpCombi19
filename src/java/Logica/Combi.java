@@ -85,4 +85,8 @@ public class Combi implements Serializable {
     public void setUnChofer(Chofer unChofer) {
         this.unChofer = unChofer;
     }
+
+    public void setBorradoLogico() {
+        this.patente = "-1";
+    }      
  }
