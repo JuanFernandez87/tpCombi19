@@ -83,9 +83,9 @@ public class RegistroLugar extends HttpServlet {
         existe = control.verificarLugar(nombre);
         if (!existe){
             control.crearLugar(nombre, provincia);
-            response.sendRedirect ("sesionAdmin.jsp");
+            response.sendRedirect ("popUpRegistroCorrectoLugar.jsp");
         }else{
-            response.sendRedirect ("entradaInvalida.jsp");
+            response.sendRedirect ("popUpErrorLugarRegistrado.jsp");
         }
         }
 

@@ -84,9 +84,10 @@ public class RegistroRuta extends HttpServlet {
         Controladora control = new Controladora();
         if(!origen.equals(destino)){
             control.crearRuta(origen, destino, patenteCombi, distancia);
-            response.sendRedirect ("sesionAdmin.jsp");
+            response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");
         }else{
-            response.sendRedirect ("entradaInvalida.jsp");
+            response.sendRedirect ("popUpErrorMismoOyD.jsp");
+            
         }
     }
 

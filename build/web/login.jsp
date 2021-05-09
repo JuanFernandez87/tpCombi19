@@ -30,6 +30,8 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
+        
+        
                 
     </body>
 </html>

@@ -88,19 +88,19 @@ public class RegistroCombi extends HttpServlet {
         Controladora control = new Controladora();
         boolean existe = false;
         boolean choferLibre = false;
-        existe = control.verificarCombi(patente);
         
+        existe = control.verificarCombi(patente);
         if (existe == false){
             choferLibre = control.verificarChofer(idChofer);       
             if(choferLibre){
                 control.crearCombi(patente, modelo, capacidad, tipoServicio, idChofer);
              
-                response.sendRedirect ("sesionAdmin.jsp");
+                response.sendRedirect ("popUpRegistroCorrectoCombi.jsp");
             }else{
-                response.sendRedirect ("choferOcupado.jsp");
+                response.sendRedirect ("popUpErrorChoferOcupadoCombi.jsp");
             }  
         }else{
-            response.sendRedirect ("entradaInvalida.jsp");
+            response.sendRedirect ("popUpErrorPatenteRepetidaCombi.jsp");
         }
         }
 
