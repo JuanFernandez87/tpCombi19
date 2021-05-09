@@ -21,7 +21,7 @@
                 <i class="fas fa-map-marker-alt"></i><label> Origen</label>
                 <input class="controls" type="text" placeholder="Ingrese origen">
                 <i class="fas fa-calendar-alt"></i> <label>Partida</label>
-                <input class="controls" type="date" id="start" name="trip-start"
+                <input class="controls" type="fecha" id="start" name="trip-start"
                 value="2020-07-22"
                 accept=""min="1960-01-01" max="2040-12-31">
               <div style="display: flex" >  
