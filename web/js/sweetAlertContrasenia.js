@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "La contrasenia debe contener como minimo 8 digitos",
+    title: "La contrasenia debe contener como minimo 6 digitos",
     icon: 'error'
 });

@@ -70,6 +70,14 @@ public class ControladoraPersistencia {
         }   
     }
     
+    public void asignarRuta(Ruta unaRuta) {
+        try {
+            rutaJpa.edit(unaRuta);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }      
+    
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);
     }    
@@ -122,13 +130,7 @@ public class ControladoraPersistencia {
         return insumoJpa.findInsumoEntities();
     }
 
-
-
-
-
-
-
-    
+  
                 
 }
 

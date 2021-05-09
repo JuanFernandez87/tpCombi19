@@ -375,7 +375,7 @@ public class Controladora {
         listaViajes = controlPersis.getViaje(); 
         for(Viaje viaje:listaViajes){
             if(viaje.getIdRuta() == idRuta){
-                aux = true;
+                return aux = true;
             }
         }
         return aux;        
@@ -384,11 +384,8 @@ public class Controladora {
     public boolean verificarUsuario(String mail) {
         List <Cliente> listaClientes = controlPersis.getClientes();
         boolean aux= false;
-        int i;
-        String mailAct;
-        for (i= 1; i< listaClientes.size(); i++){
-            mailAct = listaClientes.get(i).getMail();
-            if (mailAct.equals(mail)){
+        for (Cliente cli:listaClientes){    
+            if(cli.getMail().equals(mail)){
                 aux = true;
                return aux;
             }
@@ -398,7 +395,7 @@ public class Controladora {
 
     public boolean verificarContraseña(String contra) {
         boolean aux = false;
-       if (contra.length()> 6){
+       if (contra.length()>= 6){
            aux = true;
            return aux;
        }
@@ -408,11 +405,8 @@ public class Controladora {
     public boolean verificarChofer(String mail) {
         List <Chofer> listaChoferes = controlPersis.getChoferes();
         boolean aux= false;
-        int i;
-        String mailAct;
-        for (i= 1; i< listaChoferes.size(); i++){
-            mailAct = listaChoferes.get(i).getMail();
-            if (mailAct.equals(mail)){
+        for (Chofer chof:listaChoferes){    
+            if(chof.getMail().equals(mail)){
                 aux = true;
                return aux;
             }
