@@ -380,4 +380,28 @@ public class Controladora {
         }
         return aux;        
         }
+
+    public boolean verificarUsuario(String mail) {
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        boolean aux= false;
+        int i;
+        String mailAct;
+        for (i= 1; i< listaClientes.size(); i++){
+            mailAct = listaClientes.get(i).getMail();
+            if (mailAct==mail){
+                aux = true;
+               return aux;
+            }
+        }
+        return aux;
+    }
+
+    public boolean verificarContraseña(String contra) {
+        boolean aux = false;
+       if (contra.length()> 6){
+           aux = true;
+           return aux;
+       }
+       return aux;
+    }
  }

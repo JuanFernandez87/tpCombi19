@@ -20,7 +20,7 @@
                <input class="controls" type="text" name="apellido" required id="apellidos" placeholder="Ingrese su Apellido">
                <input class="controls" type="tel" name="dni" required id="dni" placeholder="Ingrese su Dni">
                <input class="controls" type="email" name="mail" required id="correo" placeholder="Ingrese su Correo">
-               <input class="controls" type="password" name="pass" required id="correo" placeholder="Ingrese su Contraseña">
+               <input class="controls" type="password" name="pass" required id="contra" placeholder="Ingrese su Contraseña">
                <b for="start">Ingrese su fecha de nacimiento:</b><br>
                <div class="fecha">
                     <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
@@ -37,7 +37,6 @@
                <p><a href="login.jsp">Ya tengo Cuenta</a></p>
                
                 </form>                                  
-         
          </div>
 
         <footer>

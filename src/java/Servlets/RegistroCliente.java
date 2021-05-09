@@ -102,14 +102,28 @@ public class RegistroCliente extends HttpServlet {
         String fechaNac = dia + "/" + mes + "/" + anio;
         request.getSession().setAttribute("plan", tipoPlan);
         
-        if(tipoPlan.equals("Gold")){
-            response.sendRedirect ("registroDeTarjeta.jsp");
-        }else{
-            response.sendRedirect ("sesionUsuario.jsp");
-        }
-        
         Controladora control = new Controladora();
-        control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
+        
+        boolean existe = control.verificarUsuario(mail); // devuelve si el mail ingresado ya se encuentra registrado.
+        if (existe == true){
+           response.sendRedirect ("entradaInvalida.jsp");
+        }   
+        else{
+            //boolean cumpleTamañoMin = control.verificarContraseña(contra);
+            //if(!cumpleTamañoMin){
+              //  response.sendRedirect ("index.jsp");
+            //}
+            //else{
+                control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
+          //      response.sendRedirect ("sesionUsuario.jsp");
+            }
+            //if(tipoPlan.equals("Gold")){
+            //response.sendRedirect ("registroDeTarjeta.jsp");
+        //}else{
+          //  response.sendRedirect ("sesionUsuario.jsp");
+        //}
+        //}
+       
 
 }
 
