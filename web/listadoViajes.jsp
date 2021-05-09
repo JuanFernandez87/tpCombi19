@@ -62,6 +62,8 @@
                 <td>Cant Asientos</td> 
                 <td>Fecha</td> 
                 <td>Precio</td> 
+                  <td></td>
+                <td></td>
                 
             </tr>
                <%
@@ -76,6 +78,8 @@
                         <td><%= listaViajes.get(i).getCantAsientos()%></td>
                         <td><%= listaViajes.get(i).getFecha()%></td>
                         <td><%= listaViajes.get(i).getPrecio()%></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Eliminar </a></td>
 
                 </tr>
                  

@@ -38,10 +38,18 @@
                     <div class="cajaListado">
                         <h1>Detalles</h1>
                        
+<<<<<<< Updated upstream
 				                                     
                              <select class="controls" name="apellido">
                                 <option value="" >Seleccione un Chofer  </option>
                                    <%
+=======
+                       <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
+				                                     
+                             <select  name="apellido">
+                                <option>Seleccione un Chofer  </option>
+                                   <%                             
+>>>>>>> Stashed changes
 
                                 int i=0;
 
@@ -50,6 +58,7 @@
                                 %>
 
 
+<<<<<<< Updated upstream
 
                                 <option value=<%=listaChofer.get(i).getIdChofer() %>><%= listaChofer.get(i).getApellido() %> </option>
 
@@ -57,6 +66,14 @@
 
                                  <%}%>      
                                  
+=======
+                             </select>
+                              
+                             <input type="submit" value="Buscar">
+                       </form >     
+                       <br><br>
+                          
+>>>>>>> Stashed changes
                               
 
                              </select>

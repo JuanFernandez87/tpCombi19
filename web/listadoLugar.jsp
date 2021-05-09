@@ -59,6 +59,8 @@
             <tr>
                 <td>Nombre</td> 
                 <td>Provincia</td> 
+                <td></td>
+                <td></td>
                 
                 
             </tr>
@@ -73,7 +75,8 @@
                     
                         <td><%= listaLugar.get(i).getNombre()%></td>
                         <td><%= listaLugar.get(i).getProvincia() %></td>
-                       
+                       <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Eliminar </a></td>
                        
 
                 </tr>

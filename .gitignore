@@ -1,2 +1,10 @@
 
 *.properties
+<<<<<<< Updated upstream
+=======
+/dist/
+nbproject/private/private.xml
+nbproject/private/private.properties
+/nbproject/private/
+/build/
+>>>>>>> Stashed changes

@@ -31,3 +31,34 @@ table {
     background-color: #dddddd;
   }
   
+  .busqueda{
+   
+      display: inline;
+  
+      padding: 0px;
+  }
+  
+   .busqueda select{
+    
+        width: 30%;
+        background: #266aa7;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        border: 2px solid #1f53c5;
+        font-family: 'calibri';
+        font-size: 18px;
+        color: white;
+  }
+ .busqueda input{
+    
+        width: 10%;
+        background: #1f53c5;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        border: 2px solid #1f53c5;
+        font-family: 'calibri';
+        font-size: 18px;
+        color: white;
+  }
