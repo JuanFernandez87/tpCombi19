@@ -75,7 +75,7 @@ public class EliminarViaje extends HttpServlet {
             request.getSession().setAttribute("idViaje", idViaje);
             Controladora control = new Controladora();
             control.eliminarViaje(idViaje);
-            response.sendRedirect ("sesionAdmin.jsp");  
+            response.sendRedirect ("borrarChofer.jsp");  
     }
 
     /**

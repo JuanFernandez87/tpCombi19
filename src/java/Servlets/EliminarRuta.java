@@ -75,14 +75,12 @@ public class EliminarRuta extends HttpServlet {
             request.getSession().setAttribute("idRuta", idRuta);
             Controladora control = new Controladora();
             boolean libre = false;
-            int idCombi;
-            int idChofer;
-            //libre = control.chequearRutaLibre(idRuta);
+            libre = control.chequearRutaLibre(idRuta);
             if(libre){
-              //  control.eliminarRuta(idRuta);
-                response.sendRedirect ("sesioonAdmin.jsp");
-            }else{
                 response.sendRedirect ("index.jsp");
+            }else{
+                control.eliminarRuta(idRuta);
+                response.sendRedirect ("borrarChofer.jsp");                
             }
             
     }

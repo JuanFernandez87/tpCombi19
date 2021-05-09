@@ -1,3 +1,4 @@
+<%@page import="Logica.Ruta"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Combi"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,17 +24,18 @@
 	
         <%@include file="/template/aside.jsp"%>
 		
-            <form action="EliminarChofer" class="formulario-sesiones" method="post">
+            <form action="EliminarRuta" class="formulario-sesiones" method="post">
 				<h4>Eliminar</h4>
             <%
                     Controladora control = new Controladora();
-                    List <Chofer> listaChoferes = control.devolverListaChoferes();
+                    //List <Chofer> listaChoferes = control.devolverListaChoferes();
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Viaje> listaViajes = control.devolverListaViajes(); 
+                    List <Ruta> listaRutas = control.devolverRutas(); 
              %> 
                 
-             <label> Chofer</label>
-                <select class="controls" name="idChofer" required>
+             <%--<label>Chofer</label>
+                 <select class="controls" name="idChofer" required>
                     <option>Seleccione un chofer</option>
                 <%
                    for (Chofer chof: listaChoferes) { 
@@ -42,7 +44,7 @@
                  <%}/*}*/%>  
                 </select>
                 
-                <%-- <label>Combi</label>
+                <label>Combi</label>
                 <select class="controls" name="idCombi" required>
                         <option>Seleccione una combi</option>
                 <%
@@ -58,7 +60,16 @@
                     for (Viaje viaje: listaViajes) {%>                        
                         <option value="<%=viaje.getIdViaje()%>"><%=viaje.getIdViaje()%></option>               
                  <%}%> 
-                </select>     --%>            
+                </select> --%> 
+                
+                <label>Ruta</label>
+                <select class="controls" name="idRuta" required>
+                        <option>Seleccione una ruta</option>
+                <%
+                    for (Ruta ruta:listaRutas) {%>                        
+                        <option value="<%=ruta.getIdRuta()%>"><%=ruta.getIdRuta()%></option>               
+                 <%}%> 
+                </select>                     
                 
                 <input class="boton" type="submit" value="Dar de baja">
             </form>

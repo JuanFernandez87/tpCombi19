@@ -349,7 +349,30 @@ public class Controladora {
             }
         }
     }
+    
+    public void eliminarRuta(int idRuta) {
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas(); 
+        for(Ruta ruta:listaRutas){
+            if(ruta.getIdRuta() == idRuta){
+                ruta.setBorradoLogico();
+                controlPersis.asignarRuta(ruta);
+            }
+        }
+    }    
 
+    public boolean chequearRutaLibre(int idRuta) {
+        boolean aux = false;
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;
+    }    
+    
     public boolean chequearChoferLibre(int idChofer) {
         boolean aux = false;
 
@@ -413,4 +436,5 @@ public class Controladora {
         }
         return aux;
     }
+
  }
