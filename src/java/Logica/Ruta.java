@@ -65,8 +65,6 @@ public class Ruta implements Serializable {
         this.idCombi = idCombi;
     }
 
-
-
     public Time getHora() {
         return hora;
     }
@@ -81,6 +79,10 @@ public class Ruta implements Serializable {
 
     public void setDistancia(double distancia) {
         this.distancia = distancia;
+    }
+
+    void setBorradoLogico() {
+        this.distancia = -1;
     }
 
  

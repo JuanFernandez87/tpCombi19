@@ -1,8 +1,3 @@
-<%-- 
-    Document   : listado
-    Created on : 29/04/2021, 06:47:34
-    Author     : Esteban
---%>
 <%@page import="Logica.Chofer"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
@@ -76,8 +71,8 @@
                         <td><%= listaChoferes.get(i).getDni() %></td>
                         <td><%= listaChoferes.get(i).getTelefono()%></td>
                         <td><%= listaChoferes.get(i).getMail()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;" action="EliminarChofer">Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="EliminarChofer" method="post" name="idChofer">Eliminar</a> </td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Eliminar </a></td>
                 </tr>
                  
            <%}}%>  

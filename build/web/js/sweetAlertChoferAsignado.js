@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "El chofer ya se encuentra asignado a una combi.",
+    title: "El chofer se encuentra asignado a un viaje.",
     icon: 'error'
 });

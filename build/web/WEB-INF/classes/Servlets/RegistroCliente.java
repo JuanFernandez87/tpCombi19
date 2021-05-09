@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class EliminarRuta extends HttpServlet {
+public class RegistroCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class EliminarRuta extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarRuta</title>");            
+            out.println("<title>Servlet RegistroCliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EliminarRuta at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegistroCliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,21 +71,61 @@ public class EliminarRuta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            int idRuta = Integer.parseInt(request.getParameter("idRuta")); 
-            request.getSession().setAttribute("idRuta", idRuta);
-            Controladora control = new Controladora();
-            boolean libre = false;
-            int idCombi;
-            int idChofer;
-            //libre = control.chequearRutaLibre(idRuta);
-            if(libre){
-              //  control.eliminarRuta(idRuta);
-                response.sendRedirect ("sesioonAdmin.jsp");
-            }else{
-                response.sendRedirect ("index.jsp");
+        //int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac
+                
+        String apellido = request.getParameter("apellido"); //Obtengo el nombre de usuario que se ingreso
+        String nombre = request.getParameter("nombre"); //Obtengo la contraseña que ingresen el usuario
+        int dni = Integer.parseInt(request.getParameter("dni"));
+        String mail = request.getParameter("mail");
+        String contra = request.getParameter("pass");
+        String tipoPlan = request.getParameter("tipoPlan");
+        String planGold = request.getParameter("gold");
+        String dia = request.getParameter("dia");
+        String mes = request.getParameter("mes");
+        String anio = request.getParameter("anio");
+        
+        /*String tipoPlan;
+        if(planBasico != null){
+            tipoPlan = "basico";
+        }else{
+            tipoPlan = "gold";
+        }*/
+        
+        request.getSession().setAttribute("apellido", apellido);
+        request.getSession().setAttribute("nombre", nombre);
+        request.getSession().setAttribute("dni", dni);
+        request.getSession().setAttribute("mail", mail);
+        request.getSession().setAttribute("dia", dia );
+        request.getSession().setAttribute("mes", mes );
+        request.getSession().setAttribute("anio", anio );
+        request.getSession().setAttribute("pass", contra);
+        String fechaNac = dia + "/" + mes + "/" + anio;
+        request.getSession().setAttribute("plan", tipoPlan);
+        
+        Controladora control = new Controladora();
+        
+        boolean existe = control.verificarUsuario(mail); // devuelve si el mail ingresado ya se encuentra registrado.
+        if (existe == true){
+           response.sendRedirect ("entradaInvalida.jsp");
+        }   
+        else{
+            //boolean cumpleTamañoMin = control.verificarContraseña(contra);
+            //if(!cumpleTamañoMin){
+              //  response.sendRedirect ("index.jsp");
+            //}
+            //else{
+                control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
+          //      response.sendRedirect ("sesionUsuario.jsp");
             }
-            
-    }
+            //if(tipoPlan.equals("Gold")){
+            //response.sendRedirect ("registroDeTarjeta.jsp");
+        //}else{
+          //  response.sendRedirect ("sesionUsuario.jsp");
+        //}
+        //}
+       
+
+}
 
     /**
      * Returns a short description of the servlet.
