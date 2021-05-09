@@ -69,7 +69,7 @@
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       
+                       if (listaViajes.get(i).getIdRuta() > 0){
                    %>
                 <tr>
                      
@@ -78,12 +78,12 @@
                         <td><%= listaViajes.get(i).getCantAsientos()%></td>
                         <td><%= listaViajes.get(i).getFecha()%></td>
                         <td><%= listaViajes.get(i).getPrecio()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaViajes.get(i).getIdViaje()%>" >Eliminar </a></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Eliminar </a></td>
 
                 </tr>
                  
-           <%}%>  
+           <%}}%>  
     
         </table>
            <br>

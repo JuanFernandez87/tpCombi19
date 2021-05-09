@@ -70,6 +70,6 @@ public class Insumo implements Serializable {
     }
 
     public void setBorradoLogico() {
-        this.idInsumo = -1;
+        this.precio = -1;
     }
 }

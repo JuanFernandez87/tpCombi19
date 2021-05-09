@@ -30,19 +30,11 @@ public class EliminarViaje extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EliminarViaje</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EliminarViaje at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            int idViaje = Integer.parseInt(request.getParameter("idViaje")); 
+            request.getSession().setAttribute("idViaje", idViaje);
+            Controladora control = new Controladora();
+            control.eliminarViaje(idViaje);
+            response.sendRedirect ("borrarChofer.jsp");  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,11 +63,7 @@ public class EliminarViaje extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            int idViaje = Integer.parseInt(request.getParameter("idViaje")); 
-            request.getSession().setAttribute("idViaje", idViaje);
-            Controladora control = new Controladora();
-            control.eliminarViaje(idViaje);
-            response.sendRedirect ("borrarChofer.jsp");  
+
     }
 
     /**
