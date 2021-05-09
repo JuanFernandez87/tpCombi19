@@ -87,9 +87,9 @@ public class RegistroInsumo extends HttpServlet {
         existe = control.verificarInsumo(nombre);
         if (!existe){
             control.crearInsumo(nombre, precio, tipo);
-            response.sendRedirect ("sesionAdmin.jsp");
+            response.sendRedirect ("popUpRegistroCorrectoInsumo.jsp");
         }else{
-            response.sendRedirect ("entradaInvalida.jsp");
+            response.sendRedirect ("popUpErrorInsumoRegistrado.jsp");
         }
         }
 

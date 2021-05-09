@@ -8,6 +8,8 @@ package Servlets;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -90,7 +92,7 @@ public class RegistroCliente extends HttpServlet {
         }else{
             tipoPlan = "gold";
         }*/
-        
+       
         request.getSession().setAttribute("apellido", apellido);
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("dni", dni);
@@ -103,6 +105,13 @@ public class RegistroCliente extends HttpServlet {
         request.getSession().setAttribute("plan", tipoPlan);
         
         Controladora control = new Controladora();
+        int today = 2021;
+        int edad = today - Integer.parseInt(anio);
+       
+        if (edad < 18 ){
+           response.sendRedirect("popUpErrorMenosEdad.jsp");
+       }else{
+            
         
         boolean existe = control.verificarUsuario(mail); // devuelve si el mail ingresado ya se encuentra registrado.
         if (existe){
@@ -124,7 +133,7 @@ public class RegistroCliente extends HttpServlet {
                 }
             
             }
-       
+       }
 
 }
 
