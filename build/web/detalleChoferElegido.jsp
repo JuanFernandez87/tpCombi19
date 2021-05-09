@@ -29,6 +29,7 @@
             List <Chofer> listaChofer = control.devolverListaChoferes(); 
            
            int variable1  = Integer.valueOf(request.getParameter("apellido")).intValue();
+<<<<<<< HEAD
            String apellido="",nombre="",dni="",telefono="",mail="";
             int i=0;
             boolean Encontro = false;
@@ -37,6 +38,21 @@
                 if(listaChofer.get(i).getIdChofer()==variable1){
                     apellido=listaChofer.get(i).getApellido();
                     nombre=listaChofer.get(i).getApellido();
+=======
+           String apellido="",nombre="",dni="",telefono="",mail="",id="";
+            int i=0;
+            boolean Encontro = false;
+            
+            if(variable1==-1){
+                response.sendRedirect ("listadoChofer.jsp");
+            }
+            
+            while (i < listaChofer.size() && !Encontro) {
+                if(listaChofer.get(i).getIdChofer()==variable1){
+                    id=String.valueOf(listaChofer.get(i).getIdChofer());
+                    apellido=listaChofer.get(i).getApellido();
+                    nombre=listaChofer.get(i).getNombre();
+>>>>>>> Lucho
                     dni=String.valueOf(listaChofer.get(i).getDni());
                     telefono=String.valueOf(listaChofer.get(i).getDni());
                     mail=String.valueOf(listaChofer.get(i).getMail());
@@ -52,10 +68,17 @@
                          <div class="cajaListado">
                         <h1>Detalles</h1>
                        
+<<<<<<< HEAD
                        <form style="background-color: none;display: inline;padding: 0px;" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
 				                                     
                              <select style="width: 30%;" class="controls" name="apellido">
                                 <option>Seleccione un Chofer  </option>
+=======
+                       <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
+				                                     
+                             <select  name="apellido">
+                                <option value=-1>Todos </option>
+>>>>>>> Lucho
                                    <%                             
 
                                 for (  Chofer chofer:listaChofer) {
@@ -68,7 +91,11 @@
 
                              </select>
                                
+<<<<<<< HEAD
                                  <input  style="width: 30% "class="controls" type="submit" > </input>
+=======
+                                  <input  type="submit" value="Buscar">
+>>>>>>> Lucho
                        </form >     
                        <br><br>                       
                                                     
@@ -83,6 +110,11 @@
                             <td>Dni</td> 
                             <td>Telefono</td> 
                             <td>Mail</td> 
+<<<<<<< HEAD
+=======
+                             <td></td> 
+                             <td></td>
+>>>>>>> Lucho
                             
                         </tr>
                              
@@ -95,6 +127,11 @@
                                         <td><%= dni %></td>
                                         <td><%= telefono %><td>
                                         <td><%= mail %></td>
+<<<<<<< HEAD
+=======
+                                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=id%>" >Modificar</a> </td>
+                                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=id%>" >Eliminar </a></td>
+>>>>>>> Lucho
                       
                                    
                     </table>

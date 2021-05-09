@@ -76,7 +76,15 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }   
-    }      
+    }  
+
+    public void asignarLugar(Lugar unLugar) {
+        try {
+            lugarJpa.edit(unLugar);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }   
     
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);
@@ -128,9 +136,7 @@ public class ControladoraPersistencia {
 
     public List getInsumo() {
         return insumoJpa.findInsumoEntities();
-    }
-
-  
+    }  
                 
 }
 

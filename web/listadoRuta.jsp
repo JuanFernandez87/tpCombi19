@@ -61,6 +61,8 @@
                 <td>Destino</td> 
                 <td>Origen</td> 
                 <td>Distacia</td> 
+                  <td></td>
+                <td></td>
                 
             </tr>
                <%
@@ -75,6 +77,8 @@
                         <td><%= listaRutas.get(i).getDestino()%></td>
                         <td><%= listaRutas.get(i).getOrigen()%></td>
                         <td><%= listaRutas.get(i).getDistancia()%></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaRutas.get(i).getIdRuta()%>" >Eliminar </a></td>
 
                 </tr>
                  

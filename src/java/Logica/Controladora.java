@@ -361,6 +361,17 @@ public class Controladora {
         }
     }    
 
+    public void eliminarLugar(int idLugar) {
+        List <Lugar> listaLugares = new ArrayList <Lugar>();
+        listaLugares = controlPersis.getLugares(); 
+        for(Lugar lugar:listaLugares){
+            if(lugar.getIdLugar() == idLugar){
+                lugar.setBorradoLogico();
+                controlPersis.asignarLugar(lugar);
+            }
+        }
+    }      
+    
     public boolean chequearRutaLibre(int idRuta) {
         boolean aux = false;
         List <Viaje> listaViajes = new ArrayList <Viaje>();
@@ -403,6 +414,19 @@ public class Controladora {
         }
         return aux;        
         }
+    
+   /* public boolean chequearLugarLibre(int idLugar) {
+        boolean aux = false;
+
+        List <Chofer> listaChoferes = new ArrayList <Chofer>();
+        listaChoferes = controlPersis.getChoferes(); 
+        int idCombi = 0;
+        for(Chofer chof:listaChoferes){
+            if(chof.getIdChofer() == idChofer){
+                idCombi = chof.getIdCombi();
+            }
+        }   
+    }    */
 
     public boolean verificarUsuario(String mail) {
         List <Cliente> listaClientes = controlPersis.getClientes();
@@ -436,5 +460,7 @@ public class Controladora {
         }
         return aux;
     }
+
+
 
  }

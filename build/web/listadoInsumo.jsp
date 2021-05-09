@@ -61,7 +61,8 @@
                 <td>Nombre</td> 
                 <td>Tipo</td> 
                 <td>Precio</td> 
-                
+                <td></td>
+                <td></td>
             </tr>
                <%
                    
@@ -76,6 +77,8 @@
                         <td><%= listaInsumos.get(i).getNombre() %></td>
                         <td><%= listaInsumos.get(i).getTipo() %></td>
                         <td><%= listaInsumos.get(i).getPrecio() %></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaInsumos.get(i).getIdInsumo()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaInsumos.get(i).getIdInsumo()%>" >Eliminar </a></td>
                        
 
                 </tr>

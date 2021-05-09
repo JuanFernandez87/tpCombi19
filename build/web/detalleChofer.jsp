@@ -36,26 +36,65 @@
                     <div class="cajaListado">
                         <h1>Detalles</h1>
                        
+<<<<<<< HEAD
                        <form style="background-color: none;display: inline;padding: 0px;" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
 				                                     
                              <select style="width: 30%" class="controls" name="apellido">
                                 <option>Seleccione un Chofer  </option>
                                    <%                             
+=======
+<<<<<<< Updated upstream
+				                                     
+                             <select class="controls" name="apellido">
+                                <option value="" >Seleccione un Chofer  </option>
+                                   <%
+=======
+                       <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
+				                                     
+                             <select  name="apellido">
+                                <option>Seleccione un Chofer  </option>
+                                   <%                             
+>>>>>>> Stashed changes
+
+                                int i=0;
+
+                                for (   i=0 ; i < listaChofer.size() ; ++i) {
+
+                                %>
+>>>>>>> Lucho
 
                                 for (  Chofer chofer:listaChofer) {
 
+<<<<<<< HEAD
                                 %>                              
+=======
+<<<<<<< Updated upstream
+>>>>>>> Lucho
 
                                 <option value=<%=chofer.getIdChofer() %>><%= chofer.getApellido()%><%= chofer.getNombre()%> </option>
 
                                  <%}%>          
 
+<<<<<<< HEAD
                              </select>
                               
                              <input style="width: 30%"class="controls" type="submit" value="Buscar">
                        </form >     
                        <br><br>
                           
+=======
+
+                                 <%}%>      
+                                 
+=======
+                             </select>
+                              
+                             <input type="submit" value="Buscar">
+                       </form >     
+                       <br><br>
+                          
+>>>>>>> Stashed changes
+>>>>>>> Lucho
                               
 
                    

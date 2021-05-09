@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -70,7 +71,17 @@ public class EliminarLugar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            int idLugar = Integer.parseInt(request.getParameter("idLugar")); 
+            request.getSession().setAttribute("idLugar", idLugar);
+            Controladora control = new Controladora();
+            boolean libre = false;
+            //libre = control.chequearLugarLibre(idLugar);
+            if(libre){
+                response.sendRedirect ("index.jsp");
+            }else{
+                control.eliminarLugar(idLugar);
+                response.sendRedirect ("borrarChofer.jsp");                
+            }
     }
 
     /**

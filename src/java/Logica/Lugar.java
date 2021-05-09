@@ -48,6 +48,9 @@ public class Lugar implements Serializable {
     public void setProvincia(String Provincia) {
         this.Provincia = Provincia;
     }
-    
+
+    void setBorradoLogico() {
+        this.idLugar = -1;
+    }
 
 }
