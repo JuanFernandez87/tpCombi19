@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="css/fonts.css" href="">
      <link rel="stylesheet" href="css/lista.css">
 </head>
-    <header>
+        <header>
             <%@include file="/template/headerSesiones.jsp"%>
         </header>
 

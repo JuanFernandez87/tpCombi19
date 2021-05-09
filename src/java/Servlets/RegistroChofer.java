@@ -87,10 +87,24 @@ public class RegistroChofer extends HttpServlet {
         request.getSession().setAttribute("pass", contra);
         request.getSession().setAttribute("tel", telefono);
         
-        response.sendRedirect ("sesionAdmin.jsp");
             
         Controladora control = new Controladora();
-        control.crearChofer(apellido, nombre, dni,  mail, contra, telefono);
+        boolean existe = control.verificarChofer(mail); // devuelve si el mail ingresado ya se encuentra registrado.
+         if (existe){
+           response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
+        }   
+        else{
+            boolean cumpleTamañoMin = control.verificarContraseña(contra);
+            if(!cumpleTamañoMin){
+               response.sendRedirect ("popUpErrorContraseniaChofer.jsp");
+            }
+           else{
+                control.crearChofer(apellido, nombre, dni,  mail, contra, telefono);
+                response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
+                }
+            
+            }
+       
 
 }
 

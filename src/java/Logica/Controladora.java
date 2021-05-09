@@ -388,7 +388,7 @@ public class Controladora {
         String mailAct;
         for (i= 1; i< listaClientes.size(); i++){
             mailAct = listaClientes.get(i).getMail();
-            if (mailAct==mail){
+            if (mailAct.equals(mail)){
                 aux = true;
                return aux;
             }
@@ -403,5 +403,20 @@ public class Controladora {
            return aux;
        }
        return aux;
+    }
+
+    public boolean verificarChofer(String mail) {
+        List <Chofer> listaChoferes = controlPersis.getChoferes();
+        boolean aux= false;
+        int i;
+        String mailAct;
+        for (i= 1; i< listaChoferes.size(); i++){
+            mailAct = listaChoferes.get(i).getMail();
+            if (mailAct.equals(mail)){
+                aux = true;
+               return aux;
+            }
+        }
+        return aux;
     }
  }

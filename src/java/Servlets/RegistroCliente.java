@@ -105,24 +105,25 @@ public class RegistroCliente extends HttpServlet {
         Controladora control = new Controladora();
         
         boolean existe = control.verificarUsuario(mail); // devuelve si el mail ingresado ya se encuentra registrado.
-        if (existe == true){
-           response.sendRedirect ("entradaInvalida.jsp");
+        if (existe){
+           response.sendRedirect ("popUpErrorMailRepetido.jsp");
         }   
         else{
-            //boolean cumpleTamañoMin = control.verificarContraseña(contra);
-            //if(!cumpleTamañoMin){
-              //  response.sendRedirect ("index.jsp");
-            //}
-            //else{
-                control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
-          //      response.sendRedirect ("sesionUsuario.jsp");
+            boolean cumpleTamañoMin = control.verificarContraseña(contra);
+            if(!cumpleTamañoMin){
+               response.sendRedirect ("popUpErrorContrasenia.jsp");
             }
-            //if(tipoPlan.equals("Gold")){
-            //response.sendRedirect ("registroDeTarjeta.jsp");
-        //}else{
-          //  response.sendRedirect ("sesionUsuario.jsp");
-        //}
-        //}
+           else{
+               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
+               if(tipoPlan.equals("Gold")){
+                response.sendRedirect ("registroDeTarjeta.jsp");
+                }
+               else{
+                   response.sendRedirect ("popUpRegistroCorrecto.jsp");
+                   }
+                }
+            
+            }
        
 
 }
