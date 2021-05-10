@@ -51,7 +51,8 @@
                             <%for (Combi combi:listaCombis){
                                 if(combi.getIdCombi() == ruta.getIdCombi()){%>
                                   <%=combi.getPatente()%><%}%><%}%>                                  
-                                   
+                                    -
+                            <%=ruta.getHora()%> hs         
                         </option>               
                               
                  <%}}%> 

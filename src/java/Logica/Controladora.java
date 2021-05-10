@@ -222,7 +222,7 @@ public class Controladora {
     }
     
     
-    public void crearRuta(String origen, String destino, String patenteCombi, int distancia) {
+    public void crearRuta(String origen, String destino, String patenteCombi, int distancia, String horario) {
         Ruta unaRuta = new Ruta();
         int idOrigen = 0;
         int idDestino = 0;
@@ -247,6 +247,7 @@ public class Controladora {
                 unaCombi = combis.getIdCombi();
             }
         }    
+        unaRuta.setHora(horario);
         unaRuta.setOrigen(idOrigen);
         unaRuta.setDestino(idDestino);
         unaRuta.setIdCombi(unaCombi);

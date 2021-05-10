@@ -14,7 +14,7 @@ public class Ruta implements Serializable {
     int idRuta;
     
     @Basic
-    Time hora;
+    String hora;
     double distancia;
     
     int origen;    
@@ -24,7 +24,7 @@ public class Ruta implements Serializable {
     public Ruta() {
     }
 
-    public Ruta(int idRuta, int origen, int destino, Time hora, int idCombi, double distancia) {
+    public Ruta(int idRuta, int origen, int destino, String hora, int idCombi, double distancia) {
         this.idRuta = idRuta;
         this.origen = origen;
         this.destino = destino;
@@ -65,11 +65,11 @@ public class Ruta implements Serializable {
         this.idCombi = idCombi;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

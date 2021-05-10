@@ -39,9 +39,9 @@
                 <select class="controls" name="id" required>
                     <option>Seleccione un chofer</option>
                 <%
-                   for (i=0 ; i < listaChoferes.size(); i++) { 
-                        if(listaChoferes.get(i).getIdChofer() == 0){%>
-                    <option value="<%=listaChoferes.get(i).getIdChofer()%>"><%=listaChoferes.get(i).getNombre()%> <%=listaChoferes.get(i).getApellido()%> - <%=listaChoferes.get(i).getDni()%></option>
+                   for (Chofer chof:listaChoferes) { 
+                        if(chof.getIdChofer() > 0){%>
+                    <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
                  <%}}%>  
                 </select>
                 

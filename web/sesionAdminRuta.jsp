@@ -61,8 +61,12 @@
                  <%}}%> 
                 </select>
                 
+                <label>Hora</label>
+                <input class="controls2" type="number" name="hora" required min="0" max="23" placeholder="hora">                
+                <input class="controls2" type="numer" name="minutos" required min="0" max="59" placeholder="minutos">
+                            
                 <label>Distancia</label>
-                <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km">                
+                <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km">            
                 <input class="botons" type="submit" value="Dar de alta ">
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

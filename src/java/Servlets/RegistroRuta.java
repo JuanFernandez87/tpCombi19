@@ -75,15 +75,21 @@ public class RegistroRuta extends HttpServlet {
         String destino = request.getParameter("destino");//Obtengo la contraseña que ingresen el usuario
         String patenteCombi = request.getParameter("combi");
         int distancia = Integer.parseInt(request.getParameter("distancia"));
+        String hora = request.getParameter("hora");
+        String minutos = request.getParameter("minutos");
         
         request.getSession().setAttribute("origen", origen);
         request.getSession().setAttribute("destino", destino);
         request.getSession().setAttribute("patente", patenteCombi);
         request.getSession().setAttribute("distancia", distancia);
+        request.getSession().setAttribute("hora", hora);
+        request.getSession().setAttribute("minutos", minutos);
+        
+        String horario = hora + ":" + minutos;
         
         Controladora control = new Controladora();
         if(!origen.equals(destino)){
-            control.crearRuta(origen, destino, patenteCombi, distancia);
+            control.crearRuta(origen, destino, patenteCombi, distancia, horario);
             response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");
         }else{
             response.sendRedirect ("popUpErrorMismoOyD.jsp");
