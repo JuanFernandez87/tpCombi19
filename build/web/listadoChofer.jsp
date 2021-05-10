@@ -72,13 +72,13 @@
                                    <%                             
 
                                 for (  Chofer chofer:listaChoferes) {     
-                                    
+                                    if(chofer.getDni()>0){
 
                                 %>                              
 
                                 <option value=<%=chofer.getIdChofer() %>><%= chofer.getDni() %> </option>
  
-                                 <%}%>      
+                                 <%}}%>      
                              </select>
                              
                               

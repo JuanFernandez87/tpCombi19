@@ -55,6 +55,7 @@
       
         <div class="cajaListado">
             <h1>Lista insumos</h1>
+        
         <table>
             <tr>
                 <td>Nombre</td> 

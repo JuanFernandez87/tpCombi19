@@ -102,7 +102,8 @@ public class LoginUsuarios extends HttpServlet {
             //cerrar sesion session.invalidate()
             response.sendRedirect ("sesionUsuario.jsp");
         }else{   
-            response.sendRedirect ("registro.jsp"); // Si la contraseña es incorrecta vuelve a la pantalla de logueo
+            
+            response.sendRedirect ("popUpErrorContraseniaUsuario.jsp"); // Si la contraseña es incorrecta vuelve a la pantalla de logueo
          }
     }
 

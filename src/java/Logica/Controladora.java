@@ -296,13 +296,14 @@ public class Controladora {
         Viaje nuevoViaje = new Viaje();
         nuevoViaje.setIdRuta(idRuta);
         nuevoViaje.setCantAsientos(cantAsientos);
-        Date date1;   
+        nuevoViaje.setFecha(fechaViaje);
+        /*Date date1;   
         try {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaViaje);
             nuevoViaje.setFecha(date1);
         } catch (ParseException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         nuevoViaje.setPrecio(precio);
         controlPersis.crearViaje(nuevoViaje);
     }

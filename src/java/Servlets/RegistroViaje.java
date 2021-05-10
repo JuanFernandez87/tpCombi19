@@ -97,12 +97,12 @@ public class RegistroViaje extends HttpServlet {
         if (!existe){
              if(hayLugar){
                 control.crearViaje(idRuta, cantAsientos, fechaViaje, precio);
-                response.sendRedirect ("sesionAdmin.jsp");
+                response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");
             }else{
-                response.sendRedirect ("index.jsp");
+                response.sendRedirect ("popUpErrorNoHayLugar.jsp");
             }            
         }else{
-            response.sendRedirect ("login.jsp");
+            response.sendRedirect ("popUpErrorViajeRepetido.jsp");
         }
     }
 

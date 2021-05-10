@@ -21,9 +21,7 @@ public class Viaje implements Serializable {
     int cantAsientos;
     double precio;
     int idRuta;
-    
-    @Temporal(TemporalType.DATE)
-    Date fecha;
+    String fecha;
 
     /*@OneToOne
     Insumo unInsumo;
@@ -37,7 +35,7 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int idRuta, int cantAsientos, Date fecha, double precio) {
+    public Viaje(int idViaje, int idRuta, int cantAsientos, String fecha, double precio) {
         this.idViaje = idViaje;
         this.idRuta = idRuta;
         this.cantAsientos = cantAsientos;
@@ -69,11 +67,11 @@ public class Viaje implements Serializable {
         this.cantAsientos = cantAsientos;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

@@ -38,7 +38,11 @@
             int pag=1;
             
             Controladora control = new Controladora();
-            List <Ruta> listaRutas = control.devolverRutas(); 
+            List <Ruta> listaRutas = control.devolverRutas();
+            List <Combi> listaCombis = control.devolverListaCombi(); 
+            List <Lugar> listaOrigen = control.devolverListaLugares();
+            List <Lugar> listaDestino = control.devolverListaLugares();            
+           
             int maxPag = (control.devolverRutas().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
@@ -60,23 +64,31 @@
             <tr>
                 <td>Destino</td> 
                 <td>Origen</td> 
-                <td>Distacia</td> 
+                <td>Distacia</td>
+                <td>Combi</td>
+                <td>Hora</td>
                   <td></td>
                 <td></td>
                 
             </tr>
                <%
                    
-                   for (  i=regMin ; i < regMax ; ++i) {
-                       if (listaRutas.get(i).getDistancia() > 0){
+                   for (Ruta ruta:listaRutas) {
+                       if (ruta.getDistancia() > 0){
                    %>
                 <tr>
-                     
-                         
                     
-                        <td><%= listaRutas.get(i).getDestino()%></td>
-                        <td><%= listaRutas.get(i).getOrigen()%></td>
-                        <td><%= listaRutas.get(i).getDistancia()%></td>
+                        <td><%for (Lugar lugar:listaDestino){
+                                if(lugar.getIdLugar() == ruta.getDestino()){%>
+                                  <%=lugar.getNombre()%><%}%><%}%></td>
+                        <td><%for (Lugar lugar:listaOrigen){
+                                if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                  <%=lugar.getNombre()%><%}%><%}%></td>
+                        <td><%= ruta.getDistancia()%></td>
+                        <td><%for (Combi combi:listaCombis){
+                                if(combi.getIdCombi() == ruta.getIdCombi()){%>
+                                  <%=combi.getPatente()%><%}%><%}%></td>                        
+                        <td><%= ruta.getHora()%></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
                         <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Eliminar </a></td>
 

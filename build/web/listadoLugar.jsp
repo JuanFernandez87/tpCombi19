@@ -55,6 +55,7 @@
       
         <div class="cajaListado">
             <h1>Lista lugares</h1>
+       
         <table>
             <tr>
                 <td>Nombre</td> 
@@ -75,8 +76,8 @@
                     
                         <td><%= listaLugar.get(i).getNombre()%></td>
                         <td><%= listaLugar.get(i).getProvincia() %></td>
-                       <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaLugar.get(i).getIdLugar()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaLugar.get(i).getIdLugar()%>" >Eliminar </a></td>
+                       <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarLugar?idLugar=<%=listaLugar.get(i).getIdLugar()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarLugar?idLugar=<%=listaLugar.get(i).getIdLugar()%>" >Eliminar </a></td>
                        
 
                 </tr>

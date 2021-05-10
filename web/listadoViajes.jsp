@@ -39,7 +39,12 @@
             int pag=1;
             
             Controladora control = new Controladora();
-            List <Viaje> listaViajes = control.devolverListaViajes(); 
+            List <Viaje> listaViajes = control.devolverListaViajes();
+            List <Ruta> listaRutas = control.devolverRutas();
+            List <Combi> listaCombis = control.devolverListaCombi(); 
+            List <Lugar> listaOrigen = control.devolverListaLugares();
+            List <Lugar> listaDestino = control.devolverListaLugares();   
+            
             int maxPag = (control.devolverListaViajes().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
@@ -59,25 +64,42 @@
             <h1>Lista viajes</h1>
         <table>
             <tr>
-                <td>Cant Asientos</td> 
+                <td>Destino</td> 
+                <td>Origen</td> 
+                <td>Distancia</td> 
+                <td>Asientos disponibles</td> 
                 <td>Fecha</td> 
                 <td>Precio</td> 
+
                   <td></td>
                 <td></td>
                 
             </tr>
                <%
                    
-                   for (  i=regMin ; i < regMax ; ++i) {
-                       if (listaViajes.get(i).getIdRuta() > 0){
+                   for (Viaje viaje:listaViajes) {
+                       if (viaje.getIdRuta() > 0){
                    %>
                 <tr>
-                     
-                         
                     
-                        <td><%= listaViajes.get(i).getCantAsientos()%></td>
-                        <td><%= listaViajes.get(i).getFecha()%></td>
-                        <td><%= listaViajes.get(i).getPrecio()%></td>
+                        <td><%for (Ruta ruta:listaRutas) {
+                                    if (ruta.getDistancia() > 0){
+                                        for (Lugar lugar:listaDestino){
+                                            if(lugar.getIdLugar() == ruta.getDestino()){%>
+                                                <%=lugar.getNombre()%><%}%><%}}}%></td>
+                        <td><%for (Ruta ruta:listaRutas) {
+                                    if (ruta.getDistancia() > 0){
+                                        for (Lugar lugar:listaOrigen){
+                                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                                <%=lugar.getNombre()%><%}%><%}}}%></td>
+                        <td><%for (Ruta ruta:listaRutas) {
+                                    if (ruta.getDistancia() > 0){
+                                        for (Lugar lugar:listaOrigen){
+                                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                                <%=ruta.getDistancia()%><%}%><%}}}%></td>                      
+                        <td><%= viaje.getCantAsientos()%></td>
+                        <td><%= viaje.getFecha()%></td>
+                        <td><%= viaje.getPrecio()%></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
                         <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Eliminar </a></td>
 

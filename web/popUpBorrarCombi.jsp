@@ -54,6 +54,27 @@
       
         <div class="cajaListado">
             <h1>Lista combi</h1>
+             <form class="busqueda" action="detalleCombiElegido.jsp" class="formulario-sesiones" method="post">
+				
+                                                  
+                  
+                               <select  name="patente">
+                                 <option value=-1>Burscar por patente </option>
+                                   <%                             
+
+                                for (   Combi combi:listaCombi) {     
+                                    
+
+                                %>                              
+
+                                <option value=<%=combi.getIdCombi() %>><%= combi.getPatente() %> </option>
+ 
+                                 <%}%>      
+                             </select>
+                             
+                              
+                             <input  type="submit" value="Buscar">
+                       </form >   
         <table>
             <tr>
                 <td>Patente</td> 

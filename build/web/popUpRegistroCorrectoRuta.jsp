@@ -56,6 +56,11 @@
                         <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
                  <%}%> 
                 </select>
+                 <div style="display: inline;">
+                <label>Horario</label>
+                <input class="controls2" type="number" name="hora" required min="0" max="23" placeholder="hora">                
+                <input class="controls2" type="numer" name="minutos" required min="0" max="59" placeholder="minutos">
+               </div>            
                 
                 <label>Distancia</label>
                 <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km">                
