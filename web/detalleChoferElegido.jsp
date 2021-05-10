@@ -29,16 +29,18 @@
             List <Chofer> listaChofer = control.devolverListaChoferes(); 
            
            int variable1  = Integer.valueOf(request.getParameter("apellido")).intValue();
+           int variable2  = Integer.valueOf(request.getParameter("dni")).intValue();
+           
            String apellido="",nombre="",dni="",telefono="",mail="",id="";
             int i=0;
             boolean Encontro = false;
             
-            if(variable1==-1){
+            if(variable1==-1 && variable2==-1 ){
                 response.sendRedirect ("listadoChofer.jsp");
             }
             
             while (i < listaChofer.size() && !Encontro) {
-                if(listaChofer.get(i).getIdChofer()==variable1){
+                if(listaChofer.get(i).getIdChofer()==variable2 || listaChofer.get(i).getIdChofer()==variable1){
                     id=String.valueOf(listaChofer.get(i).getIdChofer());
                     apellido=listaChofer.get(i).getApellido();
                     nombre=listaChofer.get(i).getNombre();
@@ -57,26 +59,7 @@
                          <div class="cajaListado">
                         <h1>Detalles</h1>
                        
-                       <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
-				                                     
-                             <select  name="apellido">
-                                <option value=-1>Todos </option>
-                                   <%                             
-
-                                for (  Chofer chofer:listaChofer) {
-
-                                %>                              
-
-                                <option value=<%=chofer.getIdChofer() %>><%= chofer.getApellido()%><%= chofer.getNombre()%> </option>
-
-                                 <%}%>          
-
-                             </select>
-                               
-                                  <input  type="submit" value="Buscar">
-                       </form >     
-                       <br><br>                       
-                                                    
+                       
                                  
                                 
 
@@ -104,10 +87,11 @@
                                         <td><%= mail %></td>
                                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=id%>" >Modificar</a> </td>
                                         <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=id%>" >Eliminar </a></td>
-                      
+                                         
                                    
                     </table>
-                           
+                                        <br>                           
+                            <td> <a style="display: inline;color: white;font-weight: bold;margin: 5px;"href="listadoChofer.jsp" >Volver </a></td>  
                     
                      </div>
                         

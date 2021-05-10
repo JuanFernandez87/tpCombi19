@@ -27,6 +27,7 @@
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares(); 
+                    int i = 0; 
              %> 		
             <form action="RegistroRuta" class="formulario-sesiones" method="post">
 				<h4>Registrar ruta</h4>
@@ -34,27 +35,30 @@
                 <select class="controls" name="origen" required>
                         <option>Seleccione un origen</option>
                 <%
-                    for (Lugar origen: listaOrigen) {%>                        
+                    for (Lugar origen: listaOrigen) {
+                        if(origen.getIdLugar() > 0){ %>                        
                         <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
-                 <%}%>
+                 <%}}%>
                 </select> 
                 
                 <label>Destino</label>              
                 <select class="controls" name="destino" required>               
                         <option>Seleccione un destino</option>
                 <%
-                    for (Lugar destino: listaDestino) {%>                        
+                    for (Lugar destino: listaDestino) {
+                        if(destino.getIdLugar() > 0){ %>%>                        
                         <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
-                 <%}%>       
+                 <%}}%>       
                 </select>
                 
                 <label>Combi</label>
                 <select class="controls" name="combi" required>
                         <option>Seleccione una combi</option>
                 <%
-                    for (Combi comb: listaCombis) {%>                        
-                        <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
-                 <%}%> 
+                    for (i=0 ; i < listaCombis.size(); ++i) {
+                         if(!listaCombis.get(i).getPatente().equals("-1")){%>                        
+                        <option value="<%=listaCombis.get(i).getPatente()%>"><%=listaCombis.get(i).getPatente()%></option>               
+                 <%}}%> 
                 </select>
                 
                 <label>Distancia</label>

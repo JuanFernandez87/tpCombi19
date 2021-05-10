@@ -37,10 +37,10 @@ public class EliminarRuta extends HttpServlet {
             boolean libre = false;
             libre = control.chequearRutaLibre(idRuta);
             if(libre){
-                response.sendRedirect ("index.jsp");
+                response.sendRedirect ("popUpBorrarRutaError.jsp");
             }else{
                 control.eliminarRuta(idRuta);
-                response.sendRedirect ("borrarChofer.jsp");                
+                response.sendRedirect ("popUpBorrarRuta.jsp");                
             }
     }
 

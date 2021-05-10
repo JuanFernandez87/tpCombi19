@@ -51,20 +51,36 @@
         <div class="cajaListado">
             <h1>Lista choferes</h1>
                      <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
-				                                     
-                             <select  name="apellido">
-                                 <option value=-1>Todos </option>
+				
+                             <select  name="apellido" id="apellido">
+                                 <option value=-1>Apellido y nombre </option>
                                    <%                             
 
-                                for (  Chofer chofer:listaChoferes) {
+                                for (  Chofer chofer:listaChoferes) {     
+                                    
 
                                 %>                              
 
-                                <option value=<%=chofer.getIdChofer() %>><%= chofer.getApellido()%><%= chofer.getNombre()%> </option>
-
-                                 <%}%>          
-
+                                <option value=<%=chofer.getIdChofer() %>><%= chofer.getApellido()%>  <%= chofer.getNombre() %></option>
+ 
+                                 <%}%>      
                              </select>
+                             
+                  
+                               <select  name="dni">
+                                 <option value=-1>Burscar por Dni </option>
+                                   <%                             
+
+                                for (  Chofer chofer:listaChoferes) {     
+                                    
+
+                                %>                              
+
+                                <option value=<%=chofer.getIdChofer() %>><%= chofer.getDni() %> </option>
+ 
+                                 <%}%>      
+                             </select>
+                             
                               
                              <input  type="submit" value="Buscar">
                        </form >    

@@ -50,6 +50,24 @@
       
         <div class="cajaListado">
             <h1>Lista choferes</h1>
+                     <form class="busqueda" action="detalleChoferElegido.jsp" class="formulario-sesiones" method="post">
+				                                     
+                             <select  name="apellido">
+                                 <option value=-1>Todos </option>
+                                   <%                             
+
+                                for (  Chofer chofer:listaChoferes) {
+
+                                %>                              
+
+                                <option value=<%=chofer.getIdChofer() %>><%= chofer.getApellido()%><%= chofer.getNombre()%> </option>
+
+                                 <%}%>          
+
+                             </select>
+                              
+                             <input  type="submit" value="Buscar">
+                       </form >    
         <table>
             <tr>
                 <td>Apellido</td> 
@@ -71,8 +89,8 @@
                         <td><%= listaChoferes.get(i).getDni() %></td>
                         <td><%= listaChoferes.get(i).getTelefono()%></td>
                         <td><%= listaChoferes.get(i).getMail()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" method="post">Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" method="post">Eliminar </a></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Eliminar </a></td>
                 </tr>
                  
            <%}}%>  
@@ -82,7 +100,7 @@
                     if (maxPag >= 1) {
              
                         if(pag!=1){%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=pag - 1%>">&lt;</a></li>
+                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoChofer.jsp?pg=<%=pag - 1%>">&lt;</a></li>
                         <%}%>
                         <%
                             for ( i = 0; i < maxPag; i++) {
@@ -91,11 +109,11 @@
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><span><%=i+1%></span></li>
                         <%  }
                             else{%>
-                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
+                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoChofer.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
                         <%}}
                         
                         if(pag!=maxPag){%>
-                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listado.jsp?pg=<%=pag + 1%>">&gt;</a></li>
+                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoChofer.jsp?pg=<%=pag + 1%>">&gt;</a></li>
                 <%}}
                     else {%>
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;" class="active"><span>1</span></li>
@@ -105,14 +123,12 @@
            <br>
             
         </div>
-
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertBorrar.js"></script>                       
-                       
+        
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertBorrar.js"></script>    
 
     </body>
 </html>

@@ -66,7 +66,7 @@
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       
+                       if(!listaCombi.get(i).getPatente().equals("-1")){
                    %>
                 <tr>
                      
@@ -76,12 +76,12 @@
                         <td><%= listaCombi.get(i).getModelo() %></td>
                         <td><%= listaCombi.get(i).getTipoServicio() %></td>
                         <td><%= listaCombi.get(i).getCantAsientos() %></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaCombi.get(i).getIdCombi()%>" >Eliminar </a></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Eliminar </a></td>
 
                 </tr>
                  
-           <%}%>  
+           <%}}%>  
     
         </table>
            <br>

@@ -3,6 +3,8 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
+<%@page import="Logica.Ruta"%>
+<%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="Logica.Chofer"%>
 <%@page import="java.util.List"%>
@@ -36,8 +38,8 @@
             int pag=1;
             
             Controladora control = new Controladora();
-            List <Combi> listaCombi = control.devolverListaCombi(); 
-            int maxPag = (control.devolverListaCombi().size()/10)+1; 
+            List <Ruta> listaRutas = control.devolverRutas(); 
+            int maxPag = (control.devolverRutas().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
                    pag = Integer.valueOf(request.getParameter("pg"));
@@ -47,37 +49,36 @@
             int regMax = pag * 10;
             
             if(pag==maxPag){
-                regMax=regMin+control.devolverListaCombi().size()%10;
+                regMax=regMin+control.devolverRutas().size()%10;
             }
           
         %> 
       
         <div class="cajaListado">
-            <h1>Lista combi</h1>
+            <h1>Lista rutas</h1>
         <table>
             <tr>
-                <td>Patente</td> 
-                <td>Modelo</td> 
-                <td>Tipo Servicio</td> 
-                <td>Cant asientos</td> 
-                <td></td> 
+                <td>Destino</td> 
+                <td>Origen</td> 
+                <td>Distacia</td> 
+                  <td></td>
                 <td></td>
+                
             </tr>
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       if(!listaCombi.get(i).getPatente().equals("-1")){
+                       if (listaRutas.get(i).getDistancia() > 0){
                    %>
                 <tr>
                      
                          
                     
-                        <td><%= listaCombi.get(i).getPatente()%></td>
-                        <td><%= listaCombi.get(i).getModelo() %></td>
-                        <td><%= listaCombi.get(i).getTipoServicio() %></td>
-                        <td><%= listaCombi.get(i).getCantAsientos() %></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Eliminar </a></td>
+                        <td><%= listaRutas.get(i).getDestino()%></td>
+                        <td><%= listaRutas.get(i).getOrigen()%></td>
+                        <td><%= listaRutas.get(i).getDistancia()%></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Eliminar </a></td>
 
                 </tr>
                  
@@ -89,7 +90,7 @@
                     if (maxPag >= 1) {
              
                         if(pag!=1){%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoCombi.jsp?pg=<%=pag - 1%>">&lt;</a></li>
+                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoRuta.jsp?pg=<%=pag - 1%>">&lt;</a></li>
                         <%}%>
                         <%
                             for ( i = 0; i < maxPag; i++) {
@@ -98,11 +99,11 @@
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><span><%=i+1%></span></li>
                         <%  }
                             else{%>
-                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoCombi.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
+                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoRuta.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
                         <%}}
                         
                         if(pag!=maxPag){%>
-                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoCombi.jsp?pg=<%=pag + 1%>">&gt;</a></li>
+                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoRuta.jsp?pg=<%=pag + 1%>">&gt;</a></li>
                 <%}}
                     else {%>
                         <li style="display: inline;color: white;font-weight: bold;margin: 5px;" class="active"><span>1</span></li>
@@ -116,7 +117,8 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertBorrar.js"></script> 
 
     </body>
 </html>

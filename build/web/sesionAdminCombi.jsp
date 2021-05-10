@@ -30,6 +30,7 @@
                 <label> Cantidad asientos</label>
                 <input class="controls" type="number" name="cantAsientos" required placeholder="0">
             <%
+                    int i;
                     Controladora control = new Controladora();
                     List <Chofer> listaChoferes = control.devolverListaChoferes(); 
              %> 
@@ -38,9 +39,9 @@
                 <select class="controls" name="id" required>
                     <option>Seleccione un chofer</option>
                 <%
-                   for (Chofer chof: listaChoferes) { 
-                        if(chof.getIdCombi() == 0){%>
-                    <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
+                   for (i=0 ; i < listaChoferes.size(); i++) { 
+                        if(listaChoferes.get(i).getIdChofer() == 0){%>
+                    <option value="<%=listaChoferes.get(i).getIdChofer()%>"><%=listaChoferes.get(i).getNombre()%> <%=listaChoferes.get(i).getApellido()%> - <%=listaChoferes.get(i).getDni()%></option>
                  <%}}%>  
                 </select>
                 

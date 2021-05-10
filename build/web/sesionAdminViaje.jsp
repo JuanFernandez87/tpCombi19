@@ -37,7 +37,8 @@
                 <label>Ruta</label>
                 <select class="controls" name="idRuta" required>
                         <option>Seleccione una ruta</option>
-                <%for (Ruta ruta: listaRutas) {%>                        
+                <%for (Ruta ruta: listaRutas) {
+                        if (ruta.getDistancia() > 0){%>                        
                         <option value="<%=ruta.getIdRuta()%>">
                             <%for (Lugar lugar:listaOrigen){
                                 if(lugar.getIdLugar() == ruta.getOrigen()){%>
@@ -53,7 +54,7 @@
                                    
                         </option>               
                               
-                 <%}%> 
+                 <%}}%> 
                 </select> 
                 <label>Cantidad asientos</label>
                 <input class="controls" type="number" name="cantAsientos" required placeholder="0">  

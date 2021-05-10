@@ -415,6 +415,38 @@ public class Controladora {
         return aux;        
         }
     
+    public boolean chequearCombiLibre(int idCombi) {
+        boolean aux = false;
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idRuta = 0;
+        for(Ruta unaRuta:listaRutas){
+            if(unaRuta.getIdCombi() == idCombi){
+                idRuta = unaRuta.getIdRuta();
+            }
+        }         
+        
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;        
+        }
+    
+    public void desasignarChofer(int idCombi) {
+        List <Chofer> listaChoferes = new ArrayList <Chofer>();
+        listaChoferes = controlPersis.getChoferes(); 
+        for(Chofer chof:listaChoferes){
+            if(chof.getIdCombi() == idCombi){
+                chof.setIdCombi(0);
+                controlPersis.asignarChofer(chof);
+            }
+        }
+    }        
+        
    /* public boolean chequearLugarLibre(int idLugar) {
         boolean aux = false;
 

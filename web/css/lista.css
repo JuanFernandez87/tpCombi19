@@ -62,3 +62,15 @@ table {
         font-size: 18px;
         color: white;
   }
+  
+  .busqueda label{
+    
+       
+        padding: 10px;
+       
+        margin-bottom: 16px;
+        border: 2px solid #1f53c5;
+        font-family: 'calibri';
+        font-size: 18px;
+        color: white;
+  }

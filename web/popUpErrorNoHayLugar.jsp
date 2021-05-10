@@ -37,8 +37,7 @@
                 <label>Ruta</label>
                 <select class="controls" name="idRuta" required>
                         <option>Seleccione una ruta</option>
-                <%for (Ruta ruta: listaRutas) {
-                        if (ruta.getDistancia() > 0){%>                        
+                <%for (Ruta ruta: listaRutas) {%>                        
                         <option value="<%=ruta.getIdRuta()%>">
                             <%for (Lugar lugar:listaOrigen){
                                 if(lugar.getIdLugar() == ruta.getOrigen()){%>
@@ -54,7 +53,7 @@
                                    
                         </option>               
                               
-                 <%}}%> 
+                 <%}%> 
                 </select> 
                 <label>Cantidad asientos</label>
                 <input class="controls" type="number" name="cantAsientos" required placeholder="0">  
@@ -70,7 +69,9 @@
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
- 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertNoHayLugar.js"></script>
+
 </div>
 
         <footer>
