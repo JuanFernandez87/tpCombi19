@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Persistencia/ChoferJpaController.java</file>
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Persistencia/ControladoraPersistencia.java</file>
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listado.jsp</file>
@@ -13,6 +14,27 @@
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoInsumo.jsp</file>
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/template/aside.jsp</file>
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/detalleChofer.jsp</file>
+=======
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoRuta.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroViaje.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/detalleCombiElegido.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/js/sweerAlertContraseniaIncorrecta.js</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpErrorMismoOyD.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoInsumo.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/LoginUsuarios.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoLugar.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionAdminCombi.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpErrorContraseniaUsuario.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionAdminRuta.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/detalleChoferElegido.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroRuta.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpErrorViajeRepetido.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/js/sweetAlertViajeRepetido.js</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/registro.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoChofer.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpRegistroCorrectoRuta.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Logica/Ruta.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
