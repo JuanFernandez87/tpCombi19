@@ -74,7 +74,7 @@
                         <td><%= listaInsumos.get(i).getNombre() %></td>
                         <td><%= listaInsumos.get(i).getTipo() %></td>
                         <td><%= listaInsumos.get(i).getPrecio() %></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarInsumo?idInsumo=<%=listaInsumos.get(i).getIdInsumo()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarInsumo.jsp?idInsumo=<%=listaInsumos.get(i).getIdInsumo()%>" >Modificar</a> </td>
                         <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarInsumo?idInsumo=<%=listaInsumos.get(i).getIdInsumo()%>" >Eliminar </a></td>
                        
 

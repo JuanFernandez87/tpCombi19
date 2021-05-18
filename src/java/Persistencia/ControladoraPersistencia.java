@@ -137,6 +137,6 @@ public class ControladoraPersistencia {
     public List getInsumo() {
         return insumoJpa.findInsumoEntities();
     }  
-                
+
 }
 

@@ -495,6 +495,43 @@ public class Controladora {
         return aux;
     }
 
+    public void ModificarInsumo(int idInsumo, String nombre, int precio, String tipo) {
+        List <Insumo> listaInsumos = controlPersis.getInsumos(); 
+        for (Insumo ins:listaInsumos) { 
+            if(ins.getIdInsumo() == idInsumo){ 
+                ins.setNombre(nombre);
+                ins.setPrecio(precio);
+                ins.setTipo(tipo);
+                controlPersis.asignarInsumo(ins);
+            }
+        }                     
+    }
 
+    public void modificarChofer(int idChofer, String apellido, String nombre, int dni, String mail, int telefono) {
+        List <Chofer> listaChoferes = controlPersis.getChoferes();
+        for (Chofer unChofer:listaChoferes) { 
+            if(unChofer.getIdChofer() == idChofer){ 
+                unChofer.setApellido(apellido);
+                unChofer.setNombre(nombre);
+                unChofer.setDni(dni);
+                unChofer.setMail(mail);
+                unChofer.setTelefono(telefono);
+                controlPersis.asignarChofer(unChofer);
+            }
+        }         
+    }
+
+    public void modificarCombi(int idCombi, String patente, String modelo, int capacidad, String tipoServicio) {
+        List <Combi> listaCombis = controlPersis.getCombi();
+        for (Combi unaCombi:listaCombis) { 
+            if(unaCombi.getIdCombi() == idCombi){ 
+                unaCombi.setPatente(patente);
+                unaCombi.setModelo(modelo);
+                unaCombi.setCantAsientos(capacidad);
+                unaCombi.setTipoServicio(tipoServicio);
+                controlPersis.asignarCombi(unaCombi);
+            }
+        } 
+    }
 
  }

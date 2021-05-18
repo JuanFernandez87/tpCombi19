@@ -60,6 +60,22 @@
         <servlet-name>EliminarInsumo</servlet-name>
         <servlet-class>Servlets.EliminarInsumo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarInsumo</servlet-name>
+        <servlet-class>Servlets.ModificarInsumo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificacionInsumoIntermediario</servlet-name>
+        <servlet-class>Servlets.ModificacionInsumoIntermediario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarChofer</servlet-name>
+        <servlet-class>Servlets.ModificarChofer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarCombi</servlet-name>
+        <servlet-class>Servlets.ModificarCombi</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -119,6 +135,22 @@
     <servlet-mapping>
         <servlet-name>EliminarInsumo</servlet-name>
         <url-pattern>/EliminarInsumo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarInsumo</servlet-name>
+        <url-pattern>/ModificarInsumo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificacionInsumoIntermediario</servlet-name>
+        <url-pattern>/ModificacionInsumoIntermediario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarChofer</servlet-name>
+        <url-pattern>/ModificarChofer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarCombi</servlet-name>
+        <url-pattern>/ModificarCombi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/EliminarRuta.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroChofer.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdminViaje.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroViaje.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/asideUsuario.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/listadoCombi.jsp</file>
         </group>
     </open-files>
 </project-private>
