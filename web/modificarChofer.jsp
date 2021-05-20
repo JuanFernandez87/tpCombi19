@@ -43,6 +43,8 @@
                 <input class="controls" type="tel" name="dni" value="<%=unChofer.getDni()%>">
                 <label>Mail</label>
                 <input class="controls" type="mail" name="mail" value="<%=unChofer.getMail()%>">
+                <label>Contraseña</label>
+                <input class="controls" type="mail" name="pass" value="<%=unChofer.getContra()%>">                
                 <label>Telefono de contacto</label>
                 <input class="controls" type="tel" name="tel" value="<%=unChofer.getTelefono()%>">
                 <input class="botons" type="submit" value="Modificar">

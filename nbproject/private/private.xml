@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/asideUsuario.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/listadoCombi.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarCombi.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarInsumo.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ModificarInsumo.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ModificarCombi.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdminCombi.jsp</file>
         </group>
     </open-files>
 </project-private>

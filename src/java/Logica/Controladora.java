@@ -63,7 +63,6 @@ public class Controladora {
         nuevaCombi.setModelo(modelo);
         nuevaCombi.setCantAsientos(cantAsientos);
         nuevaCombi.setTipoServicio(tipoServicio);
-        controlPersis.crearCombi(nuevaCombi);
              
         List <Chofer> listaChoferes = new ArrayList <Chofer>();             
         listaChoferes = controlPersis.getChoferes();
@@ -507,7 +506,7 @@ public class Controladora {
         }                     
     }
 
-    public void modificarChofer(int idChofer, String apellido, String nombre, int dni, String mail, int telefono) {
+    public void modificarChofer(int idChofer, String apellido, String nombre, int dni, String mail, String pass, int telefono) {
         List <Chofer> listaChoferes = controlPersis.getChoferes();
         for (Chofer unChofer:listaChoferes) { 
             if(unChofer.getIdChofer() == idChofer){ 
@@ -515,6 +514,7 @@ public class Controladora {
                 unChofer.setNombre(nombre);
                 unChofer.setDni(dni);
                 unChofer.setMail(mail);
+                unChofer.setContra(pass);
                 unChofer.setTelefono(telefono);
                 controlPersis.asignarChofer(unChofer);
             }
@@ -534,4 +534,45 @@ public class Controladora {
         } 
     }
 
+    public boolean verificarNombre(int idInsumo, String nombre) {
+        boolean aux = false;
+        List <Insumo> listaInsumos = controlPersis.getInsumos(); 
+        for (Insumo ins:listaInsumos) { 
+            if(ins.getIdInsumo() == idInsumo){ 
+                if (ins.getNombre().equals(nombre)){
+                    aux = true;
+                    return aux;
+                }
+            }
+        } 
+        return aux;
+    }
+
+    public boolean verificarMailChofer(int idChofer, String mail) {
+        boolean aux = false;
+        List <Chofer> listaChoferes = controlPersis.getChoferes(); 
+        for (Chofer chof:listaChoferes) { 
+            if(chof.getIdChofer() == idChofer){ 
+                if (chof.getMail().equals(mail)){
+                    aux = true;
+                    return aux;
+                }
+            }
+        } 
+        return aux;
+    }
+
+    public boolean verificarPatente(int idCombi, String patente) {
+        boolean aux = false;
+        List <Combi> listaCombis = controlPersis.getCombi(); 
+        for (Combi comb:listaCombis) { 
+            if(comb.getIdCombi() == idCombi){ 
+                if (comb.getPatente().equals(patente)){
+                    aux = true;
+                    return aux;
+                }
+            }
+        } 
+        return aux;
+    }    
  }

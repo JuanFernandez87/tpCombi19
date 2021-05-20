@@ -41,8 +41,8 @@
                 <input class="controls" type="number" name="cantAsientos" value="<%=unaCombi.getCantAsientos()%>">
                 
                 <label>Chofer</label>
-                <select class="controls" name="id" required>
-                    <option>Seleccione un chofer</option>
+                <select class="controls" name="id">
+                    <option value="<%=unaCombi.getUnChofer().getIdChofer()%>"><%=unaCombi.getUnChofer().getNombre()%> <%=unaCombi.getUnChofer().getApellido()%> <%=unaCombi.getUnChofer().getDni()%></option>
                 <%
                    for (Chofer chof:listaChoferes) { 
                         if(chof.getIdChofer() > 0 && chof.getDni() >0){%>
@@ -50,8 +50,12 @@
                  <%}}%>  
                 </select>
                 
-                 <label>Seleccione tipo de servicio</label>
-                 <input class="controls" name="servicio" value="<%=unaCombi.getTipoServicio()%>">
+                 <label>Seleccione tipo de servicio</label>                 
+                 <select class="controls" name="servicio">
+                     <option><%=unaCombi.getTipoServicio()%></option>
+                     <option>Comoda</option>
+                     <option>Super comoda</option>
+                 </select>
          
                 
                 <input class="botons" type="submit" value="Modificar">

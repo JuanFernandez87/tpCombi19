@@ -82,9 +82,20 @@ public class ModificarInsumo extends HttpServlet {
         request.getSession().setAttribute("precio", precio);
                        
         Controladora control = new Controladora();
-        control.ModificarInsumo(idInsumo, nombre, precio, tipo);
-        response.sendRedirect ("listadoInsumo.jsp");
-    }
+        boolean modificaNombreInsumo = control.verificarNombre(idInsumo, nombre);
+        if(modificaNombreInsumo){
+            control.ModificarInsumo(idInsumo, nombre, precio, tipo);
+            response.sendRedirect ("listadoInsumo.jsp");
+            }else{
+            boolean existe = control.verificarInsumo(nombre);
+            if(!existe){
+                control.ModificarInsumo(idInsumo, nombre, precio, tipo);
+                response.sendRedirect ("listadoInsumo.jsp");    
+            }else{
+                response.sendRedirect ("sesionAdmin.jsp");
+            }
+        }
+    }    
 
     /**
      * Returns a short description of the servlet.
