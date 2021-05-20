@@ -76,6 +76,7 @@ public class ModificarChofer extends HttpServlet {
         String nombre = request.getParameter("nombre"); 
         int dni = Integer.parseInt(request.getParameter("dni"));
         String mail = request.getParameter("mail");
+        String pass = request.getParameter("pass");
         int telefono = Integer.parseInt(request.getParameter("tel"));
         
         request.getSession().setAttribute("idChofer", idChofer);
@@ -83,13 +84,30 @@ public class ModificarChofer extends HttpServlet {
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("dni", dni);
         request.getSession().setAttribute("mail", mail);
+        request.getSession().setAttribute("pass", pass);
         request.getSession().setAttribute("tel", telefono);
         
             
         Controladora control = new Controladora();
-        control.modificarChofer(idChofer, apellido, nombre, dni,  mail, telefono);
-        response.sendRedirect ("listadoChofer.jsp");  
-            
+        boolean modicaMailChofer = control.verificarMailChofer(idChofer, mail);
+        if(modicaMailChofer){
+            control.modificarChofer(idChofer, apellido, nombre, dni,  mail, pass, telefono);
+            response.sendRedirect ("listadoChofer.jsp");  
+            }else{
+            boolean existe = control.verificarChofer(mail);
+            if(existe){
+                response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
+            }else{    
+                boolean cumpleTamañoMin = control.verificarContraseña(pass);
+                if(!cumpleTamañoMin){
+                    response.sendRedirect ("popUpErrorContraseniaChofer.jsp");
+                }else{
+                    control.modificarChofer(idChofer, apellido, nombre, dni,  mail, pass, telefono);
+                    response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
+                }
+                    
+            }
+            }
     }
 
     /**

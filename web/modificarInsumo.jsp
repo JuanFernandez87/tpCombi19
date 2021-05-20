@@ -40,7 +40,11 @@
                     <input class="controls" type="text" name="nombre" value="<%=ins.getNombre()%>">
                
                 <label>Tipo</label>
-                    <input class="controls" type="text" name="tipo" value="<%=ins.getTipo()%>">
+                     <select class="controls" name="tipo">
+                         <option><%=ins.getTipo()%></option>
+                         <option>Dulce</option>
+                         <option>Salado</option>
+                     </select>                    
                 
                 <label>Precio</label>
                     <input class="controls" type="number" name="precio" value="<%=IntValue = (int) ins.getPrecio()%>">                
