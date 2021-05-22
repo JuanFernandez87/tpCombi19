@@ -106,7 +106,7 @@
                         <td><%= listaChoferes.get(i).getTelefono()%></td>
                         <td><%= listaChoferes.get(i).getMail()%></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarChofer.jsp?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarChofer?idChofer=<%=listaChoferes.get(i).getIdChofer()%>" >Eliminar </a></td>
+                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarChofer.jsp?Chofer=<%=listaChoferes.get(i).getApellido()%>&id=<%=listaChoferes.get(i).getIdChofer()%>">Eliminar</a></td>
                 </tr>
                  
            <%}}%>  

@@ -74,7 +74,8 @@ public class EliminarLugar extends HttpServlet {
                 response.sendRedirect ("index.jsp");
             }else{
                 control.eliminarLugar(idLugar);
-                response.sendRedirect ("borrarChofer.jsp");                
+                response.sendRedirect ("listadoLugar.jsp");     
+                
             }
     }
 
