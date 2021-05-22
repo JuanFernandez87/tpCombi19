@@ -39,7 +39,7 @@ public class EliminarCombi extends HttpServlet {
             if(!libre){
                 control.eliminarCombi(idCombi);
                 control.desasignarChofer(idCombi);
-                response.sendRedirect("popUpBorrarCombi.jsp");
+                response.sendRedirect ("listadoCombi.jsp");
             }else{
                response.sendRedirect ("popUpErrorCombiAsignada.jsp");  
             }

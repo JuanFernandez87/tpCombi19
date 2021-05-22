@@ -90,7 +90,7 @@
                                   <%=combi.getPatente()%><%}%><%}%></td>                        
                         <td><%= ruta.getHora()%></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Eliminar </a></td>
+                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?Ruta=<%=listaRutas.get(i).getDestino()%>&id=<%=listaRutas.get(i).getIdRuta()%>">Eliminar</a></td>
 
                 </tr>
                  

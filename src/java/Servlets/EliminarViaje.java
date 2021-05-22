@@ -34,7 +34,7 @@ public class EliminarViaje extends HttpServlet {
             request.getSession().setAttribute("idViaje", idViaje);
             Controladora control = new Controladora();
             control.eliminarViaje(idViaje);
-            response.sendRedirect ("popUpBorrarViaje.jsp");  
+            response.sendRedirect ("listadoViajes.jsp");  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

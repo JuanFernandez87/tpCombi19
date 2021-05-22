@@ -77,7 +77,7 @@
                         <td><%= listaLugar.get(i).getNombre()%></td>
                         <td><%= listaLugar.get(i).getProvincia() %></td>
                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarLugar?idLugar=<%=listaLugar.get(i).getIdLugar()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarLugar?idLugar=<%=listaLugar.get(i).getIdLugar()%>" >Eliminar </a></td>
+                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarLugar.jsp?Lugar=<%=listaLugar.get(i).getNombre()%>&id=<%=listaLugar.get(i).getIdLugar()%>">Eliminar</a></td>
                        
 
                 </tr>

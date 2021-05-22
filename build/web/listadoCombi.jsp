@@ -98,7 +98,7 @@
                         <td><%= listaCombi.get(i).getTipoServicio() %></td>
                         <td><%= listaCombi.get(i).getCantAsientos() %></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarCombi.jsp?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Eliminar </a></td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarCombi.jsp?Combi=<%=listaCombi.get(i).getPatente()%>&id=<%=listaCombi.get(i).getIdCombi()%>">Eliminar</a></td>
 
                 </tr>
                  

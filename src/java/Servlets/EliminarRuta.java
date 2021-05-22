@@ -40,7 +40,7 @@ public class EliminarRuta extends HttpServlet {
                 response.sendRedirect ("popUpBorrarRutaError.jsp");
             }else{
                 control.eliminarRuta(idRuta);
-                response.sendRedirect ("popUpBorrarRuta.jsp");                
+                response.sendRedirect ("listadoRuta.jsp");                
             }
     }
 

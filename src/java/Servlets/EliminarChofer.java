@@ -37,7 +37,7 @@ public class EliminarChofer extends HttpServlet {
             libre = control.chequearChoferLibre(idChofer);
             if(!libre){
                 control.eliminarChofer(idChofer);
-                response.sendRedirect ("popUpBorrarChofer.jsp");
+                response.sendRedirect ("listadoChofer.jsp");
             }else{
                 response.sendRedirect ("popUpErrorChoferOcupadoCombi.jsp");  
             }

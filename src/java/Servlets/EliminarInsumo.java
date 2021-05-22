@@ -75,7 +75,7 @@ public class EliminarInsumo extends HttpServlet {
             request.getSession().setAttribute("idInsumo", idInsumo);
             Controladora control = new Controladora();
             control.eliminarInsumo(idInsumo);
-            response.sendRedirect ("sesionAdmin.jsp");  
+            response.sendRedirect ("listadoInsumo.jsp");  
     }
 
     /**
