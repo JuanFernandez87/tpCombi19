@@ -45,7 +45,7 @@
                     <option value="<%=unaCombi.getUnChofer().getIdChofer()%>"><%=unaCombi.getUnChofer().getNombre()%> <%=unaCombi.getUnChofer().getApellido()%> <%=unaCombi.getUnChofer().getDni()%></option>
                 <%
                    for (Chofer chof:listaChoferes) { 
-                        if(chof.getIdChofer() > 0 && chof.getDni() >0){%>
+                        if(chof.getIdCombi() == 0 && chof.getDni() >0){%>
                     <option value="<%=chof.getIdChofer()%>"><%=chof.getNombre()%> <%=chof.getApellido()%> - <%=chof.getDni()%></option>
                  <%}}%>  
                 </select>

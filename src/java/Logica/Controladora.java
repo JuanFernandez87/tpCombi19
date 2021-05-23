@@ -69,14 +69,14 @@ public class Controladora {
         Chofer unChofer = null;
         for(Chofer chof:listaChoferes){
             if(chof.getIdChofer() == idChofer){
-                chof.setIdCombi(nuevaCombi.getIdCombi());
-                controlPersis.asignarChofer(chof);
                 unChofer = chof;
             }
         }
         
         nuevaCombi.setUnChofer(unChofer);          
-        controlPersis.crearCombi(nuevaCombi);          
+        controlPersis.crearCombi(nuevaCombi);  
+        unChofer.setIdCombi(nuevaCombi.getIdCombi());
+        controlPersis.asignarChofer(unChofer);        
             }   
     
        
@@ -533,6 +533,17 @@ public class Controladora {
             }
         } 
     }
+    
+    public void modificarLugar(int idLugar, String nombre, String provincia) {
+        List <Lugar> listalugares = controlPersis.getLugares(); 
+        for (Lugar unLugar:listalugares) { 
+            if(unLugar.getIdLugar() == idLugar){
+                unLugar.setNombre(nombre);
+                unLugar.setProvincia(provincia);
+                controlPersis.asignarLugar(unLugar);
+            } 
+        }   
+    }    
 
     public boolean verificarNombre(int idInsumo, String nombre) {
         boolean aux = false;
@@ -575,4 +586,20 @@ public class Controladora {
         } 
         return aux;
     }    
+
+    public boolean verificarLugar(int idLugar, String nombre, String provincia) {
+        boolean aux = false;
+        List <Lugar> listalugares = controlPersis.getLugares(); 
+        for (Lugar unLugar:listalugares) { 
+            if(unLugar.getIdLugar() == idLugar){ 
+                if (unLugar.getNombre().equals(nombre) && (unLugar.getProvincia().equals(provincia))){
+                    aux = true;
+                    return aux;
+                }
+            }
+        }
+        return aux;
+    }
+
+
  }

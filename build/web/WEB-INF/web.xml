@@ -76,6 +76,10 @@
         <servlet-name>ModificarCombi</servlet-name>
         <servlet-class>Servlets.ModificarCombi</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarLugar</servlet-name>
+        <servlet-class>Servlets.ModificarLugar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>ModificarCombi</servlet-name>
         <url-pattern>/ModificarCombi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarLugar</servlet-name>
+        <url-pattern>/ModificarLugar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
