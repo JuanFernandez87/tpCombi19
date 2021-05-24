@@ -425,6 +425,27 @@ public class Controladora {
         return aux;        
         }
     
+    public boolean verViajeActivo(int idLugar) {
+        boolean aux = false;        
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idRuta = 0;
+        for(Ruta unaRuta:listaRutas){
+            if((unaRuta.getOrigen() == idLugar) || (unaRuta.getOrigen() == idLugar)){
+                idRuta = unaRuta.getIdRuta();
+            }
+        }         
+        
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;        
+        }
+    
     public boolean chequearCombiLibre(int idCombi) {
         boolean aux = false;
         List <Ruta> listaRutas = new ArrayList <Ruta>();
@@ -610,19 +631,39 @@ public class Controladora {
         return aux;
     }    
 
-    public boolean verificarLugar(int idLugar, String nombre, String provincia) {
+    public boolean verificarLugar( String nombre, String provincia) {
         boolean aux = false;
         List <Lugar> listalugares = controlPersis.getLugares(); 
         for (Lugar unLugar:listalugares) { 
-            if(unLugar.getIdLugar() == idLugar){ 
                 if (unLugar.getNombre().equals(nombre) && (unLugar.getProvincia().equals(provincia))){
                     aux = true;
                     return aux;
                 }
-            }
         }
         return aux;
     }
+
+    public int capacidadCombi(int idRuta) {
+        int capacidad = 0;
+        int idCombi = 0;
+        List <Ruta> listaRutas = controlPersis.getRutas();        
+        for(Ruta unaRuta:listaRutas){
+            if(unaRuta.getIdRuta() == idRuta){
+                idCombi = unaRuta.getIdCombi();
+            }
+        }         
+        
+        List <Combi> listaCombi = controlPersis.getCombi();        
+        for(Combi unaCombi:listaCombi){
+            if(unaCombi.getIdCombi() == idCombi){
+                capacidad = unaCombi.getCantAsientos();
+                return capacidad;
+            }
+        }
+        return capacidad;
+    }
+
+
 
 
 

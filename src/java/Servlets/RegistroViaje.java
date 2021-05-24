@@ -73,14 +73,14 @@ public class RegistroViaje extends HttpServlet {
              throws ServletException, IOException {
         
         int idRuta = Integer.parseInt(request.getParameter("idRuta")); 
-        int cantAsientos = Integer.parseInt(request.getParameter("cantAsientos"));
+        //int cantAsientos = Integer.parseInt(request.getParameter("cantAsientos"));
         String dia = request.getParameter("dia");
         String mes = request.getParameter("mes");
         String anio = request.getParameter("anio");        
         int precio = Integer.parseInt(request.getParameter("precio"));
 
         request.getSession().setAttribute("idRuta", idRuta);
-        request.getSession().setAttribute("cantAsientos", cantAsientos);               
+        //request.getSession().setAttribute("cantAsientos", cantAsientos);               
         request.getSession().setAttribute("dia", dia );
         request.getSession().setAttribute("mes", mes );
         request.getSession().setAttribute("anio", anio );
@@ -91,16 +91,18 @@ public class RegistroViaje extends HttpServlet {
         boolean existe = false;
         existe = control.verificarViaje(idRuta, fechaViaje);
         
-        boolean hayLugar;
-        hayLugar = control.verificarAsientos(cantAsientos, idRuta);
+        //boolean hayLugar;
+        //hayLugar = control.verificarAsientos(cantAsientos, idRuta);
+        
+        int cantAsientos = control.capacidadCombi(idRuta);
+        
         
         if (!existe){
-             if(hayLugar){
-                control.crearViaje(idRuta, cantAsientos, fechaViaje, precio);
-                response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");
-            }else{
+            control.crearViaje(idRuta, cantAsientos, fechaViaje, precio);
+            response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");
+            /*}else{
                 response.sendRedirect ("popUpErrorNoHayLugar.jsp");
-            }            
+            }*/            
         }else{
             response.sendRedirect ("popUpErrorViajeRepetido.jsp");
         }
