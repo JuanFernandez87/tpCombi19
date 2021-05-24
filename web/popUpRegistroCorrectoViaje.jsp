@@ -25,7 +25,6 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
             <%
-                    Controladora control = new Controladora();
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares();

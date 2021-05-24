@@ -30,7 +30,6 @@
                 <label> Cantidad asientos</label>
                 <input class="controls" type="number" name="cantAsientos" required placeholder="0">
             <%
-                    Controladora control = new Controladora();
                     List <Chofer> listaChoferes = control.devolverListaChoferes(); 
              %> 
                 

@@ -80,8 +80,9 @@ public class ModificarLugar extends HttpServlet {
         request.getSession().setAttribute("provincia", provincia);       
         
         Controladora control = new Controladora();
-        boolean existe = control.verificarLugar(idLugar, nombre, provincia);
-        if(!existe){
+        boolean existe = control.verificarLugar(nombre, provincia);
+        boolean viajeActivo = control.verViajeActivo(idLugar);
+        if(!existe && !viajeActivo){
             control.modificarLugar(idLugar, nombre, provincia);
             response.sendRedirect ("popUpRegistroCorrectoLugar.jsp");
         }else{
