@@ -1,3 +1,6 @@
+<%@page import="Logica.Administrador"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,9 +16,17 @@
     <body>
         <header>
 	    <%
+                Controladora control = new Controladora();
                 String usuario = (String)session.getAttribute("username");
-            %>
-            <br><a>Bienvenido <%=usuario%></a>            
+                String tipo = (String)session.getAttribute("tipo");
+                List <Administrador> listaAdmin = control.devolverListaAdmin(); 
+                for (Administrador unAdmin:listaAdmin){
+                    if (unAdmin.getMail().equals(usuario)){
+            %>  
+            <a>Bienvenido <%=unAdmin.getNombre()%> <%=unAdmin.getApellido()%></a> <br>
+            <a>(<%=tipo%>)</a> 
+            <%}}%> 
+
             <div class="contenidoHeader">
                 <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>    
                 <nav>
@@ -24,6 +35,7 @@
                     <a href="sesionAdminCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt"></i>Cerrar sesion</a>
                 </nav>
             </div>
+                   
         </header>  
     <body>   
 </html>

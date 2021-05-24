@@ -23,7 +23,7 @@
 <body>
    
         <header>
-            <%@include file="/template/headerSesiones.jsp"%>
+            <%@include file="/template/headerSesionUsuario.jsp"%>
         </header>
 	
         <aside>
@@ -31,22 +31,26 @@
         </aside>
         
 	<%      
-                Controladora control = new Controladora();
-                List <Cliente> listaClientes = control.devolverListaClientes(); 
+                List <Cliente> listaClientes2 = control.devolverListaClientes(); 
                 String username = (String)session.getAttribute("username");
-                for (Cliente unCliente:listaClientes){
+                for (Cliente unCliente:listaClientes2){
                     if (unCliente.getMail().equals(username)){%>          
 
 
             <form action="ModificarCliente?idCliente=<%=unCliente.getIdCliente()%>" method="post">
                <h4>Mi información</h4>
+               <label>Nombre</label>
                <input class="controls" type="text" name="nombre" value="<%=unCliente.getNombre()%>" >
+               <label>Apellido</label>
                <input class="controls" type="text" name="apellido" value="<%=unCliente.getApellido()%>">
+               <label>Dni</label>
                <input class="controls" type="tel" name="dni" id="dni" value="<%=unCliente.getDni()%>">
+               <label>E-mail</label>
                <input class="controls" type="email" name="mail" id="correo" value="<%=unCliente.getMail()%>">
+               <label>Contraseña</label>
                <input class="controls" type="text" name="pass" id="contra" value="<%=unCliente.getContra()%>">
 
-                <label> Seleccione tipo de plan</label>
+                <label>Tipo de plan</label>
                         <select class="controls" name="tipoPlan">
                             <option><%=unCliente.getTipoPlan()%></option>
                             <option>Basico</option>
