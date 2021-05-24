@@ -12,13 +12,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author juanf
  */
-public class LoginUsuarios extends HttpServlet {
+public class ModificarCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +36,10 @@ public class LoginUsuarios extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginUsuarios</title>");            
+            out.println("<title>Servlet ModificarCliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginUsuarios at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ModificarCliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,41 +71,42 @@ public class LoginUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String usuario = request.getParameter("username"); //Obtengo el nombre de usuario que se ingreso
-        String contra = request.getParameter("pass"); //Obtengo la contraseña que ingresen el usuario
-                
-        request.getSession().setAttribute("username", usuario);
-        request.getSession().setAttribute("pass", contra);
-                     
-        Controladora control = new Controladora();
-        boolean esAdmin = control.comprobarIngresoAdmin(usuario, contra); //lo que devuelve lo tiene que guardar en estado para ver si la persona ingresa o no
-        boolean esChofer = control.comprobarIngresoChofer(usuario, contra);
-        boolean esCliente = control.comprobarIngresoCliente(usuario, contra);
-        
-        request.getSession().setAttribute("username", usuario);
-        if (esAdmin == true){
-            HttpSession misession = request.getSession(true);
-            misession.setAttribute("username", usuario);
-            misession.setAttribute("pass", contra);
-            //cerrar sesion session.invalidate()            
-            response.sendRedirect ("sesionAdmin.jsp");            
-        }else if(esChofer == true){
-            HttpSession misession = request.getSession(true);
-            misession.setAttribute("username", usuario);
-            misession.setAttribute("pass", contra);
-            //cerrar sesion session.invalidate()
-            response.sendRedirect ("sesionChofer.jsp");
-        }else if(esCliente == true){
-            HttpSession misession = request.getSession(true);
-            misession.setAttribute("username", usuario);
-            misession.setAttribute("pass", contra);
-            //cerrar sesion session.invalidate()
-            response.sendRedirect ("sesionUsuario.jsp");
-        }else{   
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        String apellido = request.getParameter("apellido"); 
+        String nombre = request.getParameter("nombre"); 
+        int dni = Integer.parseInt(request.getParameter("dni"));
+        String mail = request.getParameter("mail");
+        String pass = request.getParameter("pass");
+       
+        request.getSession().setAttribute("idCliente", idCliente);
+        request.getSession().setAttribute("apellido", apellido);
+        request.getSession().setAttribute("nombre", nombre);
+        request.getSession().setAttribute("dni", dni);
+        request.getSession().setAttribute("mail", mail);
+        request.getSession().setAttribute("pass", pass);        
             
-            response.sendRedirect ("popUpErrorContraseniaUsuario.jsp"); // Si la contraseña es incorrecta vuelve a la pantalla de logueo
-         }
+        Controladora control = new Controladora();
+        boolean modicaMailChofer = control.verificarMailChofer(idCliente, mail);
+        if(modicaMailChofer){
+            control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
+            response.sendRedirect ("listadoChofer.jsp");  
+            }else{
+            boolean existe = control.verificarUsuario(mail);
+            if(existe){
+                response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
+            }else{    
+                boolean cumpleTamañoMin = control.verificarContraseña(pass);
+                if(!cumpleTamañoMin){
+                    response.sendRedirect ("popUpErrorContraseniaChofer.jsp");
+                }else{
+                    control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
+                    response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
+                }
+                    
+            }
+            }
     }
+    
 
     /**
      * Returns a short description of the servlet.

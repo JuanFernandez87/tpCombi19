@@ -54,6 +54,14 @@ public class ControladoraPersistencia {
         }   
     }
     
+    public void asignarCliente(Cliente unCliente) {
+        try {
+            clienteJpa.edit(unCliente);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }    
+    
     public void asignarInsumo(Insumo unInsumo){
         try {
             insumoJpa.edit(unInsumo);
@@ -137,6 +145,8 @@ public class ControladoraPersistencia {
     public List getInsumo() {
         return insumoJpa.findInsumoEntities();
     }  
+
+
 
 }
 

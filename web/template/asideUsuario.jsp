@@ -17,41 +17,27 @@
 		<a href="#" class="btn-menu">Menu<i class="icono fas fa-bars"></i></a>
 		<ul class="menu">
                         <!-- boton con menu para Chofer.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-male" ></i>Administrar chofer<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminChofer.jsp">Alta de chofer</a></li>
-					<li><a href="sesionAdminChofer.jsp">Baja de chofer</a></li>
-					<li><a href="sesionAdminChofer.jsp">Modificacion de chofer</a></li>
-                                        <li><a href="listado.jsp">Listado de chofer</a></li>
+					<li><a href="sesionAdminChofer.jsp">Listar</a></li>
+                                        <li><a href="listadoChofer.jsp">Gestionar</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Combi.-->
-                             <li ><a href="#"><i class="icono izquierda fas fa-shuttle-van" ></i>Administrar Combi<i class="icono derecha fas fa-chevron-down"></i></a>
+                             <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar comentarios<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                         <li><a href="sesionAdminCombi.jsp">Alta de Combi</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                           <li><a href="sesionAdminCombi.jsp">Baja de Combi</a></li>
-                                            <li><a href="sesionAdminCombi.jsp">Modificacion de Combi</a></li>
-                                            <li><a href="sesionAdminCombi.jsp">Listado de Combi</a></li>
+                                         <li><a href="sesionAdminCombi.jsp">Listar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                            <li><a href="listadoCombi.jsp">Gestionar</a></li> <!--LINK PROVISORIO PARA VERIFICAR BAJAS-->
 				</ul>
 
 			</li>
                         
-                        <!-- boton con menu para Lugar.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-map-marker-alt" ></i>Administrar lugar<i class="icono derecha fas fa-chevron-down"></i></a>
-				<ul>
-                                        <li><a href="sesionAdminLugar.jsp">Alta de lugar</a>
-                                          <li><a href="sesionAdminLugar.jsp">Baja de lugar</a>
-                                           <li><a href="sesionAdminLugar.jsp">Modificacion de lugar</a>
-                                               <li><a href="sesionAdminLugar.jsp">Listado de lugar</a></li>
-				</ul>
 
-			</li>                        
-                       
 		</ul>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="js/sesion.js"></script>
+             <script src="../js/sesion.js"></script>
  
         </div>
     </body>
