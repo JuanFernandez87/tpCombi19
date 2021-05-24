@@ -84,6 +84,10 @@
         <servlet-name>ModificarCliente</servlet-name>
         <servlet-class>Servlets.ModificarCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>Servlets.CerrarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>ModificarCliente</servlet-name>
         <url-pattern>/ModificarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -32,12 +32,13 @@
                     
                 %>         
 		
-            <form action="ModificarLugar?idLugar="<%=unLugar.getIdLugar()%>" class="formulario-sesiones" method="post">
+            <form action="ModificarLugar?idLugar=<%=unLugar.getIdLugar()%>" class="formulario-sesiones" method="post">
 				<h4>Modificar lugar </h4>
                 <label> Ciudad</label>
                 <input class="controls" type="text" name="nombre" value="<%=unLugar.getNombre()%>">
                 <label> Provincia</label>     
                 <select class="controls" name="provincia">
+                            <option><%=unLugar.getProvincia()%></option>
                             <option>Buenos Aires</option>
                             <option>Catamarca</option>
                             <option>Chaco</option>
