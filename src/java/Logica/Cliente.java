@@ -1,13 +1,13 @@
 package Logica;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,7 +25,7 @@ public class Cliente /*extends Persona*/{
     String mail;
     String contra;
     int dni;
-    
+    List <String> listaComentarios = new ArrayList<String>();
     /*@OneToOne
     Tarjeta unaTarjeta;
     
@@ -52,6 +52,14 @@ public class Cliente /*extends Persona*/{
         this.fecha_nac = fecha_nac;
     }
 
+    public List<String> getListaComentarios() {
+        return listaComentarios;
+    }
+
+    public void setListaComentarios(List<String> listaComentarios) {
+        this.listaComentarios = listaComentarios;
+    }
+    
     public int getIdCliente() {
         return idCliente;
     }

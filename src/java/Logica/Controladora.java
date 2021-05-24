@@ -194,6 +194,11 @@ public class Controladora {
         List listaChoferes = controlPersis.getChoferes();
         return listaChoferes;
     }
+    
+    public List<Cliente> devolverListaClientes() {
+        List listaClientes = controlPersis.getClientes();
+        return listaClientes;
+    }
 
     public List<Combi> devolverListaCombi() {
         List listaCombi = controlPersis.getCombi();
@@ -520,6 +525,20 @@ public class Controladora {
             }
         }         
     }
+    
+    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass) {
+         List <Cliente> listaClientes = controlPersis.getClientes();
+        for (Cliente unCliente:listaClientes) { 
+            if(unCliente.getIdCliente() == idCliente){ 
+                unCliente.setApellido(apellido);
+                unCliente.setNombre(nombre);
+                unCliente.setDni(dni);
+                unCliente.setMail(mail);
+                unCliente.setContra(pass);
+                controlPersis.asignarCliente(unCliente);
+            }
+        }         
+    }    
 
     public void modificarCombi(int idCombi, String patente, String modelo, int capacidad, String tipoServicio) {
         List <Combi> listaCombis = controlPersis.getCombi();
@@ -600,6 +619,8 @@ public class Controladora {
         }
         return aux;
     }
+
+
 
 
  }
