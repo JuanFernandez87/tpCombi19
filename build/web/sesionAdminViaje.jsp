@@ -25,14 +25,13 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
             <%
-                    Controladora control = new Controladora();
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares();
                     List <Ruta> listaRutas = control.devolverRutas();
              %>         
 		
-            <form action="RegistroViaje" class="formulario-sesiones" method="post">
+             <form action="RegistroViaje" class="formulario-sesiones" method="post">
 				<h4>Registrar viaje </h4>
                 <label>Ruta</label>
                 <select class="controls" name="idRuta" required>
@@ -50,15 +49,17 @@
                                     -
                             <%for (Combi combi:listaCombis){
                                 if(combi.getIdCombi() == ruta.getIdCombi()){%>
-                                  <%=combi.getPatente()%><%}%><%}%>                                  
+                                  <%=combi.getPatente()%>                                  
+                                    -
+                                  <%=combi.getCantAsientos()%><%}%><%}%> lugares 
                                     -
                             <%=ruta.getHora()%> hs         
                         </option>               
                               
                  <%}}%> 
                 </select> 
-                <label>Cantidad asientos</label>
-                <input class="controls" type="number" name="cantAsientos" required placeholder="0">  
+                <!--label>Cantidad asientos</label>
+                <input class="controls" type="number" name="cantAsientos" required placeholder="0"-->  
                 <b for="start">Ingrese la fecha</b>
                 <div class="fecha">
                     <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
