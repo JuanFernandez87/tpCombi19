@@ -29,7 +29,6 @@
       <%
             int pag=1;
             
-            Controladora control = new Controladora();
             List <Chofer> listaChoferes = control.devolverListaChoferes(); 
             int maxPag = (control.devolverListaChoferes().size()/10)+1; 
             int i = 0; 

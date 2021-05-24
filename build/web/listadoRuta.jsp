@@ -36,8 +36,6 @@
  
       <%
             int pag=1;
-            
-            Controladora control = new Controladora();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Combi> listaCombis = control.devolverListaCombi(); 
             List <Lugar> listaOrigen = control.devolverListaLugares();

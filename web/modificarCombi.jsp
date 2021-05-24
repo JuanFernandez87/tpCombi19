@@ -23,7 +23,6 @@
         <%@include file="/template/aside.jsp"%>
 	        <%
                     int i;
-                    Controladora control = new Controladora();
                     List <Chofer> listaChoferes = control.devolverListaChoferes(); 
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     int idCombi = Integer.parseInt(request.getParameter("idCombi"));

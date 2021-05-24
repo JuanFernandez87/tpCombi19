@@ -225,6 +225,10 @@ public class Controladora {
         return listaInsumos;
     }
     
+    public List<Administrador> devolverListaAdmin(){
+        List listaAdmin = controlPersis.getAdmin();
+        return listaAdmin;
+    }    
     
     public void crearRuta(String origen, String destino, String patenteCombi, int distancia, String horario) {
         Ruta unaRuta = new Ruta();
