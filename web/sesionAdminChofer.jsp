@@ -15,11 +15,11 @@
     
     <body>
         <header>
-            <%@include file="/template/headerSesiones.jsp"%>
+            <%@include file="/template/headerSesionChofer.jsp"%>
         </header>
         
         <aside>
-            <%@include file="/template/aside.jsp"%>
+            <%@include file="/template/asideChofer.jsp"%>
         </aside>
         
             <form action="RegistroChofer" class="formulario-sesiones" method="post">

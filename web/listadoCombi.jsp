@@ -35,7 +35,6 @@
       <%
             int pag=1;
             
-            Controladora control = new Controladora();
             List <Combi> listaCombi = control.devolverListaCombi(); 
             int maxPag = (control.devolverListaCombi().size()/10)+1; 
             int i = 0; 

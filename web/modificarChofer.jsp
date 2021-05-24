@@ -26,7 +26,6 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
         <%
-            Controladora control = new Controladora();
             List <Chofer> listaChoferes = control.devolverListaChoferes(); 
             int idChofer = Integer.parseInt(request.getParameter("idChofer"));
             

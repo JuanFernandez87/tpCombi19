@@ -23,8 +23,6 @@
         </aside>
         
 	        <%
-            
-                    Controladora control = new Controladora();
                     List <Lugar> listaLugares = control.devolverListaLugares(); 
                     int idLugar = Integer.parseInt(request.getParameter("idLugar"));
                     for (Lugar unLugar:listaLugares) { 

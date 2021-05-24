@@ -83,21 +83,24 @@ public class LoginUsuarios extends HttpServlet {
         boolean esChofer = control.comprobarIngresoChofer(usuario, contra);
         boolean esCliente = control.comprobarIngresoCliente(usuario, contra);
         
-        request.getSession().setAttribute("username", usuario);
         if (esAdmin == true){
             HttpSession misession = request.getSession(true);
+            request.getSession().setAttribute("tipo", "Administrador");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()            
             response.sendRedirect ("sesionAdmin.jsp");            
         }else if(esChofer == true){
             HttpSession misession = request.getSession(true);
+            request.getSession().setAttribute("tipo", "Chofer");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()
             response.sendRedirect ("sesionChofer.jsp");
         }else if(esCliente == true){
             HttpSession misession = request.getSession(true);
+            String tipo = "Cliente";
+            request.getSession().setAttribute("tipo", "Cliente");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()

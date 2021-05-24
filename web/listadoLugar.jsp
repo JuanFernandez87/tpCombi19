@@ -35,8 +35,7 @@
  
       <%
             int pag=1;
-            
-            Controladora control = new Controladora();
+
             List <Lugar> listaLugar = control.devolverListaLugares(); 
             int maxPag = (control.devolverListaLugares().size()/10)+1; 
             int i = 0; 

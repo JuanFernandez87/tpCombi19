@@ -35,8 +35,7 @@
  
       <%
             int pag=1;
-            
-            Controladora control = new Controladora();
+
             List <Insumo> listaInsumos = control.devolverListaInsumos(); 
             int maxPag = (control.devolverListaInsumos().size()/10)+1; 
             int i = 0; 
