@@ -1,4 +1,4 @@
-<%@page import="Logica.Administrador"%>
+<%@page import="Logica.Cliente"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,9 +20,9 @@
                 Controladora control = new Controladora();
                 String usuario = (String)session.getAttribute("username");
                 String tipoUsuario = (String)session.getAttribute("tipoUsuario");
-                List <Administrador> listaAdmin = control.devolverListaAdmin(); 
-                for (Administrador unAdmin:listaAdmin){
-                    if (unAdmin.getMail().equals(usuario)){
+                List <Cliente> listaCliente = control.devolverListaClientes(); 
+                for (Cliente unCliente:listaCliente){
+                    if (unCliente.getMail().equals(usuario)){
             %>  
            
 
@@ -30,7 +30,7 @@
 		<ul class="menu">
                          <div style="background-color:#494949;color: white;text-align: center">
                             <h5><i style="border: 1px solid white; padding: 10px; border-radius: 20px;margin-top: 2px;" class="fas fa-user"></i></h5>
-                            <h5>Bienvenido <%=unAdmin.getNombre()%> <%=unAdmin.getApellido()%></h5>
+                            <h5>Bienvenido <%=unCliente.getNombre()%> <%=unCliente.getApellido()%></h5>
                             <h5><%=tipoUsuario%></h5> 
                    </div>
             <%}}%> 
