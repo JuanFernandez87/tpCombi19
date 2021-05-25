@@ -13,23 +13,13 @@
     
     <body>
         <header>
-	    <%
-                Controladora control = new Controladora();
-                String usuario = (String)session.getAttribute("username");
-                String tipo = (String)session.getAttribute("tipo");
-                List <Cliente> listaClientes = control.devolverListaClientes(); 
-                for (Cliente unCliente:listaClientes){
-                    if (unCliente.getMail().equals(usuario)){
-            %>  
-
-            <a>Bienvenido <%=unCliente.getNombre()%> <%=unCliente.getApellido()%></a> <br>
-            <a>(<%=tipo%>)</a>  
-                         <%}}%>
+	
+         
             <div class="contenidoHeader">
                 <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>    
                 <nav>
                     <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
-                    <a href="modificarCliente.jsp?usuario=<%=usuario%>"><i class="fas fa-address-book"></i>Mi información</a>                    
+                    <a href="modificarCliente.jsp"><i class="fas fa-address-book"></i>Mi información</a>                    
                     <a href="sesionUsuarioCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt"></i>Cerrar sesion</a>
                 </nav>
             </div>   

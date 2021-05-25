@@ -85,7 +85,7 @@ public class LoginUsuarios extends HttpServlet {
         
         if (esAdmin == true){
             HttpSession misession = request.getSession(true);
-            request.getSession().setAttribute("tipo", "Administrador");
+            request.getSession().setAttribute("tipoUsuario", "Administrador");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()            

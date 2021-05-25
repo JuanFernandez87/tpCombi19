@@ -30,15 +30,13 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
 		
-        <div class="formulario-sesiones">
-            <form>
-	    <div class="divCierre">
-                <h3>Quiere eliminar al chofer <%=apellido %>?</h3>
-                <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 5px;" href="EliminarChofer?idChofer=<%= id %>">Aceptar</a>
-                <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 5px;" href="javascript:history.back()">Cancelar</a>
-            </div> 
-            </form>
-            </div>
+        <div style=" position: absolute;background: #fff;top:50%;left: 50%;margin-top: -100px;margin-left: -100px;padding:20px;font-family: inherit;font-size: 1rem;
+        color: #595959;text-align: center;padding: 70px; border: none;border-radius: 5px;">
+         
+                <h3>Quiere eliminar al chofer <%=apellido %>?</h3><br>
+                <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" href="EliminarChofer?idChofer=<%= id %>">Aceptar</a>
+                <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="javascript:history.back()">Cancelar</a>
+        </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
  

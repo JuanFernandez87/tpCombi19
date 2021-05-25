@@ -90,9 +90,10 @@ public class ModificarInsumo extends HttpServlet {
             boolean existe = control.verificarInsumo(nombre);
             if(!existe){
                 control.ModificarInsumo(idInsumo, nombre, precio, tipo);
-                response.sendRedirect ("listadoInsumo.jsp");    
+                response.sendRedirect ("popUpRegistroModificacionInsumo.jsp");     
             }else{
-                response.sendRedirect ("sesionAdmin.jsp");
+                response.sendRedirect ("popUpErrorNombreRepetidoInsumo.jsp?idInsumo=0");
+               
             }
         }
     }    
