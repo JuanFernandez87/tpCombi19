@@ -92,15 +92,14 @@ public class LoginUsuarios extends HttpServlet {
             response.sendRedirect ("sesionAdmin.jsp");            
         }else if(esChofer == true){
             HttpSession misession = request.getSession(true);
-            request.getSession().setAttribute("tipo", "Chofer");
+            request.getSession().setAttribute("tipoUsuario", "Chofer");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()
             response.sendRedirect ("sesionChofer.jsp");
         }else if(esCliente == true){
             HttpSession misession = request.getSession(true);
-            String tipo = "Cliente";
-            request.getSession().setAttribute("tipo", "Cliente");
+            request.getSession().setAttribute("tipoUsuario", "Cliente");
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()
