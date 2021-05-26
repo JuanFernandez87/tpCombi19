@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ModificarLugar.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/headerSesiones.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/LoginUsuarios.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdminChofer.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdmin.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/aside.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/header.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/headerSesionChofer.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/headerSesionUsuario.jsp</file>
             <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarLugar.jsp</file>
         </group>
     </open-files>
