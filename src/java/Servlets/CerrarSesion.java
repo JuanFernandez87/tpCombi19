@@ -75,7 +75,7 @@ public class CerrarSesion extends HttpServlet {
             String usuario = request.getParameter("username");
             request.getSession().setAttribute("username", usuario);            
             //session.invalidate();  
-            response.sendRedirect ("index.jsp");                     
+            //response.sendRedirect ("index.jsp");                     
     }
 
     /**

@@ -22,10 +22,11 @@
                 <nav>
                     <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
                     <a href=""><i class="fas fa-address-book"></i>Mi información</a>                    
-                    <a href="sesionAdminCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt"></i>Cerrar sesion</a>
+                    <a href="sesionAdminCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt" onclick="cerrarSesion().js"></i>Cerrar sesion</a>
                 </nav>
             </div>
-                   
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="js/cierreSesion.js"></script>
         </header>  
     <body>   
 </html>
