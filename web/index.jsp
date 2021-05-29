@@ -21,9 +21,11 @@
                 <i class="fas fa-map-marker-alt"></i><label> Origen</label>
                 <input class="controls" type="text" placeholder="Ingrese origen">
                 <i class="fas fa-calendar-alt"></i> <label>Partida</label>
-                <input class="controls" type="fecha" id="start" name="trip-start"
-                value="2020-07-22"
-                accept=""min="1960-01-01" max="2040-12-31">
+                <div class="fecha"> <br>
+                    <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
+                    <input class="controls2" type="number" name="mes" required id="mes" min="1" max="12" placeholder="Mes">
+                    <input class="controls2" type="number" name="anio" required id="anio" min="2021" max="2025" placeholder="Año">
+               </div><br>
               <div style="display: flex" >  
                 <input class="botons" type="submit" value="Buscar Pasajes" style="margin: 7px 20px;">
                 <input class="botons" href="login.jsp" type="submit" value="Iniciar sesión" style="margin: 7px 20px;">
