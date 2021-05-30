@@ -29,10 +29,14 @@
               <div style="display: flex" >  
                 <input class="botons" type="submit" value="Buscar Pasajes" style="margin: 7px 20px;">
                 <input class="botons" href="login.jsp" type="submit" value="Iniciar sesión" style="margin: 7px 20px;">
+              </div>  
             </form>
-            </div>
+           
         </div>
-            <div class="comentarios">
+            <div class="formularioCom">
+                <div class="formu">
+                    <h4 style="color: black">Comentarios</h4>
+                
                 <div class="comentario">
                     <h5><img src="./images/mesi.jpg" alt="">Ricardo Bertone</h5>
                     <p>Excelente servicio</p>   
@@ -42,12 +46,20 @@
                     <p>Muy recomendable</p>   
                 </div>
                 <div class="comentario">
-                    <h5><img src="./images/barba.jpg" alt="">Alejandro Fernandez(como el músico)</h5>
+                    <h5><img src="./images/barba.jpg" alt="">Alejandro Fernandez</h5>
                     <p>Los mejores!</p>  
-                </div>
-           
+                </div><br>
+                 
+             
+           <input class="botons" href="inde.jsp" type="submit" value="Dejanos un comentario" style="margin: 7px 20px;">
                
             </div>
+                 
+           </div>      
+        </div>
+       
+         
+         
             
         <footer>
             <%@include file="/template/footer.jsp"%>
