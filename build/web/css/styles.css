@@ -12,9 +12,37 @@ body{
 }
 
 .formulario{
+
     width: 40%;
     display: inline-block;
 }
+.formularioCom{
+
+    width: 40%;
+    display: inline-block;
+}
+
+.formularioCom input{
+    background: #1f53c5;
+    border: none;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    float: right;
+}
+.formu{
+   position: fixed;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 30px;
+    margin: auto;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    margin-left: 316px;
+  }
+
 
 header {
     margin-top: 0;
@@ -28,7 +56,7 @@ header {
 }
 
 .contenidoHeader {
-	margin-top: 0px;
+margin-top: 0px;
     height: 80px;
 }
 .contenidoHeader img {
@@ -81,22 +109,32 @@ header nav a:hover {
 .comentarios{
     
     width: 40px;
+    margin-top: 10px;
     min-width: 400px;
     display: inline-block;
-    padding: 10px;
-    
-	
-
-   
+    padding: 2px;
+    border: 1px solid white;
+    color:white;
+ 
+ 
        
-}
 
+}
+.comentarios h4{
+    background-color: none;
+ 
+}
 .comentario  {
-    width: 80%;
-    background-color: whitesmoke;
-    border-left: 2px solid #266aa7;
-    border-right:2px solid #266aa7;
-  
+    background-color: #24303c;
+    color:white;
+    border-radius: 15px;
+    border-bottom: 1px solid #1f53c5;
+    box-shadow: 3px 6px 16px #000;
+    margin-bottom: 10px;
+   
+}
+.comentario p{
+    text-align: center;
 }
 
 .comentario img{
@@ -142,7 +180,7 @@ a{
     background: none;
 }
 form{
-   
+   position: fixed;
     width: 400px;
     background: #24303c;
     padding: 30px;
@@ -151,7 +189,6 @@ form{
     font-family: 'calibri';
     color: white;
     box-shadow: 7px 13px 37px #000;
-   margin-top: -2px;
     margin-left: 316px;
   }
   .controls {
@@ -167,11 +204,11 @@ form{
   }
   
 h4 {
-    background: #24303c;
+    background:none;
     font-size: 18px;
     margin-bottom: 20px;
     color: white;
-  }
+ }
 
   .formulario{
       margin-top:200px;
