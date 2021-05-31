@@ -21,21 +21,28 @@
         <aside>
             <%@include file="/template/aside.jsp"%>
         </aside>
-        
+         <%
+                String email = (String)session.getAttribute("mail");
+                String nombre = (String)session.getAttribute("nombre");    
+                String apellido = (String)session.getAttribute("apellido");    
+                Integer dni = (Integer)session.getAttribute("dni");    
+                Integer telefono = (Integer)session.getAttribute("tel");
+            %>
+           
             <form action="RegistroChofer" class="formulario-sesiones" method="post">
 				<h4>Registrar chofer </h4>
                 <label>Nombre</label>
-                <input class="controls" type="text" name="nombre" required placeholder="Ingrese nombre">
+                <input class="controls" type="text" name="nombre" required placeholder="Ingrese nombre" value="<%=nombre%>">
                 <label>Apellido</label>
-                <input class="controls" type="text" name="apellido" required placeholder="Ingrese apellido">
+                <input class="controls" type="text" name="apellido" required placeholder="Ingrese apellido" value="<%=apellido%>">
                 <label>Dni</label>
-                <input class="controls" type="tel" name="dni" required placeholder="Ingrese Dni">
+                <input class="controls" type="tel" name="dni" required placeholder="Ingrese Dni" value="<%=dni%>">
                 <label>Mail</label>
-                <input class="controls" type="mail" name="mail" required placeholder="Ingrese mail">
+                <input class="controls" type="mail" name="mail" required placeholder="Ingrese mail" value="<%=email%>">
                 <label>Contraseña</label>
                 <input class="controls" type="password" name="pass" required placeholder="Ingrese contraseña">
                 <label>Telefono de contacto</label>
-                <input class="controls" type="tel" name="tel" required placeholder="Ingrese telefono">
+                <input class="controls" type="tel" name="tel" required placeholder="Ingrese telefono" value="<%=telefono%>">
                 <input class="botons" type="submit" value="Dar de alta ">
 
             </form>

@@ -1,3 +1,4 @@
+<%@page import="Logica.Chofer"%>
 <%@page import="Logica.Administrador"%>
 <%@page import="Logica.Controladora"%>
 <%@page import="java.util.List"%>
@@ -18,6 +19,26 @@
 	<div class= "contenedor-menu">
               <%
                 Controladora control = new Controladora();
+                String linkRegistro = "sesionAdminCombi.jsp";
+                int contador= 0;
+                
+                List <Chofer> listaChofer= control.devolverListaChoferes(); 
+                if (listaChofer.isEmpty()){
+                    linkRegistro = "#";
+                }else{
+                    for(Chofer chof:listaChofer){
+                        if (chof.getDni() == -1){
+                            contador = contador +1;
+                        }
+                    }
+                }
+                if (contador == listaChofer.size()){
+                    linkRegistro = "#";
+                }
+                String funcValidacion = "";
+                if (linkRegistro.equals("#")){
+                    funcValidacion = "func()";
+                }
                 String usuario = (String)session.getAttribute("username");
                 String tipoUsuario = (String)session.getAttribute("tipoUsuario");
                 List <Administrador> listaAdmin = control.devolverListaAdmin(); 
@@ -46,8 +67,8 @@
                         <!-- boton con menu para Combi.-->
                              <li ><a href="#"><i class="icono izquierda fas fa-shuttle-van" ></i>Administrar combis<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                         <li><a href="sesionAdminCombi.jsp">Registrar</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                            <li><a href="listadoCombi.jsp">Gestionar</a></li> <!--LINK PROVISORIO PARA VERIFICAR BAJAS-->
+                                    <li><a href=<%=linkRegistro%> id= "linkRegistroCombi" onclick="<%=funcValidacion%>"> Registrar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                    <li><a href="listadoCombi.jsp" >Gestionar</a></li> <!--LINK PROVISORIO PARA VERIFICAR BAJAS-->
 				</ul>
 
 			</li>
@@ -87,6 +108,21 @@
 				</ul>
 			</li>
 		</ul>
+                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                 <script> 
+                     function func(){
+                         swal.fire({
+                         text: "debe ingresar un chofer",
+                         title: "No hay choferes cargados!",
+                         icon: 'warning',
+                         showCancelButton: true,
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:false,
+                          footer:`<a class="btn btn-primary" href="sesionAdminChofer.jsp">Cargar un chofer</a>`
+                        });
+                     }  
+                     
+                 </script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
              <script src="../js/sesion.js"></script>
              

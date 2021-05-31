@@ -663,6 +663,30 @@ public class Controladora {
         return capacidad;
     }
 
+    public boolean verificarBajaLogica(String mail) {
+         List <Chofer> listaChoferes = controlPersis.getChoferes(); 
+         // se hacen dos for xq surgia el problema de que cuando el mail estaba cargado en  el sistema
+         // y tambien se encontraba con una version vieja de carga con baja logica, no se verificaba correctamente y cargaba los datos igual, aunque el mail este registrado sin baja logica.
+         // primer for: si el mail ingresado se encuentra en el sistema, y no tiene baja logica, devuelve false para mostrar correctamente mensaje de mail ya registrado.
+          for(Chofer chof:listaChoferes){
+              if (chof.getMail().equals(mail)){
+                  if(chof.getDni()!= -1){
+                    return false;
+                    }
+              }
+            
+        }// si el mail ingresado se encuentra en el sistema, pero con baja  logica el siguiente for devuelve true y carga el mail ingresado.
+                    for(Chofer chof:listaChoferes){
+              if (chof.getMail().equals(mail)){
+                  if(chof.getDni()== -1){
+                    return true;
+                    }
+              }
+            
+        }
+        return false;
+    }
+
 
 
 
