@@ -90,8 +90,15 @@ public class RegistroChofer extends HttpServlet {
             
         Controladora control = new Controladora();
         boolean existe = control.verificarChofer(mail); // devuelve si el mail ingresado ya se encuentra registrado.
-         if (existe){
-           response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
+        boolean bajaLogica = control.verificarBajaLogica(mail);
+         if (existe) {
+             if (!bajaLogica){ // si no fue eliminado, entonces el mail ingresado se encuentra en uso
+                 response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
+             }else{ // sino, el mail ingresado se encuentra en el sistema pero tiene baja logica.
+                 control.crearChofer(apellido, nombre, dni,  mail, contra, telefono);
+                response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
+             }
+           
         }   
         else{
             boolean cumpleTamañoMin = control.verificarContraseña(contra);

@@ -184,6 +184,7 @@ h4 {
 .formulario-sesiones{
     margin-top: 200px;
     display:grid;
+    margin-left: 800px;
 }
 
 form .boton{
