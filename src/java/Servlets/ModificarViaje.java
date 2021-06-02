@@ -5,7 +5,6 @@
  */
 package Servlets;
 
-import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class RegistroRuta extends HttpServlet {
+public class ModificarViaje extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +35,10 @@ public class RegistroRuta extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistroRuta</title>");            
+            out.println("<title>Servlet ModificarViaje</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroRuta at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ModificarViaje at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,28 +70,7 @@ public class RegistroRuta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String origen = request.getParameter("origen"); //Obtengo el nombre de usuario que se ingreso
-        String destino = request.getParameter("destino");//Obtengo la contraseña que ingresen el usuario
-        String patenteCombi = request.getParameter("combi");
-        int distancia = Integer.parseInt(request.getParameter("distancia"));
-        int hora = Integer.parseInt(request.getParameter("hora"));
-        int minutos = Integer.parseInt(request.getParameter("minutos"));
-        
-        request.getSession().setAttribute("origen", origen);
-        request.getSession().setAttribute("destino", destino);
-        request.getSession().setAttribute("patente", patenteCombi);
-        request.getSession().setAttribute("distancia", distancia);
-        request.getSession().setAttribute("hora", hora);
-        request.getSession().setAttribute("minutos", minutos);
-                
-        Controladora control = new Controladora();
-        if(!origen.equals(destino)){
-            control.crearRuta(origen, destino, patenteCombi, distancia, hora, minutos);
-            response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");
-        }else{
-            response.sendRedirect ("popUpErrorMismoOyD.jsp");
-            
-        }
+        processRequest(request, response);
     }
 
     /**

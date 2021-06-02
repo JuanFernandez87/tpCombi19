@@ -1,38 +1,42 @@
+<%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
+<%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
-<%@page import="Logica.Lugar"%>
-<%@page import="Logica.Lugar"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="icon" href="images/logoCombi19.png" type="image/png" />
-    <title>Combi 19</title>      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
+        <link rel="icon" href="images/logoCombi19.png" type="image/png" />
+        <title>Combi 19</title>
     <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="css/sesiones.css" >
 	 
     <link rel="stylesheet" type="css/fonts.css" href="">
 </head>
-   <header>
+<body>
+	  <header>
             <%@include file="/template/headerSesiones.jsp"%>
         </header>
-
 	<aside>
             <%@include file="/template/aside.jsp"%>
         </aside>
             <%
+                    int idViaje = Integer.parseInt(request.getParameter("idViaje"));
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares();
                     List <Ruta> listaRutas = control.devolverRutas();
+                    List <Viaje> listaViajes = control.devolverListaViajes();
+                    for (Viaje unViaje:listaViajes) { 
+                        if(unViaje.getIdViaje() == idViaje){ 
              %>         
 		
-             <form action="RegistroViaje" class="formulario-sesiones" method="post">
-				<h4>Registrar viaje </h4>
+             <form action="ModificarViaje?idViaje=<%=idViaje%>" class="formulario-sesiones" method="post">
+				<h4>Modificar viaje</h4>
                 <label>Ruta</label>
                 <select class="controls" name="idRuta" required>
                         <option>Seleccione una ruta</option>
@@ -62,22 +66,22 @@
                 <input class="controls" type="number" name="cantAsientos" required placeholder="0"-->  
                 <b for="start">Ingrese la fecha</b>
                 <div class="fecha">
-                    <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
-                    <input class="controls2" type="number" name="mes" required id="mes" min="1" max="12" placeholder="Mes">
-                    <input class="controls2" type="number" name="anio" required id="anio" min="2021" max="2025" placeholder="Año">
+                    <input class="controls2" type="number" name="dia" id="dia" min="1" max="31" value="<%=unViaje.getDia()%>">
+                    <input class="controls2" type="number" name="mes" id="mes" min="1" max="12" value="<%=unViaje.getMes()%>">
+                    <input class="controls2" type="number" name="anio" id="anio" min="2021" max="2025" value="<%=unViaje.getAnio()%>">
                 </div>
                 <label>Ingrese el precio</label>
-                <input class="controls" type="number" name="precio" required placeholder="0">                 
-                <input class="botons" type="submit" value="Cargar viaje">
+                <input class="controls" type="number" name="precio" value="<%=unViaje.getPrecio()%>">                 
+                <input class="botons" type="submit" value="Modificar viaje">
+            <%}}%>     
             </form>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
  
-</div>
 
         <footer>
             <%@include file="/template/footer.jsp"%>
-        </footer>
-    
+        </footer> 
 
+  </body>
 </html>

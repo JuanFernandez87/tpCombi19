@@ -57,7 +57,7 @@
        
         <table>
             <tr>
-                <td>Nombre</td> 
+                <td>Ciudad</td> 
                 <td>Provincia</td> 
                 <td></td>
                 <td></td>

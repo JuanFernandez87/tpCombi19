@@ -22,7 +22,6 @@
 	
         <%@include file="/template/aside.jsp"%>
 	        <%
-                    int i;
                     List <Chofer> listaChoferes = control.devolverListaChoferes(); 
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     int idCombi = Integer.parseInt(request.getParameter("idCombi"));
@@ -41,7 +40,7 @@
                 
                 <label>Chofer</label>
                 <select class="controls" name="id">
-                    <option value="<%=unaCombi.getUnChofer().getIdChofer()%>"><%=unaCombi.getUnChofer().getNombre()%> <%=unaCombi.getUnChofer().getApellido()%> <%=unaCombi.getUnChofer().getDni()%></option>
+                    <option value="<%=unaCombi.getUnChofer().getIdChofer()%>"><%=unaCombi.getUnChofer().getNombre()%> <%=unaCombi.getUnChofer().getApellido()%> - <%=unaCombi.getUnChofer().getDni()%></option>
                 <%
                    for (Chofer chof:listaChoferes) { 
                         if(chof.getIdCombi() == 0 && chof.getDni() >0){%>
