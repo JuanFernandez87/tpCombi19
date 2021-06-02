@@ -88,6 +88,14 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>Servlets.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarRuta</servlet-name>
+        <servlet-class>Servlets.ModificarRuta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarViaje</servlet-name>
+        <servlet-class>Servlets.ModificarViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -175,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarRuta</servlet-name>
+        <url-pattern>/ModificarRuta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarViaje</servlet-name>
+        <url-pattern>/ModificarViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

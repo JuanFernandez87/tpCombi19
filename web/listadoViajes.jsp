@@ -97,9 +97,9 @@
                                             if(lugar.getIdLugar() == ruta.getOrigen()){%>
                                                 <%=ruta.getDistancia()%><%}%><%}}}%></td>                      
                         <td><%= viaje.getCantAsientos()%></td>
-                        <td><%= viaje.getFecha()%></td>
+                        <td><%= viaje.getDia()%>/<%= viaje.getMes()%>/<%= viaje.getAnio()%></td>
                         <td><%= viaje.getPrecio()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=listaViajes.get(i).getIdViaje()%>">Eliminar</a></td>
 
                 </tr>

@@ -53,7 +53,7 @@
                                     -
                                   <%=combi.getCantAsientos()%><%}%><%}%> lugares 
                                     -
-                            <%=ruta.getHora()%> hs         
+                            <%=ruta.getHora()%>:<%=ruta.getMinutos()%> hs         
                         </option>               
                               
                  <%}}%> 

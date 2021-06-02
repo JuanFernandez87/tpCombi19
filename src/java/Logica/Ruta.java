@@ -14,9 +14,10 @@ public class Ruta implements Serializable {
     int idRuta;
     
     @Basic
-    String hora;
-    double distancia;
-    
+    int hora;
+    int minutos;
+    int distancia;
+        
     int origen;    
     int destino;
     int idCombi;
@@ -24,11 +25,12 @@ public class Ruta implements Serializable {
     public Ruta() {
     }
 
-    public Ruta(int idRuta, int origen, int destino, String hora, int idCombi, double distancia) {
+    public Ruta(int idRuta, int origen, int destino, int hora, int minutos, int idCombi, int distancia) {
         this.idRuta = idRuta;
         this.origen = origen;
         this.destino = destino;
         this.hora = hora;
+        this.minutos = minutos;
         this.distancia = distancia;
         this.idCombi = idCombi;
     }
@@ -65,19 +67,27 @@ public class Ruta implements Serializable {
         this.idCombi = idCombi;
     }
 
-    public String getHora() {
+    public int getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(int hora) {
         this.hora = hora;
     }
 
-    public double getDistancia() {
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public void setMinutos(int minutos) {
+        this.minutos = minutos;
+    }  
+
+    public int getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(double distancia) {
+    public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
 

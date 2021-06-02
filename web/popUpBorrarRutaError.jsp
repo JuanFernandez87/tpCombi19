@@ -36,8 +36,7 @@
  
       <%
             int pag=1;
-            
-            Controladora control = new Controladora();
+
             List <Ruta> listaRutas = control.devolverRutas(); 
             int maxPag = (control.devolverRutas().size()/10)+1; 
             int i = 0; 

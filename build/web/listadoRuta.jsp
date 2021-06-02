@@ -60,8 +60,8 @@
             <h1>Lista rutas</h1>
         <table>
             <tr>
-                <td>Destino</td> 
                 <td>Origen</td> 
+                <td>Destino</td> 
                 <td>Distacia</td>
                 <td>Combi</td>
                 <td>Hora</td>
@@ -70,25 +70,24 @@
                 
             </tr>
                <%
-                   
-                   for (Ruta ruta:listaRutas) {
-                       if (ruta.getDistancia() > 0){
+           
+                   for (  i=regMin ; i < regMax ; ++i) {
+                       if (listaRutas.get(i).getDistancia() > 0){
                    %>
                 <tr>
-                    
-                        <td><%for (Lugar lugar:listaDestino){
-                                if(lugar.getIdLugar() == ruta.getDestino()){%>
-                                  <%=lugar.getNombre()%><%}%><%}%></td>
                         <td><%for (Lugar lugar:listaOrigen){
-                                if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                if(lugar.getIdLugar() == listaRutas.get(i).getOrigen()){%>
+                                  <%=lugar.getNombre()%><%}%><%}%></td>                
+                        <td><%for (Lugar lugar:listaDestino){
+                                if(lugar.getIdLugar() == listaRutas.get(i).getDestino()){%>
                                   <%=lugar.getNombre()%><%}%><%}%></td>
-                        <td><%= ruta.getDistancia()%></td>
+                        <td><%= listaRutas.get(i).getDistancia()%></td>
                         <td><%for (Combi combi:listaCombis){
-                                if(combi.getIdCombi() == ruta.getIdCombi()){%>
+                                if(combi.getIdCombi() == listaRutas.get(i).getIdCombi()){%>
                                   <%=combi.getPatente()%><%}%><%}%></td>                        
-                        <td><%= ruta.getHora()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarRuta?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
-                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?Ruta=<%=listaRutas.get(i).getDestino()%>&id=<%=listaRutas.get(i).getIdRuta()%>">Eliminar</a></td>
+                        <td><%= listaRutas.get(i).getHora()%>:<%= listaRutas.get(i).getMinutos()%></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
+                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>&idDestino=<%=listaRutas.get(i).getDestino()%>">Eliminar</a></td>
 
                 </tr>
                  

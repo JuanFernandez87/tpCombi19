@@ -35,7 +35,7 @@ public class EliminarRuta extends HttpServlet {
             request.getSession().setAttribute("idRuta", idRuta);
             Controladora control = new Controladora();
             boolean libre = false;
-            libre = control.chequearRutaLibre(idRuta);
+            libre = control.chequearRutaLibre(idRuta); //devuelve si la ruta no tiene viajes
             if(libre){
                 response.sendRedirect ("popUpBorrarRutaError.jsp");
             }else{

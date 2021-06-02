@@ -230,7 +230,7 @@ public class Controladora {
         return listaAdmin;
     }    
     
-    public void crearRuta(String origen, String destino, String patenteCombi, int distancia, String horario) {
+    public void crearRuta(String origen, String destino, String patenteCombi, int distancia, int hora, int minutos) {
         Ruta unaRuta = new Ruta();
         int idOrigen = 0;
         int idDestino = 0;
@@ -255,7 +255,8 @@ public class Controladora {
                 unaCombi = combis.getIdCombi();
             }
         }    
-        unaRuta.setHora(horario);
+        unaRuta.setHora(hora);
+        unaRuta.setMinutos(minutos);
         unaRuta.setOrigen(idOrigen);
         unaRuta.setDestino(idDestino);
         unaRuta.setIdCombi(unaCombi);
@@ -263,12 +264,12 @@ public class Controladora {
         controlPersis.crearRuta(unaRuta);
     }
 
-    public boolean verificarViaje(int idRuta, String fecha) {
+    public boolean verificarViaje(int idRuta, int dia, int mes, int anio) {
         boolean aux = false;
         List <Viaje> listaViajes = new ArrayList <Viaje>();
         listaViajes = controlPersis.getViaje();
         for(Viaje unViaje:listaViajes){
-            if((unViaje.getIdRuta() == idRuta) && (unViaje.getFecha().equals(fecha))){
+            if((unViaje.getIdRuta() == idRuta) && (unViaje.getDia() == dia) && (unViaje.getMes() == mes) && (unViaje.getAnio() == anio)){
                 aux = true;
             }
         } 
@@ -300,11 +301,13 @@ public class Controladora {
         return aux;
     }    
 
-    public void crearViaje(int idRuta, int cantAsientos, String fechaViaje, int precio) {
+    public void crearViaje(int idRuta, int cantAsientos, int dia, int mes, int anio, int precio) {
         Viaje nuevoViaje = new Viaje();
         nuevoViaje.setIdRuta(idRuta);
         nuevoViaje.setCantAsientos(cantAsientos);
-        nuevoViaje.setFecha(fechaViaje);
+        nuevoViaje.setDia(dia);
+        nuevoViaje.setMes(mes);
+        nuevoViaje.setAnio(anio);
         /*Date date1;   
         try {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaViaje);
@@ -563,9 +566,25 @@ public class Controladora {
                 controlPersis.asignarCliente(unCliente);
             }
         }         
-    }    
-
-    public void modificarCombi(int idCombi, String patente, String modelo, int capacidad, String tipoServicio) {
+    } 
+    
+    public void modificarRuta(int idRuta, int idOrigen, int idDestino, int idCombi, int distancia, int hora, int minutos) {
+        List <Ruta> listaRuta = controlPersis.getRutas();
+        for (Ruta unaRuta:listaRuta){
+            if(unaRuta.getIdRuta() == idRuta){
+                 unaRuta.setOrigen(idOrigen);
+                 unaRuta.setDestino(idDestino);
+                 unaRuta.setDistancia(distancia);
+                 unaRuta.setHora(hora);
+                 unaRuta.setMinutos(minutos);
+                 unaRuta.setIdCombi(idCombi);
+                 controlPersis.asignarRuta(unaRuta);
+            }
+        }
+        
+    }
+   
+    public void modificarCombi(int idCombi, String patente, String modelo, int capacidad, String tipoServicio, int idChofer) {
         List <Combi> listaCombis = controlPersis.getCombi();
         for (Combi unaCombi:listaCombis) { 
             if(unaCombi.getIdCombi() == idCombi){ 
@@ -573,6 +592,17 @@ public class Controladora {
                 unaCombi.setModelo(modelo);
                 unaCombi.setCantAsientos(capacidad);
                 unaCombi.setTipoServicio(tipoServicio);
+            if(unaCombi.getUnChofer().getIdChofer() != idChofer){
+                desasignarChofer(unaCombi.getIdCombi());
+                List <Chofer> listaChoferes = controlPersis.getChoferes();
+                for (Chofer unChofer:listaChoferes) { 
+                    if(unChofer.getIdChofer() == idChofer){
+                        unChofer.setIdCombi(unaCombi.getIdCombi());
+                        controlPersis.asignarChofer(unChofer);
+                        unaCombi.setUnChofer(unChofer);
+                    }
+                }
+            }    
                 controlPersis.asignarCombi(unaCombi);
             }
         } 
@@ -687,9 +717,18 @@ public class Controladora {
         return false;
     }
 
+ 
 
+    public boolean verificarViaje(int idRuta) {
+        boolean aux = false;
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;        
+        }
+    }
 
-
-
-
- }

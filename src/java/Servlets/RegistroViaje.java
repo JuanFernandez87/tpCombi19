@@ -74,9 +74,9 @@ public class RegistroViaje extends HttpServlet {
         
         int idRuta = Integer.parseInt(request.getParameter("idRuta")); 
         //int cantAsientos = Integer.parseInt(request.getParameter("cantAsientos"));
-        String dia = request.getParameter("dia");
-        String mes = request.getParameter("mes");
-        String anio = request.getParameter("anio");        
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        int mes = Integer.parseInt(request.getParameter("mes"));
+        int anio = Integer.parseInt(request.getParameter("anio"));
         int precio = Integer.parseInt(request.getParameter("precio"));
 
         request.getSession().setAttribute("idRuta", idRuta);
@@ -84,12 +84,12 @@ public class RegistroViaje extends HttpServlet {
         request.getSession().setAttribute("dia", dia );
         request.getSession().setAttribute("mes", mes );
         request.getSession().setAttribute("anio", anio );
-        String fechaViaje = dia + "/" + mes + "/" + anio;        
+        //String fechaViaje = dia + "/" + mes + "/" + anio;        
         request.getSession().setAttribute("precio", precio);
   
         Controladora control = new Controladora();
         boolean existe = false;
-        existe = control.verificarViaje(idRuta, fechaViaje);
+        existe = control.verificarViaje(idRuta, dia, mes, anio);
         
         //boolean hayLugar;
         //hayLugar = control.verificarAsientos(cantAsientos, idRuta);
@@ -98,7 +98,7 @@ public class RegistroViaje extends HttpServlet {
         
         
         if (!existe){
-            control.crearViaje(idRuta, cantAsientos, fechaViaje, precio);
+            control.crearViaje(idRuta, cantAsientos, dia, mes, anio, precio);
             response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");
             /*}else{
                 response.sendRedirect ("popUpErrorNoHayLugar.jsp");

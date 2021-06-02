@@ -86,14 +86,15 @@ public class ModificarCombi extends HttpServlet {
         request.getSession().setAttribute("servicio", tipoServicio);
             
         Controladora control = new Controladora();
-        boolean modificarPantente = control.verificarPatente(idCombi, patente);
+        boolean modificarPantente = control.verificarPatente(idCombi, patente); //si el admin modifica la patente aca controlamos que no este cargada en el sistema
+        
         if(modificarPantente){
-            control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio);
+            control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio, idChofer); //si esta todo ok se modifica la informacion
             response.sendRedirect ("listadoCombi.jsp");
             }else{
-            boolean existe = control.verificarCombi(patente);
+            boolean existe = control.verificarCombi(patente); //verificamos que la combi exista
             if (existe == false){
-                control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio);
+                control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio, idChofer);
                 response.sendRedirect ("listadoCombi.jsp");
             }else{
                 response.sendRedirect ("popUpErrorPatenteRepetidaCombi.jsp");

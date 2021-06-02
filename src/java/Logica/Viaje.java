@@ -21,7 +21,9 @@ public class Viaje implements Serializable {
     int cantAsientos;
     double precio;
     int idRuta;
-    String fecha;
+    int dia;
+    int mes;
+    int anio;
 
     /*@OneToOne
     Insumo unInsumo;
@@ -35,11 +37,13 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int idRuta, int cantAsientos, String fecha, double precio) {
+    public Viaje(int idViaje, int idRuta, int cantAsientos, int dia, int mes, int anio, double precio) {
         this.idViaje = idViaje;
         this.idRuta = idRuta;
         this.cantAsientos = cantAsientos;
-        this.fecha = fecha;
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
         this.precio = precio;
     }
     
@@ -67,12 +71,28 @@ public class Viaje implements Serializable {
         this.cantAsientos = cantAsientos;
     }
 
-    public String getFecha() {
-        return fecha;
+    public int getDia() {
+        return dia;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 
     public double getPrecio() {

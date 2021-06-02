@@ -54,8 +54,6 @@
                               
                  <%}%> 
                 </select> 
-                <label>Cantidad asientos</label>
-                <input class="controls" type="number" name="cantAsientos" required placeholder="0">  
                 <b for="start">Ingrese la fecha</b>
                 <div class="fecha">
                     <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
