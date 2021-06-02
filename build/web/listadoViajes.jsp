@@ -63,8 +63,8 @@
             <h1>Lista viajes</h1>
         <table>
             <tr>
-                <td>Destino</td> 
                 <td>Origen</td> 
+                <td>Destino</td> 
                 <td>Distancia</td> 
                 <td>Asientos disponibles</td> 
                 <td>Fecha</td> 
@@ -74,37 +74,41 @@
                 <td></td>
                 
             </tr>
-               <%
-                   
-                   for (Viaje viaje:listaViajes) {
-                       if (viaje.getIdRuta() > 0){
-                   %>
+                <%for (Viaje viaje:listaViajes) {
+                    if (viaje.getIdRuta() > 0){%>
+                        <%for (Ruta ruta:listaRutas) {
+                            if (ruta.getDistancia() > 0){%>
                 <tr>
-                    
-                        <td><%for (Ruta ruta:listaRutas) {
-                                    if (ruta.getDistancia() > 0){
-                                        for (Lugar lugar:listaDestino){
-                                            if(lugar.getIdLugar() == ruta.getDestino()){%>
-                                                <%=lugar.getNombre()%><%}%><%}}}%></td>
-                        <td><%for (Ruta ruta:listaRutas) {
-                                    if (ruta.getDistancia() > 0){
-                                        for (Lugar lugar:listaOrigen){
-                                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
-                                                <%=lugar.getNombre()%><%}%><%}}}%></td>
-                        <td><%for (Ruta ruta:listaRutas) {
-                                    if (ruta.getDistancia() > 0){
-                                        for (Lugar lugar:listaOrigen){
-                                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
-                                                <%=ruta.getDistancia()%><%}%><%}}}%></td>                      
+                        <!--Muestra el origen-->
+                        <%for (Lugar lugar:listaOrigen){
+                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                <td><%=lugar.getNombre()%></td>
+                        <%}}%> 
+                        
+                        <!--Muestra el destino-->
+                        <%for (Lugar lugar:listaDestino){
+                            if(lugar.getIdLugar() == ruta.getDestino()){%>
+                                <td><%=lugar.getNombre()%></td>
+                        <%}}%>
+                        
+                       
+                        
+                        <!--Muestra la distancia en km-->
+                        <%for (Lugar lugar:listaOrigen){
+                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                <td><%=ruta.getDistancia()%></td> 
+                        <%}}%>        
+                        
                         <td><%= viaje.getCantAsientos()%></td>
                         <td><%= viaje.getDia()%>/<%= viaje.getMes()%>/<%= viaje.getAnio()%></td>
                         <td><%= viaje.getPrecio()%></td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=listaViajes.get(i).getIdViaje()%>">Eliminar</a></td>
-
+  
                 </tr>
-                 
-           <%}}%>  
+                    <%}}%>  
+                <%}}%>                 
+
     
         </table>
            <br>
