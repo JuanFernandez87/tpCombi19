@@ -21,35 +21,35 @@
         <aside>
             <%@include file="/template/aside.jsp"%>
         </aside>
-         <%
-                String email = (String)session.getAttribute("mail");
-                String nombre = (String)session.getAttribute("nombre");    
-                String apellido = (String)session.getAttribute("apellido");    
-                Integer dni = (Integer)session.getAttribute("dni");    
-                Integer telefono = (Integer)session.getAttribute("tel");
-            %>
-           
-            <form action="RegistroChofer" class="formulario-sesiones" method="post">
-				<h4>Registrar chofer </h4>
+        <%
+            List <Chofer> listaChoferes = control.devolverListaChoferes(); 
+            Integer idChofer = (Integer)session.getAttribute("idChofer");
+            
+            for (Chofer unChofer:listaChoferes) { 
+                if(unChofer.getIdChofer() == idChofer) {%>
+        
+                <form action="ModificarChofer?idChofer=<%=unChofer.getIdChofer()%>" class="formulario-sesiones" method="post">
+				<h4>Modificar chofer </h4>
                 <label>Nombre</label>
-                <input class="controls" type="text" name="nombre" required placeholder="Ingrese nombre" value="<%=nombre%>">
+                <input class="controls" type="text" name="nombre" value="<%=unChofer.getNombre()%>">
                 <label>Apellido</label>
-                <input class="controls" type="text" name="apellido" required placeholder="Ingrese apellido" value="<%=apellido%>">
+                <input class="controls" type="text" name="apellido" value="<%=unChofer.getApellido()%>">
                 <label>Dni</label>
-                <input class="controls" type="tel" name="dni" required placeholder="Ingrese Dni" value="<%=dni%>">
+                <input class="controls" type="tel" name="dni" value="<%=unChofer.getDni()%>">
                 <label>Mail</label>
-                <input class="controls" type="mail" name="mail" required placeholder="Ingrese mail" value="<%=email%>">
+                <input class="controls" type="mail" name="mail" value="<%=unChofer.getMail()%>">
                 <label>Contraseña</label>
-                <input class="controls" type="password" name="pass" required placeholder="Ingrese contraseña">
+                <input class="controls" type="mail" name="pass" value="<%=unChofer.getContra()%>">                
                 <label>Telefono de contacto</label>
-                <input class="controls" type="tel" name="tel" required placeholder="Ingrese telefono" value="<%=telefono%>">
-                <input class="botons" type="submit" value="Dar de alta ">
-
+                <input class="controls" type="tel" name="tel" value="<%=unChofer.getTelefono()%>">
+                <input class="botons" type="submit" value="Modificar">
+        
+        <%}}%>
             </form>
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="js/sweetAlertMail.js"></script>
 
         <footer>
@@ -59,3 +59,5 @@
     </body>
    
 </html>
+
+   
