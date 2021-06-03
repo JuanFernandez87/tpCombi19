@@ -186,7 +186,7 @@ a{
     background: none;
 }
 form{
-   position: fixed;
+  
     width: 400px;
     background: #24303c;
     padding: 30px;
@@ -195,7 +195,7 @@ form{
     font-family: 'calibri';
     color: white;
     box-shadow: 7px 13px 37px #000;
-    margin-left: 316px;
+
   }
   .controls {
     width: 100%;

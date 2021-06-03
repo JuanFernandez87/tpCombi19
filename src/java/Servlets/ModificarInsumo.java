@@ -93,7 +93,7 @@ public class ModificarInsumo extends HttpServlet {
                 response.sendRedirect ("popUpRegistroModificacionInsumo.jsp");     
             }else{
                 response.sendRedirect ("popUpErrorNombreRepetidoInsumo.jsp?idInsumo=0");
-               
+                
             }
         }
     }    
