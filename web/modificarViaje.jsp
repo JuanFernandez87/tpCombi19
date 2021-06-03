@@ -39,7 +39,28 @@
 				<h4>Modificar viaje</h4>
                 <label>Ruta</label>
                 <select class="controls" name="idRuta" required>
-                        <option>Seleccione una ruta</option>
+                <%for (Ruta ruta: listaRutas) {
+                        if ((ruta.getDistancia() > 0) && (unViaje.getIdRuta() == ruta.getIdRuta())){%>                        
+                        <option value="<%=ruta.getIdRuta()%>">
+                            <%for (Lugar lugar:listaOrigen){
+                                if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                  <%=lugar.getNombre()%><%}%><%}%>
+                                    -
+                            <%for (Lugar lugar2:listaDestino){
+                                if(lugar2.getIdLugar() == ruta.getDestino()){%>
+                                  <%=lugar2.getNombre()%><%}%><%}%>
+                                    -
+                            <%for (Combi combi:listaCombis){
+                                if(combi.getIdCombi() == ruta.getIdCombi()){%>
+                                  <%=combi.getPatente()%>                                  
+                                    -
+                                  <%=combi.getCantAsientos()%><%}%><%}%> lugares 
+                                    -
+                            <%=ruta.getHora()%>:<%=ruta.getMinutos()%> hs         
+                        </option>               
+                              
+                 <%}}%>                  
+                        
                 <%for (Ruta ruta: listaRutas) {
                         if (ruta.getDistancia() > 0){%>                        
                         <option value="<%=ruta.getIdRuta()%>">
