@@ -263,6 +263,8 @@ public class Controladora {
         unaRuta.setDistancia(distancia); 
         controlPersis.crearRuta(unaRuta);
     }
+    
+
 
     public boolean verificarViaje(int idRuta, int dia, int mes, int anio) {
         boolean aux = false;
@@ -318,7 +320,7 @@ public class Controladora {
         nuevoViaje.setPrecio(precio);
         controlPersis.crearViaje(nuevoViaje);
     }
-
+   
     public void eliminarChofer(int idChofer) {
         List <Chofer> listaChoferes = new ArrayList <Chofer>();
         listaChoferes = controlPersis.getChoferes(); 
@@ -493,7 +495,17 @@ public class Controladora {
             }
         }   
     }    */
-
+    public int idCliente(String mail) {
+        int idCliente = 0;
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for (Cliente cli:listaClientes){    
+            if(cli.getMail().equals(mail)){
+                idCliente = cli.getIdCliente();
+            }
+        }    
+        return idCliente;    
+    }
+    
     public boolean verificarUsuario(String mail) {
         List <Cliente> listaClientes = controlPersis.getClientes();
         boolean aux= false;
@@ -583,6 +595,21 @@ public class Controladora {
         }
         
     }
+    
+    public void modificarViaje(int idViaje, int idRuta, int cantAsientos, int dia, int mes, int anio, int precio) {
+        List <Viaje> listaViaje = controlPersis.getViaje();
+        for (Viaje unViaje:listaViaje){
+            if(unViaje.getIdViaje() == idViaje){
+                unViaje.setIdRuta(idRuta);
+                unViaje.setCantAsientos(cantAsientos);
+                unViaje.setDia(dia);
+                unViaje.setMes(mes);
+                unViaje.setAnio(anio);
+                unViaje.setPrecio(precio);
+                controlPersis.asignarViaje(unViaje);    
+            }
+        }    
+    }        
    
     public void modificarCombi(int idCombi, String patente, String modelo, int capacidad, String tipoServicio, int idChofer) {
         List <Combi> listaCombis = controlPersis.getCombi();
@@ -730,5 +757,8 @@ public class Controladora {
         }
         return aux;        
         }
+
+
+
     }
 

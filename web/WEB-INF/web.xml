@@ -96,6 +96,10 @@
         <servlet-name>ModificarViaje</servlet-name>
         <servlet-class>Servlets.ModificarViaje</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroTarjeta</servlet-name>
+        <servlet-class>Servlets.RegistroTarjeta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>ModificarViaje</servlet-name>
         <url-pattern>/ModificarViaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroTarjeta</servlet-name>
+        <url-pattern>/RegistroTarjeta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

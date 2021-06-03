@@ -125,6 +125,8 @@ public class RegistroCliente extends HttpServlet {
            else{
                control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
                if(tipoPlan.equals("Gold")){
+                int idCliente = control.idCliente(mail); 
+                request.getSession().setAttribute("idCliente", idCliente);
                 response.sendRedirect ("registroDeTarjeta.jsp");
                 }
                else{

@@ -19,7 +19,7 @@ public class Viaje implements Serializable {
     
     @Basic
     int cantAsientos;
-    double precio;
+    int precio;
     int idRuta;
     int dia;
     int mes;
@@ -37,7 +37,7 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int idRuta, int cantAsientos, int dia, int mes, int anio, double precio) {
+    public Viaje(int idViaje, int idRuta, int cantAsientos, int dia, int mes, int anio, int precio) {
         this.idViaje = idViaje;
         this.idRuta = idRuta;
         this.cantAsientos = cantAsientos;
@@ -95,11 +95,11 @@ public class Viaje implements Serializable {
         this.anio = anio;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

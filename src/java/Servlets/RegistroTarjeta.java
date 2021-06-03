@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class ModificarViaje extends HttpServlet {
+public class RegistroTarjeta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class ModificarViaje extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ModificarViaje</title>");            
+            out.println("<title>Servlet RegistroTarjeta</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ModificarViaje at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegistroTarjeta at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,32 +71,30 @@ public class ModificarViaje extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idViaje = Integer.parseInt(request.getParameter("idViaje"));
-        int idRuta = Integer.parseInt(request.getParameter("idRuta")); 
-        int dia = Integer.parseInt(request.getParameter("dia"));
-        int mes = Integer.parseInt(request.getParameter("mes"));
-        int anio = Integer.parseInt(request.getParameter("anio"));
-        int precio = Integer.parseInt(request.getParameter("precio"));
-
-        request.getSession().setAttribute("idViaje", idViaje);      
-        request.getSession().setAttribute("idRuta", idRuta);      
-        request.getSession().setAttribute("dia", dia );
-        request.getSession().setAttribute("mes", mes );
-        request.getSession().setAttribute("anio", anio );    
-        request.getSession().setAttribute("precio", precio);
-  
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        int num1 = Integer.parseInt(request.getParameter("num1"));
+        int num2 = Integer.parseInt(request.getParameter("num2"));
+        int num3 = Integer.parseInt(request.getParameter("num3"));
+        int num4 = Integer.parseInt(request.getParameter("num4"));
+        String nombreTarjeta = request.getParameter("nombreTarjeta");
+        int mesVenc = Integer.parseInt(request.getParameter("mes"));
+        int anioVenc = Integer.parseInt(request.getParameter("anio"));
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        
+        request.getSession().setAttribute("idCliente", idCliente);
+        request.getSession().setAttribute("num1", num1);
+        request.getSession().setAttribute("num2", num2);
+        request.getSession().setAttribute("num3", num3);
+        request.getSession().setAttribute("num4", num4);
+        
+        request.getSession().setAttribute("nombreTarjeta", nombreTarjeta);
+        String fechaVenc = mesVenc + "/" + anioVenc;
+        request.getSession().setAttribute("fechaVenc", fechaVenc);
+        request.getSession().setAttribute("codigo", codigo);
+        
         Controladora control = new Controladora();
-        boolean existe = false;
-        //existe = control.verificarViaje(idRuta, dia, mes, anio); //chequea que el viaje no exista
+
         
-        int cantAsientos = control.capacidadCombi(idRuta);
-        
-        if (!existe){
-            control.modificarViaje(idViaje, idRuta, cantAsientos, dia, mes, anio, precio);
-            response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");        
-        }else{
-            response.sendRedirect ("popUpErrorViajeRepetido.jsp");
-        }
     }
 
     /**
