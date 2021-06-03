@@ -3,6 +3,7 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
+
 <%@page import="Logica.Insumo"%>
 <%@page import="Logica.Combi"%>
 <%@page import="Logica.Chofer"%>
@@ -11,115 +12,65 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
          
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" href="images/logoCombi19.png" type="image/png" />
-        <title>Combi 19</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
-        <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/sesiones.css" >
-        <link rel="stylesheet" type="css/fonts.css" href="">
-        <link rel="stylesheet" href="css/lista.css">
-    </head>
-    
-    <body>
+<html lang="en">
+  <head>
+    <link rel="icon" href="images/logoCombi19.png" type="image/png" />
+    <title>Combi 19</title>      
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
+    <title> Menu lateral </title> 
+    <script src="https://kit.fontawesome.com/a23516ec0a.js" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="css/sesiones.css" >
+	 
+    <link rel="stylesheet" type="css/fonts.css" href="">
+</head>
+<body>
+        <header>
             <%@include file="/template/headerSesiones.jsp"%>
-    
+        </header>
+	
+        <aside>
             <%@include file="/template/aside.jsp"%>
-       
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="js/sesion.js"></script>
-
- 
-      <%
-            int pag=1;
-
+        </aside>
+        <%
             List <Insumo> listaInsumos = control.devolverListaInsumos(); 
-            int maxPag = (control.devolverListaInsumos().size()/10)+1; 
-            int i = 0; 
-            if (request.getParameter("pg") != null) {
-                   pag = Integer.valueOf(request.getParameter("pg"));
-               } 
-            int regMin = (pag - 1) * 10;
+            Integer idInsumo = (Integer)session.getAttribute("idInsumo");
+            int IntValue;
             
-            int regMax = pag * 10;
-            
-            if(pag==maxPag){
-                regMax=regMin+control.devolverListaInsumos().size()%10;
-            }
-          
-        %> 
-      
-        <div class="cajaListado">
-            <h1>Lista insumos</h1>
+            for (Insumo ins:listaInsumos) { 
+                if(ins.getIdInsumo() == idInsumo) {%>
         
-        <table>
-            <tr>
-                <td>Nombre</td> 
-                <td>Tipo</td> 
-                <td>Precio</td> 
-                <td></td>
-                <td></td>
-            </tr>
-               <%
-                   
-                   for (  i=regMin ; i < regMax ; ++i) {
-                       if (listaInsumos.get(i).getPrecio() > 0){
-                   %>
-                <tr>
-            
-                        <td><%= listaInsumos.get(i).getNombre() %></td>
-                        <td><%= listaInsumos.get(i).getTipo() %></td>
-                        <td><%= listaInsumos.get(i).getPrecio() %></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarInsumo.jsp?idInsumo=<%=listaInsumos.get(i).getIdInsumo()%>" >Modificar</a> </td>
-                       <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarInsumo.jsp?Insumo=<%=listaInsumos.get(i).getNombre()%>&id=<%=listaInsumos.get(i).getIdInsumo()%>">Eliminar</a></td>
-                       
-
-                </tr>
-                 
-           <%}}%>  
-    
-        </table>
-           <br>
-                <%
-                    if (maxPag >= 1) {
-             
-                        if(pag!=1){%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=pag - 1%>">&lt;</a></li>
-                        <%}%>
-                        <%
-                            for ( i = 0; i < maxPag; i++) {
-                                if(i+1==pag){
-                        %>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><span><%=i+1%></span></li>
-                        <%  }
-                            else{%>
-                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
-                        <%}}
-                        
-                        if(pag!=maxPag){%>
-                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoInsumo.jsp?pg=<%=pag + 1%>">&gt;</a></li>
-                <%}}
-                    else {%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;" class="active"><span>1</span></li>
-                <%}
-                %>
-                       <br>
-           <br>
-            
-        </div>
-                       
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/sesion.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                <form action="ModificarInsumo?idInsumo=<%=ins.getIdInsumo()%>" class="formulario-sesiones" method="post">
+				
+                <h4>Modificar insumo</h4>    
+                    
+                <label>Nombre</label>
+                    <input class="controls" type="text" name="nombre" value="<%=ins.getNombre()%>">
+               
+                <label>Tipo</label>
+                     <select class="controls" name="tipo">
+                         <option><%=ins.getTipo()%></option>
+                         <option>Dulce</option>
+                         <option>Salado</option>
+                     </select>                    
+                
+                <label>Precio</label>
+                    <input class="controls" type="number" name="precio" value="<%=IntValue = (int) ins.getPrecio()%>">                
+                
+                <%}}%>
+ 
+                <input class="botons" type="submit" value="Modificar">
+            </form>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/sesion.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="js/sweetAlertNombre.js"></script>
-        
+ 
+</div>
+
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
 
-
-    </body>
+  </body>
 </html>
