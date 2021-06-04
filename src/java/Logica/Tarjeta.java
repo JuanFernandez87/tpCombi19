@@ -13,22 +13,30 @@ public class Tarjeta implements Serializable {
     int idTarjeta;
     
     @Basic
-    String entidad;
     int numero;
     String vencimiento;
+    String nombre;
     int CCV;
 
     public Tarjeta() {
     }
 
-    public Tarjeta(int idTarjeta, String entidad, int numero, String vencimiento, int CCV) {
+    public Tarjeta(int idTarjeta, int numero, String nombre, String vencimiento, int CCV) {
         this.idTarjeta = idTarjeta;
-        this.entidad = entidad;
         this.numero = numero;
+        this.nombre = nombre;
         this.vencimiento = vencimiento;
         this.CCV = CCV;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }   
+    
     public String getVencimiento() {
         return vencimiento;
     }
@@ -45,8 +53,6 @@ public class Tarjeta implements Serializable {
         this.CCV = CCV;
     }
 
-    
-    
     public int getIdTarjeta() {
         return idTarjeta;
     }
@@ -61,17 +67,6 @@ public class Tarjeta implements Serializable {
 
     public void setNumero(int numero) {
         this.numero = numero;
-    }
-
-    public String getEntidad() {
-        return entidad;
-    }
-
-    public void setEntidad(String entidad) {
-        this.entidad = entidad;
-    }
-  
-
-    
+    }   
     
 }

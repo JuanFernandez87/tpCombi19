@@ -106,6 +106,14 @@ public class ControladoraPersistencia {
         insumoJpa.create(nuevoInsumo);
     }    
     
+    public void crearRuta(Ruta nuevaRuta) {
+        rutaJpa.create(nuevaRuta);
+    }
+
+    public void crearTarjeta(Tarjeta nuevaTarjeta) {
+        tarjetaJpa.create(nuevaTarjeta);  
+    }     
+    
     public List<Administrador> getAdmin() {
         return adminJpa.findAdministradorEntities();
     }
@@ -130,10 +138,10 @@ public class ControladoraPersistencia {
         return insumoJpa.findInsumoEntities();
     }
 
-    public void crearRuta(Ruta nuevaRuta) {
-        rutaJpa.create(nuevaRuta);
-    }
-
+    public List<Tarjeta> getTarjeta() {
+        return tarjetaJpa.findTarjetaEntities();
+    }    
+    
     public List getRutas() {
          return rutaJpa.findRutaEntities();
     }
@@ -145,6 +153,9 @@ public class ControladoraPersistencia {
     public List getInsumo() {
         return insumoJpa.findInsumoEntities();
     }  
+
+
+
 
 
 

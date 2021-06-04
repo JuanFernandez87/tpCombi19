@@ -20,6 +20,7 @@ public class Controladora {
         nuevoCliente.setMail(mail);
         nuevoCliente.setContra(contra);
         nuevoCliente.setTipoPlan(tipoPlan);
+        nuevoCliente.setIdTarjeta(0);
         Date date1;   
         try {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNac);
@@ -111,12 +112,8 @@ public class Controladora {
     }    
 
     public boolean comprobarIngresoCliente(String usuario, String contra) {
-        boolean aux = false;        
-        
-        List <Cliente> listaClientes = new ArrayList <Cliente>();
-        
-        listaClientes = controlPersis.getClientes();
-        
+        boolean aux = false;       
+        List <Cliente> listaClientes = controlPersis.getClientes();
         for(Cliente cli:listaClientes){
             if(cli.getMail().equals(usuario) && cli.getContra().equals(contra)){
                 aux = true;
@@ -321,6 +318,15 @@ public class Controladora {
         controlPersis.crearViaje(nuevoViaje);
     }
    
+    public void registrarTarjeta(int numeroTarjeta, int codigo, String fechaVenc, String nombre) {
+        Tarjeta nuevaTarjeta = new Tarjeta();
+        nuevaTarjeta.setNumero(numeroTarjeta);
+        nuevaTarjeta.setCCV(codigo);
+        nuevaTarjeta.setVencimiento(fechaVenc);
+        nuevaTarjeta.setNombre(nombre);
+        controlPersis.crearTarjeta(nuevaTarjeta);
+    }    
+    
     public void eliminarChofer(int idChofer) {
         List <Chofer> listaChoferes = new ArrayList <Chofer>();
         listaChoferes = controlPersis.getChoferes(); 
@@ -744,8 +750,6 @@ public class Controladora {
         return false;
     }
 
- 
-
     public boolean verificarViaje(int idRuta) {
         boolean aux = false;
         List <Viaje> listaViajes = new ArrayList <Viaje>();
@@ -758,7 +762,37 @@ public class Controladora {
         return aux;        
         }
 
+    public boolean verificarExistencia(int numeroTarjeta) {
+        boolean aux = false;
+        List <Tarjeta> listaTarjetas = controlPersis.getTarjeta(); 
+        for(Tarjeta unaTarjeta:listaTarjetas){
+            if(unaTarjeta.getNumero() == numeroTarjeta){
+                return aux = true;
+            }
+        }
+        return aux;        
+        }
 
+    public int idTarjeta(int numeroTarjeta) {
+        int aux = 0;
+        List <Tarjeta> listaTarjetas = controlPersis.getTarjeta(); 
+        for(Tarjeta unaTarjeta:listaTarjetas){
+            if(unaTarjeta.getNumero() == numeroTarjeta){
+                return aux = unaTarjeta.getIdTarjeta();
+            }
+        }
+        return aux;        
+        }
+ 
 
+    public void asignarTarjetaCliente(int idCliente, int idTarjeta) {
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for(Cliente cli:listaClientes){
+            if(cli.getIdCliente() == idCliente){
+                cli.setIdTarjeta(idTarjeta);
+                controlPersis.asignarCliente(cli);
+            }
+        }
     }
+}
 

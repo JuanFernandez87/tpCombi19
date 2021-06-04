@@ -26,6 +26,7 @@ public class Cliente /*extends Persona*/{
     String contra;
     int dni;
     List <String> listaComentarios = new ArrayList<String>();
+    int idTarjeta;
     /*@OneToOne
     Tarjeta unaTarjeta;
     
@@ -39,7 +40,7 @@ public class Cliente /*extends Persona*/{
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac) {
+    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac, int idTarjeta) {
         //super(dni, nombre, apellido, mail, contra, fecha_nac);
         this.idCliente = idCliente;
         this.tipoPlan = tipoPlan;
@@ -50,6 +51,15 @@ public class Cliente /*extends Persona*/{
         this.mail = mail;
         this.contra = contra;
         this.fecha_nac = fecha_nac;
+        this.idTarjeta = idTarjeta;
+    }
+
+    public int getIdTarjeta() {
+        return idTarjeta;
+    }
+
+    public void setIdTarjeta(int idTarjeta) {
+        this.idTarjeta = idTarjeta;
     }
 
     public List<String> getListaComentarios() {
