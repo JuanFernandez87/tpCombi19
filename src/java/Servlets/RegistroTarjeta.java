@@ -71,28 +71,39 @@ public class RegistroTarjeta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        //int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         int num1 = Integer.parseInt(request.getParameter("num1"));
         int num2 = Integer.parseInt(request.getParameter("num2"));
         int num3 = Integer.parseInt(request.getParameter("num3"));
         int num4 = Integer.parseInt(request.getParameter("num4"));
-        String nombreTarjeta = request.getParameter("nombreTarjeta");
+        String nombre = request.getParameter("nombre");
         int mesVenc = Integer.parseInt(request.getParameter("mes"));
         int anioVenc = Integer.parseInt(request.getParameter("anio"));
         int codigo = Integer.parseInt(request.getParameter("codigo"));
+        String s1 = String.valueOf(num1);
+        String s2 = String.valueOf(num2);
+        String s3 = String.valueOf(num3);
+        String s4 = String.valueOf(num4);
+        String nro = s1+s2+s3+s4; //concateno los 16 numeros de la tarjeta
+        int numeroTarjeta = Integer.parseInt(nro); //paso de string a int los 16 numeros
         
-        request.getSession().setAttribute("idCliente", idCliente);
-        request.getSession().setAttribute("num1", num1);
-        request.getSession().setAttribute("num2", num2);
-        request.getSession().setAttribute("num3", num3);
-        request.getSession().setAttribute("num4", num4);
-        
-        request.getSession().setAttribute("nombreTarjeta", nombreTarjeta);
+        //request.getSession().setAttribute("idCliente", idCliente);
+        request.getSession().setAttribute("nombre", nombre);
+        request.getSession().setAttribute("numeroTarjeta", numeroTarjeta);
         String fechaVenc = mesVenc + "/" + anioVenc;
         request.getSession().setAttribute("fechaVenc", fechaVenc);
         request.getSession().setAttribute("codigo", codigo);
         
         Controladora control = new Controladora();
+        boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
+        if(!tarjetaRegistrada){
+            control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
+            //int idTarjeta = control.idTarjeta(numeroTarjeta);
+            //control.asignarTarjetaCliente(idCliente, idTarjeta);
+            response.sendRedirect("popUpRegistroCorrecto.jsp");
+        }else{
+            response.sendRedirect("popUpErrorConstrasenia.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+        }
 
         
     }

@@ -7,8 +7,10 @@
         <link rel="icon" href="images/logoCombi19.png" type="image/png" />
         <title>Combi 19</title>
     </head>
+    
     <body>
-        <%int idCliente = Integer.valueOf(request.getParameter("idCliente"));%>
+        
+
     <div class="checkout">
   <div class="credit-card-box">
     <div class="flip">
@@ -72,7 +74,7 @@
       </div>
     </div>
   </div>
-        <form class="form" autocomplete="off" novalidate action="RegistroTarjeta?idCliente=<%=idCliente%>" method="post">
+        <form action="RegistroTarjeta" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
       <label for="card-number">Card Number</label>
       <input type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" />
@@ -82,7 +84,7 @@
     </fieldset>
     <fieldset>
       <label for="card-holder">Card holder</label>
-      <input type="text" name="nombreTarjeta" id="card-holder" />
+      <input type="text" name="nombre" id="card-holder" />
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label for="card-expiration-month">Expiration date</label>
