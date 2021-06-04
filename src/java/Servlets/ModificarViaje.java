@@ -95,7 +95,7 @@ public class ModificarViaje extends HttpServlet {
             control.modificarViaje(idViaje, idRuta, cantAsientos, dia, mes, anio, precio);
             response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");        
         }else{
-            response.sendRedirect ("popUpErrorViajeRepetido.jsp");
+            response.sendRedirect ("popUpErrorViajeConPasajesVendidos.jsp");
         }
     }
 
