@@ -8,6 +8,7 @@
         <title>Combi 19</title>
     </head>
     <body>
+        <%int idCliente = Integer.valueOf(request.getParameter("idCliente"));%>
     <div class="checkout">
   <div class="credit-card-box">
     <div class="flip">
@@ -71,22 +72,22 @@
       </div>
     </div>
   </div>
-  <form class="form" autocomplete="off" novalidate>
+        <form class="form" autocomplete="off" novalidate action="RegistroTarjeta?idCliente=<%=idCliente%>" method="post">
     <fieldset>
       <label for="card-number">Card Number</label>
-      <input type="num" id="card-number" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" />
+      <input type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" />
+      <input type="num" name="num2" id="card-number-1" class="input-cart-number" maxlength="4" />
+      <input type="num" name="num3" id="card-number-2" class="input-cart-number" maxlength="4" />
+      <input type="num" name="num4" id="card-number-3" class="input-cart-number" maxlength="4" />
     </fieldset>
     <fieldset>
       <label for="card-holder">Card holder</label>
-      <input type="text" id="card-holder" />
+      <input type="text" name="nombreTarjeta" id="card-holder" />
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label for="card-expiration-month">Expiration date</label>
       <div class="select">
-        <select id="card-expiration-month">
+        <select id="card-expiration-month" name="mes">
           <option></option>
           <option>01</option>
           <option>02</option>
@@ -103,7 +104,7 @@
         </select>
       </div>
       <div class="select">
-        <select id="card-expiration-year">
+        <select id="card-expiration-year" name="anio">
           <option></option>
           <option>2016</option>
           <option>2017</option>
@@ -120,7 +121,7 @@
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label for="card-ccv">CCV</label>
-      <input type="text" id="card-ccv" maxlength="3" />
+      <input type="text" name="codigo" id="card-ccv" maxlength="3" />
     </fieldset>
     <button class="btn"><i class="fa fa-lock"></i> submit</button>
   </form>

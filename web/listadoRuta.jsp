@@ -81,11 +81,11 @@
                         <td><%for (Lugar lugar:listaDestino){
                                 if(lugar.getIdLugar() == listaRutas.get(i).getDestino()){%>
                                   <%=lugar.getNombre()%><%}%><%}%></td>
-                        <td><%= listaRutas.get(i).getDistancia()%></td>
+                        <td><%= listaRutas.get(i).getDistancia()%> km</td>
                         <td><%for (Combi combi:listaCombis){
                                 if(combi.getIdCombi() == listaRutas.get(i).getIdCombi()){%>
                                   <%=combi.getPatente()%><%}%><%}%></td>                        
-                        <td><%= listaRutas.get(i).getHora()%>:<%= listaRutas.get(i).getMinutos()%></td>
+                        <td><%= listaRutas.get(i).getHora()%>:<%= listaRutas.get(i).getMinutos()%>hs</td>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
                          <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>&idDestino=<%=listaRutas.get(i).getDestino()%>">Eliminar</a></td>
 

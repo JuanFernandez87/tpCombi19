@@ -40,9 +40,7 @@
 
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
-            List <Combi> listaCombis = control.devolverListaCombi(); 
-            List <Lugar> listaOrigen = control.devolverListaLugares();
-            List <Lugar> listaDestino = control.devolverListaLugares();   
+            List <Lugar> listaLugares = control.devolverListaLugares();   
             
             int maxPag = (control.devolverListaViajes().size()/10)+1; 
             int i = 0; 
@@ -66,48 +64,41 @@
                 <td>Origen</td> 
                 <td>Destino</td> 
                 <td>Distancia</td> 
-                <td>Asientos disponibles</td> 
+                <td>Capacidad</td> 
                 <td>Fecha</td> 
+                <td>Hora</td> 
                 <td>Precio</td> 
 
                   <td></td>
                 <td></td>
                 
             </tr>
-                <%for (Viaje viaje:listaViajes) {
-                    if (viaje.getIdRuta() > 0){%>
-                        <%for (Ruta ruta:listaRutas) {
-                            if (ruta.getDistancia() > 0){%>
+                <%for (Viaje unViaje:listaViajes){%>
+
                 <tr>
-                        <!--Muestra el origen-->
-                        <%for (Lugar lugar:listaOrigen){
-                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
-                                <td><%=lugar.getNombre()%></td>
-                        <%}}%> 
+                    <%for (Ruta unaRuta:listaRutas){
+                        if (unViaje.getIdRuta() == unaRuta.getIdRuta()){%>
+                    
+                    <%for (Lugar unLugar:listaLugares){%>    
+                    <%if(unLugar.getIdLugar() == unaRuta.getOrigen()){%>
+                               <td><%=unLugar.getNombre()%><%}%></td>          
+                               
+                    <%if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
+                               <td><%=unLugar.getNombre()%><%}%></td>                    
                         
-                        <!--Muestra el destino-->
-                        <%for (Lugar lugar:listaDestino){
-                            if(lugar.getIdLugar() == ruta.getDestino()){%>
-                                <td><%=lugar.getNombre()%></td>
-                        <%}}%>
-                        
-                       
-                        
-                        <!--Muestra la distancia en km-->
-                        <%for (Lugar lugar:listaOrigen){
-                            if(lugar.getIdLugar() == ruta.getOrigen()){%>
-                                <td><%=ruta.getDistancia()%></td> 
-                        <%}}%>        
-                        
-                        <td><%= viaje.getCantAsientos()%></td>
-                        <td><%= viaje.getDia()%>/<%= viaje.getMes()%>/<%= viaje.getAnio()%></td>
-                        <td><%= viaje.getPrecio()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=listaViajes.get(i).getIdViaje()%>">Eliminar</a></td>
+                    <%}%>
+                        <td><%= unaRuta.getDistancia()%> km</td>
+                        <td><%= unViaje.getCantAsientos()%> pasajeros</td>
+
+                        <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
+                        <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
+                        <td><%= unViaje.getPrecio()%>$</td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=unViaje.getIdViaje()%>">Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Eliminar</a></td>
   
                 </tr>
-                    <%}}%>  
-                <%}}%>                 
+                    <%}}}%>  
+               
 
     
         </table>

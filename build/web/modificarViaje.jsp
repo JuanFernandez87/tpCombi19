@@ -38,7 +38,7 @@
              <form action="ModificarViaje?idViaje=<%=idViaje%>" class="formulario-sesiones" method="post">
 				<h4>Modificar viaje</h4>
                 <label>Ruta</label>
-                <select class="controls" name="idRuta" required>
+                <select class="controls" name="idRuta">
                 <%for (Ruta ruta: listaRutas) {
                         if ((ruta.getDistancia() > 0) && (unViaje.getIdRuta() == ruta.getIdRuta())){%>                        
                         <option value="<%=ruta.getIdRuta()%>">
