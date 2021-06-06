@@ -69,7 +69,7 @@ public class RegistroRuta extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String origen = request.getParameter("origen"); //Obtengo el nombre de usuario que se ingreso
         String destino = request.getParameter("destino");//Obtengo la contraseña que ingresen el usuario
@@ -86,6 +86,13 @@ public class RegistroRuta extends HttpServlet {
         request.getSession().setAttribute("minutos", minutos);
                 
         Controladora control = new Controladora();
+       // boolean patenteRepetida=control.comprobarPatenteViaje(patenteCombi); no es necesario implementarlo
+      boolean rutaCargada = control.rutaCargada(origen,destino);
+      if(rutaCargada){
+          response.sendRedirect("popUpErrorRutaCargada.jsp");
+      }else{
+          
+      
         if(!origen.equals(destino)){
             control.crearRuta(origen, destino, patenteCombi, distancia, hora, minutos);
             response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");
@@ -94,6 +101,7 @@ public class RegistroRuta extends HttpServlet {
             
         }
     }
+}
 
     /**
      * Returns a short description of the servlet.

@@ -86,8 +86,18 @@
                                 if(combi.getIdCombi() == listaRutas.get(i).getIdCombi()){%>
                                   <%=combi.getPatente()%><%}%><%}%></td>                        
                         <td><%= listaRutas.get(i).getHora()%>:<%= listaRutas.get(i).getMinutos()%>hs</td>
+                        <%
+                            String delete= "";
+                            
+            for(Lugar lug:listaDestino){
+            //nomyprov = (lug.getNombre()+lug.getProvincia()); esta variable es necesaria para la comparacion en caso de aplicar el formato " LaPlata-BuenosAires"
+             if(lug.getIdLugar() == listaRutas.get(i).getIdRuta() ){
+                 delete= lug.getNombre();
+             }
+             }
+                        //NOTA: LA VARIABLE "IDDESTINO" QUE SE ENVIA AL ELIMINAR YA NO ES NECESARIA.LA DEJO POR SI SE LLEGA A NECESITAR A FUTURO%>
                         <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>" >Modificar</a> </td>
-                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>&idDestino=<%=listaRutas.get(i).getDestino()%>">Eliminar</a></td>
+                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarRuta.jsp?idRuta=<%=listaRutas.get(i).getIdRuta()%>&idDestino=<%=listaRutas.get(i).getDestino()%>&nombreDestino=<%=delete%>">Eliminar</a></td>
 
                 </tr>
                  

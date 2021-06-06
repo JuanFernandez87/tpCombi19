@@ -12,8 +12,7 @@
         <header>
             <%@include file="/template/header.jsp"%>
         </header>
-        
-        <div class="formulario">
+        <div  class="formulario">
             <form action="">
                 <h4>Busca tu pasaje </h4>
                 <i class="fas fa-map-marker-alt"></i><label> Destino</label>
@@ -33,8 +32,8 @@
             </form>
            
         </div>
-            <div class="formularioCom">
-                <div class="formu">
+            <div  class="formularioCom">
+                <div style="position: inherit" class="formu">
                     <h4 style="color: black">Comentarios</h4>
                 
                 <div class="comentario">

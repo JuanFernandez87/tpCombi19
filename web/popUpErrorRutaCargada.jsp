@@ -29,8 +29,6 @@
                  Integer minutos = (Integer)session.getAttribute("minutos");
                  Integer km = (Integer)session.getAttribute("distancia");
                  String patente = (String)session.getAttribute("patente");
-                 
-                 
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares(); 
@@ -86,7 +84,7 @@
          var sel = document.getElementById("selectOrigen"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
          //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
          for (var i = 0; i < sel.length; i++) {
-             sel[i].value; // este codigo se usa con el alert nada mas, se puede eliminar y no afecta al funcionamiento.
+             sel[i].value;
             if(  sel[i].value === "<%=ori%>"){
                 sel[i].selected = 'selected';
             }
@@ -99,21 +97,20 @@
                 sel[i].selected = 'selected';
             }
         }
-         var sel = document.getElementById("selectCombi"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
+        var sel = document.getElementById("selectCombi"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
          //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
          for (var i = 0; i < sel.length; i++) {
               sel[i].value;
-            if(  sel[i].value ==="<%=patente%>"){
+            if(  sel[i].value === "<%=patente%>"){
                 sel[i].selected = 'selected';
             }
         }
- 
  
      </script>
      
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
-    <script src="js/sweetAlertMismoOyD.js"></script>
+    <script src="js/sweetAlertRutaRegistrada.js"></script>
  
 
         <footer>

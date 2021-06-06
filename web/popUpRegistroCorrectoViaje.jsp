@@ -25,105 +25,54 @@
     
             <%@include file="/template/aside.jsp"%>
        
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="js/sesion.js"></script>
-
- 
-      <%
-            int pag=1;
-
-            List <Viaje> listaViajes = control.devolverListaViajes();
-            List <Ruta> listaRutas = control.devolverRutas();
-            List <Lugar> listaLugares = control.devolverListaLugares();   
-            
-            int maxPag = (control.devolverListaViajes().size()/10)+1; 
-            int i = 0; 
-            if (request.getParameter("pg") != null) {
-                   pag = Integer.valueOf(request.getParameter("pg"));
-               } 
-            int regMin = (pag - 1) * 10;
-            
-            int regMax = pag * 10;
-            
-            if(pag==maxPag){
-                regMax=regMin+control.devolverListaViajes().size()%10;
-            }
-          
-        %> 
-      
-        <div class="cajaListado">
-            <h1>Lista viajes</h1>
-        <table>
-            <tr>
-                <td>Origen</td> 
-                <td>Destino</td> 
-                <td>Distancia</td> 
-                <td>Capacidad</td> 
-                <td>Fecha</td> 
-                <td>Hora</td> 
-                <td>Precio</td> 
-
-                  <td></td>
-                <td></td>
-                
-            </tr>
-                <%for (Viaje unViaje:listaViajes){%>
-
-                <tr>
-                    <%for (Ruta unaRuta:listaRutas){
-                        if (unViaje.getIdRuta() == unaRuta.getIdRuta()){%>
-                    
-                    <%for (Lugar unLugar:listaLugares){%>    
-                    <%if(unLugar.getIdLugar() == unaRuta.getOrigen()){%>
-                               <td><%=unLugar.getNombre()%><%}%></td>          
-                               
-                    <%if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
-                               <td><%=unLugar.getNombre()%><%}%></td>                    
-                        
-                    <%}%>
-                        <td><%= unaRuta.getDistancia()%> km</td>
-                        <td><%= unViaje.getCantAsientos()%> pasajeros</td>
-
-                        <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
-                        <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
-                        <td><%= unViaje.getPrecio()%>$</td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=unViaje.getIdViaje()%>">Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Eliminar</a></td>
-  
-                </tr>
-                    <%}}}%>  
-               
-
-    
-        </table>
-           <br>
-                <%
-                    if (maxPag >= 1) {
-             
-                        if(pag!=1){%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoViajes.jsp?pg=<%=pag - 1%>">&lt;</a></li>
-                        <%}%>
-                        <%
-                            for ( i = 0; i < maxPag; i++) {
-                                if(i+1==pag){
-                        %>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><span><%=i+1%></span></li>
-                        <%  }
-                            else{%>
-                                <li  style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoViajes.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
-                        <%}}
-                        
-                        if(pag!=maxPag){%>
-                            <li style="display: inline;color: white;font-weight: bold;margin: 5px;"><a href="listadoViajes.jsp?pg=<%=pag + 1%>">&gt;</a></li>
-                <%}}
-                    else {%>
-                        <li style="display: inline;color: white;font-weight: bold;margin: 5px;" class="active"><span>1</span></li>
-                <%}
-                %>
-                       <br>
-           <br>
-            
-        </div>
+            <%
+                    List <Combi> listaCombis = control.devolverListaCombi(); 
+                    List <Lugar> listaOrigen = control.devolverListaLugares();
+                    List <Lugar> listaDestino = control.devolverListaLugares();
+                    List <Ruta> listaRutas = control.devolverRutas();
+             %>         
+		
+             <form action="RegistroViaje" class="formulario-sesiones" method="post">
+				<h4>Registrar viaje </h4>
+                <label>Ruta</label>
+                <select class="controls" name="idRuta" required>
+                        <option>Seleccione una ruta</option>
+                <%for (Ruta ruta: listaRutas) {
+                        if (ruta.getDistancia() > 0){%>                        
+                        <option value="<%=ruta.getIdRuta()%>">
+                            <%for (Lugar lugar:listaOrigen){
+                                if(lugar.getIdLugar() == ruta.getOrigen()){%>
+                                  <%=lugar.getNombre()%><%}%><%}%>
+                                    -
+                            <%for (Lugar lugar2:listaDestino){
+                                if(lugar2.getIdLugar() == ruta.getDestino()){%>
+                                  <%=lugar2.getNombre()%><%}%><%}%>
+                                    -
+                            <%for (Combi combi:listaCombis){
+                                if(combi.getIdCombi() == ruta.getIdCombi()){%>
+                                  <%=combi.getPatente()%>                                  
+                                    -
+                                  <%=combi.getCantAsientos()%><%}%><%}%> lugares 
+                                    -
+                            <%=ruta.getHora()%>:<%=ruta.getMinutos()%> hs         
+                        </option>               
+                              
+                 <%}}%> 
+                </select> 
+                <!--label>Cantidad asientos</label>
+                <input class="controls" type="number" name="cantAsientos" required placeholder="0"-->  
+                <b for="start">Ingrese la fecha</b>
+                <div class="fecha">
+                    <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">
+                    <input class="controls2" type="number" name="mes" required id="mes" min="1" max="12" placeholder="Mes">
+                    <input class="controls2" type="number" name="anio" required id="anio" min="2021" max="2025" placeholder="Año">
+                </div>
+                <label>Ingrese el precio</label>
+                <input class="controls" type="number" name="precio" required placeholder="0">                 
+                <input class="botons" type="submit" value="Cargar viaje">
+            </form>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/sesion.js"></script>
         
         <footer>
             <%@include file="/template/footer.jsp"%>
