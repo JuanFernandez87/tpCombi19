@@ -30,13 +30,20 @@ public class EliminarLugar extends HttpServlet {
      */
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+           throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            int idInsumo = Integer.parseInt(request.getParameter("idInsumo")); 
-            request.getSession().setAttribute("idInsumo", idInsumo);
+            int idLugar = Integer.parseInt(request.getParameter("idLugar")); 
+            request.getSession().setAttribute("idLugar", idLugar);
             Controladora control = new Controladora();
-            control.eliminarInsumo(idInsumo);
-            response.sendRedirect ("popUpBorrarLugar.jsp");  
+            boolean libre = false;
+            libre = control.chequearLugarLibre(idLugar); //devuelve verdadero si tiene un viaje activo
+            if(!libre){ 
+                control.eliminarLugar(idLugar);
+                response.sendRedirect ("popUpBorrarLugar.jsp");
+            }else{
+                response.sendRedirect ("popUpErrorLugarConViaje.jsp"); //si tiene viajes activos entra    
+                
+            }            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,19 +71,7 @@ public class EliminarLugar extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            int idLugar = Integer.parseInt(request.getParameter("idLugar")); 
-            request.getSession().setAttribute("idLugar", idLugar);
-            Controladora control = new Controladora();
-            boolean libre = false;
-            //libre = control.chequearLugarLibre(idLugar);
-            if(libre){
-                response.sendRedirect ("index.jsp");
-            }else{
-                control.eliminarLugar(idLugar);
-                response.sendRedirect ("listadoLugar.jsp");     
-                
-            }
+            throws ServletException, IOException {           
     }
 
     /**

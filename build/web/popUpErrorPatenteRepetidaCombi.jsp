@@ -28,6 +28,7 @@
                 //Integer dni = (Integer)session.getAttribute("dni");    
                 //Integer telefono = (Integer)session.getAttribute("tel");
                 String servicio = (String)session.getAttribute("servicio");
+                Integer idChofer = (Integer)session.getAttribute("id");
               
             
                     List <Chofer> listaChoferes = control.devolverListaChoferes();
@@ -37,7 +38,7 @@
                         }
              %> 
 		
-            <form action="RegistroCombi" class="formulario-sesiones" method="post">
+             <form action="RegistroCombi" class="formulario-sesiones" method="post" name="<%=tipoServicio%>" id="formularioCombi">
 				<h4>Registrar combi </h4>
                 <label> Dominio</label>
                 <input class="controls" type="text" name="patente" required placeholder="AA000AA" value=<%=patente%>>
@@ -58,7 +59,7 @@
                 </select>
                 
                  <label> Seleccione tipo de servicio</label>
-                        <select class="controls" id="asd123 <%=tipoServicio%>" name="xD" value="xD" >
+                        <select class="controls" id="selectServicio" name="servicio" required >
                             <option selected id="com"  > Comoda</option>
                             <option selected id="sup"   > Super comoda</option>
                         </select>
@@ -72,18 +73,26 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/sweetAlertPatenteRepetida.js"></script>
     <script> 
-                    alert(document.getElementById("asd123").id);
-                    var x = document.getElementById("asd123");
-                             if (x.value=== "Super comoda"){
-                                 alert("se ingreso a supercomoda");
-                                 alert(document.getElementById("com").value);
-                              document.getElementById("com").removeAttribute("selected");
-                }else{
-                  document.getElementById("sup").removeAttribute("selected");
-                  alert("se ingreso a Comoda");
-                  alert(document.getElementById("sup").value);
-                  
-                  }
+        
+        // SE PONE COMO SELECTED EL TIPO DE SERVICIO SELECCIONADO
+         var tipoDePlan = document.getElementById("formularioCombi");
+    if (tipoDePlan.name=== "Super comoda"){
+         document.getElementById("com").removeAttribute("selected");
+    }else{
+             document.getElementById("sup").removeAttribute("selected");
+        }
+        
+        
+        // CON LA SIGUIENTE SECCION SE PONE COMO SELECTED EL CHOFER QUE SE HAYA ELEGIDO
+         var sel = document.getElementById("selectChofer"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
+         //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
+         for (var i = 0; i < sel.length; i++) {
+            if(  sel[i].value === "<%=idChofer%>"){
+                sel[i].selected = 'selected';
+                break;
+            }
+        }
+ 
      </script>
 
 <%@include file="/template/footer.jsp"%>
@@ -91,3 +100,4 @@
   </body>
    
 </html>
+    
