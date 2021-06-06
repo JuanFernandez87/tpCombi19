@@ -13,7 +13,7 @@ public class Tarjeta implements Serializable {
     int idTarjeta;
     
     @Basic
-    int numero;
+    String numero;
     String vencimiento;
     String nombre;
     int CCV;
@@ -21,7 +21,7 @@ public class Tarjeta implements Serializable {
     public Tarjeta() {
     }
 
-    public Tarjeta(int idTarjeta, int numero, String nombre, String vencimiento, int CCV) {
+    public Tarjeta(int idTarjeta, String numero, String nombre, String vencimiento, int CCV) {
         this.idTarjeta = idTarjeta;
         this.numero = numero;
         this.nombre = nombre;
@@ -61,11 +61,11 @@ public class Tarjeta implements Serializable {
         this.idTarjeta = idTarjeta;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }   
     

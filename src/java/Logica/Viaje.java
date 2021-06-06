@@ -1,10 +1,12 @@
 package Logica;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -24,7 +26,7 @@ public class Viaje implements Serializable {
     int dia;
     int mes;
     int anio;
-
+    int[ ]  arregloIdPasajes;
     /*@OneToOne
     Insumo unInsumo;
 
@@ -37,15 +39,25 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int idRuta, int cantAsientos, int dia, int mes, int anio, int precio) {
+    public Viaje(int idViaje, int cantAsientos, int precio, int idRuta, int dia, int mes, int anio, int[] arregloIdPasajes) {
         this.idViaje = idViaje;
-        this.idRuta = idRuta;
         this.cantAsientos = cantAsientos;
+        this.precio = precio;
+        this.idRuta = idRuta;
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
-        this.precio = precio;
+        this.arregloIdPasajes = arregloIdPasajes;
     }
+
+    public int[] getArregloIdPasajes() {
+        return arregloIdPasajes;
+    }
+
+    public void setArregloIdPasajes(int capacidad) {
+        this.arregloIdPasajes = new int[capacidad];
+    }
+
     
     public int getIdRuta() {
         return idRuta;

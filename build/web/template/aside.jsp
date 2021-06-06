@@ -1,3 +1,6 @@
+<%@page import="Logica.Ruta"%>
+<%@page import="Logica.Combi"%>
+<%@page import="Logica.Lugar"%>
 <%@page import="Logica.Chofer"%>
 <%@page import="Logica.Administrador"%>
 <%@page import="Logica.Controladora"%>
@@ -21,8 +24,8 @@
                 Controladora control = new Controladora();
                 String linkRegistro = "sesionAdminCombi.jsp";
                 int contador= 0;
-                
-                List <Chofer> listaChofer= control.devolverListaChoferes(); 
+                // Inicio de codigo para verificar si hay choferes cargados.
+                List <Chofer> listaChofer= control.devolverListaChoferes();
                 if (listaChofer.isEmpty()){
                     linkRegistro = "#";
                 }else{
@@ -32,13 +35,84 @@
                         }
                     }
                 }
+                // si no hay choferes cargados, en "linkRegistro" se setea la direccion de la funcion "func()", sino se setea un link nulo.
                 if (contador == listaChofer.size()){
                     linkRegistro = "#";
                 }
+                
+                
                 String funcValidacion = "";
                 if (linkRegistro.equals("#")){
                     funcValidacion = "func()";
                 }
+                // Fin de codigo de choferes cargados.
+                //inicio de codigo de lugares cargados para las rutas.
+                String linkRegistroRuta = "sesionAdminRuta.jsp";
+                int contadorRuta=0;
+                List <Lugar> listaLugar= control.devolverListaLugares(); 
+                if (listaLugar.isEmpty()){
+                    linkRegistroRuta = "#";
+                }else{
+                    for(Lugar lugar:listaLugar){
+                        if (lugar.getIdLugar()== -1){
+                            contadorRuta = contadorRuta +1;
+                        }
+                    }
+                }
+                
+                if (contadorRuta == listaLugar.size()){
+                    linkRegistroRuta = "#";
+                }
+                String funcValidacionRuta = "";
+                if (linkRegistroRuta.equals("#")){
+                    funcValidacionRuta = "funcRuta()";
+                }
+                //fin de codigo de lugares cargados para rutas.
+                //Inicio de combis cargadas para rutas.
+                int contadorCombi=0;
+                List <Combi> listaCombi= control.devolverListaCombi(); 
+                if (listaCombi.isEmpty()){
+                    linkRegistroRuta = "#";
+                }else{
+                    for(Combi combi:listaCombi){
+                        if (combi.getPatente().equals("-1")){
+                            contadorCombi = contadorCombi +1;
+                        }
+                    }
+                }
+                
+                if (contadorCombi == listaCombi.size()){
+                    linkRegistroRuta = "#";
+                }
+                if (linkRegistroRuta.equals("#")){
+                    funcValidacionRuta = "funcCombi()";
+                }
+                //fin de combis cargadas para rutas.
+                // inicio de rutas cargadas para viajes.
+                int contadorViaje=0;
+                String funcValidacionViaje = "";
+                String linkRegistroViaje = "sesionAdminViaje.jsp";
+                List <Ruta> listaRuta= control.devolverRutas(); 
+                if (listaCombi.isEmpty()){
+                    linkRegistroViaje = "#";
+                }else{
+                    for(Ruta ruta:listaRuta){
+                        if (ruta.getDistancia() == -1){
+                            contadorViaje = contadorViaje +1;
+                        }
+                    }
+                }
+                
+                if (contadorViaje == listaRuta.size()){
+                    linkRegistroViaje = "#";
+                }
+                if (linkRegistroViaje.equals("#")){
+                    funcValidacionViaje = "funcViaje()";
+                }
+                
+                
+                
+                
                 String usuario = (String)session.getAttribute("username");
                 String tipoUsuario = (String)session.getAttribute("tipoUsuario");
                 List <Administrador> listaAdmin = control.devolverListaAdmin(); 
@@ -85,7 +159,7 @@
                         <!-- boton con menu para Rutas.-->
                         <li ><a href="#"><i class="icono izquierda fas fa-globe-americas"" ></i>Administrar rutas<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminRuta.jsp">Registrar</a></li>
+					<li><a href=<%=linkRegistroRuta%> id= "linkRegistroRuta" onclick="<%=funcValidacionRuta%>">Registrar</a></li>
                                         <li><a href="listadoRuta.jsp">Gestionar</a></li>
 				</ul>
 
@@ -94,7 +168,7 @@
                         <!-- boton con menu para Viajes.-->
                         <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminViaje.jsp">Registrar</a></li>
+					<li><a href=<%=linkRegistroViaje%> id= "linkRegistroRuta" onclick="<%=funcValidacionViaje%>">Registrar</a></li>
                                         <li><a href="listadoViajes.jsp">Gestionar</a></li>
 				</ul>
 
@@ -115,13 +189,44 @@
                          text: "debe ingresar un chofer",
                          title: "No hay choferes cargados!",
                          icon: 'warning',
-                         showCancelButton: true,
+                         showCancelButton: false,
                          cancelButtonColor: '#d33',
-                        showConfirmButton:false,
-                          footer:`<a class="btn btn-primary" href="sesionAdminChofer.jsp">Cargar un chofer</a>`
+                        showConfirmButton:true,
+                        //  footer:`<a class="btn btn-primary" href="sesionAdminChofer.jsp">Cargar un chofer</a>`
+                        });
+                     }  
+                     function funcRuta(){
+                         swal.fire({
+                         text: "debe ingresar un lugar",
+                         title: "No hay lugares cargados!",
+                         icon: 'warning',
+                         showCancelButton: false,
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:true,
+                          //footer:`<a class="btn btn-primary" href="sesionAdminLugar.jsp">Cargar un Lugar</a>`
                         });
                      }  
                      
+                function funcCombi(){
+                         swal.fire({
+                         text: "debe ingresar un Combi",
+                         title: "No hay Combis cargados!",
+                         icon: 'warning',
+                         showCancelButton: false,
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:true,
+                        });
+                     }
+                     function funcViaje(){
+                         swal.fire({
+                         text: "debe ingresar una ruta",
+                         title: "No hay rutas cargadas !",
+                         icon: 'warning',
+                         showCancelButton: false,
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:true,
+                        });
+                     }
                  </script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
              <script src="../js/sesion.js"></script>

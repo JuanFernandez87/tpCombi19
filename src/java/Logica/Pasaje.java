@@ -1,6 +1,8 @@
 package Logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +16,19 @@ public class Pasaje implements Serializable {
     int idPasaje;
     
     @Basic
-    int numAsiento;
+    int idViaje; 
+    int idCliente;
+    List <Insumo> listaInsumos = new ArrayList<Insumo>();
 
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int numAsiento) {
+    public Pasaje(int idPasaje, int idViaje, int idCliente) {
         this.idPasaje = idPasaje;
-        this.numAsiento = numAsiento;
+        this.idViaje = idViaje;
+        this.idCliente = idCliente;
     }
-
+    
     public int getIdPasaje() {
         return idPasaje;
     }
@@ -32,12 +37,28 @@ public class Pasaje implements Serializable {
         this.idPasaje = idPasaje;
     }
 
-    public int getNumAsiento() {
-        return numAsiento;
+    public int getIdViaje() {
+        return idViaje;
     }
 
-    public void setNumAsiento(int numAsiento) {
-        this.numAsiento = numAsiento;
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public List<Insumo> getListaInsumos() {
+        return listaInsumos;
+    }
+
+    public void setListaInsumos(List<Insumo> listaInsumos) {
+        this.listaInsumos = listaInsumos;
     }
     
 }
