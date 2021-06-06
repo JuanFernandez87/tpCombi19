@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "No se puede eliminar una combi asignada a un viaje.",
-    icon: 'sucess'
+    title: "No se puede eliminar una combi asignada a una ruta.",
+    icon: 'error'
 });

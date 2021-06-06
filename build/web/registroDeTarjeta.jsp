@@ -8,13 +8,14 @@
         <title>Combi 19</title>
         
     </head>
-    
-    
-    
+
     <body>
          <header>
             <%@include file="/template/header.jsp"%>
         </header>
+        <%int idCliente = (int)session.getAttribute("idCliente");
+        
+        %>
  <div style="padding-top: 90px;"></div>
  <div style="background:#266aa7;" class="checkout">
   <div  class="credit-card-box">
@@ -79,9 +80,9 @@
       </div>
     </div>
   </div>
-        <form style="background: #24303c;width: 100%;" action="RegistroTarjeta" class="form" autocomplete="off" novalidate  method="post">
+     <form style="background: #24303c;width: 100%;" action="RegistroTarjeta?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
-      <label style="color:white"  for="card-number">Numbero tarjeta</label>
+      <label style="color:white"  for="card-number">Numero de tarjeta</label>
       <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" />
       <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" maxlength="4" />
       <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" maxlength="4" />
@@ -92,7 +93,7 @@
       <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" />
     </fieldset>
     <fieldset class="fieldset-expiration">
-      <label  style="color:white" for="card-expiration-month">Fecha venc</label>
+      <label  style="color:white" for="card-expiration-month">Fecha de vencimiento</label>
       <div  style="width: 40% ;border: 1px solid #1f53c5;background: none;" class="select">
         <select class= "controls2" id="card-expiration-month" name="mes">
           <option class= "controls2"></option>
@@ -113,16 +114,12 @@
       <div  style="width: 40% ;border: 1px solid #1f53c5;background: none;" class="select">
         <select class= "controls2" id="card-expiration-year" name="anio">
           <option class= "controls2"></option>
-          <option class= "controls2">2016</option>
-          <option class= "controls2">2017</option>
-          <option class= "controls2">2018</option>
-          <option class= "controls2">2019</option>
-          <option class= "controls2">2020</option>
           <option class= "controls2">2021</option>
           <option class= "controls2">2022</option>
           <option class= "controls2">2023</option>
           <option class= "controls2">2024</option>
           <option class= "controls2">2025</option>
+          <option class= "controls2">2026</option>
         </select>
       </div>
     </fieldset>

@@ -307,6 +307,7 @@ public class Controladora {
         nuevoViaje.setDia(dia);
         nuevoViaje.setMes(mes);
         nuevoViaje.setAnio(anio);
+        nuevoViaje.setArregloIdPasajes(cantAsientos);
         /*Date date1;   
         try {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaViaje);
@@ -318,7 +319,7 @@ public class Controladora {
         controlPersis.crearViaje(nuevoViaje);
     }
    
-    public void registrarTarjeta(int numeroTarjeta, int codigo, String fechaVenc, String nombre) {
+    public void registrarTarjeta(String numeroTarjeta, int codigo, String fechaVenc, String nombre) {
         Tarjeta nuevaTarjeta = new Tarjeta();
         nuevaTarjeta.setNumero(numeroTarjeta);
         nuevaTarjeta.setCCV(codigo);
@@ -482,20 +483,19 @@ public class Controladora {
         }
     
     public boolean chequearCombiLibre(int idCombi) {
+        // actualmente, el codigo funciona de la siguiente manera ->
+        // no te deja eliminar una combi solo si esta asignado a un viaje. 
+        //el problema: Que si la combi esta asignado a una ruta se elimina igual. y en listado de ruta se muestra la patente en -1.
+        // voy a poner el return true cuando encuentre que la combi esta asignada a una ruta. 
+        // con esto se soluciona ese error.
+        // para volver el codigo al estado actual eliminar el "return true" y descomentar lo comentado.
         boolean aux = false;
         List <Ruta> listaRutas = new ArrayList <Ruta>();
         listaRutas = controlPersis.getRutas();        
         int idRuta = 0;
         for(Ruta unaRuta:listaRutas){
             if(unaRuta.getIdCombi() == idCombi){
-                idRuta = unaRuta.getIdRuta();
-            }
-        }         
-        
-        List <Viaje> listaViajes = new ArrayList <Viaje>();
-        listaViajes = controlPersis.getViaje(); 
-        for(Viaje viaje:listaViajes){
-            if(viaje.getIdRuta() == idRuta){
+                //idRuta = unaRuta.getIdRuta();
                 return aux = true;
             }
         }
@@ -774,7 +774,7 @@ public class Controladora {
         return aux;        
         }
 
-    public boolean verificarExistencia(int numeroTarjeta) {
+    public boolean verificarExistencia(String numeroTarjeta) {
         boolean aux = false;
         List <Tarjeta> listaTarjetas = controlPersis.getTarjeta(); 
         for(Tarjeta unaTarjeta:listaTarjetas){
@@ -785,7 +785,7 @@ public class Controladora {
         return aux;        
         }
 
-    public int idTarjeta(int numeroTarjeta) {
+    public int idTarjeta(String numeroTarjeta) {
         int aux = 0;
         List <Tarjeta> listaTarjetas = controlPersis.getTarjeta(); 
         for(Tarjeta unaTarjeta:listaTarjetas){

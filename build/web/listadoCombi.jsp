@@ -35,7 +35,6 @@
       <%
             int pag=1;
             
-            List <Combi> listaCombi = control.devolverListaCombi(); 
             int maxPag = (control.devolverListaCombi().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {

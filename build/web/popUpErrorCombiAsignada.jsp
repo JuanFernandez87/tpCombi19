@@ -34,8 +34,7 @@
  
       <%
             int pag=1;
-
-            List <Combi> listaCombi = control.devolverListaCombi(); 
+            
             int maxPag = (control.devolverListaCombi().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
@@ -53,6 +52,27 @@
       
         <div class="cajaListado">
             <h1>Lista combi</h1>
+            <form class="busqueda" action="detalleCombiElegido.jsp" class="formulario-sesiones" method="post">
+				
+                                                  
+                  
+                               <select  name="patente">
+                                 <option value=-1>Burscar por patente </option>
+                                   <%                             
+
+                                for (   Combi combi:listaCombi) {     
+                                    
+
+                                %>                              
+
+                                <option value=<%=combi.getIdCombi() %>><%= combi.getPatente() %> </option>
+ 
+                                 <%}%>      
+                             </select>
+                             
+                              
+                             <input  type="submit" value="Buscar">
+                       </form >   
         <table>
             <tr>
                 <td>Patente</td> 
@@ -75,8 +95,8 @@
                         <td><%= listaCombi.get(i).getModelo() %></td>
                         <td><%= listaCombi.get(i).getTipoServicio() %></td>
                         <td><%= listaCombi.get(i).getCantAsientos() %></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarCombi?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Eliminar </a></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarCombi.jsp?idCombi=<%=listaCombi.get(i).getIdCombi()%>" >Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarCombi.jsp?Combi=<%=listaCombi.get(i).getPatente()%>&id=<%=listaCombi.get(i).getIdCombi()%>">Eliminar</a></td>
 
                 </tr>
                  
@@ -115,9 +135,8 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertCombiAsignada.js"></script>    
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertCombiAsignada.js"></script> 
 
     </body>
 </html>

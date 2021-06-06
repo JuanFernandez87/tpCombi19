@@ -31,7 +31,6 @@ public class EliminarLugar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
             int idLugar = Integer.parseInt(request.getParameter("idLugar")); 
             request.getSession().setAttribute("idLugar", idLugar);
             Controladora control = new Controladora();

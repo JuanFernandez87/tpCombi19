@@ -35,8 +35,6 @@
  
       <%
             int pag=1;
-
-            List <Lugar> listaLugar = control.devolverListaLugares(); 
             int maxPag = (control.devolverListaLugares().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
