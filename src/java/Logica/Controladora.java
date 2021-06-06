@@ -337,6 +337,17 @@ public class Controladora {
             }
         }
     }
+    
+    public void eliminarLugar(int idLugar) {
+        List <Lugar> listaLugares = new ArrayList <Lugar>();
+        listaLugares = controlPersis.getLugares(); 
+        for(Lugar lugar:listaLugares){
+            if(lugar.getIdLugar() == idLugar){
+                lugar.setBorradoLogico();
+                controlPersis.asignarLugar(lugar);
+            }
+        }
+    }
 
     public void eliminarCombi(int idCombi) {
         List <Combi> listaCombis = new ArrayList <Combi>();
@@ -382,16 +393,7 @@ public class Controladora {
         }
     }    
 
-    public void eliminarLugar(int idLugar) {
-        List <Lugar> listaLugares = new ArrayList <Lugar>();
-        listaLugares = controlPersis.getLugares(); 
-        for(Lugar lugar:listaLugares){
-            if(lugar.getIdLugar() == idLugar){
-                lugar.setBorradoLogico();
-                controlPersis.asignarLugar(lugar);
-            }
-        }
-    }      
+      
     
     public boolean chequearRutaLibre(int idRuta) {
         boolean aux = false;
@@ -435,6 +437,28 @@ public class Controladora {
         }
         return aux;        
         }
+    
+        public boolean chequearLugarLibre(int idLugar) {
+        boolean aux = false;
+
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idRuta = 0;
+        for(Ruta unaRuta:listaRutas){
+            if((unaRuta.getOrigen() == idLugar) || (unaRuta.getDestino() == idLugar)){
+                idRuta = unaRuta.getIdRuta();
+            }
+        }         
+        
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;        
+}
     
     public boolean verViajeActivo(int idLugar) {
         boolean aux = false;        
@@ -488,19 +512,7 @@ public class Controladora {
             }
         }
     }        
-        
-   /* public boolean chequearLugarLibre(int idLugar) {
-        boolean aux = false;
 
-        List <Chofer> listaChoferes = new ArrayList <Chofer>();
-        listaChoferes = controlPersis.getChoferes(); 
-        int idCombi = 0;
-        for(Chofer chof:listaChoferes){
-            if(chof.getIdChofer() == idChofer){
-                idCombi = chof.getIdCombi();
-            }
-        }   
-    }    */
     public int idCliente(String mail) {
         int idCliente = 0;
         List <Cliente> listaClientes = controlPersis.getClientes();
@@ -793,6 +805,33 @@ public class Controladora {
                 controlPersis.asignarCliente(cli);
             }
         }
+    }
+
+    public boolean rutaCargada(String origen, String destino) {
+        List <Lugar> listaLugar = controlPersis.getLugares();
+        //String nomyprov= "";
+        int idOrigen = 0;
+        int idDestino= 0;
+        // obtenemos el id de el origen y destino, el cual recibimos como string.
+        for(Lugar lug:listaLugar){
+            //nomyprov = (lug.getNombre()+lug.getProvincia()); esta variable es necesaria para la comparacion en caso de aplicar el formato " LaPlata-BuenosAires"
+             if(lug.getNombre().equals(origen)){
+                 idOrigen= lug.getIdLugar();
+             }else{
+                 if (lug.getNombre().equals(destino)){
+                     idDestino=lug.getIdLugar();
+                 }
+             }
+         }
+        //usamos los id de origen y destino para comprobar si no estan cargados en otras rutas.
+        List <Ruta> listaRutas = controlPersis.getRutas();
+        boolean cargados = false;
+         for(Ruta rut:listaRutas){
+             if ((idOrigen == rut.getOrigen()) && (idDestino == rut.getDestino()) && (rut.getDistancia()>0)){ // si estan cargados en el sistema entonces....
+                 cargados= true;
+             }
+         }
+         return cargados;
     }
 }
 

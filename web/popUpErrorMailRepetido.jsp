@@ -13,8 +13,8 @@
         </header>
         
         <div class="formulario">
-                <form action="RegistroCliente" method="post">
-               <h4>Formulario Registro</h4>
+                
+              
                <%
                 String email = (String)session.getAttribute("mail");
                 String nombre = (String)session.getAttribute("nombre");    
@@ -29,7 +29,8 @@
                         valorPlan = "Gold";  
                         }
             %>
-           
+           <form action="RegistroCliente"  id= "formularioRegistro" method="post" name="<%=valorPlan%>">
+                <h4>Formulario Registro</h4>
                <input class="controls" type="text" name="nombre" required id="nombres" placeholder="Ingrese su Nombre" value="<%=nombre%>">
                <input class="controls" type="text" name="apellido" required id="apellidos" placeholder="Ingrese su Apellido" value="<%=apellido%>">
                <input class="controls" type="tel" name="dni" required id="dni" placeholder="Ingrese su Dni" value="<%=dni%>">
@@ -43,7 +44,7 @@
                     <input class="controls2" type="number" name="anio" required id="anio" min="1960" max="2021" placeholder="Año" value="<%=anio%>">
                </div><br>
                 <label> Seleccione tipo de plan</label>
-                        <select class="controls" id= "PlanRepetido" name="<%=valorPlan%>" value="<%=valorPlan%>">
+                        <select class="controls" id= "PlanRepetido" name="tipoPlan" >
                             <option selected id="Basic">Basico</option>
                             <option  selected id="Gold" >Gold</option>
                         </select>
@@ -56,12 +57,21 @@
 
         <footer>
             <%@include file="template/footer.jsp"%>
-        </footer>}
+        </footer>
         
+        <script>     
+             // pregunta el tipo de plan elegido, se guarda el tipo de plan en la variable "name" de formulario.
+   var tipoDePlan = document.getElementById("formularioRegistro");
+    if (tipoDePlan.name=== "Gold"){
+         document.getElementById("Basic").removeAttribute("selected");
+    }else{
+             document.getElementById("Gold").removeAttribute("selected");
+        }
+  
+           
         
-   
+        </script>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="js/sweetAlertMail.js"></script>
-        <script src="js/validarPlan.js"></script>
     </body>
 </html>
