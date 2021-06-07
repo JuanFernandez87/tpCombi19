@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class ModificarCliente extends HttpServlet {
+public class RegistroTarjetaBasico extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class ModificarCliente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ModificarCliente</title>");            
+            out.println("<title>Servlet RegistroTarjetaBasico</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ModificarCliente at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegistroTarjetaBasico at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,49 +72,34 @@ public class ModificarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-        String apellido = request.getParameter("apellido"); 
-        String nombre = request.getParameter("nombre"); 
-        int dni = Integer.parseInt(request.getParameter("dni"));
-        String mail = request.getParameter("mail");
-        String pass = request.getParameter("pass");
-        String tipoPlan = request.getParameter("tipoPlan");        
-       
+        String num1 = (request.getParameter("num1"));
+        String num2 = (request.getParameter("num2"));
+        String num3 = (request.getParameter("num3"));
+        String num4 = (request.getParameter("num4"));
+        String nombre = request.getParameter("nombre");
+        int mesVenc = Integer.parseInt(request.getParameter("mes"));
+        int anioVenc = Integer.parseInt(request.getParameter("anio"));
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        String numeroTarjeta = num1 + num2 + num3 + num4;
+        
         request.getSession().setAttribute("idCliente", idCliente);
-        request.getSession().setAttribute("apellido", apellido);
         request.getSession().setAttribute("nombre", nombre);
-        request.getSession().setAttribute("dni", dni);
-        request.getSession().setAttribute("mail", mail);
-        request.getSession().setAttribute("pass", pass); 
-        request.getSession().setAttribute("plan", tipoPlan);        
-            
+        request.getSession().setAttribute("numeroTarjeta", numeroTarjeta);
+        String fechaVenc = mesVenc + "/" + anioVenc;
+        request.getSession().setAttribute("fechaVenc", fechaVenc);
+        request.getSession().setAttribute("codigo", codigo);
+        
         Controladora control = new Controladora();
-        boolean modicaMailCliente = control.verificarMailCliente(idCliente, mail);
-
-        if(modicaMailCliente){
-            control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass, tipoPlan);
-            if(tipoPlan.equals("Gold")){
-                request.getSession().setAttribute("idCliente", idCliente);
-                response.sendRedirect ("registroDeTarjetaBasico.jsp");
-            }else{
-                response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); }
-                //
+        boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
+        if(!tarjetaRegistrada){
+            control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
+            int idTarjeta = control.idTarjeta(numeroTarjeta);
+            control.asignarTarjetaCliente(idCliente, idTarjeta);
+            response.sendRedirect("popUpRegistroCorrectoBasico.jsp");
         }else{
-            boolean existe = control.verificarUsuario(mail);
-            if(existe){
-                response.sendRedirect ("popUpErrorMailRepetido.jsp");
-            }else{    
-                boolean cumpleTamañoMin = control.verificarContraseña(pass);
-                if(!cumpleTamañoMin){
-                    response.sendRedirect ("popUpErrorContraseniaUsuario.jsp");
-                }/*else{
-                    control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
-                    response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
-                }*/
-                    
-            }
-            }
+            response.sendRedirect("popUpErrorConstrasenia.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+        }
     }
-    
 
     /**
      * Returns a short description of the servlet.
