@@ -53,8 +53,8 @@
                 if (listaLugar.isEmpty()){
                     linkRegistroRuta = "#";
                 }else{
-                    for(Lugar lugar:listaLugar){
-                        if (lugar.getIdLugar()== -1){
+                    for(Lugar unlugar:listaLugar){
+                        if (unlugar.getIdLugar()== -1){
                             contadorRuta = contadorRuta +1;
                         }
                     }
