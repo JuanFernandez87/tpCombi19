@@ -50,7 +50,7 @@ public class Lugar implements Serializable {
     }
 
     void setBorradoLogico() {
-        this.idLugar = -1;
+        this.Provincia = "-1";
     }
 
 }

@@ -91,10 +91,13 @@ public class ModificarCliente extends HttpServlet {
         boolean modicaMailCliente = control.verificarMailCliente(idCliente, mail);
 
         if(modicaMailCliente){
-            control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass, tipoPlan);
+            control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
             if(tipoPlan.equals("Gold")){
                 request.getSession().setAttribute("idCliente", idCliente);
                 response.sendRedirect ("registroDeTarjetaBasico.jsp");
+            }else if(tipoPlan.equals("Basico")){
+                control.modificarPlan(idCliente);
+                response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); 
             }else{
                 response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); }
                 //

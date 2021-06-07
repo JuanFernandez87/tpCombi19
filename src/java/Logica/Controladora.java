@@ -557,6 +557,7 @@ public class Controladora {
         return aux;
     }
 
+   
     public void ModificarInsumo(int idInsumo, String nombre, int precio, String tipo) {
         List <Insumo> listaInsumos = controlPersis.getInsumos(); 
         for (Insumo ins:listaInsumos) { 
@@ -584,7 +585,7 @@ public class Controladora {
         }         
     }
     
-    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass, String tipoPlan) {
+    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass) {
          List <Cliente> listaClientes = controlPersis.getClientes();
         for (Cliente unCliente:listaClientes) { 
             if(unCliente.getIdCliente() == idCliente){ 
@@ -593,12 +594,22 @@ public class Controladora {
                 unCliente.setDni(dni);
                 unCliente.setMail(mail);
                 unCliente.setContra(pass);
-                unCliente.setTipoPlan(tipoPlan);
                 controlPersis.asignarCliente(unCliente);
             }
         }         
     } 
     
+    public void modificarPlan(int idCliente) {
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for (Cliente unCliente:listaClientes) { 
+            if(unCliente.getIdCliente() == idCliente){ 
+                unCliente.setTipoPlan("Basico");
+                unCliente.setIdTarjeta(0);
+                controlPersis.asignarCliente(unCliente);
+            }
+        }  
+    }    
+       
     public void modificarRuta(int idRuta, int idOrigen, int idDestino, int idCombi, int distancia, int hora, int minutos) {
         List <Ruta> listaRuta = controlPersis.getRutas();
         for (Ruta unaRuta:listaRuta){
@@ -792,7 +803,7 @@ public class Controladora {
         boolean aux = false;
         List <Tarjeta> listaTarjetas = controlPersis.getTarjeta(); 
         for(Tarjeta unaTarjeta:listaTarjetas){
-            if(unaTarjeta.getNumero() == numeroTarjeta){
+            if(unaTarjeta.getNumero().equals(numeroTarjeta)){
                 return aux = true;
             }
         }
@@ -815,6 +826,7 @@ public class Controladora {
         List <Cliente> listaClientes = controlPersis.getClientes();
         for(Cliente cli:listaClientes){
             if(cli.getIdCliente() == idCliente){
+                cli.setTipoPlan("Gold");
                 cli.setIdTarjeta(idTarjeta);
                 controlPersis.asignarCliente(cli);
             }
@@ -847,6 +859,8 @@ public class Controladora {
          }
          return cargados;
     }
+
+
 
 
 }
