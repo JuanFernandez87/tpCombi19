@@ -100,6 +100,10 @@
         <servlet-name>RegistroTarjeta</servlet-name>
         <servlet-class>Servlets.RegistroTarjeta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroTarjetaBasico</servlet-name>
+        <servlet-class>Servlets.RegistroTarjetaBasico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>RegistroTarjeta</servlet-name>
         <url-pattern>/RegistroTarjeta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroTarjetaBasico</servlet-name>
+        <url-pattern>/RegistroTarjetaBasico</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

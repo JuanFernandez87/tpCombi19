@@ -81,7 +81,6 @@ public class RegistroCliente extends HttpServlet {
         String mail = request.getParameter("mail");
         String contra = request.getParameter("pass");
         String tipoPlan = request.getParameter("tipoPlan");
-        String planGold = request.getParameter("gold");
         String dia = request.getParameter("dia");
         String mes = request.getParameter("mes");
         String anio = request.getParameter("anio");
