@@ -57,10 +57,9 @@
                             <option>Gold</option>
                         </select>
                <input class="botons" type="submit" value="Editar datos">
-
-       <%}}%>
+        <%}}%>        
                 </form>         
-              
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>              
 

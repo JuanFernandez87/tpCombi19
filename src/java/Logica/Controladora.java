@@ -584,7 +584,7 @@ public class Controladora {
         }         
     }
     
-    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass) {
+    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass, String tipoPlan) {
          List <Cliente> listaClientes = controlPersis.getClientes();
         for (Cliente unCliente:listaClientes) { 
             if(unCliente.getIdCliente() == idCliente){ 
@@ -593,6 +593,7 @@ public class Controladora {
                 unCliente.setDni(dni);
                 unCliente.setMail(mail);
                 unCliente.setContra(pass);
+                unCliente.setTipoPlan(tipoPlan);
                 controlPersis.asignarCliente(unCliente);
             }
         }         
@@ -691,6 +692,19 @@ public class Controladora {
         } 
         return aux;
     }
+    
+    public boolean verificarMailCliente(int idCliente, String mail) {
+        boolean aux = false;
+        List <Cliente> listaClientes = controlPersis.getClientes(); 
+        for (Cliente unCliente:listaClientes) { 
+            if(unCliente.getIdCliente() == idCliente){ 
+                if (unCliente.getMail().equals(mail)){
+                    aux = true;
+                    return aux;
+                }
+            }
+        } 
+        return aux;    }    
 
     public boolean verificarPatente(int idCombi, String patente) {
         boolean aux = false;
@@ -833,5 +847,7 @@ public class Controladora {
          }
          return cargados;
     }
+
+
 }
 
