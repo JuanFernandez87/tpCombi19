@@ -32,9 +32,9 @@
             </form>
            
         </div>
-            <div  class="formularioCom">
+            <div style="margin-top: 220px" class="formularioCom">
                 <div style="position: inherit" class="formu">
-                    <h4 style="color: black">Comentarios</h4>
+                    <h4 style="color: white; text-align: center">Comentarios</h4>
                 
                 <div class="comentario">
                     <h5><img src="./images/mesi.jpg" alt="">Ricardo Bertone</h5>
@@ -48,9 +48,6 @@
                     <h5><img src="./images/barba.jpg" alt="">Alejandro Fernandez</h5>
                     <p>Los mejores!</p>  
                 </div><br>
-                 
-             
-           <input class="botons" href="inde.jsp" type="submit" value="Dejanos un comentario" style="margin: 7px 20px;">
                
             </div>
                  

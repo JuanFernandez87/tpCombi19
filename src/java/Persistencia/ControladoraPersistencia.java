@@ -94,6 +94,15 @@ public class ControladoraPersistencia {
         }   
     }   
     
+    public void asignarTarjeta(Tarjeta unaTarjeta) {
+        try {
+            tarjetaJpa.edit(unaTarjeta);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    
+    
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);
     }    
@@ -153,6 +162,11 @@ public class ControladoraPersistencia {
     public List getInsumo() {
         return insumoJpa.findInsumoEntities();
     }  
+
+    public List<Tarjeta> getTarjetas() {
+        return tarjetaJpa.findTarjetaEntities();
+    }
+
 
 
 

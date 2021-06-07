@@ -104,7 +104,7 @@ public class ModificarCliente extends HttpServlet {
         }else{
             boolean existe = control.verificarUsuario(mail);
             if(existe){
-                response.sendRedirect ("popUpErrorMailRepetido.jsp");
+                response.sendRedirect ("popUpErrorModificacionMailRepetido.jsp");
             }else{    
                 boolean cumpleTamañoMin = control.verificarContraseña(pass);
                 if(!cumpleTamañoMin){

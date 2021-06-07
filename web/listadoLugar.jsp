@@ -65,7 +65,7 @@
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       
+                       if (!listaLugar.get(i).getProvincia().equals("-1")){
                    %>
                 <tr>
                      
@@ -79,7 +79,7 @@
 
                 </tr>
                  
-           <%}%>  
+           <%}}%>  
     
         </table>
            <br>

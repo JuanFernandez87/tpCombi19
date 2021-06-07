@@ -35,7 +35,7 @@
                         <option>Seleccione un origen</option>
                 <%
                     for (Lugar origen: listaOrigen) {
-                        if(origen.getIdLugar() > 0){ %>                        
+                        if (!origen.getProvincia().equals("-1")){ %>                        
                         <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
                  <%}}%>
                 </select> 
@@ -45,7 +45,7 @@
                         <option>Seleccione un destino</option>
                 <%
                     for (Lugar destino: listaDestino) {
-                        if(destino.getIdLugar() > 0){ %>%>                        
+                        if (!destino.getProvincia().equals("-1")){ %>%>                        
                         <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
                  <%}}%>       
                 </select>

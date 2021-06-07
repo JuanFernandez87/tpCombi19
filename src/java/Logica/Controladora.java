@@ -600,15 +600,24 @@ public class Controladora {
     } 
     
     public void modificarPlan(int idCliente) {
+        int idTarjeta = 0;
         List <Cliente> listaClientes = controlPersis.getClientes();
         for (Cliente unCliente:listaClientes) { 
             if(unCliente.getIdCliente() == idCliente){ 
                 unCliente.setTipoPlan("Basico");
                 unCliente.setIdTarjeta(0);
+                idTarjeta = unCliente.getIdTarjeta();
                 controlPersis.asignarCliente(unCliente);
             }
-        }  
-    }    
+        } 
+        List <Tarjeta> listaTarjetas = controlPersis.getTarjetas();
+        for (Tarjeta unaTarjeta:listaTarjetas) { 
+            if(unaTarjeta.getIdTarjeta() == idTarjeta){ 
+                unaTarjeta.setNumero("0");
+                controlPersis.asignarTarjeta(unaTarjeta);
+            }                
+        }    
+    }   
        
     public void modificarRuta(int idRuta, int idOrigen, int idDestino, int idCombi, int distancia, int hora, int minutos) {
         List <Ruta> listaRuta = controlPersis.getRutas();
