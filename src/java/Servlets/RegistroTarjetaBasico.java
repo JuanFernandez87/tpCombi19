@@ -97,7 +97,7 @@ public class RegistroTarjetaBasico extends HttpServlet {
             control.asignarTarjetaCliente(idCliente, idTarjeta);
             response.sendRedirect("popUpRegistroCorrectoBasico.jsp");
         }else{
-            response.sendRedirect("popUpErrorConstrasenia.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+            response.sendRedirect("popUpRegistroErroneoBasico.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
         }
     }
 

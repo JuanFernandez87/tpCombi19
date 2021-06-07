@@ -51,9 +51,10 @@
                 <select class="controls" name="combi" required>
                         <option>Seleccione una combi</option>
                 <%
-                    for (Combi comb: listaCombis) {%>                        
+                    for (Combi comb: listaCombis) {
+     if(!comb.getPatente().equals("-1")){%>                        
                         <option value="<%=comb.getPatente()%>"><%=comb.getPatente()%></option>               
-                 <%}%> 
+                 <%}}%> 
                 </select>
                  <div style="display: inline;">
                 <label>Horario</label>

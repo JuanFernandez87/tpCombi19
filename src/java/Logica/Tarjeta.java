@@ -1,3 +1,4 @@
+
 package Logica;
 import java.io.Serializable;
 import javax.persistence.Basic;

@@ -63,7 +63,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>     
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertRegistroCorrectoTarjetaBasico.js"></script>            
+        <script src="js/sweetAlertRegistroErroneoTarjetaBasico.js"></script>            
 
         <footer>
             <%@include file="/template/footer.jsp"%>

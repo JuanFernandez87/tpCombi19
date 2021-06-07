@@ -36,7 +36,7 @@
       <%
             int pag=1;
 
-            List <Lugar> listaLugar = control.devolverListaLugares(); 
+            List <Lugar> listadeLugar = control.devolverListaLugares(); 
             int maxPag = (control.devolverListaLugares().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
@@ -67,21 +67,21 @@
                <%
                    
                    for (  i=regMin ; i < regMax ; ++i) {
-                       
+                        if(!listaLugar.get(i).getProvincia().equals("-1")){
                    %>
                 <tr>
                      
                          
                     
-                        <td><%= listaLugar.get(i).getNombre()%></td>
-                        <td><%= listaLugar.get(i).getProvincia() %></td>
+                        <td><%= listadeLugar.get(i).getNombre()%></td>
+                        <td><%= listadeLugar.get(i).getProvincia() %></td>
                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarLugar.jsp?idLugar=<%=listaLugar.get(i).getIdLugar()%>" >Modificar</a> </td>
                          <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarLugar.jsp?Lugar=<%=listaLugar.get(i).getNombre()%>&idLugar=<%=listaLugar.get(i).getIdLugar()%>">Eliminar</a></td>
                        
 
                 </tr>
                  
-           <%}%>  
+           <%}}%>  
     
         </table>
            <br>
