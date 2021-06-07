@@ -37,17 +37,18 @@
                         <!-- boton con menu para Chofer.-->
                         <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="sesionAdminChofer.jsp">Listar</a></li>
-                                        <li><a href="listadoChofer.jsp">Gestionar</a></li>
+					<li><a href="#">Listar</a></li>
+                                        <li><a href="#">Gestionar</a></li>
 				</ul>
 
 			</li>
                         
                         <!-- boton con menu para Combi.-->
-                             <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar comentarios<i class="icono derecha fas fa-chevron-down"></i></a>
+                             <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Comentarios<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                         <li><a href="sesionAdminCombi.jsp">Listar</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                            <li><a href="listadoCombi.jsp">Gestionar</a></li> <!--LINK PROVISORIO PARA VERIFICAR BAJAS-->
+                                        <li><a href="#">Comentar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                         <li><a href="#">Gestionar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                            
 				</ul>
 
 			</li>

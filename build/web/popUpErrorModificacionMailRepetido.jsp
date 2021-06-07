@@ -37,7 +37,7 @@
                     if (unCliente.getMail().equals(username)){%>          
 
 
-            <form style="margin-top: 150px" action="ModificarCliente?idCliente=<%=unCliente.getIdCliente()%>" method="post">
+            <form action="ModificarCliente?idCliente=<%=unCliente.getIdCliente()%>" method="post">
                <h4>Mi información</h4>
                <label>Nombre</label>
                <input class="controls" type="text" name="nombre" value="<%=unCliente.getNombre()%>" >
@@ -49,25 +49,21 @@
                <input class="controls" type="email" name="mail" id="correo" value="<%=unCliente.getMail()%>">
                <label>Contraseña</label>
                <input class="controls" type="text" name="pass" id="contra" value="<%=unCliente.getContra()%>">
-               <b for="start">Ingrese su fecha de nacimiento:</b><br>
-               <div class="fecha">
-                    <input class="controls2" type="number" name="dia" id="dia" min="1" max="31" placeholder="Dia">
-                    <input class="controls2" type="number" name="mes" id="mes" min="1" max="12" placeholder="Mes">
-                    <input class="controls2" type="number" name="anio" id="anio" min="1960" max="2021" placeholder="Año">
-               </div><br>               
+
                 <label>Tipo de plan</label>
                         <select class="controls" name="tipoPlan">
                             <option><%=unCliente.getTipoPlan()%></option>
                             <option>Basico</option>
                             <option>Gold</option>
                         </select>
-                            
                <input class="botons" type="submit" value="Editar datos">
         <%}}%>        
                 </form>         
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/sesion.js"></script>              
+        <script src="js/sesion.js"></script> 
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertMail.js"></script>        
 
         <footer>
             <%@include file="/template/footer.jsp"%>

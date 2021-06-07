@@ -20,14 +20,14 @@
         </aside>
 		
         <div class="formulario-sesiones">
-            <form>
-	    <div class="divCierre">
+	    <div class="divCierre" style=" position: absolute;background: #424242;top:50%;left: 50%;margin-top: -100px;margin-left: -100px;padding:20px;font-family: inherit;font-size: 1rem;
+        color: white;text-align: center;padding: 70px; border: none;border-radius: 5px;">
                 <h3>Quiere cerrar sesion ?</h3>
-                <a href="index.jsp">Aceptar</a>
-                <a href="sesionAdmin.jsp">Cancelar</a>
+                <br>
+                <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;"href="index.jsp">Aceptar</a>
+                <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="sesionUsuario.jsp">Cancelar</a>
             </div> 
-            </form>
-            </div>
+        </div> 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
  
