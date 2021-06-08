@@ -99,7 +99,7 @@ public class ModificarCliente extends HttpServlet {
         int edad = today - anio;
        
         if (edad < 18 ){
-           response.sendRedirect("popUpErrorMenosEdad.jsp");
+           response.sendRedirect("popUpErrorModificarClienteMenorDeEdad.jsp");
         }else{
             boolean cumpleTamañoMin = control.verificarContraseña(pass);
             if(!cumpleTamañoMin){

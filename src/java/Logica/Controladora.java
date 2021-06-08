@@ -864,5 +864,51 @@ public class Controladora {
          return cargados;
     }
 
+    public boolean verificarPasajeDisp(String origen, String destino, int dia, int mes, int anio) {
+        List <Viaje> listaViajes = controlPersis.getViaje();
+        List <Ruta> listaRutas = controlPersis.getRutas();
+         List <Lugar> listaLugar = controlPersis.getLugares();
+         List <Combi> listaCombi = controlPersis.getCombi();
+         boolean cumple= false;
+        String origenRuta= "";
+        String destinoRuta= "";
+        String origenLugar="";
+        String destinoLugar="";
+        String tipoServicio = "";
+        int hora=0;
+        for(Viaje viaje:listaViajes){
+            for (Ruta ruta:listaRutas){
+                for (Lugar lugar:listaLugar){ // obtenemos el nombre de origen y destino de cada ruta.
+                    if(lugar.getIdLugar()== ruta.getOrigen()){
+                        origenLugar= lugar.getNombre();
+                    } else{
+                        if(lugar.getIdLugar() == ruta.getDestino()){
+                            destinoLugar= lugar.getNombre();
+                        }
+                    }
+                 // si la ruta actual corresponde al viaje actual-> guardamos el nombre de las ciudades origen y destino.      
+                     if(ruta.getIdRuta() == viaje.getIdRuta()){
+                     origenRuta = origenLugar;
+                     destinoRuta = destinoLugar;
+                     hora= ruta.getHora();
+                    }   
+                }
+                for (Combi combi: listaCombi){
+                    if (combi.getIdCombi() == ruta.getIdCombi()){
+                        tipoServicio= combi.getTipoServicio();
+                    }
+                }
+                 
+            }    
+            // preguntamos para cada viaje.> si cumple con los datos que se ingresaron en pantalla.
+            if(viaje.getAnio()==anio && viaje.getMes()== mes && viaje.getDia()== dia && origenRuta.equals(origen) && destinoRuta.equals(destino)){
+                return cumple = true;
+            }
+            
+        }
+        return cumple;
+    }
+
+
 }
 

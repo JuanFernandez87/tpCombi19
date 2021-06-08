@@ -61,14 +61,13 @@
                 </form>         
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/sesion.js"></script> 
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertMail.js"></script>        
+        <script src="js/sesion.js"></script>              
 
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-        
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertEdad.js"></script> 
 
 
   </body>
