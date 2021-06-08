@@ -1,3 +1,6 @@
+<%@page import="Logica.Controladora"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.Lugar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,13 +15,37 @@
         <header>
             <%@include file="/template/header.jsp"%>
         </header>
+
+        <%          
+                    Controladora control = new Controladora();
+                    List <Lugar> listaOrigen = control.devolverListaLugares();
+                    List <Lugar> listaDestino = control.devolverListaLugares(); 
+        %>         
+        
         <div  class="formulario">
-            <form action="">
+            <form action="BuscarPasaje" method="POST">
                 <h4>Busca tu pasaje </h4>
-                <i class="fas fa-map-marker-alt"></i><label> Destino</label>
-                <input class="controls" type="text" placeholder="Ingrese destino">
-                <i class="fas fa-map-marker-alt"></i><label> Origen</label>
-                <input class="controls" type="text" placeholder="Ingrese origen">
+                               
+                <i class="fas fa-map-marker-alt"><label>Origen</label>
+                <select class="controls" name="origen" required>
+                        <option>Seleccione un origen</option>
+                <%
+                    for (Lugar origen: listaOrigen) {
+                        if (!origen.getProvincia().equals("-1")){ %>                        
+                        <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
+                 <%}}%>
+                </select> 
+                
+                <i class="fas fa-map-marker-alt"><label>Destino</label>              
+                <select class="controls" name="destino" required>               
+                        <option>Seleccione un destino</option>
+                <%
+                    for (Lugar destino: listaDestino) {
+                        if (!destino.getProvincia().equals("-1")){ %>%>                        
+                        <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
+                 <%}}%>       
+                </select>
+
                 <i class="fas fa-calendar-alt"></i> <label>Partida</label>
                 <div class="fecha"> <br>
                     <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia">

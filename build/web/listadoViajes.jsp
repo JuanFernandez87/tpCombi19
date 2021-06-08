@@ -61,8 +61,8 @@
             <h1>Lista viajes</h1>
         <table>
             <tr>
-                <td>Destino</td> 
                 <td>Origen</td> 
+                <td>Destino</td> 
                 <td>Distancia</td> 
                 <td>Capacidad</td> 
                 <td>Fecha</td> 
@@ -82,10 +82,10 @@
                     <%for (Lugar unLugar:listaLugares){%> 
 
                     <%if(unLugar.getIdLugar() == unaRuta.getOrigen()){%>
-                               <td><%=unLugar.getNombre()%><%}%></td>                     
-                    
-                    <%if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
-                               <td><%=unLugar.getNombre()%><%}%></td>                      
+                               <td><%=unLugar.getNombre()%><%}
+                        else{
+                            if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
+                               <td><%=unLugar.getNombre()%><%}}%></td>
                     
          
                                

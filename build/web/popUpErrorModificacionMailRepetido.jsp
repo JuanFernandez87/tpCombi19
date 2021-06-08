@@ -37,7 +37,7 @@
                     if (unCliente.getMail().equals(username)){%>          
 
 
-            <form action="ModificarCliente?idCliente=<%=unCliente.getIdCliente()%>" method="post">
+            <form style="margin-top: 150px" action="ModificarCliente?idCliente=<%=unCliente.getIdCliente()%>" method="post">
                <h4>Mi información</h4>
                <label>Nombre</label>
                <input class="controls" type="text" name="nombre" value="<%=unCliente.getNombre()%>" >
@@ -49,13 +49,13 @@
                <input class="controls" type="email" name="mail" id="correo" value="<%=unCliente.getMail()%>">
                <label>Contraseña</label>
                <input class="controls" type="text" name="pass" id="contra" value="<%=unCliente.getContra()%>">
-
-                <label>Tipo de plan</label>
-                        <select class="controls" name="tipoPlan">
-                            <option><%=unCliente.getTipoPlan()%></option>
-                            <option>Basico</option>
-                            <option>Gold</option>
-                        </select>
+               <b for="start">Ingrese su fecha de nacimiento:</b><br>
+               <div class="fecha">
+                    <input class="controls2" type="number" name="dia" id="dia" min="1" max="31" value="<%=unCliente.getDia()%>">
+                    <input class="controls2" type="number" name="mes" id="mes" min="1" max="12" value="<%=unCliente.getMes()%>">
+                    <input class="controls2" type="number" name="anio" id="anio" min="1960" max="2021" value="<%=unCliente.getAnio()%>">
+               </div><br>
+                            
                <input class="botons" type="submit" value="Editar datos">
         <%}}%>        
                 </form>         
