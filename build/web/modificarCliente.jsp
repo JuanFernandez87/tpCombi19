@@ -51,16 +51,10 @@
                <input class="controls" type="text" name="pass" id="contra" value="<%=unCliente.getContra()%>">
                <b for="start">Ingrese su fecha de nacimiento:</b><br>
                <div class="fecha">
-                    <input class="controls2" type="number" name="dia" id="dia" min="1" max="31" placeholder="Dia">
-                    <input class="controls2" type="number" name="mes" id="mes" min="1" max="12" placeholder="Mes">
-                    <input class="controls2" type="number" name="anio" id="anio" min="1960" max="2021" placeholder="Año">
-               </div><br>               
-                <label>Tipo de plan</label>
-                        <select class="controls" name="tipoPlan">
-                            <option><%=unCliente.getTipoPlan()%></option>
-                            <option>Basico</option>
-                            <option>Gold</option>
-                        </select>
+                    <input class="controls2" type="number" name="dia" id="dia" min="1" max="31" value="<%=unCliente.getDia()%>">
+                    <input class="controls2" type="number" name="mes" id="mes" min="1" max="12" value="<%=unCliente.getMes()%>">
+                    <input class="controls2" type="number" name="anio" id="anio" min="1960" max="2021" value="<%=unCliente.getAnio()%>">
+               </div><br>
                             
                <input class="botons" type="submit" value="Editar datos">
         <%}}%>        

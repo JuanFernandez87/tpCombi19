@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarCliente.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/popUpErrorLugarConViaje.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/index.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroTarjetaBasico.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdminEliminarInsumo.jsp</file>
             <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/asideUsuario.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ModificarCliente.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/registro.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarPlanGold.jsp</file>
         </group>
     </open-files>
 </project-private>
