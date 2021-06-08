@@ -33,7 +33,7 @@
                             <h5>Bienvenido <%=unCliente.getNombre()%> <%=unCliente.getApellido()%></h5>
                             <h5><%=tipoUsuario%></h5> 
                    </div>
-            <%}}%> 
+            
                         <!-- boton con menu para Chofer.-->
                         <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
@@ -52,7 +52,12 @@
 				</ul>
 
 			</li>
-                        
+                        <%if (unCliente.getTipoPlan().equals("Gold")){ %>
+                            <li><a href="modificarPlanBasico.jsp?idCliente=<%=unCliente.getIdCliente()%>">Cambiar plan</a></li>
+                            <%}else{%>
+                            <li><a href="modificarPlanGold.jsp?idCliente=<%=unCliente.getIdCliente()%>">Cambiar plan</a></li>
+                        <%}%>
+                  <%}}%>       
 
 		</ul>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

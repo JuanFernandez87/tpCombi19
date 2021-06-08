@@ -98,7 +98,7 @@ public class ModificarRuta extends HttpServlet {
             
             }
         }else{
-            response.sendRedirect ("popUpErrorMismoOyD.jsp"); //falta hacer pop up de que ruta tiene un viaje activo
+            response.sendRedirect ("popUpeErrorRutaConViajeActivo.jsp"); //falta hacer pop up de que ruta tiene un viaje activo
         }
     }   
 

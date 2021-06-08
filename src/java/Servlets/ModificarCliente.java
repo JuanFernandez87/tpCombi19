@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -76,46 +77,59 @@ public class ModificarCliente extends HttpServlet {
         String nombre = request.getParameter("nombre"); 
         int dni = Integer.parseInt(request.getParameter("dni"));
         String mail = request.getParameter("mail");
-        String pass = request.getParameter("pass");
-        String tipoPlan = request.getParameter("tipoPlan");        
+        String pass = request.getParameter("pass"); 
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        int mes = Integer.parseInt(request.getParameter("mes"));
+        int anio = Integer.parseInt(request.getParameter("anio"));
+        //String tipoPlan = request.getParameter("tipoPlan");        
        
         request.getSession().setAttribute("idCliente", idCliente);
         request.getSession().setAttribute("apellido", apellido);
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("dni", dni);
-        request.getSession().setAttribute("mail", mail);
+//        request.getSession().setAttribute("mail", mail);
         request.getSession().setAttribute("pass", pass); 
-        request.getSession().setAttribute("plan", tipoPlan);        
+        request.getSession().setAttribute("dia", dia );
+        request.getSession().setAttribute("mes", mes );
+        request.getSession().setAttribute("anio", anio );      
+        //request.getSession().setAttribute("plan", tipoPlan);        
             
         Controladora control = new Controladora();
-        boolean modicaMailCliente = control.verificarMailCliente(idCliente, mail);
-
-        if(modicaMailCliente){
-            control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
-            if(tipoPlan.equals("Gold")){
+        int today = 2021;
+        int edad = today - anio;
+       
+        if (edad < 18 ){
+           response.sendRedirect("popUpErrorMenosEdad.jsp");
+        }else{
+            boolean cumpleTamañoMin = control.verificarContraseña(pass);
+            if(!cumpleTamañoMin){
+                response.sendRedirect ("popUpErrorModificacionDeContraseniaInvalida.jsp");
+            }else{ 
+                boolean modificaMailCliente = control.verificarMailCliente(idCliente, mail); //devuelve verdadero si el cliente modifica el mail
+                if(modificaMailCliente){ //entra si no modifica el mail  
+                    control.modificarCliente(idCliente, apellido, nombre, dni, pass, mail, dia, mes, anio);
+                    response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); 
+            /*if(tipoPlan.equals("Gold")){
                 request.getSession().setAttribute("idCliente", idCliente);
                 response.sendRedirect ("registroDeTarjetaBasico.jsp");
             }else if(tipoPlan.equals("Basico")){
                 control.modificarPlan(idCliente);
                 response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); 
-            }else{
-                response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp"); }
-                //
-        }else{
-            boolean existe = control.verificarUsuario(mail);
-            if(existe){
-                response.sendRedirect ("popUpErrorModificacionMailRepetido.jsp");
-            }else{    
-                boolean cumpleTamañoMin = control.verificarContraseña(pass);
-                if(!cumpleTamañoMin){
-                    response.sendRedirect ("popUpErrorContraseniaUsuario.jsp");
-                }/*else{
-                    control.modificarCliente(idCliente, apellido, nombre, dni,  mail, pass);
-                    response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
-                }*/
-                    
+            }else{*/           
+                }else{ //entra a verificar si el mail existe en caso que cambie el mail
+                boolean existe = control.verificarUsuario(mail);
+                if(existe){
+                    response.sendRedirect ("popUpErrorModificacionMailRepetido.jsp");
+                }else{    
+                    control.modificarCliente(idCliente, apellido, nombre, dni, pass, mail, dia, mes, anio);
+                    HttpSession misession = request.getSession(true);
+                    misession.setAttribute("username", mail);
+                    response.sendRedirect ("popUpModificacionUsuarioCorrecta.jsp");  
+                }
+                   
             }
             }
+        }
     }
     
 

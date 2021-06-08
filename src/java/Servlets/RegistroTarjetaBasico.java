@@ -95,7 +95,7 @@ public class RegistroTarjetaBasico extends HttpServlet {
             control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
             int idTarjeta = control.idTarjeta(numeroTarjeta);
             control.asignarTarjetaCliente(idCliente, idTarjeta);
-            response.sendRedirect("popUpRegistroCorrectoBasico.jsp");
+            response.sendRedirect("popUpModificacionCorrectoTarjeta.jsp");
         }else{
             response.sendRedirect("popUpRegistroErroneoBasico.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
         }
