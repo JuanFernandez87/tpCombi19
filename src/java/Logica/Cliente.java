@@ -33,14 +33,15 @@ public class Cliente /*extends Persona*/{
     @OneToMany
     Pasaje unPasaje;*/
     
-    @Temporal(TemporalType.DATE)
-    Date fecha_nac;
+    int dia;
+    int mes;
+    int anio;
     //hasta aca 
     
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac, int idTarjeta) {
+    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, int dia, int mes, int anio, int idTarjeta) {
         //super(dni, nombre, apellido, mail, contra, fecha_nac);
         this.idCliente = idCliente;
         this.tipoPlan = tipoPlan;
@@ -50,7 +51,9 @@ public class Cliente /*extends Persona*/{
         this.apellido = apellido;
         this.mail = mail;
         this.contra = contra;
-        this.fecha_nac = fecha_nac;
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
         this.idTarjeta = idTarjeta;
     }
 
@@ -126,12 +129,30 @@ public class Cliente /*extends Persona*/{
         this.contra = contra;
     }
 
-    public Date getFecha_nac() {
-        return fecha_nac;
+    public int getDia() {
+        return dia;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
-        this.fecha_nac = fecha_nac;
+    public void setDia(int dia) {
+        this.dia = dia;
     }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+
 
 }

@@ -81,9 +81,9 @@ public class RegistroCliente extends HttpServlet {
         String mail = request.getParameter("mail");
         String contra = request.getParameter("pass");
         String tipoPlan = request.getParameter("tipoPlan");
-        String dia = request.getParameter("dia");
-        String mes = request.getParameter("mes");
-        String anio = request.getParameter("anio");
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        int mes = Integer.parseInt(request.getParameter("mes"));
+        int anio = Integer.parseInt(request.getParameter("anio"));
         
         /*String tipoPlan;
         if(planBasico != null){
@@ -100,12 +100,11 @@ public class RegistroCliente extends HttpServlet {
         request.getSession().setAttribute("mes", mes );
         request.getSession().setAttribute("anio", anio );
         request.getSession().setAttribute("pass", contra);
-        String fechaNac = dia + "/" + mes + "/" + anio;
         request.getSession().setAttribute("plan", tipoPlan);
         
         Controladora control = new Controladora();
         int today = 2021;
-        int edad = today - Integer.parseInt(anio);
+        int edad = today - anio;
        
         if (edad < 18 ){
            response.sendRedirect("popUpErrorMenosEdad.jsp");
@@ -122,7 +121,7 @@ public class RegistroCliente extends HttpServlet {
                response.sendRedirect ("popUpErrorContrasenia.jsp");
             }
            else{
-               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, fechaNac);
+               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, dia, mes, anio);
                if(tipoPlan.equals("Gold")){
                 int idCliente = control.idCliente(mail); 
                 request.getSession().setAttribute("idCliente", idCliente);

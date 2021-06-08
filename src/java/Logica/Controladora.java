@@ -1,18 +1,14 @@
 package Logica;
 
 import Persistencia.ControladoraPersistencia;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-    public void crearCliente(String apellido, String nombre, int dni, String mail, String contra, String tipoPlan, String fechaNac){
+    public void crearCliente(String apellido, String nombre, int dni, String mail, String contra, String tipoPlan, int dia, int mes, int anio){
         Cliente nuevoCliente = new Cliente();
         nuevoCliente.setApellido(apellido);
         nuevoCliente.setNombre(nombre);
@@ -21,13 +17,9 @@ public class Controladora {
         nuevoCliente.setContra(contra);
         nuevoCliente.setTipoPlan(tipoPlan);
         nuevoCliente.setIdTarjeta(0);
-        Date date1;   
-        try {
-            date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNac);
-            nuevoCliente.setFecha_nac(date1);
-        } catch (ParseException ex) {
-            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        nuevoCliente.setDia(dia);
+        nuevoCliente.setMes(mes);
+        nuevoCliente.setAnio(anio);
         controlPersis.crearCliente(nuevoCliente);   
     }
     
@@ -585,15 +577,18 @@ public class Controladora {
         }         
     }
     
-    public void modificarCliente(int idCliente, String apellido, String nombre, int dni, String mail, String pass) {
+    public void modificarCliente(int idCliente, String apellido, String nombre, int dni , String pass, String mail, int dia, int mes, int anio) {
          List <Cliente> listaClientes = controlPersis.getClientes();
         for (Cliente unCliente:listaClientes) { 
             if(unCliente.getIdCliente() == idCliente){ 
                 unCliente.setApellido(apellido);
                 unCliente.setNombre(nombre);
                 unCliente.setDni(dni);
-                unCliente.setMail(mail);
                 unCliente.setContra(pass);
+                unCliente.setMail(mail);
+                unCliente.setDia(dia);
+                unCliente.setMes(mes);
+                unCliente.setAnio(anio);
                 controlPersis.asignarCliente(unCliente);
             }
         }         
@@ -868,9 +863,6 @@ public class Controladora {
          }
          return cargados;
     }
-
-
-
 
 }
 
