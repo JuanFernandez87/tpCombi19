@@ -8,7 +8,7 @@ import java.util.List;
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-    public void crearCliente(String apellido, String nombre, int dni, String mail, String contra, String tipoPlan, int dia, int mes, int anio){
+    public void crearCliente(String apellido, String nombre, int dni, String mail, String contra, String tipoPlan, int dia, int mes, int anio, boolean enSesion){
         Cliente nuevoCliente = new Cliente();
         nuevoCliente.setApellido(apellido);
         nuevoCliente.setNombre(nombre);
@@ -20,6 +20,7 @@ public class Controladora {
         nuevoCliente.setDia(dia);
         nuevoCliente.setMes(mes);
         nuevoCliente.setAnio(anio);
+        nuevoCliente.setEnSesion(enSesion);
         controlPersis.crearCliente(nuevoCliente);   
     }
     
@@ -109,6 +110,8 @@ public class Controladora {
         for(Cliente cli:listaClientes){
             if(cli.getMail().equals(usuario) && cli.getContra().equals(contra)){
                 aux = true;
+                cli.setEnSesion(true);
+                 controlPersis.asignarCliente(cli); 
                 return aux;
             }
         }
@@ -907,6 +910,10 @@ public class Controladora {
             
         }
         return cumple;
+    }
+
+    public void iniciarSesion(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

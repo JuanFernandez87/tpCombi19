@@ -1,3 +1,4 @@
+<%@page import="Persistencia.ControladoraPersistencia"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,16 @@
         <aside>
             <%@include file="/template/asideUsuario.jsp"%>
         </aside>
-		
+        <%
+        ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+        List <Cliente> listaClientes= control.devolverListaClientes();
+        for (Cliente cliente:listaClientes){
+                        if(cliente.getEnSesion()){
+                            cliente.setEnSesion(false);
+                            controlPersis.asignarCliente(cliente);
+                        }
+                        
+                    }%>
         <div class="formulario-sesiones">
 	    <div class="divCierre" style=" position: absolute;background: #424242;top:50%;left: 50%;margin-top: -100px;margin-left: -100px;padding:20px;font-family: inherit;font-size: 1rem;
         color: white;text-align: center;padding: 70px; border: none;border-radius: 5px;">

@@ -105,7 +105,7 @@ public class RegistroCliente extends HttpServlet {
         Controladora control = new Controladora();
         int today = 2021;
         int edad = today - anio;
-       
+        boolean enSesion = false;
         if (edad < 18 ){
            response.sendRedirect("popUpErrorMenosEdad.jsp");
        }else{
@@ -121,7 +121,7 @@ public class RegistroCliente extends HttpServlet {
                response.sendRedirect ("popUpErrorContrasenia.jsp");
             }
            else{
-               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, dia, mes, anio);
+               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, dia, mes, anio,enSesion);
                if(tipoPlan.equals("Gold")){
                 int idCliente = control.idCliente(mail); 
                 request.getSession().setAttribute("idCliente", idCliente);
