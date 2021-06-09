@@ -19,6 +19,7 @@ public class Cliente /*extends Persona*/{
     
     @Basic
     String tipoPlan;
+    boolean enSesion;
     //despues borrar
     String nombre;
     String apellido;
@@ -41,7 +42,7 @@ public class Cliente /*extends Persona*/{
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, int dia, int mes, int anio, int idTarjeta) {
+    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, int dia, int mes, int anio, int idTarjeta,boolean sesion) {
         //super(dni, nombre, apellido, mail, contra, fecha_nac);
         this.idCliente = idCliente;
         this.tipoPlan = tipoPlan;
@@ -55,6 +56,15 @@ public class Cliente /*extends Persona*/{
         this.mes = mes;
         this.anio = anio;
         this.idTarjeta = idTarjeta;
+        this.enSesion = sesion;
+    }
+
+    public boolean getEnSesion() {
+        return enSesion;
+    }
+
+    public void setEnSesion(boolean enSesion) {
+        this.enSesion = enSesion;
     }
 
     public int getIdTarjeta() {
