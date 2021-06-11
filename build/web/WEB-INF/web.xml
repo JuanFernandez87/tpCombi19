@@ -104,6 +104,18 @@
         <servlet-name>RegistroTarjetaBasico</servlet-name>
         <servlet-class>Servlets.RegistroTarjetaBasico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarPlanBasico</servlet-name>
+        <servlet-class>Servlets.ModificarPlanBasico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPlanABasico</servlet-name>
+        <servlet-class>Servlets.ModificarPlanABasico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPlan</servlet-name>
+        <servlet-class>Servlets.ModificarPlan</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -207,6 +219,18 @@
     <servlet-mapping>
         <servlet-name>RegistroTarjetaBasico</servlet-name>
         <url-pattern>/RegistroTarjetaBasico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPlanBasico</servlet-name>
+        <url-pattern>/ModificarPlanBasico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPlanABasico</servlet-name>
+        <url-pattern>/ModificarPlanABasico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPlan</servlet-name>
+        <url-pattern>/ModificarPlan</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

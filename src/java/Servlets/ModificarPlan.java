@@ -6,25 +6,18 @@
 package Servlets;
 
 import Logica.Controladora;
-import Logica.comentarios;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Esteban
+ * @author juanf
  */
-@WebServlet(name = "CrearComentario", urlPatterns = {"/CrearComentario"})
-public class CrearComentario extends HttpServlet {
+public class ModificarPlan extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,16 +33,15 @@ public class CrearComentario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-        String comentario = request.getParameter("comentario");
-       
-       SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd '' HH:mm:ss");
-       Date date = new Date(System.currentTimeMillis());
-        String fecha = formatter.format(date);
-        comentario = fecha.toString() + "" + comentario;
-        Controladora control = new Controladora();
-        control.crearComentario(comentario, idCliente);
-        response.sendRedirect ("popUpComentarioCorrecto.jsp");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ModificarPlan</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ModificarPlan at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -66,11 +58,7 @@ public class CrearComentario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
-     
-        
     }
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -83,9 +71,14 @@ public class CrearComentario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-       
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        request.getSession().setAttribute("idCliente", idCliente);
         
+        Controladora control = new Controladora();
+        control.eliminarTarjeta(idCliente);
+        control.cambiarPlan(idCliente);
+
+        response.sendRedirect("popUpModificacionCorrectoPlanBasico.jsp");
     }
 
     /**

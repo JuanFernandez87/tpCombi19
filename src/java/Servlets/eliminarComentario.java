@@ -39,7 +39,7 @@ public class eliminarComentario extends HttpServlet {
         int comentario = Integer.parseInt(request.getParameter("idComentario"));
         Controladora control = new Controladora();
         control.eliminarComentario(comentario, idCliente);
-        response.sendRedirect ("listadoComentarios.jsp");
+        response.sendRedirect ("popUpEliminacionCorrectaComentario.jsp");
         }
     }
 

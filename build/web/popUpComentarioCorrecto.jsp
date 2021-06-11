@@ -25,7 +25,7 @@
                     if (unCliente.getMail().equals(username)){%>     
                        
       
-            <form action="sesionAdminConfirmarComentario.jsp?idCliente=<%=unCliente.getIdCliente()%>" method="post" style="margin-top: 350px;" >
+            <form action="CrearComentario?idCliente=<%=unCliente.getIdCliente()%>" method="post" style="margin-top: 350px;" >
             <h4>Dejanos un comentario</h4>
             <textarea  class="controls" rows="5" name="comentario" placeholder="Dejanos un comentario....."></textarea>
             <input class="botons" type="submit" value="Publicar">
@@ -34,10 +34,12 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/sesion.js"></script>
-
+       
+         <script src="js/sweetAlertComentarioCorrecto.js"></script>
+ <script src="js/sesion.js"></script>
   </body>
    
+
 </html>

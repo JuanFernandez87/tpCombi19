@@ -947,6 +947,32 @@ public class Controladora {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void eliminarTarjeta(int idCliente) {
+        List <Tarjeta> listaTarjetas = controlPersis.getTarjeta();
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        int idTarjeta = 0;
+        for(Cliente unCliente:listaClientes){
+            if(unCliente.getIdCliente() == idCliente)
+                idTarjeta = unCliente.getIdTarjeta();
+        }        
+        for(Tarjeta unaTarjeta:listaTarjetas){
+            if(unaTarjeta.getIdTarjeta() == idTarjeta){
+                unaTarjeta.setNumero("");
+                controlPersis.asignarTarjeta(unaTarjeta);
+            }
+        }
+    }
+
+    public void cambiarPlan(int idCliente) {
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for(Cliente unCliente:listaClientes){
+            if(unCliente.getIdCliente() == idCliente)
+                unCliente.setIdTarjeta(0);
+                unCliente.setTipoPlan("Basico");
+                controlPersis.asignarCliente(unCliente);
+        } 
+    }
+
 
 
 
