@@ -18,23 +18,10 @@
             <%
                 Controladora control = new Controladora();
                 List <Insumo> listaInsumos = control.devolverListaInsumos();
-                String prueba= "esto es la prueba";
-        int tamaño = 0;
-        String index = "";
-        // obtenemos la cantidad elegida de cada insumo.
-        // el primer insumo se referencia con el valor 1; el segundo con 2...etc.
-        for (Insumo insumo:listaInsumos){
-            if(insumo.getPrecio() != -1){
-                 tamaño=tamaño+1;
-            }
-        }
-        
-        String[] itemsArray = new String[listaInsumos.size()];
-        itemsArray[1]= "1";
                 %>
         
         <div class="divCompra">
-            <form class="formularioCompra" action="ComprarPasaje" method="POST"onSubmit = "return checkForm(event)"> 
+            <form class="formularioCompra" action="ComprarPasaje" method="POST"> 
           <h1>Compra de pasajes </h1>
           <h2> <i class="fas fa-apple-alt"></i> Insumos para agregar a su viaje</h2>
                 <%
@@ -45,7 +32,7 @@
                             i=i+1;
                             nombreInsumo = insumo.getNombre();%>                        
                         <fieldset><i class="icono far fa-arrow-alt-circle-right"></i> <p> <%=nombreInsumo%></p> 
-          <input class="insumoCompra" type="number" name="<%=insumo.getPrecio()%>" id="<%=i%>" required min="0" placeholder="0" >             
+          <input class="insumoCompra " type="number" name="<%=i%>" required min="0" placeholder="0">             
                  <%}%></fieldset><%}%>       
                 
           
@@ -58,11 +45,10 @@
           </fieldset>
           <fieldset>
          <i class="icono far fa-list-alt"></i></i> <p> Cantidad de pasajes a comprar</p> 
-          <input class="insumoCompra " type="number" name="cantPasajes" id="cantPasajes" required min="0" placeholder="0">
+          <input class="insumoCompra " type="number" name="cantPasajes" required min="0" placeholder="0">
           </fieldset>
 
-          <input class="botons" type="submit" value="Comprar" onSubmit = "return checkForm(event)">
-           <a class="cyb" type="submit" value="Cancelar y volver" href="ListadoBusquedaViaje.jsp"> Cancelar y volver al listado</a>
+          <input class="botons" type="submit" value="Comprar">
 
         </form>
          </div>
@@ -71,26 +57,8 @@
             <%@include file="/template/footer.jsp"%>
         </footer>
         
-        <SCRIPT> 
-function checkForm(e) { 
-   
-    var fin=<%=tamaño%> +1;
-    var total = 0;
-    var parcial;
-    for(var i = 1; i < fin; i ++){
-        x =document.getElementById(i);
-        parcial =(x.value * x.name);
-        total = total + parcial;
-        x.setAttribute("name",i);
-    }
-    total = total * document.getElementById("cantPasajes").value;
-     if ((window.confirm("Desea realizar la compra por el precio: $"+ total))){
-     e.returnValue = true; 
- }else{
-     e.returnValue = false;
- }
- }
-</SCRIPT>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertCompraPasajeExitosa.js"></script>
                 
     </body>
 </html>
