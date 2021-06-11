@@ -20,8 +20,8 @@
             <div class="contenidoHeader">
                 <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>    
                 <nav>
-                    <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
-                    <a href=""><i class="fas fa-address-book"></i>Mi información</a>                    
+                    <a href="sesionAdmin.jsp"><i class="fas fa-home"></i>Inicio</a>
+                    <a href="#"><i class="fas fa-address-book"></i>Mi información</a>                    
                     <a href="sesionAdminCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt" onclick="cerrarSesion().js"></i>Cerrar sesion</a>
                 </nav>
             </div>

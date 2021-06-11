@@ -162,6 +162,14 @@ public class Cliente /*extends Persona*/{
     public void setAnio(int anio) {
         this.anio = anio;
     }
+    
+    public void agregarComentario(String comentario) {
+        this.listaComentarios.add(comentario);
+    }
+
+    public void eliminarComentario(int comentario) {
+        this.listaComentarios.remove(comentario);
+    }
 
 
 

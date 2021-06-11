@@ -118,6 +118,37 @@ public class Controladora {
         return aux;
     }
     
+
+    public boolean crearComentario(String comentario, int id) {
+            
+            List <Cliente> listaClientes = controlPersis.getClientes();
+        
+            for(Cliente cli:listaClientes){
+                 if(id == cli.getIdCliente()){
+                     cli.agregarComentario(comentario);
+                     controlPersis.asignarCliente(cli); 
+        }
+            
+      }
+            return true;
+    }
+    
+    
+    public boolean eliminarComentario(int comentario, int id) {
+            
+            List <Cliente> listaClientes = controlPersis.getClientes();
+        
+            for(Cliente cli:listaClientes){
+                 if(id == cli.getIdCliente()){
+                     cli.eliminarComentario(comentario);
+                     controlPersis.asignarCliente(cli); 
+        }
+            
+      }
+            return true;
+    }
+
+    
         public boolean comprobarIngresoChofer(String usuario, String contra) {
         boolean aux = false;        
         
@@ -915,6 +946,8 @@ public class Controladora {
     public void iniciarSesion(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 
 }
