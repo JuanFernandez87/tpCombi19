@@ -34,9 +34,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="js/sesion.js"></script>
 
-
       <%
-            
+         
             List <Cliente> listaClientes = control.devolverListaClientes(); 
             String username = (String)session.getAttribute("username");
             for (Cliente unCliente:listaClientes){
@@ -66,15 +65,12 @@
                     <td><%= comentario %></td>
                     <td><%= fecha %></td>
                     <td><%= hora %></td>
-                    <td> <a style="background-color: red;color: white;padding: 5px;" href="eliminarComentario?idComentario=<%=i%>&idCliente=<%=unCliente.getIdCliente()%>">Eliminar</a></td>
+                    <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarComentario.jsp?idComentario=<%=i%>&idCliente=<%=unCliente.getIdCliente()%>">Eliminar</a></td>
 
                 </tr>
                  
            <%}}}%>  
-    
-        
-            
-        </div>
+
         
         <footer>
             <%@include file="/template/footer.jsp"%>

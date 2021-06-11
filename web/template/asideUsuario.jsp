@@ -32,7 +32,7 @@
                          <div style="background-color:#494949;color: white;text-align: center">
                             <h5><i style="border: 1px solid white; padding: 10px; border-radius: 20px;margin-top: 2px;" class="fas fa-user"></i></h5>
                             <h5>Bienvenido <%=unCliente.getNombre()%> <%=unCliente.getApellido()%></h5>
-                            <h5><%=tipoUsuario%></h5> 
+                            <h5><%=tipoUsuario%> | <%=unCliente.getTipoPlan()%></h5> 
                    </div>
             
                         <!-- boton con menu para Chofer.-->
@@ -53,11 +53,8 @@
 				</ul>
 
 			</li>
-                        <%if (unCliente.getTipoPlan().equals("Gold")){ %>
-                            <li><a href="modificarPlanBasico.jsp?idCliente=<%=unCliente.getIdCliente()%>"><i class="icono izquierda fas fa-retweet"></i>Cambiar plan</a></li>
-                            <%}else{%>
-                            <li><a href="modificarPlanGold.jsp?idCliente=<%=unCliente.getIdCliente()%>"><i class="icono izquierda fas fa-retweet"></i>Cambiar plan</a></li>
-                        <%}%>
+                           <li><a href="sesionUsuarioConfirmacionCambioDePlan.jsp?idCliente=<%=unCliente.getIdCliente()%>&tipoPlan=<%=unCliente.getTipoPlan()%>"><i class="icono izquierda fas fa-retweet"></i>Cambiar plan</a></li>
+
                   <%}}%>       
 
 		</ul>

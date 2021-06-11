@@ -25,7 +25,7 @@
                     if (unCliente.getMail().equals(username)){%>     
                        
       
-            <form action="CrearComentario?idCliente=<%=unCliente.getIdCliente()%>" method="post" style="margin-top: 350px;" >
+            <form action="sesionAdminConfirmarComentario.jsp?idCliente=<%=unCliente.getIdCliente()%>" method="post" style="margin-top: 350px;" >
             <h4>Dejanos un comentario</h4>
             <textarea  class="controls" rows="5" name="comentario" placeholder="Dejanos un comentario....."></textarea>
             <input class="botons" type="submit" value="Publicar">
