@@ -18,7 +18,7 @@
             <div class="contenidoHeader">
                 <div class="logo"><img src="./images/logo.png" alt=""> Combi 19</div>    
                 <nav>
-                    <a href="index.jsp"><i class="fas fa-home"></i>Inicio</a>
+                    <a href="sesionUsuario.jsp"><i class="fas fa-home"></i>Inicio</a>
                     <a href="modificarCliente.jsp"><i class="fas fa-address-book"></i>Mi información</a>                    
                     <a href="sesionUsuarioCierre.jsp"><i class="icono izquierda fas fa-sign-out-alt"></i>Cerrar sesion</a>
                 </nav>

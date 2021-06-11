@@ -10,7 +10,58 @@ body{
   font-family: 'Roboto', sans-serif;
   line-height: 18px;
 }
+.divCompra h1{
+        margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-left: 132px;
+}
+.divCompra .icono{
+        font-size: 20px;
+}
 
+.formularioCompra{
+    position: absolute;
+    width: 700px;
+    padding: 49px;
+    margin: auto;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    margin-left: 512px;
+    margin-top: 128px;
+
+}
+.formularioCompra fieldset{
+    min-width: 59px;
+    padding: 7px;
+    margin: 4px;
+        display: inline-flex;
+    align-items: baseline;
+            width: 510px;
+    margin-left: 50px;
+
+}
+.insumoCompra{
+       width: -webkit-fill-available;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+}
+.formularioCompra fieldset p{
+    margin-left: 1px;
+    font-size: 1.3rem;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+
+}
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0rem;

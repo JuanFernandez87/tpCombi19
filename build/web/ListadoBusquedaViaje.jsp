@@ -3,6 +3,7 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
+<%@page import="Logica.Cliente"%>
 <%@page import="Logica.Administrador"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
@@ -36,7 +37,8 @@
  
       <%
             Controladora control = new Controladora();
-
+                
+                 List <Cliente> listaClientes= control.devolverListaClientes();
                 List <Chofer> listaChofer= control.devolverListaChoferes();
 
                 List <Lugar> listaLugar= control.devolverListaLugares(); 
@@ -114,8 +116,36 @@
                 <td> $<%=viaje.getPrecio()%> </td>
                 <td><%=tipoServicio%> </td>
                 <td><%=viaje.getCantAsientos()%> </td><%}}%> 
-                 <td> <td> <a style="background-color: orange;color: white;padding: 5px;text-decoration: none;"href="#">Comprar </a></td></td>
+                <% // En esta seccion se comprueba si se inicio sesion. Si hay una sesion Activa de un usuario
+                    //Entonces se permite la compra y se redirige al link "comprarPasajes" para usuarios.
+                    String linkHref="#";
+                    for (Cliente cliente:listaClientes){
+                        if(cliente.getEnSesion()){
+                            linkHref = "comprarPasajes.jsp";
+                        }else{
+                            linkHref = "popUpErrorDebeIniciarSesion.jsp";
+                        }
+                    }
+                %>
+                 <td> <td> <a style="background-color: orange;color: white;padding: 5px;text-decoration: none;" href="#"; onclick="func()">Comprar </a></td></td>
             </tr>
+            
+            
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            <script>
+                function func(){
+                    //alert("se ingreso a la confirmacion");
+                    swal.fire({
+                         text: "Sera redireccionado a la compra de pasajes.",
+                         icon: 'info',
+                         showCancelButton: true,
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:false,
+                         footer:`<a class="btn btn-primary" href="<%=linkHref%>">Confirm</a>`
+                        });
+                   
+                }
+                </script>
         
         <footer>
             <%@include file="/template/footer.jsp"%>
