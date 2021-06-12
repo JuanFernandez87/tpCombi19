@@ -132,7 +132,8 @@ public class Controladora {
       }
             return true;
     }
-    
+
+
     
     public boolean eliminarComentario(int comentario, int id) {
             
@@ -994,6 +995,7 @@ public class Controladora {
         return aux;        
     }
 
+  
 
 
 

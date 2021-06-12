@@ -171,6 +171,8 @@ public class Cliente /*extends Persona*/{
         this.listaComentarios.remove(comentario);
     }
 
+ 
+
 
 
 }
