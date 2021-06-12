@@ -43,7 +43,7 @@ public class CrearComentario extends HttpServlet {
            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         String comentario = request.getParameter("comentario");
        
-       SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd '' HH:mm:ss");
+       SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
        Date date = new Date(System.currentTimeMillis());
         String fecha = formatter.format(date);
         comentario = fecha.toString() + "" + comentario;

@@ -493,7 +493,7 @@ public class Controladora {
         listaRutas = controlPersis.getRutas();        
         int idRuta = 0;
         for(Ruta unaRuta:listaRutas){
-            if((unaRuta.getOrigen() == idLugar) || (unaRuta.getOrigen() == idLugar)){
+            if((unaRuta.getOrigen() == idLugar) || (unaRuta.getDestino() == idLugar)){
                 idRuta = unaRuta.getIdRuta();
             }
         }         
@@ -972,6 +972,28 @@ public class Controladora {
                 controlPersis.asignarCliente(unCliente);
         } 
     }
+
+    public boolean verificarViajeCombi(int idCombi) {
+        boolean aux = false;
+        List <Ruta> listaRutas = new ArrayList <Ruta>();
+        listaRutas = controlPersis.getRutas();        
+        int idRuta = 0;
+        for(Ruta unaRuta:listaRutas){
+            if(unaRuta.getIdCombi() == idCombi){
+                idRuta = unaRuta.getIdRuta();
+            }
+        }         
+        
+        List <Viaje> listaViajes = new ArrayList <Viaje>();
+        listaViajes = controlPersis.getViaje(); 
+        for(Viaje viaje:listaViajes){
+            if(viaje.getIdRuta() == idRuta){
+                return aux = true;
+            }
+        }
+        return aux;        
+    }
+
 
 
 

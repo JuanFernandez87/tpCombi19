@@ -1,3 +1,7 @@
+<%@page import="java.util.Comparator"%>
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Logica.Cliente"%>
 <%@page import="Logica.Controladora"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Lugar"%>
@@ -9,7 +13,32 @@
         <link rel="icon" href="images/logoCombi19.png" type="image/png" />
         <title>Combi 19</title>  
         <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
+          <link rel="stylesheet" href="css/lista.css">
     </head>
+    <style>
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+  margin: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #24303c; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1f53c5; 
+}
+</style>
     
     <body>
         <header>
@@ -21,12 +50,12 @@
                     List <Lugar> listaOrigen = control.devolverListaLugares();
                     List <Lugar> listaDestino = control.devolverListaLugares(); 
         %>         
-        
-        <div  class="formulario">
+       
+        <div  class="formulario" style="margin-top: 200px;margin-right: 100px;">
             <form action="BuscarPasaje" method="POST">
                 <h4>Busca tu pasaje </h4>
                                
-                <i class="fas fa-map-marker-alt"><label>Origen</label>
+               
                 <select class="controls" name="origen" required>
                         <option>Seleccione un origen</option>
                 <%
@@ -35,13 +64,12 @@
                         <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
                  <%}}%>
                 </select> 
-                
-                <i class="fas fa-map-marker-alt"><label>Destino</label>              
+                          
                 <select class="controls" name="destino" required>               
                         <option>Seleccione un destino</option>
                 <%
                     for (Lugar destino: listaDestino) {
-                        if (!destino.getProvincia().equals("-1")){ %>%>                        
+                        if (!destino.getProvincia().equals("-1")){ %>                       
                         <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
                  <%}}%>       
                 </select>
@@ -52,35 +80,53 @@
                     <input class="controls2" type="number" name="mes" required id="mes" min="1" max="12" placeholder="Mes">
                     <input class="controls2" type="number" name="anio" required id="anio" min="2021" max="2025" placeholder="Año">
                </div><br>
-              <div style="display: flex" >  
+                <div style="display: flex">  
                 <input class="botons" type="submit" value="Buscar Pasajes" style="margin: 7px 20px;">
                 <input class="botons" href="login.jsp" type="submit" value="Iniciar sesión" style="margin: 7px 20px;">
               </div>  
             </form>
-           
-        </div>
-            <div style="margin-top: 220px" class="formularioCom">
-                <div style="position: inherit" class="formu">
-                    <h4 style="color: white; text-align: center">Comentarios</h4>
-                
-                <div class="comentario">
-                    <h5><img src="./images/mesi.jpg" alt="">Ricardo Bertone</h5>
-                    <p>Excelente servicio</p>   
-                </div>
-                <div class="comentario">
-                    <h5><img src="./images/mona.jpg" alt="">Alicia Estevez</h5>
-                    <p>Muy recomendable</p>   
-                </div>
-                <div class="comentario">
-                    <h5><img src="./images/barba.jpg" alt="">Alejandro Fernandez</h5>
-                    <p>Los mejores!</p>  
-                </div><br>
-               
-            </div>
-                 
-           </div>      
-        </div>
+          </div> 
        
+                
+        <div style="width: 45%;float:right;margin-top: 200px; ">
+          
+            <div style="width: 60%;height:530px;overflow-y: scroll;">
+            
+             
+            <%         
+            List <Cliente> listaClientes = control.devolverListaClientes(); 
+            List<String> lista = new ArrayList<String>();
+
+            for (Cliente unCliente:listaClientes){
+                 for (int i = 0; i < unCliente.getListaComentarios().size(); i++) {
+                       lista.add(unCliente.getListaComentarios().get(i)+ "|"+ unCliente.getApellido() +" " +unCliente.getNombre());
+                }
+                Collections.sort(lista);
+                Collections.reverse(lista);
+            }    
+            for (int i = 0; i < lista.size(); i++) {
+                if(i < 10){
+                    String[] parts = lista.get(i).split("\\|");
+                    
+                    String fecha=parts[0].substring(0,18);
+                    
+                    String comentario = parts[0].substring(19);
+                    
+                     String usuario = parts[1]+":";
+                    
+             %>      
+            
+             <div class="comentario" style="width:95%">
+                 
+                 <div style="margin: 5px;"><img src="./images/imgperfil.jpg"><%=usuario%> <%=comentario%> </div>
+                 <div style="padding: 5px;font-size: 12px;text-align: right;"><%= fecha%> </div>    
+             </div>          
+            <%}}%>  
+            </div>
+
+        </div>
+                 
+           
          
          
             

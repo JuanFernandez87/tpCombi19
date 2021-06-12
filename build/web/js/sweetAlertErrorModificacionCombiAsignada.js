@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "La ciudad seleccionada no se puede borrar porque tiene un viaje asignado",
+    title: "No se puede modificar una combi asignada a un viaje.",
     icon: 'error'
 });
