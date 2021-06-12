@@ -14,6 +14,7 @@
 	 
     <link rel="stylesheet" type="css/fonts.css" href="">
 </head>
+    <body>
     <header>
             <%@include file="/template/headerSesiones.jsp"%>
         </header>
@@ -71,5 +72,5 @@
             <%@include file="/template/footer.jsp"%>
         </footer>
     
-
+    </body>
 </html>

@@ -5,6 +5,6 @@
  */
 
 swal.fire({
-    title: "El lugar no se puede modificar porque tiene un viaje asignado",
+    title: "La ciudad seleccionada no se puede modificar porque tiene un viaje asignado",
     icon: 'error'
 });

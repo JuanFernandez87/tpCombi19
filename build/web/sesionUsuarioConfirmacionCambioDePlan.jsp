@@ -44,9 +44,8 @@
                     <h3>Perderá los beneficios del plan gold</h3>
                     <br>
                     
-                    <form style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" action="ModificarPlan?idCliente=<%=idCliente%>" method="post">
-                        <button style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;">Aceptar</button>
-                    </form>
+                   <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" href="ModificarPlan?idCliente=<%=idCliente%>">Aceptar</a>
+
                 <%}%>          
                 <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="sesionUsuario.jsp">Cancelar</a>
 

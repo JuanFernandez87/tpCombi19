@@ -40,7 +40,7 @@ public class EliminarLugar extends HttpServlet {
                 control.eliminarLugar(idLugar);
                 response.sendRedirect ("popUpBorrarLugar.jsp");
             }else{
-                response.sendRedirect ("popUpErrorLugarConViaje.jsp"); //si tiene viajes activos entra    
+                response.sendRedirect ("popUpErrorLugarConViajeAsignado.jsp"); //si tiene viajes activos entra    
                 
             }            
     }

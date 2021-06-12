@@ -5,5 +5,5 @@
  */
 swal.fire({
     title: "No se puede eliminar una combi asignada a un viaje.",
-    icon: 'sucess'
+    icon: 'error'
 });

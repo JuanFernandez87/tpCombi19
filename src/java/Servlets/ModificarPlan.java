@@ -32,16 +32,14 @@ public class ModificarPlan extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ModificarPlan</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ModificarPlan at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        request.getSession().setAttribute("idCliente", idCliente);
+        
+        Controladora control = new Controladora();
+        control.eliminarTarjeta(idCliente);
+        control.cambiarPlan(idCliente);
+
+        response.sendRedirect("popUpModificacionCorrectoPlanBasico.jsp");
         }
     }
 
@@ -71,14 +69,7 @@ public class ModificarPlan extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-        request.getSession().setAttribute("idCliente", idCliente);
-        
-        Controladora control = new Controladora();
-        control.eliminarTarjeta(idCliente);
-        control.cambiarPlan(idCliente);
 
-        response.sendRedirect("popUpModificacionCorrectoPlanBasico.jsp");
     }
 
     /**

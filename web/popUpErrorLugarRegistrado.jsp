@@ -1,8 +1,3 @@
-<%-- 
-    Document   : listado
-    Created on : 29/04/2021, 06:47:34
-    Author     : Esteban
---%>
 <%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="Logica.Chofer"%>
@@ -114,7 +109,7 @@
         </div>
                          
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertLugarConViajeAsignado.js"></script>    
+        <script src="js/sweetAlertLugarRegistrado.js"></script>    
         
         <footer>
             <%@include file="/template/footer.jsp"%>
