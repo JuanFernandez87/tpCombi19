@@ -19,11 +19,12 @@
                 String email = (String)session.getAttribute("mail");
                 String nombre = (String)session.getAttribute("nombre");    
                 String apellido = (String)session.getAttribute("apellido");    
-                String dia = (String)session.getAttribute("dia");    
-                String mes = (String)session.getAttribute("mes");    
-                String anio = (String)session.getAttribute("anio");   
+                int dia = (Integer)session.getAttribute("dia");    
+                int mes = (Integer)session.getAttribute("mes");    
+                int anio = (Integer)session.getAttribute("anio");   
                 Integer dni = (Integer)session.getAttribute("dni");
                 String plan = (String)session.getAttribute("plan");
+                String pass = (String)session.getAttribute("pass");
                 String valorPlan = "Basico";
                 if (plan.equals("Gold")){
                         valorPlan = "Gold";  
@@ -36,7 +37,7 @@
                <input class="controls" type="tel" name="dni" required id="dni" placeholder="Ingrese su Dni" value="<%=dni%>">
                
                <input class="controls" type="email" name="mail" required id="correo" placeholder="Ingrese su Correo" value="<%=email%>">
-               <input class="controls" type="password" name="pass" required id="contra" placeholder="Ingrese su Contraseña" >
+               <input class="controls" type="password" name="pass" required id="contra" placeholder="Ingrese su Contraseña" value="<%=pass%>">
                <b for="start">Ingrese su fecha de nacimiento:</b><br>
                <div class="fecha">
                     <input class="controls2" type="number" name="dia" required id="dia" min="1" max="31" placeholder="Dia" value="<%=dia%>">
