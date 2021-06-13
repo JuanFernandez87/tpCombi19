@@ -18,11 +18,12 @@
             <%@include file="/template/headerSesionUsuario.jsp"%>
         </header>
 	
+       
         <aside>
             <%@include file="/template/asideUsuario.jsp"%>
-        </aside>
+        </aside>  
         
-            <%String idCliente = request.getParameter("idCliente");%>
+          
             
  <div style="padding-top: 90px;"></div>
  <div style="background:#266aa7;" class="checkout">
@@ -87,6 +88,7 @@
         </div>
       </div>
     </div>
+        <%String idCliente = request.getParameter("idCliente");%>
   </div>
      <form style="background: #24303c;width: 100%;" action="RegistroTarjetaBasico?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
@@ -143,7 +145,9 @@
   <link rel="icon" href="images/logoCombi19" />
 </a>
         
-    <script src="js/registroDeTarjeta.js"></script>               
+    <script src="js/registroDeTarjeta.js"></script>  
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="js/sesion.js"></script>
 
         <footer>
             <%@include file="/template/footer.jsp"%>

@@ -27,7 +27,7 @@
     </head>
     
     <body>
-            <%@include file="/template/headerSesiones.jsp"%>
+            <%@include file="/template/headerSesionUsuario.jsp"%>
     
             <%@include file="/template/asideUsuario.jsp"%>
        

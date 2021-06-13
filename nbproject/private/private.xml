@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionUsuarioModificarComentario.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/template/asideUsuario.jsp</file>
             <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoComentarios.jsp</file>
-            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionUsuarioCrearComentario.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroViaje.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/modificarPlanGold.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/sesionUsuario.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/EliminarChofer.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpBorrarChofer.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/listadoChofer.jsp</file>
         </group>
     </open-files>
 </project-private>

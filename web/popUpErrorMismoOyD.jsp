@@ -1,4 +1,3 @@
-<%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
