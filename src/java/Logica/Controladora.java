@@ -132,8 +132,7 @@ public class Controladora {
       }
             return true;
     }
-
-
+    
     
     public boolean eliminarComentario(int comentario, int id) {
             
@@ -995,10 +994,12 @@ public class Controladora {
         return aux;        
     }
 
-  
-
-
-
+     public void crearPasaje(int idCliente, int idViaje){
+        Pasaje nuevoPasaje = new Pasaje();
+        nuevoPasaje.setIdViaje(idViaje);
+        nuevoPasaje.setIdCliente(idCliente);
+        controlPersis.crearPasaje(nuevoPasaje);   
+    }
 
 }
 
