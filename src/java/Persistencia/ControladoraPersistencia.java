@@ -138,6 +138,9 @@ public class ControladoraPersistencia {
     public List<Chofer> getChoferes() {
         return choferJpa.findChoferEntities();
     }
+      public List<Pasaje> getPasajes() {
+        return pasajeJpa.findPasajeEntities();
+    }
 
     public List<Lugar> getLugares() {
         return lugarJpa.findLugarEntities();
@@ -165,6 +168,10 @@ public class ControladoraPersistencia {
 
     public List<Tarjeta> getTarjetas() {
         return tarjetaJpa.findTarjetaEntities();
+    }
+
+    public void crearPasaje(Pasaje nuevoPasaje) {
+        pasajeJpa.create(nuevoPasaje);
     }
 
 

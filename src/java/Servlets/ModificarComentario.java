@@ -8,16 +8,20 @@ package Servlets;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author juanf
+ * @author Esteban
  */
-public class EliminarChofer extends HttpServlet {
+@WebServlet(name = "ModificarComentario", urlPatterns = {"/ModificarComentario"})
+public class ModificarComentario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,19 +34,22 @@ public class EliminarChofer extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            int idChofer = Integer.parseInt(request.getParameter("idChofer")); 
-            request.getSession().setAttribute("idChofer", idChofer);
-            Controladora control = new Controladora();
-            boolean libre = false;
-            libre = control.chequearChoferLibre(idChofer);
-            if(!libre){
-                control.eliminarChofer(idChofer);
-                response.sendRedirect ("popUpBorrarChofer.jsp");
-            }else{
-                response.sendRedirect ("popUpErrorChoferOcupadoCombi.jsp");  
-            }
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        String fecha = request.getParameter("fecha");
+        String comentario = request.getParameter("comentario");
+        int comentarioViejo = Integer.parseInt(request.getParameter("comentarioViejo"));
+      
+        comentario = fecha + comentario;
+        Controladora control = new Controladora();
+        control.eliminarComentario(comentarioViejo, idCliente);
+        control.crearComentario(comentario, idCliente);
+        
+        response.sendRedirect ("popUpComentarioModificado.jsp");
+        }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -70,6 +77,7 @@ public class EliminarChofer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

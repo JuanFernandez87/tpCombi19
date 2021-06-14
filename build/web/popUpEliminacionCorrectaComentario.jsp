@@ -52,19 +52,21 @@
                 <td>Fecha</td> 
                 <td>Hora</td> 
                 <td></td> 
+                <td></td> 
            </tr>
            
                <%
                    
                  for (int i = 0; i < unCliente.getListaComentarios().size(); i++)       {
                      String fecha=unCliente.getListaComentarios().get(i).substring(0,10);
-                     String hora=unCliente.getListaComentarios().get(i).substring(12,21);
-                     String comentario=unCliente.getListaComentarios().get(i).substring(21);
+                     String hora=unCliente.getListaComentarios().get(i).substring(12,19);
+                     String comentario=unCliente.getListaComentarios().get(i).substring(19);
                 %>
                 <tr>
                     <td><%= comentario %></td>
                     <td><%= fecha %></td>
                     <td><%= hora %></td>
+                     <td> <a style="background-color: orange;color: white;padding: 5px;" href="sesionUsuarioModificarComentario.jsp?unCliente=<%=unCliente.getNombre()%>&pos=<%=i%>" >Modificar</a> </td>
                     <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarComentario.jsp?idComentario=<%=i%>&idCliente=<%=unCliente.getIdCliente()%>">Eliminar</a></td>
 
                 </tr>

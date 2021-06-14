@@ -5,19 +5,24 @@
  */
 package Servlets;
 
+import Logica.Cliente;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author juanf
+ * @author caigu
  */
-public class EliminarChofer extends HttpServlet {
+@WebServlet(name = "CrearPasaje", urlPatterns = {"/CrearPasaje"})
+public class CrearPasaje extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,19 +35,28 @@ public class EliminarChofer extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            int idChofer = Integer.parseInt(request.getParameter("idChofer")); 
-            request.getSession().setAttribute("idChofer", idChofer);
-            Controladora control = new Controladora();
-            boolean libre = false;
-            libre = control.chequearChoferLibre(idChofer);
-            if(!libre){
-                control.eliminarChofer(idChofer);
-                response.sendRedirect ("popUpBorrarChofer.jsp");
-            }else{
-                response.sendRedirect ("popUpErrorChoferOcupadoCombi.jsp");  
-            }
+        response.setContentType("text/html;charset=UTF-8");
+         int  idViaje = Integer.parseInt(request.getParameter("ideViaje")); //Obtengo el nombre de usuario que se ingreso
+        int idCliente = Integer.parseInt(request.getParameter("clienteViaje"));//Obtengo la contraseña que ingresen el usuario
+        
+        Controladora control = new Controladora();
+        request.getSession().setAttribute("idCliente", idCliente);
+        request.getSession().setAttribute("idViaje", idViaje);
+        
+        HttpSession mySession = request.getSession ();
+            mySession . setAttribute ( "idViaje" , idViaje);
+            mySession . setAttribute ( "idCliente" , idCliente);
+            
+         List <Cliente> listaClientes= control.devolverListaClientes();
+                    for (Cliente cliente:listaClientes){
+                        if(cliente.getEnSesion()){
+                            control.crearPasaje(idCliente,idViaje);
+                            response.sendRedirect ("comprarPasajes.jsp");
+                        }else{
+                           response.sendRedirect ("popUpErrorDebeIniciarSesion.jsp");
+                        }
+                    }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -70,6 +84,7 @@ public class EliminarChofer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
