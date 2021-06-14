@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "La eliminación no se pudo realizar porque existe un viaje asignado.",
+    title: "La patente ingresada ya se encuentra registrada.",
     icon: 'error'
 });

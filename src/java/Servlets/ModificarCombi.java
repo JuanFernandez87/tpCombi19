@@ -87,21 +87,26 @@ public class ModificarCombi extends HttpServlet {
             
         Controladora control = new Controladora();
         boolean modificarPantente = control.verificarPatente(idCombi, patente); //si el admin modifica la patente aca controlamos que no este cargada en el sistema
-        boolean existe = control.verificarCombi(patente); //verificamos si la combi exista
-        boolean combiViaje = control.verificarViajeCombi(idCombi);
         
-        if(combiViaje){
-            response.sendRedirect ("popUpErrorModificarCombiAsignada.jsp");
-        
-        }else if(modificarPantente || !existe){ //si la patente modificada no esta registrada
+        if(modificarPantente){
             control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio, idChofer); //si esta todo ok se modifica la informacion
             response.sendRedirect ("listadoCombi.jsp");
+<<<<<<< Updated upstream
+            }else{
+            boolean existe = control.verificarCombi(patente); //verificamos que la combi exista
+            if (existe == false){
+                control.modificarCombi(idCombi, patente, modelo, capacidad, tipoServicio, idChofer);
+                response.sendRedirect ("listadoCombi.jsp");
+            }else{
+                response.sendRedirect ("popUpErrorPatenteRepetidaCombi.jsp");
+=======
         
         }else{
-            response.sendRedirect ("popUpErrorPatenteRepetidaCombi.jsp");
+            response.sendRedirect ("popUpErrorCombiPatente.jsp");
+>>>>>>> Stashed changes
             }
-        }
-
+            }
+    }
 
     /**
      * Returns a short description of the servlet.

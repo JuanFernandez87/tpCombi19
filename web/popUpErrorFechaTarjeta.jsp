@@ -6,10 +6,19 @@
         <link rel="stylesheet" href="css/registroDeTarjeta.css" >
         <link rel="icon" href="images/logoCombi19.png" type="image/png" />
         <title>Combi 19</title>
+        
     </head>
+
     <body>
-    <div class="checkout">
-  <div class="credit-card-box">
+         <header>
+            <%@include file="/template/header.jsp"%>
+        </header>
+        <%int idCliente = (int)session.getAttribute("idCliente");
+        
+        %>
+ <div style="padding-top: 90px;"></div>
+ <div style="background:#266aa7;" class="checkout">
+  <div  class="credit-card-box">
     <div class="flip">
       <div class="front">
         <div class="chip"></div>
@@ -34,11 +43,11 @@
         </div>
         <div class="number"></div>
         <div class="card-holder">
-          <label>Card holder</label>
+            <label style="background: none ">Card holder</label>
           <div></div>
         </div>
         <div class="card-expiration-date">
-          <label>Expires</label>
+          <label style="background: none ">Expires</label>
           <div></div>
         </div>
       </div>
@@ -65,79 +74,82 @@
 
         </div>
         <div class="ccv">
-          <label>CCV</label>
+          <label style="background: none ">CCV</label>
           <div></div>
         </div>
       </div>
     </div>
   </div>
-  <form class="form" autocomplete="off" novalidate>
+       <%
+                String num1 = (String)session.getAttribute("num1");
+                String num2 = (String)session.getAttribute("num2");    
+                String num3 = (String)session.getAttribute("num3");    
+                String num4 = (String)session.getAttribute("num4");    
+                String nombre = (String)session.getAttribute("nombre");
+                int codigo = (Integer)session.getAttribute("codigo");    
+                int mes = (Integer)session.getAttribute("mes");    
+                int anio = (Integer)session.getAttribute("anio");   
+             
+            %>
+     <form style="background: #24303c;width: 100%;" action="RegistroTarjeta?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
-<<<<<<< Updated upstream
-      <label for="card-number">Card Number</label>
-      <input type="num" id="card-number" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" />
-=======
       <label style="color:white"  for="card-number">Numero de tarjeta</label>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4"  maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" minlength="4"  maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" minlength="4"  maxlength="4" />
->>>>>>> Stashed changes
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" value="<%=num1%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num2%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num3%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num4%>"/>
     </fieldset>
     <fieldset>
-      <label for="card-holder">Card holder</label>
-      <input type="text" id="card-holder" />
+      <label  style="color:white" for="card-holder">Titular</label>
+      <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" value="<%=nombre%>"/>
     </fieldset>
     <fieldset class="fieldset-expiration">
-      <label for="card-expiration-month">Expiration date</label>
-      <div class="select">
-        <select id="card-expiration-month">
-          <option></option>
-          <option>01</option>
-          <option>02</option>
-          <option>03</option>
-          <option>04</option>
-          <option>05</option>
-          <option>06</option>
-          <option>07</option>
-          <option>08</option>
-          <option>09</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
+      <label  style="color:white" for="card-expiration-month">Fecha de vencimiento</label>
+      <div  style="width: 40% ;border: 1px solid #1f53c5;background: none;" class="select">
+        <select class= "controls2" id="card-expiration-month" name="mes">
+          <option class= "controls2"></option>
+          <option class= "controls2">01</option>
+          <option class= "controls2">02</option>
+          <option class= "controls2">03</option>
+          <option class= "controls2">04</option>
+          <option class= "controls2">05</option>
+          <option class= "controls2">06</option>
+          <option class= "controls2">07</option>
+          <option class= "controls2">08</option>
+          <option class= "controls2">09</option>
+          <option class= "controls2">10</option>
+          <option class= "controls2">11</option>
+          <option class= "controls2">12</option>
         </select>
       </div>
-      <div class="select">
-        <select id="card-expiration-year">
-          <option></option>
-          <option>2016</option>
-          <option>2017</option>
-          <option>2018</option>
-          <option>2019</option>
-          <option>2020</option>
-          <option>2021</option>
-          <option>2022</option>
-          <option>2023</option>
-          <option>2024</option>
-          <option>2025</option>
+      <div  style="width: 40% ;border: 1px solid #1f53c5;background: none;" class="select">
+        <select class= "controls2" id="card-expiration-year" name="anio">
+          <option class= "controls2"></option>
+          <option class= "controls2">2021</option>
+          <option class= "controls2">2022</option>
+          <option class= "controls2">2023</option>
+          <option class= "controls2">2024</option>
+          <option class= "controls2">2025</option>
+          <option class= "controls2">2026</option>
         </select>
       </div>
     </fieldset>
     <fieldset class="fieldset-ccv">
-      <label for="card-ccv">CCV</label>
-      <input type="text" id="card-ccv" maxlength="3" />
+      <label  style="color:white" for="card-ccv">CCV</label>
+      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" maxlength="3" value="<%=codigo%>"/>
     </fieldset>
-    <button class="btn"><i class="fa fa-lock"></i> submit</button>
+    <button class="botons"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
   </form>
 </div>
 
 <a class="the-most" target="_blank">
   <link rel="icon" href="images/logoCombi19" />
 </a>
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertErrorFechaTarjeta.js"></script>
     <script src="js/registroDeTarjeta.js"></script>    
+    <footer>
+            <%@include file="/template/footer.jsp"%>
+        </footer>
     </body>
 </html>

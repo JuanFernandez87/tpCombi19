@@ -49,7 +49,7 @@ public class IniciarSesionCompra extends HttpServlet {
             misession.setAttribute("username", usuario);
             misession.setAttribute("pass", contra);
             //cerrar sesion session.invalidate()
-            response.sendRedirect ("comprarPasajes.jsp");
+            response.sendRedirect ("ListadoBusquedaViaje.jsp");
         }else{   
             
             response.sendRedirect ("popUpErrorContraseniaUsuario.jsp"); // Si la contraseña es incorrecta vuelve a la pantalla de logueo
