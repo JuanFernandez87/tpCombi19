@@ -1,3 +1,10 @@
+<%@page import="Logica.Pasaje"%>
+<%@page import="Logica.Viaje"%>
+<%@page import="Logica.Ruta"%>
+<%@page import="Logica.Combi"%>
+<%@page import="Logica.Lugar"%>
+<%@page import="Logica.Chofer"%>
+<%@page import="Logica.Cliente"%>
 <%@page import="Logica.Controladora"%>
 <%@page import="Logica.Insumo"%>
 <%@page import="java.util.List"%>
@@ -31,11 +38,31 @@
         
         String[] itemsArray = new String[listaInsumos.size()];
         itemsArray[1]= "1";
-                %>
+        
+
+                 
+                 List <Cliente> listaClientes= control.devolverListaClientes();
+                List <Chofer> listaChofer= control.devolverListaChoferes();
+
+                List <Lugar> listaLugar= control.devolverListaLugares(); 
+
+                List <Combi> listaCombi= control.devolverListaCombi(); 
+
+                List <Ruta> listaRuta= control.devolverRutas(); 
+                 
+          
+            List <Viaje> listaViajes = control.devolverListaViajes();
+            List <Ruta> listaRutas = control.devolverRutas();
+            List <Lugar> listaLugares = control.devolverListaLugares();
+            %>
+               
         
         <div class="divCompra">
-            <form class="formularioCompra" action="ComprarPasaje" method="POST"onSubmit = "return checkForm(event)"> 
-          <h1>Compra de pasajes </h1>
+            <form class="formularioCompra" action="ComprarPasaje" method="POST" onSubmit = "return checkForm(event)"> 
+                 
+                <h1>Compra de pasajes </h1>
+                <input type="hidden" name="idCompraCliente" value="<%= request.getAttribute("idCliente") %>"> </input>
+                <input type="hidden" name="idCompraViaje" value="<%= request.getAttribute("idViaje") %>"> </input>
           <h2> <i class="fas fa-apple-alt"></i> Insumos para agregar a su viaje</h2>
                 <%
                     String nombreInsumo="vacio";
@@ -50,18 +77,28 @@
                 
           
           <fieldset>
-              <p><i class="icono far fa-credit-card"></i> Con que tarjeta desea pagar? </p>
+              <p><i class="icono far fa-credit-card"></i> Con que tarjeta desea pagar?</p>
               <select class="insumoCompra" name="tarjeta" id="selectTarjetaPago"> 
               <option> Mi tarjeta registrada </option>
               <option> Otra tarjeta</option>
           </select>
           </fieldset>
           <fieldset>
+              <%
+                  int maxPasajes = 0;
+                  Integer variable = (Integer)request.getAttribute("idViaje");
+                 // int idVia = (Integer)request.getAttribute("idViaje");
+                  for (Viaje viaje:listaViajes){
+                     if(viaje.getIdViaje() == (Integer)request.getAttribute("idViaje")){
+                          maxPasajes = viaje.getCantAsientos();
+                      }
+                  }
+              %>
          <i class="icono far fa-list-alt"></i></i> <p> Cantidad de pasajes a comprar</p> 
-          <input class="insumoCompra " type="number" name="cantPasajes" id="cantPasajes" required min="0" placeholder="0">
+          <input class="insumoCompra " type="number" name="cantPasajes" id="cantPasajes" required min="0" max="<%=maxPasajes%>" placemaxPasajes%>  Disponibles:<%=maxPasajes%>
           </fieldset>
 
-          <input class="botons" type="submit" value="Comprar" onSubmit = "return checkForm(event)">
+          <input class="botons" type="submit" name="cantidadPasajes" value="Comprar" onSubmit = "return checkForm(event)">
            <a class="cyb" type="submit" value="Cancelar y volver" href="ListadoBusquedaViaje.jsp"> Cancelar y volver al listado</a>
 
         </form>
@@ -70,8 +107,17 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <SCRIPT> 
+            function aviso(){
+          swal.fire({
+                         text: "No quedan mas asientos disponibles.",
+                         icon: 'error',
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:false,
+                        footer:`<a class="btn btn-primary" href="index.jsp">Confirmar</a>`
+                        });  
+        }
 function checkForm(e) { 
    
     var fin=<%=tamaño%> +1;
@@ -84,12 +130,20 @@ function checkForm(e) {
         x.setAttribute("name",i);
     }
     total = total * document.getElementById("cantPasajes").value;
-     if ((window.confirm("Desea realizar la compra por el precio: $"+ total))){
-     e.returnValue = true; 
- }else{
-     e.returnValue = false;
+    var asi=<%=maxPasajes%>;
+                    if(asi === 0){
+                        aviso.call();
+                        e.returnValue = false;
+                    }else{
+                        if ((window.confirm("Desea realizar la compra por el precio: $"+ total))){
+                         e.returnValue = true;           
+                   }else{
+                       e.returnValue = false;
+                        } 
+                        }
  }
- }
+        
+
 </SCRIPT>
                 
     </body>
