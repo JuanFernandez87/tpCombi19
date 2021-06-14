@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Logica.Cliente;
 import Logica.Controladora;
 import Logica.Insumo;
 import Logica.Pasaje;
@@ -57,12 +58,18 @@ public class ComprarPasaje extends HttpServlet {
                  //request.getSession().setAttribute(insumo.getNombre(),valor );
             //}
         //}
-        
-        String tarjeta = "";
+         String tarjeta = "";
                 tarjeta = request.getParameter("tarjeta");
                 Integer variable = (Integer)request.getAttribute("unEntero");
-        //int cantPasajes = Integer.parseInt(request.getParameter("cantPasajes"));
-        if (tarjeta == null){
+        boolean enSesion = false;
+        List <Cliente> listaClientes= control.devolverListaClientes();
+                    for (Cliente cliente:listaClientes){
+                        if(cliente.getEnSesion()){
+                            enSesion = true;
+                        }
+                    }
+                    if(enSesion){
+                        if (tarjeta == null){
              int idViaje = -2;
                 idViaje = Integer.parseInt(request.getParameter("ideViaje")); 
              int idCliente = -2;
@@ -97,6 +104,12 @@ public class ComprarPasaje extends HttpServlet {
             request.setAttribute("idViajeComprado", idCompraViaje);
             request.getRequestDispatcher("pasajeComprado.jsp").forward(request, response);
         }
+                    }else{
+                        response.sendRedirect ("popUpErrorDebeIniciarSesion.jsp");
+                    }
+       
+        //int cantPasajes = Integer.parseInt(request.getParameter("cantPasajes"));
+       
        
 
         

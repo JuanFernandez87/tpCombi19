@@ -72,7 +72,7 @@
                             i=i+1;
                             nombreInsumo = insumo.getNombre();%>                        
                         <fieldset><i class="icono far fa-arrow-alt-circle-right"></i> <p> <%=nombreInsumo%></p> 
-          <input class="insumoCompra" type="number" name="<%=insumo.getPrecio()%>" id="<%=i%>" required min="0" placeholder="0" >             
+          <input class="insumoCompra" type="number" name="<%=insumo.getPrecio()%>" id="<%=i%>" required  min="0" value="0" >             
                  <%}%></fieldset><%}%>       
                 
           
@@ -86,16 +86,18 @@
           <fieldset>
               <%
                   int maxPasajes = 0;
+                  int precio=0;
                   Integer variable = (Integer)request.getAttribute("idViaje");
                  // int idVia = (Integer)request.getAttribute("idViaje");
                   for (Viaje viaje:listaViajes){
                      if(viaje.getIdViaje() == (Integer)request.getAttribute("idViaje")){
                           maxPasajes = viaje.getCantAsientos();
+                          precio = viaje.getPrecio();
                       }
                   }
               %>
          <i class="icono far fa-list-alt"></i></i> <p> Cantidad de pasajes a comprar</p> 
-          <input class="insumoCompra " type="number" name="cantPasajes" id="cantPasajes" required min="0" max="<%=maxPasajes%>" placemaxPasajes%>  Disponibles:<%=maxPasajes%>
+          <input class="insumoCompra " type="number" name="cantPasajes" id="cantPasajes" required min="1" max="<%=maxPasajes%>" placemaxPasajes%>  Disponibles:<%=maxPasajes%>
           </fieldset>
 
           <input class="botons" type="submit" name="cantidadPasajes" value="Comprar" onSubmit = "return checkForm(event)">
@@ -122,20 +124,25 @@ function checkForm(e) {
    
     var fin=<%=tamaño%> +1;
     var total = 0;
-    var parcial;
+    var insumos;
+    var totalPasaje;
+    var precioPasaje = <%=precio%>;
+    var precioPagar= 0;
     for(var i = 1; i < fin; i ++){
         x =document.getElementById(i);
-        parcial =(x.value * x.name);
-        total = total + parcial;
+        insumos =(x.value * x.name);
+        total = total + insumos;
         x.setAttribute("name",i);
     }
-    total = total * document.getElementById("cantPasajes").value;
+    totalPasaje = precioPasaje * document.getElementById("cantPasajes").value;
+    precioPagar = total + totalPasaje;
+
     var asi=<%=maxPasajes%>;
                     if(asi === 0){
                         aviso.call();
                         e.returnValue = false;
                     }else{
-                        if ((window.confirm("Desea realizar la compra por el precio: $"+ total))){
+                        if ((window.confirm("Desea realizar la compra por el precio: $"+ precioPagar))){
                          e.returnValue = true;           
                    }else{
                        e.returnValue = false;

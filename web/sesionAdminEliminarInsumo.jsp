@@ -35,7 +35,7 @@
              
         <h3>Quiere eliminar el insumo <%=nombre %> ?</h3><br>
              <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" href="EliminarInsumo?idInsumo=<%= id %>"">Aceptar</a>
-             <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="javascript:history.back()">Cancelar</a>
+             <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="listadoInsumo.jsp">Cancelar</a>
         </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>

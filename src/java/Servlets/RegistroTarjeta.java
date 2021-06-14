@@ -8,6 +8,7 @@ package Servlets;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -82,6 +83,8 @@ public class RegistroTarjeta extends HttpServlet {
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String numeroTarjeta = num1 + num2 + num3 + num4;
         
+        
+        
         request.getSession().setAttribute("idCliente", idCliente);
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("numeroTarjeta", numeroTarjeta);
@@ -89,18 +92,29 @@ public class RegistroTarjeta extends HttpServlet {
         request.getSession().setAttribute("fechaVenc", fechaVenc);
         request.getSession().setAttribute("codigo", codigo);
         
+        String cod = request.getParameter("codigo");
         Controladora control = new Controladora();
-        boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
-        if(!tarjetaRegistrada){
-            control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
-            int idTarjeta = control.idTarjeta(numeroTarjeta);
-            control.asignarTarjetaCliente(idCliente, idTarjeta);
-            response.sendRedirect("popUpRegistroCorrecto.jsp");
+        Date date = new Date();
+        int mes = date.getMonth() +1 ;
+        int anio = 2021 ;
+        if ((mesVenc <= mes) && anioVenc <= anio){
+            response.sendRedirect("popUpErrorFechaTarjeta.jsp");
         }else{
-            response.sendRedirect("popUpErrorConstrasenia.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
-        }
-
-        
+            boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
+            if((!tarjetaRegistrada) && (cod.length() == 3)){
+                control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
+                int idTarjeta = control.idTarjeta(numeroTarjeta);
+                control.asignarTarjetaCliente(idCliente, idTarjeta);
+                response.sendRedirect("popUpRegistroCorrecto.jsp");
+            }else{
+                if(tarjetaRegistrada){
+                    response.sendRedirect("popUpErrorTarjetaRegistrada.jsp");
+                }else{
+                    response.sendRedirect("popUpErrorContraseniaTarjeta.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+                }
+                 
+             }
+            }
     }
 
     /**

@@ -8,6 +8,8 @@ package Servlets;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class ModificarChofer extends HttpServlet {
+public class RegistroClienteCompra extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +38,10 @@ public class ModificarChofer extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ModificarChofer</title>");            
+            out.println("<title>Servlet RegistroCliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ModificarChofer at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegistroCliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,48 +73,69 @@ public class ModificarChofer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idChofer = Integer.parseInt(request.getParameter("idChofer"));
-        String apellido = request.getParameter("apellido"); 
-        String nombre = request.getParameter("nombre"); 
+        //int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, Date fecha_nac
+                
+        String apellido = request.getParameter("apellido"); //Obtengo el nombre de usuario que se ingreso
+        String nombre = request.getParameter("nombre"); //Obtengo la contraseña que ingresen el usuario
         int dni = Integer.parseInt(request.getParameter("dni"));
         String mail = request.getParameter("mail");
-        String pass = request.getParameter("pass");
-        int telefono = Integer.parseInt(request.getParameter("tel"));
+        String contra = request.getParameter("pass");
+        String tipoPlan = request.getParameter("tipoPlan");
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        int mes = Integer.parseInt(request.getParameter("mes"));
+        int anio = Integer.parseInt(request.getParameter("anio"));
         
-        request.getSession().setAttribute("idChofer", idChofer);
+        /*String tipoPlan;
+        if(planBasico != null){
+            tipoPlan = "basico";
+        }else{
+            tipoPlan = "gold";
+        }*/
+       
         request.getSession().setAttribute("apellido", apellido);
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("dni", dni);
         request.getSession().setAttribute("mail", mail);
-        request.getSession().setAttribute("pass", pass);
-        request.getSession().setAttribute("tel", telefono);
+        request.getSession().setAttribute("dia", dia );
+        request.getSession().setAttribute("mes", mes );
+        request.getSession().setAttribute("anio", anio );
+        request.getSession().setAttribute("pass", contra);
+        request.getSession().setAttribute("plan", tipoPlan);
         
-            
         Controladora control = new Controladora();
-        boolean modicaMailChofer = control.verificarMailChofer(idChofer, mail);
-         boolean cumpleTamañoMin = control.verificarContraseña(pass);
-         if(!cumpleTamañoMin){
-                    response.sendRedirect ("popUpErrorContraseniaChofer.jsp");
-                }else{
-             
+        int today = 2021;
+        int edad = today - anio;
+        boolean enSesion = false;
+        if (edad < 18 ){
+           response.sendRedirect("popUpErrorMenosEdad.jsp");
+       }else{
+            
         
-        // si no se modifico el mail devuelve true.-
-        if((modicaMailChofer)&&(cumpleTamañoMin)){
-            control.modificarChofer(idChofer, apellido, nombre, dni,  mail, pass, telefono);
-            //response.sendRedirect ("listadoChofer.jsp"); 
-            response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
-            }else{
-            boolean existe = control.verificarChofer(mail);
-            if(existe){
-                response.sendRedirect ("popUpErrorMailRepetidoChofer.jsp");
-            }   
-               
-                else{
-                    control.modificarChofer(idChofer, apellido, nombre, dni,  mail, pass, telefono);
-                    response.sendRedirect ("popUpRegistroCorrectoChofer.jsp");  
-                }
+        boolean existe = control.verificarUsuario(mail); // devuelve si el mail ingresado ya se encuentra registrado.
+        if (existe){
+           response.sendRedirect ("popUpErrorMailRepetido.jsp");
+        }   
+        else{
+            boolean cumpleTamañoMin = control.verificarContraseña(contra);
+            if(!cumpleTamañoMin){
+               response.sendRedirect ("popUpErrorContrasenia.jsp");
             }
-    } }
+           else{
+               control.crearCliente(apellido, nombre, dni, mail, contra, tipoPlan, dia, mes, anio,enSesion);
+               if(tipoPlan.equals("Gold")){
+                int idCliente = control.idCliente(mail); 
+                request.getSession().setAttribute("idCliente", idCliente);
+                response.sendRedirect ("registroDeTarjeta.jsp");
+                }
+               else{
+                   response.sendRedirect ("iniciarSesionCompra.jsp");
+                   }
+                }
+            
+            }
+       }
+
+}
 
     /**
      * Returns a short description of the servlet.
