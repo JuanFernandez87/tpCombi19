@@ -16,33 +16,40 @@ public class Pasaje implements Serializable {
     int idPasaje;
     
     @Basic
-    int idViaje; 
     int idCliente;
+    int idCantidad;
+    int idOrigen;
+    int idDestino; 
+    String fechaDeViaje;
+    int hora;
+    int minutos;
+    double precio;
+    String tipoServicio;
+    
     List <Insumo> listaInsumos = new ArrayList<Insumo>();
 
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idViaje, int idCliente) {
+    public Pasaje(int idPasaje, int idCliente, int idCantidad, int idOrigen, int idDestino, String fechaDeViaje, int hora, int minutos, double precio, String tipoServicio) {
         this.idPasaje = idPasaje;
-        this.idViaje = idViaje;
         this.idCliente = idCliente;
+        this.idCantidad = idCantidad;
+        this.idOrigen = idOrigen;
+        this.idDestino = idDestino;
+        this.fechaDeViaje = fechaDeViaje;
+        this.hora = hora;
+        this.minutos = minutos;
+        this.precio = precio;
+        this.tipoServicio = tipoServicio;
     }
-    
+
     public int getIdPasaje() {
         return idPasaje;
     }
 
     public void setIdPasaje(int idPasaje) {
         this.idPasaje = idPasaje;
-    }
-
-    public int getIdViaje() {
-        return idViaje;
-    }
-
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
     }
 
     public int getIdCliente() {
@@ -53,6 +60,70 @@ public class Pasaje implements Serializable {
         this.idCliente = idCliente;
     }
 
+    public int getIdCantidad() {
+        return idCantidad;
+    }
+
+    public void setIdCantidad(int idCantidad) {
+        this.idCantidad = idCantidad;
+    }
+
+    public int getIdOrigen() {
+        return idOrigen;
+    }
+
+    public void setIdOrigen(int idOrigen) {
+        this.idOrigen = idOrigen;
+    }
+
+    public int getIdDestino() {
+        return idDestino;
+    }
+
+    public void setIdDestino(int idDestino) {
+        this.idDestino = idDestino;
+    }
+
+    public String getFechaDeViaje() {
+        return fechaDeViaje;
+    }
+
+    public void setFechaDeViaje(String fechaDeViaje) {
+        this.fechaDeViaje = fechaDeViaje;
+    }
+
+    public int getHora() {
+        return hora;
+    }
+
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
+
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public void setMinutos(int minutos) {
+        this.minutos = minutos;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getTipoServicio() {
+        return tipoServicio;
+    }
+
+    public void setTipoServicio(String tipoServicio) {
+        this.tipoServicio = tipoServicio;
+    }
+
     public List<Insumo> getListaInsumos() {
         return listaInsumos;
     }
@@ -60,5 +131,6 @@ public class Pasaje implements Serializable {
     public void setListaInsumos(List<Insumo> listaInsumos) {
         this.listaInsumos = listaInsumos;
     }
+    
     
 }

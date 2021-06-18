@@ -59,7 +59,7 @@
                    
                  for (int i = 0; i < unCliente.getListaComentarios().size(); i++)       {
                      String fecha=unCliente.getListaComentarios().get(i).substring(0,10);
-                     String hora=unCliente.getListaComentarios().get(i).substring(12,19);
+                     String hora=unCliente.getListaComentarios().get(i).substring(11,19);
                      String comentario=unCliente.getListaComentarios().get(i).substring(19);
                 %>
                 <tr>

@@ -93,10 +93,10 @@
      <form style="background: #24303c;width: 100%;" action="RegistroTarjetaBasico?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
       <label style="color:white"  for="card-number">Numero de tarjeta</label>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" maxlength="4" />
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4" maxlength="4" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
     </fieldset>
     <fieldset>
       <label  style="color:white" for="card-holder">Titular</label>
@@ -135,7 +135,7 @@
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label  style="color:white" for="card-ccv">CCV</label>
-      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" maxlength="3" />
+      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" minlength="3" maxlength="3" requiered/>
     </fieldset>
     <button class="botons"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
   </form>

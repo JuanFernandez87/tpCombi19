@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionAdminRuta.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/EliminarCombi.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/RegistroRuta.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/popUpBorrarCombi.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/login.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Cliente.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ComprarPasaje.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/comprarPasajes.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Pasaje.java</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarPlanGold.jsp</file>
         </group>
     </open-files>
 </project-private>
