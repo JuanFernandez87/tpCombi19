@@ -8,7 +8,6 @@ package Servlets;
 import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -90,36 +89,16 @@ public class RegistroTarjetaBasico extends HttpServlet {
         request.getSession().setAttribute("fechaVenc", fechaVenc);
         request.getSession().setAttribute("codigo", codigo);
         
-        request.getSession().setAttribute("num1", num1);
-        request.getSession().setAttribute("num2", num2);
-        request.getSession().setAttribute("num3", num3);
-        request.getSession().setAttribute("num4", num4);
-        request.getSession().setAttribute("idCliente", idCliente);
-        
-        
-        String cod = request.getParameter("codigo");
         Controladora control = new Controladora();
-        Date date = new Date();
-        int mes = date.getMonth() +1 ;
-        int anio = 2021 ;
-        if ((mesVenc <= mes) && anioVenc <= anio){
-            response.sendRedirect("popUpErrorFechaTarjetaUsuario.jsp");
+        boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
+        if(!tarjetaRegistrada){
+            control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
+            int idTarjeta = control.idTarjeta(numeroTarjeta);
+            control.asignarTarjetaCliente(idCliente, idTarjeta);
+            response.sendRedirect("popUpModificacionCorrectoTarjeta.jsp");
         }else{
-            boolean tarjetaRegistrada = control.verificarExistencia(numeroTarjeta); //chequeo que la tarjeta no este registrada
-            if((!tarjetaRegistrada) && (cod.length() == 3)){
-                control.registrarTarjeta(numeroTarjeta, codigo, fechaVenc, nombre);
-                int idTarjeta = control.idTarjeta(numeroTarjeta);
-                control.asignarTarjetaCliente(idCliente, idTarjeta);
-                response.sendRedirect("popUpModificacionCorrectoTarjeta.jsp");
-            }else{
-                if(tarjetaRegistrada){
-                    response.sendRedirect("popUpRegistroErroneoBasico.jsp");
-                }else{
-                    response.sendRedirect("popUpErrorContraseniaTarjetaUsuario.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
-                }
-                 
-             }
-            }
+            response.sendRedirect("popUpRegistroErroneoBasico.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+        }
     }
 
     /**

@@ -49,14 +49,44 @@
           
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
-            List <Lugar> listaLugares = control.devolverListaLugares();   
-            
-            
+            List <Lugar> listaLugares = control.devolverListaLugares(); 
+            int idCli = 0; 
+            String nomCli = "";
+            String apeCli = "";
+             for (Cliente cliente:listaClientes){
+                        if(cliente.getEnSesion()){
+                            idCli = cliente.getIdCliente();
+                            nomCli = cliente.getNombre();
+                            apeCli = cliente.getApellido();
+                        }
+                    }
+             String oriL,destL="";
+             int idV=0;
+            for(Viaje unviaje:listaViajes){
+            for (Ruta unaruta:listaRutas){
+                for (Lugar lugar:listaLugar){ // obtenemos el nombre de origen y destino de cada ruta.
+                    if(lugar.getIdLugar()== unaruta.getOrigen()){
+                        oriL= lugar.getNombre();
+                    } else{
+                        if(lugar.getIdLugar() == unaruta.getDestino()){
+                            destL= lugar.getNombre();
+                        }
+                    }
+                 // si la ruta actual corresponde al viaje actual-> guardamos el nombre de las ciudades origen y destino.      
+                     if(unaruta.getIdRuta() == unviaje.getIdRuta()){
+                         idV = unviaje.getIdViaje();
+                    }   
+                }
+            }
+            }
+            // request.setAttribute("unEntero", new Integer(22));
+            //request.getRequestDispatcher("comprarPasajes.jsp").forward(request, response); %>
           
-        %> 
-      
+ 
+        
         <div class="cajaListado">
             <h1> Viajes encontrados: </h1> 
+            
             <a style="background-color: #ff0000;color: white;padding: 20px;text-decoration: none;display: table-cell;"href="index.jsp">Volver</a>
         <table>
             <tr>
@@ -80,8 +110,10 @@
         String origenLugar="";
         String destinoLugar="";
         String tipoServicio = "";
+        
         int hora=0;
         int minutos = 0;
+        int asientos= -1;
         for(Viaje viaje:listaViajes){
             for (Ruta ruta:listaRutas){
                 for (Lugar lugar:listaLugar){ // obtenemos el nombre de origen y destino de cada ruta.
@@ -108,7 +140,8 @@
                  
             }    
             // preguntamos para cada viaje.> si cumple con los datos que se ingresaron en pantalla.
-            if(viaje.getAnio()== (Integer)session.getAttribute("anio") && viaje.getMes()== (Integer)session.getAttribute("mes") && viaje.getDia()== (Integer)session.getAttribute("dia")  && origenRuta.equals((String)session.getAttribute("origen")) && destinoRuta.equals((String)session.getAttribute("destino") )){%>
+            if(viaje.getAnio()== (Integer)session.getAttribute("anio") && viaje.getMes()== (Integer)session.getAttribute("mes") && viaje.getDia()== (Integer)session.getAttribute("dia")  && origenRuta.equals((String)session.getAttribute("origen")) && destinoRuta.equals((String)session.getAttribute("destino") )){
+                asientos = viaje.getCantAsientos();%>
             <td><%=(String)session.getAttribute("origen")%> </td>
             <td><%=(String)session.getAttribute("destino")%>
                 <td><%=(Integer)session.getAttribute("dia")%> / <%=(Integer)session.getAttribute("mes")%> / <%=(Integer)session.getAttribute("anio")%> </td>
@@ -121,32 +154,46 @@
                     String linkHref="#";
                     for (Cliente cliente:listaClientes){
                         if(cliente.getEnSesion()){
-                            linkHref = "comprarPasajes.jsp";
+                            //linkHref = "comprarPasajes.jsp";
                         }else{
-                            linkHref = "popUpErrorDebeIniciarSesion.jsp";
+                            //linkHref = "popUpErrorDebeIniciarSesion.jsp";
                         }
                     }
+                    
                 %>
-                 <td> <td> <a style="background-color: orange;color: white;padding: 5px;text-decoration: none;" href="#"; onclick="func()">Comprar </a></td></td>
             </tr>
-            
+            </table> 
+                 
+                <form class="inputHide" action="ComprarPasaje" method="POST"onSubmit = "return checkForm(event)">
+                    <input  type="hidden" name="clienteViaje" value="<%=idCli%>"> </input> 
+            <input type="hidden" name="ideViaje" value="<%=idV%>"></input>
+        
+        <!--<a style="background-color: orange;color: white;padding: 5px;text-decoration: none;" href="#"; onclick="func()">Comprar </a> -->
+                <input class="botons" type="submit" value="Comprar"></form>
+        </div> 
+                 
             
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            <script>
-                function func(){
-                    //alert("se ingreso a la confirmacion");
-                    swal.fire({
-                         text: "Sera redireccionado a la compra de pasajes.",
-                         icon: 'info',
-                         showCancelButton: true,
+            
+    <script>
+        function aviso(){
+          swal.fire({
+                         text: "No quedan mas asientos disponibles.",
+                         icon: 'error',
                          cancelButtonColor: '#d33',
                         showConfirmButton:false,
-                         footer:`<a class="btn btn-primary" href="<%=linkHref%>">Confirm</a>`
-                        });
-                   
+                        footer:`<a class="btn btn-primary" href="index.jsp">Confirmar</a>`
+                        });  
+        }
+    function checkForm(e) { 
+                 var asi=<%=asientos%>;
+                    if(asi === 0){
+                        aviso.call();
+                        e.returnValue = false;
+                    }
+                        e.returnValue = true;             
                 }
-                </script>
-        
+    </script>
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>

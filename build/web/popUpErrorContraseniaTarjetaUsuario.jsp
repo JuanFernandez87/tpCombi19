@@ -90,17 +90,28 @@
     </div>
         <%String idCliente = request.getParameter("idCliente");%>
   </div>
+  <%
+                String num1 = (String)session.getAttribute("num1");
+                String num2 = (String)session.getAttribute("num2");    
+                String num3 = (String)session.getAttribute("num3");    
+                String num4 = (String)session.getAttribute("num4");    
+                String nombre = (String)session.getAttribute("nombre");
+                int codigo = (Integer)session.getAttribute("codigo");    
+                int mes = (Integer)session.getAttribute("mes");    
+                int anio = (Integer)session.getAttribute("anio");   
+             
+            %>
      <form style="background: #24303c;width: 100%;" action="RegistroTarjetaBasico?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
       <label style="color:white"  for="card-number">Numero de tarjeta</label>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" value="<%=num1%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" maxlength="4" value="<%=num2%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" maxlength="4" value="<%=num3%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" maxlength="4" value="<%=num4%>"/>
     </fieldset>
     <fieldset>
       <label  style="color:white" for="card-holder">Titular</label>
-      <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" />
+      <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" value="<%=nombre%>"/>
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label  style="color:white" for="card-expiration-month">Fecha de vencimiento</label>
@@ -135,7 +146,7 @@
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label  style="color:white" for="card-ccv">CCV</label>
-      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" minlength="3" maxlength="3" requiered/>
+      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" maxlength="3" value="<%=codigo%>"/>
     </fieldset>
     <button class="botons"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
   </form>
@@ -148,6 +159,8 @@
     <script src="js/registroDeTarjeta.js"></script>  
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+         <script src="js/sweetAlertErrorContraseniaTarjeta.js"></script>   
 
         <footer>
             <%@include file="/template/footer.jsp"%>
@@ -158,3 +171,5 @@
   </body>
    
 </html>
+
+

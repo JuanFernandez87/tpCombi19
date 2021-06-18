@@ -248,17 +248,32 @@ form{
     box-shadow: 7px 13px 37px #000;
 
   }
-  .controls {
-    width: 100%;
+  
+  form{
+  
+    width: 400px;
     background: #24303c;
-    padding: 10px;
+    padding: 30px;
+    margin: auto;
     border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #1f53c5;
     font-family: 'calibri';
-    font-size: 18px;
     color: white;
+    box-shadow: 7px 13px 37px #000;
+
   }
+  .inputHide {
+    width: 400px;
+    background: #266aa7;
+    padding: 30px;
+    margin: auto;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: none;
+  }
+  .inputHide .botons {
+      background: #0fc370;
+  }
+  
   
 h4 {
     background:none;

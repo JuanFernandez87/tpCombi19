@@ -1,30 +1,21 @@
-<%@page import="Logica.Cliente"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="Logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/registroDeTarjeta.css" >
         <link rel="icon" href="images/logoCombi19.png" type="image/png" />
         <title>Combi 19</title>
+        
     </head>
 
-<body>
-   
-        <header>
-            <%@include file="/template/headerSesionUsuario.jsp"%>
+    <body>
+         <header>
+            <%@include file="/template/header.jsp"%>
         </header>
-	
-       
-        <aside>
-            <%@include file="/template/asideUsuario.jsp"%>
-        </aside>  
+        <%int idCliente = (int)session.getAttribute("idCliente");
         
-          
-            
+        %>
  <div style="padding-top: 90px;"></div>
  <div style="background:#266aa7;" class="checkout">
   <div  class="credit-card-box">
@@ -88,19 +79,29 @@
         </div>
       </div>
     </div>
-        <%String idCliente = request.getParameter("idCliente");%>
   </div>
-     <form style="background: #24303c;width: 100%;" action="RegistroTarjetaBasico?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
+       <%
+                String num1 = (String)session.getAttribute("num1");
+                String num2 = (String)session.getAttribute("num2");    
+                String num3 = (String)session.getAttribute("num3");    
+                String num4 = (String)session.getAttribute("num4");    
+                String nombre = (String)session.getAttribute("nombre");
+                int codigo = (Integer)session.getAttribute("codigo");    
+                int mes = (Integer)session.getAttribute("mes");    
+                int anio = (Integer)session.getAttribute("anio");   
+             
+            %>
+     <form style="background: #24303c;width: 100%;" action="RegistroTarjeta?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
       <label style="color:white"  for="card-number">Numero de tarjeta</label>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" mixlength="4" maxlength="4" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" value="<%=num1%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num2%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num3%>"/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" minlength="4"  maxlength="4" value="<%=num4%>"/>
     </fieldset>
     <fieldset>
       <label  style="color:white" for="card-holder">Titular</label>
-      <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" />
+      <input style="border: 1px solid #1f53c5;background: none;color: white" type="text" name="nombre" id="card-holder" value="<%=nombre%>"/>
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label  style="color:white" for="card-expiration-month">Fecha de vencimiento</label>
@@ -135,7 +136,7 @@
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label  style="color:white" for="card-ccv">CCV</label>
-      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" minlength="3" maxlength="3" requiered/>
+      <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" maxlength="3" value="<%=codigo%>"/>
     </fieldset>
     <button class="botons"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
   </form>
@@ -144,17 +145,11 @@
 <a class="the-most" target="_blank">
   <link rel="icon" href="images/logoCombi19" />
 </a>
-        
-    <script src="js/registroDeTarjeta.js"></script>  
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/sesion.js"></script>
-
-        <footer>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetAlertErrorFechaTarjeta.js"></script>
+    <script src="js/registroDeTarjeta.js"></script>    
+    <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-        
-
-
-  </body>
-   
+    </body>
 </html>

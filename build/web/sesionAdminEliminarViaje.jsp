@@ -33,7 +33,7 @@
         color: #595959;text-align: center;padding: 70px; border: none;border-radius: 5px;">	
                 <h3>Quiere eliminar al viaje ?</h3><br>
                 <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" href="EliminarViaje?idViaje=<%= id %>">Aceptar</a>
-                <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="javascript:history.back()">Cancelar</a>
+                <a style="display: inline;color: white; background-color: rgb(211, 51, 51);padding: 10px;border-radius: 5px;" href="listadoViajes.jsp">Cancelar</a>
         </div>
                 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
