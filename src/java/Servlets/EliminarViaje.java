@@ -33,8 +33,16 @@ public class EliminarViaje extends HttpServlet {
             int idViaje = Integer.parseInt(request.getParameter("idViaje")); 
             request.getSession().setAttribute("idViaje", idViaje);
             Controladora control = new Controladora();
-            control.eliminarViaje(idViaje);
-            response.sendRedirect ("listadoViajes.jsp");  
+            
+            boolean sinViajes = control.chequearViajeSinPasajes(idViaje);//chequer que el viaje no tenga pasajes vendidos
+            if(!sinViajes){
+                control.eliminarViaje(idViaje);
+                response.sendRedirect ("popUpBorrarViaje.jsp");  //popUp se elimino exitosamente
+            }else{
+                response.sendRedirect ("popUpViajeConPasajesVendidos.jsp");  //popUp el viaje tiene pasajes vendidos
+            }
+            
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

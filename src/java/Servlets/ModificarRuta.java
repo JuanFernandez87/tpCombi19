@@ -89,16 +89,20 @@ public class ModificarRuta extends HttpServlet {
                 
         Controladora control = new Controladora();
         boolean sinViajes = control.verificarViaje(idRuta);
-        if(!sinViajes){
-            if(idOrigen != idDestino){
-            control.modificarRuta(idRuta, idOrigen, idDestino, idCombi, distancia, hora, minutos);
-            response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");
-            }else{
-                response.sendRedirect ("popUpErrorMismoOyD.jsp");
-            
+        if(!sinViajes){ //entra si no tiene viajes asignados
+            if(idOrigen != idDestino){ //entra si el origen y el destino son distintos
+                boolean rutaCargada = control.rutaCargada2(idRuta,idOrigen,idDestino,idCombi,hora,minutos);
+                if(!rutaCargada){ //entra si no hay una ruta igual cargada origen+destino+combi+horario
+                    control.modificarRuta(idRuta, idOrigen, idDestino, idCombi, distancia, hora, minutos);
+                    response.sendRedirect ("popUpRegistroCorrectoRuta.jsp");     
+                }else if (rutaCargada){
+                     response.sendRedirect ("popUpErrorRutaExistente.jsp"); //si la ruta ya esta cargada origen+destino+combi+horario
+                }
+            }else if (idOrigen == idDestino){
+                response.sendRedirect ("popUpErrorMismoOyDModificacion.jsp"); //si el origen y destino son iguales
             }
         }else{
-            response.sendRedirect ("popUpeErrorRutaConViajeActivo.jsp"); //falta hacer pop up de que ruta tiene un viaje activo
+            response.sendRedirect ("popUpErrorRutaConViajeActivo.jsp"); //si tiene viajes asignados
         }
     }   
 

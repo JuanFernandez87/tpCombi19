@@ -871,11 +871,13 @@ public class Controladora {
         }
     }
 
-    public boolean rutaCargada(String origen, String destino) {
+    public boolean rutaCargada(String origen, String destino, String patenteCombi, int hora, int minutos) {
         List <Lugar> listaLugar = controlPersis.getLugares();
+        List <Combi> listaCombis = controlPersis.getCombi();
         //String nomyprov= "";
         int idOrigen = 0;
         int idDestino= 0;
+        int idCombi = 0;
         // obtenemos el id de el origen y destino, el cual recibimos como string.
         for(Lugar lug:listaLugar){
             //nomyprov = (lug.getNombre()+lug.getProvincia()); esta variable es necesaria para la comparacion en caso de aplicar el formato " LaPlata-BuenosAires"
@@ -887,16 +889,32 @@ public class Controladora {
                  }
              }
          }
+        for(Combi unaCombi:listaCombis){
+            if(unaCombi.getPatente().equals(patenteCombi)){
+                idCombi=unaCombi.getIdCombi();
+            }
+        }
         //usamos los id de origen y destino para comprobar si no estan cargados en otras rutas.
         List <Ruta> listaRutas = controlPersis.getRutas();
         boolean cargados = false;
          for(Ruta rut:listaRutas){
-             if ((idOrigen == rut.getOrigen()) && (idDestino == rut.getDestino()) && (rut.getDistancia()>0)){ // si estan cargados en el sistema entonces....
+             if ((idOrigen == rut.getOrigen()) && (idDestino == rut.getDestino()) && (rut.getIdCombi() == idCombi) && (rut.getDistancia()>0) && (rut.getHora() == hora) && (rut.getMinutos() == minutos)){ // si estan cargados en el sistema entonces....
                  cargados= true;
              }
          }
          return cargados;
     }
+    
+    public boolean rutaCargada2(int idRuta, int idOrigen, int idDestino, int idCombi, int hora, int minutos) {
+        List <Ruta> listaRutas = controlPersis.getRutas();
+        boolean cargados = false;
+         for(Ruta rut:listaRutas){
+             if ((idOrigen == rut.getOrigen()) && (idDestino == rut.getDestino()) && (rut.getIdCombi() == idCombi) && (rut.getDistancia()>0) && (rut.getHora() == hora) && (rut.getMinutos() == minutos)){ // si estan cargados en el sistema entonces....
+                 cargados= true;
+             }
+         }
+         return cargados;
+    }    
 
     public boolean verificarPasajeDisp(String origen, String destino, int dia, int mes, int anio) {
         List <Viaje> listaViajes = controlPersis.getViaje();
@@ -999,6 +1017,17 @@ public class Controladora {
         nuevoPasaje.setIdOrigen(idViaje); //falta corregir la creacion del pasaje
         nuevoPasaje.setIdCliente(idCliente);
         controlPersis.crearPasaje(nuevoPasaje);   
+    }
+
+    public boolean chequearViajeSinPasajes(int idViaje) {
+        boolean aux = false;
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        for(Pasaje unPasaje:listaPasajes){
+            if(unPasaje.getIdViaje() == idViaje){
+                return aux = true;
+            }
+        }        
+        return aux;
     }
 
 }
