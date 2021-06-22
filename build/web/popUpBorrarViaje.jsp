@@ -37,9 +37,11 @@
  
       <%
             int pag=1;
+
+            List <Viaje> listaViajes = control.devolverListaViajes();
+            List <Ruta> listaRutas = control.devolverRutas();
+            List <Lugar> listaLugares = control.devolverListaLugares();   
             
-            Controladora control = new Controladora();
-            List <Viaje> listaViajes = control.devolverListaViajes(); 
             int maxPag = (control.devolverListaViajes().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
@@ -59,31 +61,48 @@
             <h1>Lista viajes</h1>
         <table>
             <tr>
-                <td>Cant Asientos</td> 
+                <td>Origen</td> 
+                <td>Destino</td> 
+                <td>Distancia</td> 
+                <td>Capacidad</td> 
                 <td>Fecha</td> 
+                <td>Hora</td> 
                 <td>Precio</td> 
+
                   <td></td>
                 <td></td>
                 
             </tr>
-               <%
-                   
-                   for (  i=regMin ; i < regMax ; ++i) {
-                       if (listaViajes.get(i).getIdRuta() > 0){
-                   %>
-                <tr>
-                     
-                         
-                    
-                        <td><%= listaViajes.get(i).getCantAsientos()%></td>
-                        <td><%= listaViajes.get(i).getFecha()%></td>
-                        <td><%= listaViajes.get(i).getPrecio()%></td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;"href="EliminarViaje?idViaje=<%=listaViajes.get(i).getIdViaje()%>" >Eliminar </a></td>
+                <%for (Viaje unViaje:listaViajes){%>
 
+                <tr>
+                    <%for (Ruta unaRuta:listaRutas){
+                        if (unViaje.getIdRuta() == unaRuta.getIdRuta()){%>
+                    
+                    <%for (Lugar unLugar:listaLugares){%> 
+
+                    <%if(unLugar.getIdLugar() == unaRuta.getOrigen()){%>
+                               <td><%=unLugar.getNombre()%><%}
+                        else{
+                            if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
+                               <td><%=unLugar.getNombre()%><%}}%></td>
+                    
+         
+                               
+                    <%}%>
+                        <td><%= unaRuta.getDistancia()%> km</td>
+                        <td><%= unViaje.getCantAsientos()%> pasajeros</td>
+
+                        <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
+                        <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
+                        <td><%= unViaje.getPrecio()%>$</td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=unViaje.getIdViaje()%>">Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Eliminar</a></td>
+  
                 </tr>
-                 
-           <%}}%>  
+                    <%}}}%>  
+               
+
     
         </table>
            <br>
@@ -118,8 +137,8 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="js/sweetAlertBorrar.js"></script> 
-
     </body>
 </html>

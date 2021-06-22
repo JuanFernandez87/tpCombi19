@@ -67,7 +67,7 @@
             <%@include file="/template/footer.jsp"%>
         </footer>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertEdad.js"></script> 
+        <script src="js/sweetAlertModificaClienteEdad.js"></script> 
 
 
   </body>

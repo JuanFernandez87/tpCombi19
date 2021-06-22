@@ -17,7 +17,8 @@ public class Pasaje implements Serializable {
     
     @Basic
     int idCliente;
-    int idCantidad;
+    int idViaje;
+    int Cantidad;
     int idOrigen;
     int idDestino; 
     String fechaDeViaje;
@@ -31,10 +32,10 @@ public class Pasaje implements Serializable {
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idCliente, int idCantidad, int idOrigen, int idDestino, String fechaDeViaje, int hora, int minutos, double precio, String tipoServicio) {
+    public Pasaje(int idPasaje, int idCliente, int Cantidad, int idOrigen, int idDestino, String fechaDeViaje, int hora, int minutos, double precio, String tipoServicio) {
         this.idPasaje = idPasaje;
         this.idCliente = idCliente;
-        this.idCantidad = idCantidad;
+        this.Cantidad = Cantidad;
         this.idOrigen = idOrigen;
         this.idDestino = idDestino;
         this.fechaDeViaje = fechaDeViaje;
@@ -60,12 +61,12 @@ public class Pasaje implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public int getIdCantidad() {
-        return idCantidad;
+    public int getCantidad() {
+        return Cantidad;
     }
 
-    public void setIdCantidad(int idCantidad) {
-        this.idCantidad = idCantidad;
+    public void setCantidad(int idCantidad) {
+        this.Cantidad = idCantidad;
     }
 
     public int getIdOrigen() {
@@ -130,6 +131,14 @@ public class Pasaje implements Serializable {
 
     public void setListaInsumos(List<Insumo> listaInsumos) {
         this.listaInsumos = listaInsumos;
+    }
+
+    public int getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
     }
     
     

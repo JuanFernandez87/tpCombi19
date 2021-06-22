@@ -10,7 +10,7 @@
     
     <body>
         <header>
-            <%@include file="/template/header.jsp"%>
+            <%@include file="/template/headerSesionChofer.jsp"%>
         </header>
         
         <aside>

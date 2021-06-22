@@ -87,7 +87,7 @@ public class RegistroRuta extends HttpServlet {
                 
         Controladora control = new Controladora();
        // boolean patenteRepetida=control.comprobarPatenteViaje(patenteCombi); no es necesario implementarlo
-      boolean rutaCargada = control.rutaCargada(origen,destino);
+      boolean rutaCargada = control.rutaCargada(origen,destino,patenteCombi,hora,minutos);
       if(rutaCargada){
           response.sendRedirect("popUpErrorRutaCargada.jsp");
       }else{
