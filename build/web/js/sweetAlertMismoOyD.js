@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "El origen debe ser distinto al destino.",
+    title: "El origen debe ser distinto al destino",
     icon: 'error'
 });

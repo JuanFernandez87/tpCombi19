@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "El origen debe ser distinto al destino",
+    title: "No se realizo la modificación porque el viaje ingresado ya se encuentra registrado",
     icon: 'error'
 });

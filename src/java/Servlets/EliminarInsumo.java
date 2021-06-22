@@ -34,8 +34,14 @@ public class EliminarInsumo extends HttpServlet {
             int idInsumo = Integer.parseInt(request.getParameter("idInsumo")); 
             request.getSession().setAttribute("idInsumo", idInsumo);
             Controladora control = new Controladora();
-            control.eliminarInsumo(idInsumo);
-            response.sendRedirect ("listadoInsumo.jsp"); 
+            
+            //FALTA IMPLEMENTAR
+            //boolean sinViajes = control.chequearInsumoSinPasajes(idInsumo);
+            //if(!sinViajes){
+                control.eliminarInsumo(idInsumo);
+                response.sendRedirect ("listadoInsumo.jsp"); //popUp se elimino exitosamentes
+            //}
+            response.sendRedirect ("listadoInsumo.jsp"); //popUp el insumo se vendio en pasajes
         }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

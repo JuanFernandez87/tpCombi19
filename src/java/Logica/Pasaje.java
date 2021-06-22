@@ -21,7 +21,9 @@ public class Pasaje implements Serializable {
     int Cantidad;
     int idOrigen;
     int idDestino; 
-    String fechaDeViaje;
+    int dia;
+    int mes;
+    int anio;
     int hora;
     int minutos;
     double precio;
@@ -32,18 +34,22 @@ public class Pasaje implements Serializable {
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idCliente, int Cantidad, int idOrigen, int idDestino, String fechaDeViaje, int hora, int minutos, double precio, String tipoServicio) {
+    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, int idOrigen, int idDestino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio) {
         this.idPasaje = idPasaje;
         this.idCliente = idCliente;
+        this.idViaje = idViaje;
         this.Cantidad = Cantidad;
         this.idOrigen = idOrigen;
         this.idDestino = idDestino;
-        this.fechaDeViaje = fechaDeViaje;
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
         this.hora = hora;
         this.minutos = minutos;
         this.precio = precio;
         this.tipoServicio = tipoServicio;
     }
+
 
     public int getIdPasaje() {
         return idPasaje;
@@ -85,13 +91,31 @@ public class Pasaje implements Serializable {
         this.idDestino = idDestino;
     }
 
-    public String getFechaDeViaje() {
-        return fechaDeViaje;
+    public int getDia() {
+        return dia;
     }
 
-    public void setFechaDeViaje(String fechaDeViaje) {
-        this.fechaDeViaje = fechaDeViaje;
+    public void setDia(int dia) {
+        this.dia = dia;
     }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+
 
     public int getHora() {
         return hora;

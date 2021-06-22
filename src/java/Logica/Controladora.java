@@ -48,6 +48,7 @@ public class Controladora {
         nuevoInsumo.setNombre(nombre);
         nuevoInsumo.setPrecio(precio);
         nuevoInsumo.setTipo(tipo);
+        nuevoInsumo.setCantidad(0);
         controlPersis.crearInsumo(nuevoInsumo);
     }
     
