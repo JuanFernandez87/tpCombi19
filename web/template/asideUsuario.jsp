@@ -53,8 +53,9 @@
 				</ul>
 
 			</li>
-                           <li><a href="sesionUsuarioConfirmacionCambioDePlan.jsp?idCliente=<%=unCliente.getIdCliente()%>&tipoPlan=<%=unCliente.getTipoPlan()%>"><i class="icono izquierda fas fa-retweet"></i>Cambiar plan</a></li>
-
+                        <li><a href="index.jsp"><i class="icono izquierda fas fa-bus"></i>Buscar pasaje</a></li>   
+                        
+                        <li><a href="sesionUsuarioConfirmacionCambioDePlan.jsp?idCliente=<%=unCliente.getIdCliente()%>&tipoPlan=<%=unCliente.getTipoPlan()%>"><i class="icono izquierda fas fa-retweet"></i>Cambiar plan</a></li>
                   <%}}%>       
 
 		</ul>

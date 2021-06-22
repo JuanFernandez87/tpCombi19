@@ -81,16 +81,20 @@ public class BuscarPasaje extends HttpServlet {
         Controladora control = new Controladora();
         // si hay un viaje que cumpla con los datos ingresados 
         // entonces disponible volvera en true.
-        boolean disponible = control.verificarPasajeDisp(origen, destino,dia,mes,anio); 
-        if (disponible){
-            misession.setAttribute("destino", destino);
-            misession.setAttribute("origen", origen);
-            misession.setAttribute("dia", dia);
-            misession.setAttribute("mes", mes);
-            misession.setAttribute("anio", anio);
-            response.sendRedirect ("ListadoBusquedaViaje.jsp");
+        if(!origen.equals(destino)){
+            boolean disponible = control.verificarPasajeDisp(origen, destino,dia,mes,anio); 
+            if (disponible){
+                misession.setAttribute("destino", destino);
+                misession.setAttribute("origen", origen);
+                misession.setAttribute("dia", dia);
+                misession.setAttribute("mes", mes);
+                misession.setAttribute("anio", anio);
+                response.sendRedirect ("ListadoBusquedaViaje.jsp");
+            }else{
+                response.sendRedirect ("busquedaSinResultados.jsp");
+            }
         }else{
-            response.sendRedirect ("sesionAdmin.jsp");
+             response.sendRedirect ("busquedaMismoOyD.jsp");
         }
         
         

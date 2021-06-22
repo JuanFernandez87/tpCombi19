@@ -39,7 +39,7 @@ public class EliminarViaje extends HttpServlet {
                 control.eliminarViaje(idViaje);
                 response.sendRedirect ("popUpBorrarViaje.jsp");  //popUp se elimino exitosamente
             }else{
-                response.sendRedirect ("popUpViajeConPasajesVendidos.jsp");  //popUp el viaje tiene pasajes vendidos
+                response.sendRedirect ("popUpErrorEliminarViaje.jsp");  //popUp el viaje tiene pasajes vendidos
             }
             
             

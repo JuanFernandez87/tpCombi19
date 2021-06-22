@@ -17,6 +17,7 @@ public class Insumo implements Serializable {
     String tipo;
     String marca;
     double precio;
+    int cantidad;
 
     public Insumo() {
     }
@@ -71,6 +72,14 @@ public class Insumo implements Serializable {
 
     public void setBorradoLogico() {
         this.precio = -1;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
 }

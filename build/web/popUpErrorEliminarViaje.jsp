@@ -138,7 +138,7 @@
             <%@include file="/template/footer.jsp"%>
         </footer>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetAlertViajeConPasajesVendidos.js"></script> 
+        <script src="js/sweetAlertEliminarViajeConPasajesVendidos.js"></script> 
 
     </body>
 </html>

@@ -4,6 +4,6 @@
  * and open the template in the editor.
  */
 swal.fire({
-    title: "El origen debe ser distinto al destino",
+    title: "No se encontraron coincidencias en la búsqueda solicitada",
     icon: 'error'
 });

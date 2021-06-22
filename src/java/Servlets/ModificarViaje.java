@@ -87,16 +87,21 @@ public class ModificarViaje extends HttpServlet {
   
         Controladora control = new Controladora();
         boolean existe = false;
-        //existe = control.verificarViaje(idRuta, dia, mes, anio); //chequea que el viaje no exista
+        existe = control.verificarViaje(idRuta, dia, mes, anio); //chequea que el viaje no exista
         
         int cantAsientos = control.capacidadCombi(idRuta);
         
         if (!existe){
-            control.modificarViaje(idViaje, idRuta, cantAsientos, dia, mes, anio, precio);
-            response.sendRedirect ("popUpRegistroCorrectoViaje.jsp");        
+            boolean sinViajes = control.chequearViajeSinPasajes(idViaje);//chequer que el viaje no tenga pasajes vendidos
+            if(!sinViajes){
+                control.modificarViaje(idViaje, idRuta, cantAsientos, dia, mes, anio, precio);
+                response.sendRedirect ("popUpRegistroCorrectoViaje.jsp"); 
+            }else{
+            response.sendRedirect ("popUpErrorViajeConPasajesVendidos.jsp"); //popUp el viaje tiene pasajes vendidos
+            }
         }else{
-            response.sendRedirect ("popUpErrorViajeConPasajesVendidos.jsp");
-        }
+            response.sendRedirect ("popUpErrorModificarViaje.jsp"); //el viaje ya esta registrado
+        }    
     }
 
     /**
