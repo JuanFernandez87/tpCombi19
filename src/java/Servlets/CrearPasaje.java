@@ -50,7 +50,7 @@ public class CrearPasaje extends HttpServlet {
          List <Cliente> listaClientes= control.devolverListaClientes();
                     for (Cliente cliente:listaClientes){
                         if(cliente.getEnSesion()){
-                            control.crearPasaje(idCliente,idViaje);
+                            //control.crearPasaje(idCliente,idViaje, cantPasajes, precioTotal);
                             response.sendRedirect ("comprarPasajes.jsp");
                         }else{
                            response.sendRedirect ("popUpErrorDebeIniciarSesion.jsp");

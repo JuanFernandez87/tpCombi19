@@ -3,6 +3,7 @@ package Logica;
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 
 public class Controladora {
@@ -1013,10 +1014,57 @@ public class Controladora {
         return aux;        
     }
 
-     public void crearPasaje(int idCliente, int idViaje){
-        Pasaje nuevoPasaje = new Pasaje();
-        nuevoPasaje.setIdOrigen(idViaje); //falta corregir la creacion del pasaje
+public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioTotal, List<Insumo> listaInsumos){
+       Pasaje nuevoPasaje = new Pasaje();
+       List <Viaje> listaViajes = controlPersis.getViaje();
+       List <Combi> listaCombi = controlPersis.getCombi();
+       List <Lugar> listaLugar = controlPersis.getLugares();
+       List <Ruta> listaRuta = controlPersis.getRutas();
+       int idRuta = 0;
+       int min,hora;
+               int idCombi= 0;
+               int idDestino = 0;
+               int idOrigen= 0;
+               int precio = 0;
+       String tipoServicio = "";
+       for (Viaje viaje: listaViajes){
+           if(viaje.getIdViaje() == idViaje){
+                idRuta = viaje.getIdRuta();
+                nuevoPasaje.setDia(viaje.getDia());
+                nuevoPasaje.setMes(viaje.getMes());
+                nuevoPasaje.setAnio(viaje.getAnio());
+
+           }
+       }
+       for (Ruta ruta: listaRuta){
+           if (ruta.getIdRuta()== idRuta){
+               nuevoPasaje.setHora(ruta.getHora());
+               nuevoPasaje.setMinutos(ruta.getMinutos());
+               idOrigen = ruta.getOrigen();
+               idDestino = ruta.getDestino();
+               idCombi = ruta.getIdCombi();
+           }
+       }
+       for (Combi combi: listaCombi){
+           if (combi.getIdCombi() == idCombi){
+               nuevoPasaje.setTipoServicio(combi.getTipoServicio());
+           }
+       }
+       for (Lugar lugar: listaLugar){
+           if (lugar.getIdLugar() == idOrigen){
+               nuevoPasaje.setOrigen(lugar.getNombre());
+           }else{
+               if (lugar.getIdLugar() == idDestino){
+                   nuevoPasaje.setDestino(lugar.getNombre());
+               }
+           }
+       }
+       
+        nuevoPasaje.setInsumos(listaInsumos);      
+        nuevoPasaje.setPrecio(precioTotal);
+        nuevoPasaje.setIdViaje(idViaje); 
         nuevoPasaje.setIdCliente(idCliente);
+        nuevoPasaje.setCantidad(cantPasajes);
         controlPersis.crearPasaje(nuevoPasaje);   
     }
 

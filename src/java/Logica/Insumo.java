@@ -1,13 +1,19 @@
 package Logica;
-import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Insumo implements Serializable {
+//@Table (name = "insumos")
+public class Insumo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int idInsumo;
@@ -18,7 +24,16 @@ public class Insumo implements Serializable {
     String marca;
     double precio;
     int cantidad;
+    
+    /*@JoinTable(
+        name = "rel_insumos_pasajes",
+        joinColumns = @JoinColumn(name = "idInsumo", nullable = false),
+        inverseJoinColumns = @JoinColumn(name="idPasaje", nullable = false)
+    )
 
+    @ManyToMany(cascade = CascadeType.ALL)*/
+    //private List<Pasaje> pasajes;
+            
     public Insumo() {
     }
 

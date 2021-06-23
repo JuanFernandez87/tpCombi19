@@ -63,6 +63,7 @@
                 <h1>Compra de pasajes </h1>
                 <input type="hidden" name="idCompraCliente" value="<%= request.getAttribute("idCliente") %>"> </input>
                 <input type="hidden" name="idCompraViaje" value="<%= request.getAttribute("idViaje") %>"> </input>
+                <input type="hidden" name="precioTotal" id="precioTotal" value=""> </input>
           <h2> <i class="fas fa-apple-alt"></i> Insumos para agregar a su viaje</h2>
                 <%
                     String nombreInsumo="vacio";
@@ -120,6 +121,7 @@
                         footer:`<a class="btn btn-primary" href="index.jsp">Confirmar</a>`
                         });  
         }
+
 function checkForm(e) { 
    
     var fin=<%=tamaño%> +1;
@@ -143,6 +145,7 @@ function checkForm(e) {
                         e.returnValue = false;
                     }else{
                         if ((window.confirm("Desea realizar la compra por el precio: $"+ precioPagar))){
+                         document.getElementById("precioTotal").value = precioPagar;
                          e.returnValue = true;           
                    }else{
                        e.returnValue = false;
