@@ -1079,5 +1079,20 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         return aux;
     }
 
+    public boolean chequearInsumoSinPasajes(int idInsumo) {
+        boolean aux = false;
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        List <Insumo> listaInsumos = controlPersis.getInsumos();
+        for(Pasaje unPasaje:listaPasajes){
+            listaInsumos = unPasaje.getInsumos();
+            for(Insumo unInsumo: listaInsumos){
+                if(unInsumo.getIdInsumo() == idInsumo){
+                    aux = true;
+                }
+            }
+        }
+        return aux;
+    }
+
 }
 
