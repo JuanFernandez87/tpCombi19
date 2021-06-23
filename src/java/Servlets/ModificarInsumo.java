@@ -82,22 +82,27 @@ public class ModificarInsumo extends HttpServlet {
         request.getSession().setAttribute("precio", precio);
                        
         Controladora control = new Controladora();
-        boolean modificaNombreInsumo = control.verificarNombre(idInsumo, nombre);
-        if(modificaNombreInsumo){
-            control.ModificarInsumo(idInsumo, nombre, precio, tipo);
-            response.sendRedirect ("listadoInsumo.jsp");
-            }else{
-            boolean existe = control.verificarInsumo(nombre);
-            if(!existe){
+        
+        boolean sinViajes = control.chequearInsumoSinPasajes(idInsumo);
+        if(!sinViajes){
+            boolean modificaNombreInsumo = control.verificarNombre(idInsumo, nombre);
+            if(modificaNombreInsumo){              
                 control.ModificarInsumo(idInsumo, nombre, precio, tipo);
-                response.sendRedirect ("popUpRegistroModificacionInsumo.jsp");     
+                 response.sendRedirect ("listadoInsumo_1.jsp");
             }else{
-                response.sendRedirect ("popUpErrorNombreRepetidoInsumo.jsp?idInsumo=0");
+                boolean existe = control.verificarInsumo(nombre);
+                if(!existe){
+                    control.ModificarInsumo(idInsumo, nombre, precio, tipo);
+                     response.sendRedirect ("listadoInsumo_1.jsp");    
+                }else{
+                    response.sendRedirect ("popUpErrorNombreRepetidoInsumo.jsp?idInsumo=0");
                 
+                }
             }
-        }
-    }    
-
+        }else{
+            response.sendRedirect ("listadoInsumo_2.jsp"); ////popUp el insumo se vendio en pasajes       
+        }    
+    }
     /**
      * Returns a short description of the servlet.
      *
