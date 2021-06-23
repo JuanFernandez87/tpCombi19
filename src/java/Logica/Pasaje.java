@@ -1,16 +1,17 @@
 package Logica;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Pasaje implements Serializable {
+//@Table(name = "pasajes")
+public class Pasaje{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int idPasaje;
@@ -19,8 +20,8 @@ public class Pasaje implements Serializable {
     int idCliente;
     int idViaje;
     int Cantidad;
-    int idOrigen;
-    int idDestino; 
+    String origen;
+    String destino; 
     int dia;
     int mes;
     int anio;
@@ -29,18 +30,19 @@ public class Pasaje implements Serializable {
     double precio;
     String tipoServicio;
     
-    List <Insumo> listaInsumos = new ArrayList<Insumo>();
+    //@ManyToMany(mappedBy = "pasajes")
+    private List <Insumo> insumos;
 
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, int idOrigen, int idDestino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio) {
+    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, String Origen, String Destino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio) {
         this.idPasaje = idPasaje;
         this.idCliente = idCliente;
         this.idViaje = idViaje;
         this.Cantidad = Cantidad;
-        this.idOrigen = idOrigen;
-        this.idDestino = idDestino;
+        this.origen = Origen;
+        this.destino = Destino;
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
@@ -75,20 +77,12 @@ public class Pasaje implements Serializable {
         this.Cantidad = idCantidad;
     }
 
-    public int getIdOrigen() {
-        return idOrigen;
+    public void setOrigen(String origen) {
+        this.origen = origen;
     }
 
-    public void setIdOrigen(int idOrigen) {
-        this.idOrigen = idOrigen;
-    }
-
-    public int getIdDestino() {
-        return idDestino;
-    }
-
-    public void setIdDestino(int idDestino) {
-        this.idDestino = idDestino;
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
     public int getDia() {
@@ -149,14 +143,14 @@ public class Pasaje implements Serializable {
         this.tipoServicio = tipoServicio;
     }
 
-    public List<Insumo> getListaInsumos() {
-        return listaInsumos;
+    public List<Insumo> getInsumos() {
+        return insumos;
     }
 
-    public void setListaInsumos(List<Insumo> listaInsumos) {
-        this.listaInsumos = listaInsumos;
+    public void setInsumos(List<Insumo> insumos) {
+        this.insumos = insumos;
     }
-
+    
     public int getIdViaje() {
         return idViaje;
     }

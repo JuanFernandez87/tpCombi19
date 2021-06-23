@@ -36,28 +36,20 @@ public class ComprarPasaje extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
      response.setContentType("text/html;charset=UTF-8");
          Controladora control = new Controladora();
-        //List<Insumo> listaInsumos = control.devolverListaInsumos();
+        
         //List<Pasaje> listaPasajes = control.devolverListaPasajes();
         List<Viaje> listaViajes = control.devolverListaViajes();
-       // List cantInsumos = new ArrayList();
+        
         int i = 0;
         String index = "";
         // obtenemos la cantidad elegida de cada insumo.
         // el primer insumo se referencia con el valor 1; el segundo con 2...etc.
-        //for (Insumo insumo:listaInsumos){
-          //  if(insumo.getPrecio() != -1){
-            //     i = i+1;
-              //   index = String.valueOf(i);
-                // int valor = Integer.parseInt(request.getParameter(index));
-                 //cantInsumos.add(valor);
-                 //request.getSession().setAttribute(insumo.getNombre(),valor );
-            //}
-        //}
+       
          String tarjeta = "";
                 tarjeta = request.getParameter("tarjeta");
                 Integer variable = (Integer)request.getAttribute("unEntero");
@@ -79,27 +71,49 @@ public class ComprarPasaje extends HttpServlet {
             //response.sendRedirect("comprarPasajes.jsp");
             // con request.setAttribute -> seteamos una variable y podemos recibirlo en el jsp que se indique en el forward.
             //el codigo de arriba de request.getSession.setAttribute no setea los atributos y no se pueden recibir en el jsp.
+            
             request.setAttribute("idViaje", idViaje);
             request.setAttribute("idCliente", idCliente);
+            
+            
             request.getRequestDispatcher("comprarPasajes.jsp").forward(request, response);
            //request.getRequestDispatcher("comprarPasajes.jsp").forward(request, response);
              
         }else{
+            Integer precioTotal = Integer.parseInt(request.getParameter("precioTotal"));
             Integer idCompraCliente = Integer.parseInt(request.getParameter("idCompraCliente"));
             Integer idCompraViaje = Integer.parseInt(request.getParameter("idCompraViaje"));
             Integer cantPasajes = Integer.parseInt(request.getParameter("cantPasajes"));
             request.getSession().setAttribute("idCompraCliente",idCompraCliente);
             request.getSession().setAttribute("idCompraPasaje",idCompraViaje);
             request.getSession().setAttribute("cantPasajes", cantPasajes);
+            
+            // esta wea es para obtener que y cuantos insumos se compraron.
+            List cantInsumos = new ArrayList();
+            Insumo unInsumo = new Insumo();
+            List<Insumo> listaInsumos = control.devolverListaInsumos();
+            for (Insumo insumo:listaInsumos){
+                if(insumo.getPrecio() > 0){
+                    i = i+1;
+                    index = String.valueOf(i);
+                   
+                    int valor = Integer.parseInt(request.getParameter(index));
+                    if(valor > 0){
+
+                        insumo.setCantidad(valor);
+                        
+                        cantInsumos.add(insumo);
+                        request.getSession().setAttribute(insumo.getNombre(),valor );
+                    }
+            }
+        }
+             
             for (Viaje viaje: listaViajes){
                 if(viaje.getIdViaje() == idCompraViaje){
-                        // creamos tantos pasajes como asientos haya elegido.
-                        for (int j = 0; j < cantPasajes; j ++){
-                          control.crearPasaje(idCompraCliente,idCompraViaje);  
-                        }
                         control.modificarViaje(idCompraViaje, viaje.getIdRuta(), (viaje.getCantAsientos()- cantPasajes), viaje.getDia(),viaje.getMes(), viaje.getAnio(), viaje.getPrecio());
                     }
             }
+            control.crearPasaje(idCompraCliente,idCompraViaje,cantPasajes,precioTotal, cantInsumos); 
             request.setAttribute("idClienteComprado", idCompraCliente);
             request.setAttribute("idViajeComprado", idCompraViaje);
             request.getRequestDispatcher("pasajeComprado.jsp").forward(request, response);
@@ -125,6 +139,7 @@ public class ComprarPasaje extends HttpServlet {
         //}
 
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
