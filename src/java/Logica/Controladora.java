@@ -255,6 +255,11 @@ public class Controladora {
         return listaAdmin;
     }    
     
+     public List<Pasaje> devolverListaPasajes() {
+       List listaPasaje = controlPersis.getPasaje();
+        return listaPasaje;
+    }
+    
     public void crearRuta(String origen, String destino, String patenteCombi, int distancia, int hora, int minutos) {
         Ruta unaRuta = new Ruta();
         int idOrigen = 0;
@@ -1093,6 +1098,18 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         }
         return aux;
     }
+
+    public boolean tienePasaje(int idCliente) {
+        boolean aux = false;
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        for(Pasaje unPasaje:listaPasajes){
+            if(unPasaje.idCliente == idCliente){
+                    aux = true;
+                }
+        }
+        return aux;
+    }
+        
 
 }
 
