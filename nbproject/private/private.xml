@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ComprarPasaje.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ModificarInsumo.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/EliminarInsumo.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/template/asideUsuario.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/Comentario.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/js/sweetAlertNoPuedeComentar.js</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/popUpNoPuedeListarComentarios.jsp</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/web/js/sweetAlertNoPuedeListarComentarios.js</file>
+            <file>file:/C:/Users/Esteban/Documents/GitHub/tpCombi19/src/java/Servlets/listadoComentarios.java</file>
         </group>
     </open-files>
 </project-private>

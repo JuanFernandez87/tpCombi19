@@ -174,6 +174,10 @@ public class ControladoraPersistencia {
         pasajeJpa.create(nuevoPasaje);
     }
 
+    public List getPasaje() {
+       return pasajeJpa.findPasajeEntities();
+    }
+
 
 
 

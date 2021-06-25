@@ -47,8 +47,8 @@
                         <!-- boton con menu para Combi.-->
                              <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Comentarios<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-                                        <li><a href="sesionUsuarioCrearComentario.jsp">Comentar</a></li><!--Con este codigo se redirige al registro de Combi-->
-                                         <li><a href="listadoComentarios.jsp">Gestionar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                        <li><a href="Comentario?idCliente=<%=unCliente.getIdCliente()%>">Comentar</a></li><!--Con este codigo se redirige al registro de Combi-->
+                                         <li><a href="listadoComentarios?idCliente=<%=unCliente.getIdCliente()%>">Gestionar</a></li><!--Con este codigo se redirige al registro de Combi-->
                                             
 				</ul>
 
