@@ -2,6 +2,7 @@ package Logica;
 
 import Persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -22,6 +23,7 @@ public class Controladora {
         nuevoCliente.setMes(mes);
         nuevoCliente.setAnio(anio);
         nuevoCliente.setEnSesion(enSesion);
+        nuevoCliente.setEstado("Habilitado");
         controlPersis.crearCliente(nuevoCliente);   
     }
     
@@ -341,6 +343,7 @@ public class Controladora {
         nuevoViaje.setMes(mes);
         nuevoViaje.setAnio(anio);
         nuevoViaje.setArregloIdPasajes(cantAsientos);
+        nuevoViaje.setEstado("Pendiente");
         /*Date date1;   
         try {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechaViaje);
@@ -1064,7 +1067,7 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
                }
            }
        }
-       
+        nuevoPasaje.setEstado("Pendiente");
         nuevoPasaje.setInsumos(listaInsumos);      
         nuevoPasaje.setPrecio(precioTotal);
         nuevoPasaje.setIdViaje(idViaje); 
@@ -1108,6 +1111,41 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
                 }
         }
         return aux;
+    }
+
+    public void RechazarCliente(int idCliente, String estadoActual) {
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for(Cliente unCliente:listaClientes){
+            if(unCliente.getIdCliente() == idCliente){
+                unCliente.setEstado(estadoActual);
+                java.util.Date fecha = new Date();
+                unCliente.setFechaDeRechazo(fecha);
+                controlPersis.asignarCliente(unCliente);
+            }
+        }
+    }
+
+    public void AlmacenarPasajeEnCliente(int idPasaje, int idCliente, String estadoActual) {
+        Pasaje nuevoPasaje = new Pasaje();
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        for(Pasaje unPasaje:listaPasajes){
+            if(unPasaje.getIdPasaje() == idPasaje){
+                nuevoPasaje = unPasaje;
+            }
+        }
+
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        for(Cliente unCliente:listaClientes){
+            if(unCliente.getIdCliente() == idCliente){
+                List <Pasaje> nuevaListaPasaje = unCliente.getPasajes();
+                nuevaListaPasaje.add(nuevoPasaje);
+                unCliente.setPasajes(nuevaListaPasaje);
+                unCliente.setEstado(estadoActual);
+                java.util.Date fecha = new Date();
+                unCliente.setFechaDeRechazo(fecha);
+                controlPersis.asignarCliente(unCliente);
+            }
+        }
     }
         
 

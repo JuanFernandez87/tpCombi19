@@ -8,11 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-public class Cliente /*extends Persona*/{
+public class Cliente{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int idCliente;
@@ -37,26 +37,57 @@ public class Cliente /*extends Persona*/{
     int dia;
     int mes;
     int anio;
-    //hasta aca 
+    
+    String estado; //habilitado o rechazado
+    @Temporal(javax.persistence.TemporalType.DATE)
+    Date fechaDeRechazo;
+
+    @OneToMany
+    private List <Pasaje> pasajes;
     
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String tipoPlan, int dni, String nombre, String apellido, String mail, String contra, int dia, int mes, int anio, int idTarjeta,boolean sesion) {
-        //super(dni, nombre, apellido, mail, contra, fecha_nac);
+    public Cliente(int idCliente, String tipoPlan, boolean enSesion, String nombre, String apellido, String mail, String contra, int dni, int idTarjeta, int dia, int mes, int anio, String estado, Date fechaDeRechazo, List<Pasaje> pasajes) {
         this.idCliente = idCliente;
         this.tipoPlan = tipoPlan;
-         //despues borrar
-        this.dni = dni;
+        this.enSesion = enSesion;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.contra = contra;
+        this.dni = dni;
+        this.idTarjeta = idTarjeta;
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
-        this.idTarjeta = idTarjeta;
-        this.enSesion = sesion;
+        this.estado = estado;
+        this.fechaDeRechazo = fechaDeRechazo;
+        this.pasajes = pasajes;
+    }   
+    
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Date getFechaDeRechazo() {
+        return fechaDeRechazo;
+    }
+
+    public void setFechaDeRechazo(Date fechaDeRechazo) {
+        this.fechaDeRechazo = fechaDeRechazo;
+    }
+
+    public List<Pasaje> getPasajes() {
+        return pasajes;
+    }
+
+    public void setPasajes(List<Pasaje> pasajes) {
+        this.pasajes = pasajes;
     }
 
     public boolean getEnSesion() {

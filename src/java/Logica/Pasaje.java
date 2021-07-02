@@ -29,6 +29,7 @@ public class Pasaje{
     int minutos;
     double precio;
     String tipoServicio;
+    String estado; //pendiente(si no se inicio), iniciado o finalizado    
     
     //@ManyToMany(mappedBy = "pasajes")
     private List <Insumo> insumos;
@@ -36,13 +37,13 @@ public class Pasaje{
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, String Origen, String Destino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio) {
+    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, String origen, String destino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio, String estado, List<Insumo> insumos) {
         this.idPasaje = idPasaje;
         this.idCliente = idCliente;
         this.idViaje = idViaje;
         this.Cantidad = Cantidad;
-        this.origen = Origen;
-        this.destino = Destino;
+        this.origen = origen;
+        this.destino = destino;
         this.dia = dia;
         this.mes = mes;
         this.anio = anio;
@@ -50,9 +51,18 @@ public class Pasaje{
         this.minutos = minutos;
         this.precio = precio;
         this.tipoServicio = tipoServicio;
+        this.estado = estado;
+        this.insumos = insumos;
     }
 
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }   
+    
     public int getIdPasaje() {
         return idPasaje;
     }
@@ -108,8 +118,6 @@ public class Pasaje{
     public void setAnio(int anio) {
         this.anio = anio;
     }
-
-
 
     public int getHora() {
         return hora;

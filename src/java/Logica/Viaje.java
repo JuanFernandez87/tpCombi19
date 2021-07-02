@@ -27,6 +27,7 @@ public class Viaje implements Serializable {
     int mes;
     int anio;
     int[ ]  arregloIdPasajes;
+    String estado; //pendiente(si no se inicio), iniciado o finalizado
     /*@OneToOne
     Insumo unInsumo;
 
@@ -39,7 +40,7 @@ public class Viaje implements Serializable {
     public Viaje() {
     }
 
-    public Viaje(int idViaje, int cantAsientos, int precio, int idRuta, int dia, int mes, int anio, int[] arregloIdPasajes) {
+    public Viaje(int idViaje, int cantAsientos, int precio, int idRuta, int dia, int mes, int anio, int[] arregloIdPasajes, String estado) {
         this.idViaje = idViaje;
         this.cantAsientos = cantAsientos;
         this.precio = precio;
@@ -48,6 +49,7 @@ public class Viaje implements Serializable {
         this.mes = mes;
         this.anio = anio;
         this.arregloIdPasajes = arregloIdPasajes;
+        this.estado = estado;
     }
 
     public int[] getArregloIdPasajes() {
@@ -58,6 +60,13 @@ public class Viaje implements Serializable {
         this.arregloIdPasajes = new int[capacidad];
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }   
     
     public int getIdRuta() {
         return idRuta;
