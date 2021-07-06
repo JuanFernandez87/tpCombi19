@@ -37,7 +37,6 @@
  
       <%
             int pag=1;
-
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();   
