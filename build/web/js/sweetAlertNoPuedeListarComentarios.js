@@ -5,6 +5,6 @@
  */
 
 swal.fire({
-    title: "No puede ver los comentarios por que no tiene viajes realizados",
+    title: "No tiene comentarios para listar",
     icon: 'error'
 });

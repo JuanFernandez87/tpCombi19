@@ -120,6 +120,10 @@
         <servlet-name>RegistrarSintomas</servlet-name>
         <servlet-class>Servlets.RegistrarSintomas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarEstadoViajes</servlet-name>
+        <servlet-class>Servlets.ActualizarEstadoViajes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>RegistrarSintomas</servlet-name>
         <url-pattern>/RegistrarSintomas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarEstadoViajes</servlet-name>
+        <url-pattern>/ActualizarEstadoViajes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
