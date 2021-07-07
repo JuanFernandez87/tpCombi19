@@ -1147,6 +1147,16 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
             }
         }
     }
+
+    public void ActualizarEstadoViaje(int idViaje, String estado) {
+        List <Viaje> listaViajes = controlPersis.getViaje();
+        for(Viaje unViaje:listaViajes){
+            if(unViaje.getIdViaje() == idViaje){
+                unViaje.setEstado(estado);
+                controlPersis.asignarViaje(unViaje);
+            }
+        }
+    }
         
 
 }

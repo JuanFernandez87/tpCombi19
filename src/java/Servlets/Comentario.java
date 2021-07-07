@@ -42,7 +42,7 @@ public class Comentario extends HttpServlet {
             Controladora control = new Controladora();
             boolean tienePasaje = false;
             tienePasaje = control.tienePasaje(idCliente);
-            if(tienePasaje){
+            if(!tienePasaje){
                 response.sendRedirect ("popUpNoPuedeComentar.jsp");
             }else{
                 response.sendRedirect ("sesionUsuarioCrearComentario.jsp");

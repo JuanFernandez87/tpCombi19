@@ -9,17 +9,15 @@ import Logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Esteban
+ * @author juanf
  */
-@WebServlet(name = "listadoComentarios", urlPatterns = {"/listadoComentarios"})
-public class listadoComentarios extends HttpServlet {
+public class ActualizarEstadoViajes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +33,15 @@ public class listadoComentarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            Controladora control = new Controladora();
-            boolean tienePasaje = false;
-            tienePasaje = control.tienePasaje(idCliente);
-            if(!tienePasaje){
-                response.sendRedirect ("popUpNoPuedeListarComentarios.jsp");
-            }else{
-                response.sendRedirect ("listadoComentarios.jsp");
-                
-            }          
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ActualizarEstadoViajes</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ActualizarEstadoViajes at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -74,7 +71,15 @@ public class listadoComentarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int idViaje = Integer.parseInt(request.getParameter("idViaje"));
+        String estado = request.getParameter("estado");
+        
+        request.getSession().setAttribute("idViaje", idViaje);
+        request.getSession().setAttribute("estado", estado);
+        
+        Controladora control = new Controladora();
+        
+        control.ActualizarEstadoViaje(idViaje, estado);
     }
 
     /**
