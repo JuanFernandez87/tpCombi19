@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="css/sesiones.css" >
         <link rel="stylesheet" type="css/fonts.css" href="">
         <link rel="stylesheet" href="css/lista.css">
+       
     </head>
     
     <body>
@@ -87,7 +88,7 @@
         <div class="cajaListado">
             <h1> Viajes encontrados: </h1> 
             
-            <a style="background-color: #ff0000;color: white;padding: 20px;text-decoration: none;display: table-cell;"href="index.jsp">Volver</a>
+            <a style="background-color: #ff0000;color: white;padding: 20px;text-decoration: none;display: table-cell; Border-radius:6px;"href="index.jsp">Volver</a>
         <table>
             <tr>
                 <td>Origen</td> 
@@ -99,11 +100,11 @@
               
                 <td>Asientos <br> disponibles </td> 
 
-                  <td></td>
+                  <td>Comprar pasajes</td>
                 <td></td>
                 
             </tr>
-            <tr>
+            
                 <%
         String origenRuta= "";
         String destinoRuta= "";
@@ -114,7 +115,8 @@
         int hora=0;
         int minutos = 0;
         int asientos= -1;
-        for(Viaje viaje:listaViajes){
+        for(Viaje viaje:listaViajes){%>
+                <tr><%
             for (Ruta ruta:listaRutas){
                 for (Lugar lugar:listaLugar){ // obtenemos el nombre de origen y destino de cada ruta.
                     if(lugar.getIdLugar()== ruta.getOrigen()){
@@ -140,7 +142,9 @@
                  
             }    
             // preguntamos para cada viaje.> si cumple con los datos que se ingresaron en pantalla.
-            if(viaje.getAnio()== (Integer)session.getAttribute("anio") && viaje.getMes()== (Integer)session.getAttribute("mes") && viaje.getDia()== (Integer)session.getAttribute("dia")  && origenRuta.equals((String)session.getAttribute("origen")) && destinoRuta.equals((String)session.getAttribute("destino") )){
+            if(viaje.getAnio()== (Integer)session.getAttribute("anio") && viaje.getMes()== (Integer)session.getAttribute("mes") 
+                    && viaje.getDia()== (Integer)session.getAttribute("dia")  && origenRuta.equals((String)session.getAttribute("origen")) 
+                    && destinoRuta.equals((String)session.getAttribute("destino") )){
                 asientos = viaje.getCantAsientos();%>
             <td><%=(String)session.getAttribute("origen")%> </td>
             <td><%=(String)session.getAttribute("destino")%>
@@ -148,7 +152,13 @@
                 <td><%=hora%>:<%=minutos%>Hs </td>
                 <td> $<%=viaje.getPrecio()%> </td>
                 <td><%=tipoServicio%> </td>
-                <td><%=viaje.getCantAsientos()%> </td><%}}%> 
+                <td><%=viaje.getCantAsientos()%> </td>
+                <td><form class="inputHide" action="ComprarPasaje" method="POST"onSubmit = "return checkForm(event)">
+                    <input  type="hidden" name="clienteViaje" value="<%=idCli%>"> </input> 
+            <input type="hidden" name="ideViaje" value="<%=viaje.getIdViaje()%>"></input>
+        
+        <!--<a style="background-color: orange;color: white;padding: 5px;text-decoration: none;" href="#"; onclick="func()">Comprar </a> -->
+                <input class="botons" type="submit" value="Comprar"></form></td><%}}%></tr>
                 <% // En esta seccion se comprueba si se inicio sesion. Si hay una sesion Activa de un usuario
                     //Entonces se permite la compra y se redirige al link "comprarPasajes" para usuarios.
                     String linkHref="#";
@@ -161,15 +171,10 @@
                     }
                     
                 %>
-            </tr>
+             
             </table> 
                  
-                <form class="inputHide" action="ComprarPasaje" method="POST"onSubmit = "return checkForm(event)">
-                    <input  type="hidden" name="clienteViaje" value="<%=idCli%>"> </input> 
-            <input type="hidden" name="ideViaje" value="<%=idV%>"></input>
-        
-        <!--<a style="background-color: orange;color: white;padding: 5px;text-decoration: none;" href="#"; onclick="func()">Comprar </a> -->
-                <input class="botons" type="submit" value="Comprar"></form>
+                
         </div> 
                  
             

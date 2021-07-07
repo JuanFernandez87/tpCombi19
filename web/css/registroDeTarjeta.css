@@ -156,6 +156,15 @@ Checkout
   padding: 160px 45px 30px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
+.checkoutCompra{
+  margin: 260px 635px;
+    position: absolute;
+    width: 460px;
+    background: none;
+    border-radius: 15px;
+    padding: 160px 45px 30px;
+    box-shadow: 0 10px 40px rgb(0 0 0 / 10%);
+}
 
 /*--------------------
 Credit Card

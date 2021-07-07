@@ -102,6 +102,13 @@ public class ControladoraPersistencia {
         }   
     }
     
+    public void asignarPasaje(Pasaje unPasaje) {
+        try {
+            pasajeJpa.edit(unPasaje);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }    
     
     public void crearCombi(Combi nuevaCombi) {
         combiJpa.create(nuevaCombi);
@@ -177,12 +184,5 @@ public class ControladoraPersistencia {
     public List getPasaje() {
        return pasajeJpa.findPasajeEntities();
     }
-
-
-
-
-
-
-
 }
 

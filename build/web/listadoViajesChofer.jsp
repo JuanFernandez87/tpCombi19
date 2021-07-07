@@ -71,7 +71,7 @@
                                                             <td><%=unLugar.getNombre()%><%}}}%></td>
                                                     <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                                                     <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
-                                                    <td> <a style="background-color: #0fc370;color: white;padding: 5px;" href="#">Ver Pasajeros</a> </td>
+                                                    <td> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
                                                       </tr>
                     <%}}}}}}}%>  
       </table>

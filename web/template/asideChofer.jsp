@@ -53,9 +53,7 @@
 				</ul>
 
 			</li>
-                        
-                        <li ><a href="sesionChoferRegistrarSintomas.jsp"><i class="icono izquierda fas fa-book" ></i>Prueba para cargar sintomas<i class="icono derecha fas fa-chevron-down"></i></a></li>
-
+                      
                   <%}}%>       
 
 		</ul>

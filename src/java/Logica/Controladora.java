@@ -1131,6 +1131,8 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         for(Pasaje unPasaje:listaPasajes){
             if(unPasaje.getIdPasaje() == idPasaje){
                 nuevoPasaje = unPasaje;
+                nuevoPasaje.setEstado(estadoActual);
+                controlPersis.asignarPasaje(unPasaje);
             }
         }
 
@@ -1138,11 +1140,14 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         for(Cliente unCliente:listaClientes){
             if(unCliente.getIdCliente() == idCliente){
                 List <Pasaje> nuevaListaPasaje = unCliente.getPasajes();
+                nuevoPasaje.setEstado(estadoActual);
                 nuevaListaPasaje.add(nuevoPasaje);
                 unCliente.setPasajes(nuevaListaPasaje);
-                unCliente.setEstado(estadoActual);
-                java.util.Date fecha = new Date();
-                unCliente.setFechaDeRechazo(fecha);
+                if(estadoActual.equals("Rechazado")){
+                    java.util.Date fecha = new Date();
+                    unCliente.setFechaDeRechazo(fecha);
+                    unCliente.setEstado("Rechazado");
+                }
                 controlPersis.asignarCliente(unCliente);
             }
         }
