@@ -34,6 +34,15 @@ body{
     margin-top: 128px;
 
 }
+.formularioCompraOculto:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+  background-color: rgba(0,0,0,.5);
+}
 .formularioCompra fieldset{
     min-width: 59px;
     padding: 7px;
@@ -262,9 +271,9 @@ form{
 
   }
   .inputHide {
-    width: 400px;
-    background: #266aa7;
-    padding: 30px;
+    width: 154px;
+    background: #0fc370;
+    padding: 0px;
     margin: auto;
     font-family: 'calibri';
     color: white;

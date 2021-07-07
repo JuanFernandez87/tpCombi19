@@ -71,15 +71,13 @@ public class RegistrarSintomas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idPasaje = Integer.parseInt(request.getParameter("idPasaje"));
-        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-        
-        
+        int idPasaje = 1; //Integer.parseInt(request.getParameter("idPasaje"));
+        int idCliente = 1; //Integer.parseInt(request.getParameter("idCliente"));
+  
         double temp = Double.parseDouble(request.getParameter("temp"));
         String fiebre = request.getParameter("fiebre");
         String olfato = request.getParameter("olfato");
         String garganta = request.getParameter("garganta");
-        
         request.getSession().setAttribute("temp", temp);
         request.getSession().setAttribute("fiebre", fiebre);
         request.getSession().setAttribute("olfato", olfato);
@@ -99,13 +97,15 @@ public class RegistrarSintomas extends HttpServlet {
             contador++;
         }        
         
-        if((temp >= 38) || (contador >=2)){
+        if((temp >= 38.0) || (contador >=2)){
             //poner al cliente como sospechoso y no puede viajar
             control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Rechazado");
             control.RechazarCliente(idCliente, "Rechazado");
+            response.sendRedirect("sesionChofer.jsp");
         }else{
             //el cliente puede viajar
             control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Iniciado");
+            response.sendRedirect("sesionChofer.jsp");
         }                
     }
 

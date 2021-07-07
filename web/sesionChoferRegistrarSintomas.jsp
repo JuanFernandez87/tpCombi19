@@ -16,26 +16,31 @@
         <aside>
             <%@include file="/template/asideChofer.jsp"%>
         </aside>
+
+        <%
+            int idCliente = Integer.valueOf(request.getParameter("idCliente"));
+            int idPasaje = Integer.valueOf(request.getParameter("idPasaje"));
+        %> 
         
-        <form style="margin-top: 150px" action="RegistrarSintomas" method="post">
+        <form style="margin-top: 150px" action="RegistrarSintomas?idCliente=<%= idCliente %>&idPasaje=<%= idPasaje %>" method="post">
             <h4>Información</h4>
             <label>Temperatura</label>
-            <input class="controls" type="number" name="temp" min="34" max="42" value="37" required>
+            <input class="controls" lang="en" type="number" step="0.1" name="temp" min="34.0" max="42.0" value="37.0" required>
             
             <label>¿Tuvo fiebre en la última semana?</label>
-                <select class="controls" name="fiebre" required>
+                <select class="controls" name="fiebre">
                         <option>No</option>
                         <option>Si</option>
                 </select>        
                         
             <label>¿Tuvo perdida de olfato en la última semana?</label>
-                <select class="controls" name="olfato" required>
+                <select class="controls" name="olfato">
                         <option>No</option>
                         <option>Si</option>
                 </select>        
             
             <label>¿Tuvo dolor de garganta o dificultad respiratoria?</label>
-                <select class="controls" name="garganta" required>
+                <select class="controls" name="garganta">
                         <option>No</option>
                         <option>Si</option>
                 </select>        
