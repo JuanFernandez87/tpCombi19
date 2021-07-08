@@ -30,6 +30,9 @@ public class Pasaje{
     double precio;
     String tipoServicio;
     String estado; //pendiente(si no se inicio), iniciado o finalizado    
+    int dni;
+    String apellido;
+    String nombre;
     
     //@ManyToMany(mappedBy = "pasajes")
     private List <Insumo> insumos;
@@ -37,7 +40,7 @@ public class Pasaje{
     public Pasaje() {
     }
 
-    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, String origen, String destino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio, String estado, List<Insumo> insumos) {
+    public Pasaje(int idPasaje, int idCliente, int idViaje, int Cantidad, String origen, String destino, int dia, int mes, int anio, int hora, int minutos, double precio, String tipoServicio, String estado, int dni, String apellido, String nombre, List<Insumo> insumos) {
         this.idPasaje = idPasaje;
         this.idCliente = idCliente;
         this.idViaje = idViaje;
@@ -52,8 +55,37 @@ public class Pasaje{
         this.precio = precio;
         this.tipoServicio = tipoServicio;
         this.estado = estado;
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
         this.insumos = insumos;
+    }   
+    
+    public int getDni() {
+        return dni;
     }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
 
     public String getEstado() {
         return estado;
