@@ -124,6 +124,10 @@
         <servlet-name>ActualizarEstadoViajes</servlet-name>
         <servlet-class>Servlets.ActualizarEstadoViajes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarEstadoViaje</servlet-name>
+        <servlet-class>Servlets.ActualizarEstadoViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistroLugar</servlet-name>
         <url-pattern>/RegistroLugar</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>ActualizarEstadoViajes</servlet-name>
         <url-pattern>/ActualizarEstadoViajes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarEstadoViaje</servlet-name>
+        <url-pattern>/ActualizarEstadoViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

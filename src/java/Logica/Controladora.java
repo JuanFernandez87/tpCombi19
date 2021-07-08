@@ -1113,7 +1113,7 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         return aux;
     }
 
-    public void RechazarCliente(int idCliente, String estadoActual) {
+    public void SuspenderCliente(int idCliente, String estadoActual) {
         List <Cliente> listaClientes = controlPersis.getClientes();
         for(Cliente unCliente:listaClientes){
             if(unCliente.getIdCliente() == idCliente){
@@ -1162,7 +1162,16 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
             }
         }
     }
-        
+
+    public void ActualizarAcompañante(int idPasaje, int dni, String estado) {
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        for(Pasaje unPasaje:listaPasajes){
+            if((unPasaje.getIdPasaje() == idPasaje) && (unPasaje.getDni() == dni)){
+                unPasaje.setEstado(estado);
+                controlPersis.asignarPasaje(unPasaje);
+            }
+        }
+    }     
 
 }
 

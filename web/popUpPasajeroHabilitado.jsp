@@ -22,8 +22,7 @@
         </aside>
         
         <%
-            //int idViaje = (Integer)session.getAttribute("idViaje");
-            int idViaje = Integer.valueOf(request.getParameter("idViaje"));
+            int idViaje = (Integer)session.getAttribute("idViaje");
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
@@ -68,8 +67,8 @@
       </table>
 <br></br>
 <div style="margin-left: 400px" >
-    <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>">Iniciar viaje</a>
-        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>">Finalizar viaje</a>                    
+    <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje&estado<%=iniciado%>">Iniciar viaje</a>
+        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje&estado<%=finalizado%>">Finalizar viaje</a>                    
             
     </div>
 <br></br>
@@ -78,6 +77,9 @@
     
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
+        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/sweetPasajeroHabilitado.js"></script>        
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>

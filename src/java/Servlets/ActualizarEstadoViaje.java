@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanf
  */
-public class ActualizarEstadoViajes extends HttpServlet {
+public class ActualizarEstadoViaje extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class ActualizarEstadoViajes extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ActualizarEstadoViajes</title>");            
+            out.println("<title>Servlet ActualizarEstadoViaje</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ActualizarEstadoViajes at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ActualizarEstadoViaje at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,6 +80,7 @@ public class ActualizarEstadoViajes extends HttpServlet {
         Controladora control = new Controladora();
         
         control.ActualizarEstadoViaje(idViaje, estado);
+        response.sendRedirect ("sesionChoferListadoPasajeros.jsp");
     }
 
     /**

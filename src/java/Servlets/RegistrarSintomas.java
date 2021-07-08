@@ -71,13 +71,18 @@ public class RegistrarSintomas extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idPasaje = 1; //Integer.parseInt(request.getParameter("idPasaje"));
-        int idCliente = 1; //Integer.parseInt(request.getParameter("idCliente"));
+        int idPasaje = Integer.parseInt(request.getParameter("idPasaje"));
+        int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+        int dni = Integer.parseInt(request.getParameter("dni"));
   
         double temp = Double.parseDouble(request.getParameter("temp"));
         String fiebre = request.getParameter("fiebre");
         String olfato = request.getParameter("olfato");
         String garganta = request.getParameter("garganta");
+        
+        request.getSession().setAttribute("idPasaje", idPasaje);
+        request.getSession().setAttribute("idCliente", idCliente);
+        request.getSession().setAttribute("dni", dni);
         request.getSession().setAttribute("temp", temp);
         request.getSession().setAttribute("fiebre", fiebre);
         request.getSession().setAttribute("olfato", olfato);
@@ -98,14 +103,23 @@ public class RegistrarSintomas extends HttpServlet {
         }        
         
         if((temp >= 38.0) || (contador >=2)){
-            //poner al cliente como sospechoso y no puede viajar
-            control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Rechazado");
-            control.RechazarCliente(idCliente, "Rechazado");
-            response.sendRedirect("sesionChofer.jsp");
+            //si el cliente esta registrado ponerlo como sospechoso y no puede viajar por los proximos 15 dias
+            if(idCliente > 0){
+                control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Rechazado");
+                control.SuspenderCliente(idCliente, "Suspendido");
+                response.sendRedirect("popUpPasajeroRechazado.jsp");
+            }else{
+                control.ActualizarAcompañante(idPasaje, dni, "Rechazado");
+                response.sendRedirect("popUpPasajeroAcompañanteRechazado.jsp");
+            }              
         }else{
             //el cliente puede viajar
-            control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Iniciado");
-            response.sendRedirect("sesionChofer.jsp");
+            if(idCliente > 0){
+                control.AlmacenarPasajeEnCliente(idPasaje, idCliente, "Iniciado");
+            }else{
+                control.ActualizarAcompañante(idPasaje, dni, "Iniciado");
+            }    
+            response.sendRedirect("popUpPasajeroHabilitado.jsp");
         }                
     }
 
