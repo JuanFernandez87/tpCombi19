@@ -20,9 +20,10 @@
         <%
             int idCliente = Integer.valueOf(request.getParameter("idCliente"));
             int idPasaje = Integer.valueOf(request.getParameter("idPasaje"));
+            int dni = Integer.valueOf(request.getParameter("dni"));
         %> 
         
-        <form style="margin-top: 150px" action="RegistrarSintomas?idCliente=<%= idCliente %>&idPasaje=<%= idPasaje %>" method="post">
+        <form style="margin-top: 150px" action="RegistrarSintomas?idCliente=<%= idCliente %>&idPasaje=<%= idPasaje %>&dni=<%= dni %>" method="post">
             <h4>Información</h4>
             <label>Temperatura</label>
             <input class="controls" lang="en" type="number" step="0.1" name="temp" min="34.0" max="42.0" value="37.0" required>

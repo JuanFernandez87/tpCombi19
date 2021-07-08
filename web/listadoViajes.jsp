@@ -3,6 +3,7 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
+<%@page import="Logica.Pasaje"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
 <%@page import="Logica.Lugar"%>
@@ -37,11 +38,22 @@
  
       <%
             int pag=1;
+            int idCliente=0;
+            List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();   
+            List <Cliente> listaClientes = control.devolverListaClientes();
             
-            int maxPag = (control.devolverListaViajes().size()/10)+1; 
+            String username = (String)session.getAttribute("username");
+            for (Cliente unCliente:listaClientes){
+                    if (unCliente.getMail().equals(username)){
+        
+                         idCliente= unCliente.getIdCliente();
+                    }
+            }
+            
+            int maxPag = (control.devolverListaPasajes().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
                    pag = Integer.valueOf(request.getParameter("pg"));
@@ -51,7 +63,7 @@
             int regMax = pag * 10;
             
             if(pag==maxPag){
-                regMax=regMin+control.devolverListaViajes().size()%10;
+                regMax=regMin+control.devolverListaPasajes().size()%10;
             }
           
         %> 
@@ -70,7 +82,12 @@
                 <td></td>
                 
             </tr>
-                <%for (Viaje unViaje:listaViajes){%>
+                <%for (Pasaje unPasaje:listaPasajes){
+                              
+                     if(unPasaje.getIdCliente() == idCliente){%>
+                     <%for (Viaje unViaje:listaViajes){
+                     
+                            if(unPasaje.getIdViaje() == unViaje.getIdViaje()){%>
 
                 <tr>
                     <%for (Ruta unaRuta:listaRutas){
@@ -94,7 +111,7 @@
                         <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Cancelar pasaje</a></td>
   
                 </tr>
-                    <%}}}%>  
+                    <%}}}}}}%>  
                
 
     
