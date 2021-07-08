@@ -22,11 +22,13 @@
         </aside>
         
         <%
-            int idViaje = (Integer)session.getAttribute("idViaje");
+            //int idViaje = (Integer)session.getAttribute("idViaje");
+            int idViaje = Integer.valueOf(request.getParameter("idViaje"));
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
-            int i = 0;
+            String iniciado = "Iniciado";
+            String finalizado = "Finalizado";
         %> 
       
         <div class="cajaListado">
@@ -40,36 +42,34 @@
                          
             </tr>
             <tr>
-                     <%for(Viaje unViaje:listaViajes){
-                        i++;%>
+                     <%for(Viaje unViaje:listaViajes){%>
                         
                         <%for(Pasaje unPasaje:listaPasajes){
                             if(unViaje.getIdViaje() == unPasaje.getIdViaje()){%>
-                                 <%for(Cliente unCliente:listaClientes){
-                                    if(unPasaje.getIdCliente() == unCliente.getIdCliente()){%>
-                                        <td><%=unCliente.getDni()%></td>
-                                        <td><%=unCliente.getApellido()%></td>
-                                        <td><%=unCliente.getNombre()%></td>
+
+                                        <td><%=unPasaje.getDni()%></td>
+                                        <td><%=unPasaje.getApellido()%></td>
+                                        <td><%=unPasaje.getNombre()%></td>
                                                                       
                                         <td>
-                                            <input type="radio" id="html" name="<%=unCliente.getDni()%>" value="HTML"> 
+                                            <input type="radio" id="html" name="<%=unPasaje.getDni()%>" value="HTML"> 
                                             <label style="background-color:rgba(0, 0, 0, 0);color: black; " for="html">Asistió</label>
                                             <br></br>
-                                            <input type="radio" id="html" name="<%=unCliente.getDni()%>" value="HTML" checked>
+                                            <input type="radio" id="html" name="<%=unPasaje.getDni()%>" value="HTML" checked>
                                             <label style="background-color:rgba(0, 0, 0, 0);color: black;" for="html">Ausente</label>                                     
                                         </td>
-                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unCliente.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>">Registrar sintomas</a> 
+                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unPasaje.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>&dni=<%= unPasaje.getDni() %>">Registrar sintomas</a> 
                                         </td>
                                         
 
             </tr>
-                    <%}}}}}%>  
+                    <%}}}%>  
                     
       </table>
 <br></br>
 <div style="margin-left: 400px" >
-        <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViajes?idViaje">Iniciar viaje</a>
-        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViajes?idViaje">Finalizar viaje</a>                    
+    <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>">Iniciar viaje</a>
+        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>">Finalizar viaje</a>                    
             
     </div>
 <br></br>
