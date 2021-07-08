@@ -29,7 +29,7 @@
     <body>
             <%@include file="/template/headerSesiones.jsp"%>
     
-            <%@include file="/template/aside.jsp"%>
+            <%@include file="/template/asideUsuario.jsp"%>
        
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="js/sesion.js"></script>
@@ -62,8 +62,6 @@
             <tr>
                 <td>Origen</td> 
                 <td>Destino</td> 
-                <td>Distancia</td> 
-                <td>Capacidad</td> 
                 <td>Fecha</td> 
                 <td>Hora</td> 
                 <td>Precio</td> 
@@ -89,14 +87,11 @@
          
                                
                     <%}%>
-                        <td><%= unaRuta.getDistancia()%> km</td>
-                        <td><%= unViaje.getCantAsientos()%> pasajeros</td>
 
                         <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                         <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                         <td><%= unViaje.getPrecio()%>$</td>
-                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=unViaje.getIdViaje()%>">Modificar</a> </td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Eliminar</a></td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Cancelar pasaje</a></td>
   
                 </tr>
                     <%}}}%>  

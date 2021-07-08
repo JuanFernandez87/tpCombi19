@@ -26,6 +26,7 @@
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
+            int i = 0;
         %> 
       
         <div class="cajaListado">
@@ -35,11 +36,13 @@
                 <td>Dni</td> 
                 <td>Apellido</td> 
                 <td>Nombre</td> 
-            <td></td>
+                <td>Asistencia</td>
                          
             </tr>
             <tr>
-                     <%for(Viaje unViaje:listaViajes){%>
+                     <%for(Viaje unViaje:listaViajes){
+                        i++;%>
+                        
                         <%for(Pasaje unPasaje:listaPasajes){
                             if(unViaje.getIdViaje() == unPasaje.getIdViaje()){%>
                                  <%for(Cliente unCliente:listaClientes){
@@ -47,17 +50,29 @@
                                         <td><%=unCliente.getDni()%></td>
                                         <td><%=unCliente.getApellido()%></td>
                                         <td><%=unCliente.getNombre()%></td>
-                                        <td> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unCliente.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>">Registrar sintomas</a> </td>
-                    </tr>
+                                                                      
+                                        <td>
+                                            <input type="radio" id="html" name="<%=unCliente.getDni()%>" value="HTML"> 
+                                            <label style="background-color:rgba(0, 0, 0, 0);color: black; " for="html">Asistió</label>
+                                            <br></br>
+                                            <input type="radio" id="html" name="<%=unCliente.getDni()%>" value="HTML" checked>
+                                            <label style="background-color:rgba(0, 0, 0, 0);color: black;" for="html">Ausente</label>                                     
+                                        </td>
+                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unCliente.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>">Registrar sintomas</a> 
+                                        </td>
+                                        
+
+            </tr>
                     <%}}}}}%>  
                     
       </table>
 <br></br>
-        <a style="background-color: #0fc370;color: white;padding: 5px;" href="ActualizarEstadoViajes?idViaje">Iniciar viaje</a>
-        <a style="background-color: #ff0000;color: white;padding: 5px;" href="ActualizarEstadoViajes?idViaje">Finalizar viaje</a>                    
+<div style="margin-left: 400px" >
+        <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViajes?idViaje">Iniciar viaje</a>
+        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViajes?idViaje">Finalizar viaje</a>                    
             
-        </div>
-
+    </div>
+<br></br>
         
     </body>
     

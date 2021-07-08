@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Logica/Controladora.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionChoferRegistrarSintomas.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/ActualizarEstadoViajes.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/src/java/Servlets/RegistrarSintomas.java</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/listadoViajesChofer.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/template/asideChofer.jsp</file>
+            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/listadoViajes.jsp</file>
             <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionChofer.jsp</file>
             <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/sesionChoferListadoPasajeros.jsp</file>
-            <file>file:/C:/Users/juanf/Documents/GitHub/tpCombi19/web/modificarLugar.jsp</file>
         </group>
     </open-files>
 </project-private>
