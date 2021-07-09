@@ -274,6 +274,7 @@
                         confirmButtonText: "Confirmar"
                         });  
         }
+        
         function cargarTarjeta(e){
             // si al momento de cargar la tarjeta, los datos son validos entonces se oculta el formulario para que se pueda efectuar la compra.
                 if((document.getElementById("card-ccv").value.length === 3)&&
@@ -294,6 +295,7 @@
                       }else{
                            $('#checkoutCompra').hide();
                              $('.formularioCompra').removeClass("formularioCompraOculto");
+                             
                             // luego de cargado el formulario y presionado el boton "aceptar" se oculta el formulario de tarjeta.
                              $('[type=submit]').trigger('click'); // dsps de ocultar el formulario se acciona el boton "comprar" del formulario de compra para invocar al servlet y efectuar la compra.
                     
@@ -357,6 +359,7 @@ function checkForm(e) {
                             }        
                         }
                         }else{
+                       
                        e.returnValue = false;
                         } 
  }

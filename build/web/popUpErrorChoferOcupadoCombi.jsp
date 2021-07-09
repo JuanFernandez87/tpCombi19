@@ -29,10 +29,6 @@
       <%
             int pag=1;
             
-<<<<<<< Updated upstream
-            Controladora control = new Controladora();
-=======
->>>>>>> Stashed changes
             List <Chofer> listaChoferes = control.devolverListaChoferes(); 
             int maxPag = (control.devolverListaChoferes().size()/10)+1; 
             int i = 0; 

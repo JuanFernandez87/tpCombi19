@@ -1076,6 +1076,15 @@ public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioT
         controlPersis.crearPasaje(nuevoPasaje);   
     }
 
+public void crearPasajeAcompañante(String nombre, String apellido, int dni){
+       Pasaje nuevoPasaje = new Pasaje();     
+        nuevoPasaje.setEstado("Pendiente");    
+        nuevoPasaje.setApellido(apellido);
+        nuevoPasaje.setNombre(nombre);
+        nuevoPasaje.setDni(dni);
+        controlPersis.crearPasaje(nuevoPasaje);   
+    }
+
     public boolean chequearViajeSinPasajes(int idViaje) {
         boolean aux = false;
         List <Pasaje> listaPasajes = controlPersis.getPasajes();
