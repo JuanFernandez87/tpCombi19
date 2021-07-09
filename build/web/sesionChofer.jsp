@@ -1,7 +1,7 @@
 <%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
-<%@page import="Logica.Ruta"%>
 <%@page import="Logica.Viaje"%>
+<%@page import="Logica.Ruta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,6 @@
         <aside>
             <%@include file="/template/asideChofer.jsp"%>
         </aside>
-        
         <%
             
             
@@ -39,21 +38,35 @@
                          idChofer= unChofer.getIdChofer();
                     }
             }
-                      
+            int cant=0;
+            for(Viaje unViaje:listaViajes){
+                        int idRuta= unViaje.getIdRuta();
+                        for(Ruta unaRuta:listaRutas){
+                            if(idRuta == unaRuta.getIdRuta()){
+                                 int idCombi= unaRuta.getIdCombi();
+                                 for(Combi unaCombi:listaCombis){
+                                    if(idCombi == unaCombi.getIdCombi()){
+                                         int idC = unaCombi.getUnChofer().getIdChofer();
+                                         for(Chofer unChofer:listaChoferes){
+                                               if(idC == unChofer.getIdChofer() && idC == idChofer ){
+                                                   cant++;
+                                               }}}}}}}
+
+            if(cant > 0){          
         %> 
       
         <div class="cajaListado">
-            <h1>Viajes pendientes</h1>
+            <h1>Lista viajes</h1>
         <table>
             <tr>
                 <td>Origen</td> 
                 <td>Destino</td> 
+                <td>Combi</td>
                 <td>Fecha</td> 
                 <td>Hora</td> 
                 <td></td>
                          
             </tr>
-            <tr>
                      <%for(Viaje unViaje:listaViajes){
                         int idRuta= unViaje.getIdRuta();%>
                         <%for(Ruta unaRuta:listaRutas){
@@ -71,15 +84,31 @@
                                                     else{
                                                         if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
                                                             <td><%=unLugar.getNombre()%><%}}}%></td>
+                                                    <td><%=unaCombi.getPatente()%></td>
                                                     <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                                                     <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                                                     <td> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
                                                       </tr>
-                    <%}}}}}}}%>  
+                    <%}}}}}}}}
+                    else{%>
+                        
+                             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                             <script src="js/sweetAlertNohayViajesPendientes.js"></script>    
+                  <tr>
+                <td>Origen</td> 
+                <td>Destino</td> 
+                <td>Fecha</td> 
+                <td>Hora</td> 
+                <td></td>
+                         
+            </tr>
+                     <%}
+                    %>  
       </table>
 
             
-        </div>        
+        </div>
+        
     </body>
     
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

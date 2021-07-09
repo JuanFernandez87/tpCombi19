@@ -116,7 +116,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             control.crearPasaje(idCompraCliente,idCompraViaje,cantPasajes,precioTotal, cantInsumos); 
             request.setAttribute("idClienteComprado", idCompraCliente);
             request.setAttribute("idViajeComprado", idCompraViaje);
-            request.getRequestDispatcher("pasajeComprado.jsp").forward(request, response);
+            if (cantPasajes > 1){
+                request.setAttribute("cantPasajes", cantPasajes);
+                request.getRequestDispatcher("registroAcompaniantes.jsp").forward(request, response);
+            }else{
+                 request.getRequestDispatcher("pasajeComprado.jsp").forward(request, response);
+            }
+           
         }
                     }else{
                         response.sendRedirect ("popUpErrorDebeIniciarSesion.jsp");
