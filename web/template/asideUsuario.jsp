@@ -39,7 +39,6 @@
                         <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
 					<li><a href="listadoViajes.jsp">Listar</a></li>
-                                        <li><a href="#">Gestionar</a></li>
 				</ul>
 
 			</li>
