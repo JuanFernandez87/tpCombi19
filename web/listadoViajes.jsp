@@ -69,7 +69,7 @@
         %> 
       
         <div class="cajaListado">
-            <h1>Lista viajes</h1>
+            <h1>Mis pasajes</h1>
         <table>
             <tr>
                 <td>Origen</td> 
@@ -77,13 +77,11 @@
                 <td>Fecha</td> 
                 <td>Hora</td> 
                 <td>Precio</td> 
-
-                  <td></td>
                 <td></td>
                 
             </tr>
                 <%for (Pasaje unPasaje:listaPasajes){
-                              
+                            
                      if(unPasaje.getIdCliente() == idCliente){%>
                      <%for (Viaje unViaje:listaViajes){
                      
@@ -108,7 +106,7 @@
                         <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                         <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                         <td><%= unViaje.getPrecio()%>$</td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Cancelar pasaje</a></td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="CancelarPasajeConfirmacion.jsp?id=<%=unPasaje.getIdPasaje()%>">Cancelar pasaje</a></td>
   
                 </tr>
                     <%}}}}}}%>  
