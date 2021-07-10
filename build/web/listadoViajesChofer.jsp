@@ -1,3 +1,4 @@
+<%@page import="Logica.Pasaje"%>
 <%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="Logica.Viaje"%>
@@ -29,8 +30,9 @@
             List <Ruta> listaRutas = control.devolverRutas();
             List <Combi> listaCombis = control.devolverListaCombi();   
             List <Chofer> listaChofer = control.devolverListaChoferes();   
-            List <Lugar> listaLugares = control.devolverListaLugares();   
-            
+            List <Lugar> listaLugares = control.devolverListaLugares();
+            List <Pasaje> listaPasajes = control.devolverListaPasajes();
+            int pasajes = 0;
             String username = (String)session.getAttribute("username");
             for (Chofer unChofer:listaChoferes){
                     if (unChofer.getMail().equals(username)){
@@ -59,12 +61,13 @@
             <h1>Lista viajes</h1>
         <table>
             <tr>
-                <td>Origen</td> 
-                <td>Destino</td> 
-                <td>Combi</td>
-                <td>Fecha</td> 
-                <td>Hora</td> 
-                <td></td>
+                <td style="text-align: center;">Origen</td> 
+                <td style="text-align: center;">Destino</td> 
+                <td style="text-align: center;">Combi</td>
+                <td style="text-align: center;">Cant de pasajeros</td>
+                <td style="text-align: center;">Fecha</td> 
+                <td style="text-align: center;">Hora</td> 
+                <td style="text-align: center;"></td>
                          
             </tr>
                      <%for(Viaje unViaje:listaViajes){
@@ -80,14 +83,23 @@
                                                     <%for (Lugar unLugar:listaLugares){%> 
 
                                                     <%if(unLugar.getIdLugar() == unaRuta.getOrigen()){%>
-                                                            <td><%=unLugar.getNombre()%><%}
+                                                            <td style="text-align: center;"><%=unLugar.getNombre()%><%}
                                                     else{
                                                         if(unLugar.getIdLugar() == unaRuta.getDestino()){%>
-                                                            <td><%=unLugar.getNombre()%><%}}}%></td>
-                                                    <td><%=unaCombi.getPatente()%></td>
-                                                    <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
-                                                    <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
-                                                    <td> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
+                                                            <td style="text-align: center;"><%=unLugar.getNombre()%><%}}}%></td>
+                                                    <td style="text-align: center;"><%=unaCombi.getPatente()%></td>
+                                                    
+                                                    <%for(Pasaje unPasaje:listaPasajes){%>
+                                                        <%if(unPasaje.getIdViaje() == unViaje.getIdViaje()){  
+                                                                pasajes++;
+                                                        }
+                                                     }%>
+                                                        
+                                                        <td style="text-align: center;"><%=pasajes - unViaje.getCantAsientos()%></td>
+                                                    
+                                                    <td style="text-align: center;"><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
+                                                    <td style="text-align: center;"><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
+                                                    <td style="text-align: center;"> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
                                                       </tr>
                     <%}}}}}}}}
                     else{%>

@@ -3,7 +3,6 @@
     Created on : 29/04/2021, 06:47:34
     Author     : Esteban
 --%>
-<%@page import="Logica.Pasaje"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
 <%@page import="Logica.Lugar"%>
@@ -30,7 +29,7 @@
     <body>
             <%@include file="/template/headerSesiones.jsp"%>
     
-            <%@include file="/template/asideUsuario.jsp"%>
+            <%@include file="/template/aside.jsp"%>
        
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="js/sesion.js"></script>
@@ -38,22 +37,12 @@
  
       <%
             int pag=1;
-            int idCliente=0;
-            List <Pasaje> listaPasajes = control.devolverListaPasajes();
+
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();   
-            List <Cliente> listaClientes = control.devolverListaClientes();
             
-            String username = (String)session.getAttribute("username");
-            for (Cliente unCliente:listaClientes){
-                    if (unCliente.getMail().equals(username)){
-        
-                         idCliente= unCliente.getIdCliente();
-                    }
-            }
-            
-            int maxPag = (control.devolverListaPasajes().size()/10)+1; 
+            int maxPag = (control.devolverListaViajes().size()/10)+1; 
             int i = 0; 
             if (request.getParameter("pg") != null) {
                    pag = Integer.valueOf(request.getParameter("pg"));
@@ -63,29 +52,28 @@
             int regMax = pag * 10;
             
             if(pag==maxPag){
-                regMax=regMin+control.devolverListaPasajes().size()%10;
+                regMax=regMin+control.devolverListaViajes().size()%10;
             }
           
         %> 
       
         <div class="cajaListado">
-            <h1>Mis pasajes</h1>
+            <h1>Lista viajes</h1>
         <table>
             <tr>
                 <td>Origen</td> 
                 <td>Destino</td> 
+                <td>Distancia</td> 
+                <td>Capacidad</td> 
                 <td>Fecha</td> 
                 <td>Hora</td> 
                 <td>Precio</td> 
+
+                  <td></td>
                 <td></td>
                 
             </tr>
-                <%for (Pasaje unPasaje:listaPasajes){
-                            
-                     if(unPasaje.getIdCliente() == idCliente){%>
-                     <%for (Viaje unViaje:listaViajes){
-                     
-                            if(unPasaje.getIdViaje() == unViaje.getIdViaje()){%>
+                <%for (Viaje unViaje:listaViajes){%>
 
                 <tr>
                     <%for (Ruta unaRuta:listaRutas){
@@ -102,14 +90,17 @@
          
                                
                     <%}%>
+                        <td><%= unaRuta.getDistancia()%> km</td>
+                        <td><%= unViaje.getCantAsientos()%> pasajeros</td>
 
                         <td><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                         <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                         <td><%= unViaje.getPrecio()%>$</td>
-                        <td> <a style="background-color: red;color: white;padding: 5px;" href="CancelarPasajeConfirmacion.jsp?id=<%=unPasaje.getIdPasaje()%>">Cancelar pasaje</a></td>
+                        <td> <a style="background-color: orange;color: white;padding: 5px;"href="modificarViaje.jsp?idViaje=<%=unViaje.getIdViaje()%>">Modificar</a> </td>
+                        <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarViaje.jsp?id=<%=unViaje.getIdViaje()%>">Eliminar</a></td>
   
                 </tr>
-                    <%}}}}}}%>  
+                    <%}}}%>  
                
 
     

@@ -169,7 +169,7 @@
                         <li ><a href="#"><i class="icono izquierda fas fa-book" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
 					<li><a href=<%=linkRegistroViaje%> id= "linkRegistroRuta" onclick="<%=funcValidacionViaje%>">Registrar</a></li>
-                                        <li><a href="listadoViajes.jsp">Gestionar</a></li>
+                                        <li><a href="listadoViajesAdmin.jsp">Gestionar</a></li>
 				</ul>
 
 			</li>

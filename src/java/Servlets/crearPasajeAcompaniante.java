@@ -37,12 +37,12 @@ public class crearPasajeAcompaniante extends HttpServlet {
        Integer idClienteComprado = Integer.parseInt(request.getParameter("idCompraCliente"));
        Integer idViajeComprado = Integer.parseInt(request.getParameter("idCompraViaje"));
        Integer cantPasajes = Integer.parseInt(request.getParameter("cantPasajes"));
-        for (int i= 1; i <= cantPasajes; i++ ){
+        for (int i= 1; i <= cantPasajes-1; i++ ){
             //String str = "Demo" + val;
             String nombre = (request.getParameter("nombre"+i));
             String apellido = (request.getParameter("apellido"+i));
             Integer dni = Integer.parseInt(request.getParameter("dni"+i));
-            control.crearPasajeAcompañante(nombre, apellido, dni);
+            control.crearPasajeAcompañante(nombre, apellido, dni,idViajeComprado);
         }
         request.setAttribute("idClienteComprado", idClienteComprado);
         request.setAttribute("idViajeComprado", idViajeComprado);
