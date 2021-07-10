@@ -1022,68 +1022,82 @@ public class Controladora {
         return aux;        
     }
 
-public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioTotal, List<Insumo> listaInsumos){
-       Pasaje nuevoPasaje = new Pasaje();
-       List <Viaje> listaViajes = controlPersis.getViaje();
-       List <Combi> listaCombi = controlPersis.getCombi();
-       List <Lugar> listaLugar = controlPersis.getLugares();
-       List <Ruta> listaRuta = controlPersis.getRutas();
-       int idRuta = 0;
-       int min,hora;
-               int idCombi= 0;
-               int idDestino = 0;
-               int idOrigen= 0;
-               int precio = 0;
-       String tipoServicio = "";
-       for (Viaje viaje: listaViajes){
-           if(viaje.getIdViaje() == idViaje){
-                idRuta = viaje.getIdRuta();
-                nuevoPasaje.setDia(viaje.getDia());
-                nuevoPasaje.setMes(viaje.getMes());
-                nuevoPasaje.setAnio(viaje.getAnio());
-
-           }
-       }
-       for (Ruta ruta: listaRuta){
-           if (ruta.getIdRuta()== idRuta){
-               nuevoPasaje.setHora(ruta.getHora());
-               nuevoPasaje.setMinutos(ruta.getMinutos());
-               idOrigen = ruta.getOrigen();
-               idDestino = ruta.getDestino();
-               idCombi = ruta.getIdCombi();
-           }
-       }
-       for (Combi combi: listaCombi){
-           if (combi.getIdCombi() == idCombi){
-               nuevoPasaje.setTipoServicio(combi.getTipoServicio());
-           }
-       }
-       for (Lugar lugar: listaLugar){
-           if (lugar.getIdLugar() == idOrigen){
-               nuevoPasaje.setOrigen(lugar.getNombre());
-           }else{
-               if (lugar.getIdLugar() == idDestino){
-                   nuevoPasaje.setDestino(lugar.getNombre());
-               }
-           }
-       }
-        nuevoPasaje.setEstado("Pendiente");
-        nuevoPasaje.setInsumos(listaInsumos);      
-        nuevoPasaje.setPrecio(precioTotal);
-        nuevoPasaje.setIdViaje(idViaje); 
-        nuevoPasaje.setIdCliente(idCliente);
-        nuevoPasaje.setCantidad(cantPasajes);
-        controlPersis.crearPasaje(nuevoPasaje);   
-    }
-
-public void crearPasajeAcompañante(String nombre, String apellido, int dni){
-       Pasaje nuevoPasaje = new Pasaje();     
-        nuevoPasaje.setEstado("Pendiente");    
-        nuevoPasaje.setApellido(apellido);
-        nuevoPasaje.setNombre(nombre);
-        nuevoPasaje.setDni(dni);
-        controlPersis.crearPasaje(nuevoPasaje);   
-    }
+    public void crearPasaje(int idCliente, int idViaje, int cantPasajes, int precioTotal, List<Insumo> listaInsumos){
+        Pasaje nuevoPasaje = new Pasaje();
+        List <Viaje> listaViajes = controlPersis.getViaje();
+        List <Combi> listaCombi = controlPersis.getCombi();
+        List <Lugar> listaLugar = controlPersis.getLugares();
+        List <Ruta> listaRuta = controlPersis.getRutas();
+        int idRuta = 0;
+        int min,hora;
+                int idCombi= 0;
+                int idDestino = 0;
+                int idOrigen= 0;
+                int precio = 0;
+        String tipoServicio = "";
+        for (Viaje viaje: listaViajes){
+            if(viaje.getIdViaje() == idViaje){
+                 idRuta = viaje.getIdRuta();
+                 nuevoPasaje.setDia(viaje.getDia());
+                 nuevoPasaje.setMes(viaje.getMes());
+                 nuevoPasaje.setAnio(viaje.getAnio());
+ 
+            }
+        }
+        for (Ruta ruta: listaRuta){
+            if (ruta.getIdRuta()== idRuta){
+                nuevoPasaje.setHora(ruta.getHora());
+                nuevoPasaje.setMinutos(ruta.getMinutos());
+                idOrigen = ruta.getOrigen();
+                idDestino = ruta.getDestino();
+                idCombi = ruta.getIdCombi();
+            }
+        }
+        for (Combi combi: listaCombi){
+            if (combi.getIdCombi() == idCombi){
+                nuevoPasaje.setTipoServicio(combi.getTipoServicio());
+            }
+        }
+        for (Lugar lugar: listaLugar){
+            if (lugar.getIdLugar() == idOrigen){
+                nuevoPasaje.setOrigen(lugar.getNombre());
+            }else{
+                if (lugar.getIdLugar() == idDestino){
+                    nuevoPasaje.setDestino(lugar.getNombre());
+                }
+            }
+        }
+        List <Cliente> listaClientes = controlPersis.getClientes();
+        String nombre = "";
+        String apellido = "";
+        int dni = 0;
+        for (Cliente cliente: listaClientes){
+            nombre = cliente.getNombre();
+            apellido =cliente.getApellido();
+            dni = cliente.getDni();
+        }
+        
+         nuevoPasaje.setEstado("Pendiente");
+         nuevoPasaje.setInsumos(listaInsumos);      
+         nuevoPasaje.setPrecio(precioTotal);
+         nuevoPasaje.setIdViaje(idViaje); 
+         nuevoPasaje.setIdCliente(idCliente);
+         nuevoPasaje.setCantidad(cantPasajes);
+         nuevoPasaje.setDni(dni);
+         nuevoPasaje.setApellido(apellido);
+         nuevoPasaje.setNombre(nombre);
+         controlPersis.crearPasaje(nuevoPasaje);   
+     }
+ 
+ public void crearPasajeAcompañante(String nombre, String apellido, int dni,int idViajeComprado){
+        Pasaje nuevoPasaje = new Pasaje();     
+         nuevoPasaje.setEstado("Pendiente");    
+         nuevoPasaje.setApellido(apellido);
+         nuevoPasaje.setNombre(nombre);
+         nuevoPasaje.setDni(dni);
+         nuevoPasaje.setIdViaje(idViajeComprado);
+         controlPersis.crearPasaje(nuevoPasaje);   
+     }
 
     public boolean chequearViajeSinPasajes(int idViaje) {
         boolean aux = false;

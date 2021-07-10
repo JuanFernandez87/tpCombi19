@@ -66,17 +66,30 @@
                     
       </table>
 <br></br>
-<div style="margin-left: 400px" >
-    <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje&estado<%=iniciado%>">Iniciar viaje</a>
-        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje&estado<%=finalizado%>">Finalizar viaje</a>                    
-            
-    </div>
+<div style="display:flex; margin-left: 350px; margin-right: 450px;">
+    <form style="width: 0px; background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>" method="post">   
+        <input style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" type="submit" value="Iniciar viaje" onclick="iniciarViaje()"/>
+    </form>
+        <br></br>
+    <form style="width: 0px;background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>" method="post">
+        <input style="background-color: #ff0000;color: white;padding: 14px;border-radius: 6px" type="submit" value="Finalizar viaje" onclick="finalizarViaje()"/>                    
+    </form>        
+</div>
 <br></br>
         
     </body>
     
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+            function iniciarViaje(){
+                alert("El viaje ha sido iniciado");
+            }
+            function finalizarViaje(){
+                alert("El viaje ha sido finalizado");
+            }
+        </script> 
         
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="js/sweetPasajeroRechazado.js"></script>        

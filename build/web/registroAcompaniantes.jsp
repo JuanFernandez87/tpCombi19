@@ -54,7 +54,7 @@
                 <input type="hidden" name="cantPasajes" id="precioTotal" value="<%= request.getAttribute("cantPasajes") %>"> </input>
                 
                 <h1> Ingrese los datos de los acompañantes</h1>                         
-                <% for(int i = 1; i <= (Integer)request.getAttribute("cantPasajes"); i++){%>
+                <% for(int i = 1; i <= (Integer)request.getAttribute("cantPasajes")-1; i++){%>
                 <fieldset style="min-width: 0;
     padding: 9px;
     margin: 19px;

@@ -63,6 +63,14 @@
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();
+            boolean esGold = false;
+            for (Cliente cliente: listaClientes){
+                if(cliente.getIdCliente() == (Integer)request.getAttribute("idCliente")){
+                    if(cliente.getTipoPlan().equals("Gold")){
+                        esGold = true;
+                    }
+                }
+            }
             %>
                
             
@@ -336,6 +344,14 @@
                   $('.formularioCompra').removeClass("formularioCompraOculto");
                   $('.formularioCompra').addClass("formularioCompra");
             }
+            function descuentoGold(precioPagar){
+                let descuento = 1.0;
+                descuento = precioPagar * 0.9;
+                if(<%=esGold%> === true){
+                     (alert("Se aplicara descuento de 10% por ser usuario Gold. \n\
+                            Precio total con descuento:$ "+ descuento));
+                }
+            }
 function checkForm(e) { 
    
     var fin=<%=tamaño%> +1;
@@ -362,6 +378,7 @@ function checkForm(e) {
                          document.getElementById("precioTotal").value = precioPagar;
                          //si se cargo una tarjeta nueva para el pago entonces se efectua la compra. Sino se cancela hasta que se cargue la tarjeta.
                          if(document.getElementById("selectTarjetaPago").value === "Mi tarjeta registrada"){
+                             descuentoGold.call(this,precioPagar);
                              e.returnValue= true;
                          }else{
                              if(tarjetaCargada.call()){

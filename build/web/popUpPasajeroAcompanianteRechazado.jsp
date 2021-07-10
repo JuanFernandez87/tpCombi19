@@ -79,7 +79,7 @@
         <script src="js/sesion.js"></script>
         
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetPasajeroAcompañanteRechazado.js"></script>        
+        <script src="js/sweetPasajeroAcompanianteRechazado.js"></script>        
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>

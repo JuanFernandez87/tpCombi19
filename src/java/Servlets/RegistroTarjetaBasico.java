@@ -97,7 +97,16 @@ public class RegistroTarjetaBasico extends HttpServlet {
             control.asignarTarjetaCliente(idCliente, idTarjeta);
             response.sendRedirect("popUpModificacionCorrectoTarjeta.jsp");
         }else{
-            response.sendRedirect("popUpRegistroErroneoBasico.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
+             request.setAttribute("num1", num1);
+            request.setAttribute("num2", num2);
+             request.setAttribute("num3", num3);
+            request.setAttribute("num4", num4);
+             request.setAttribute("nombre", nombre);
+            request.setAttribute("mes", mesVenc);
+             request.setAttribute("anio", anioVenc);
+            request.setAttribute("codigo", codigo);
+            request.getRequestDispatcher("popUpRegistroErroneoBasico.jsp").forward(request, response);
+            //response.sendRedirect("popUpRegistroErroneoBasico.jsp"); //si la tarjeta ya se encuentra registrada se envia a popup
         }
     }
 

@@ -22,8 +22,8 @@
         </aside>
         
         <%
-            //int idViaje = (Integer)session.getAttribute("idViaje");
-            int idViaje = Integer.valueOf(request.getParameter("idViaje"));
+            int idViaje = (Integer)session.getAttribute("idViaje");
+            //int idViaje = Integer.valueOf(request.getParameter("idViaje"));
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
@@ -31,9 +31,9 @@
             String finalizado = "Finalizado";
         %> 
       
-        <div class="cajaListado">
+        <div class="cajaListado" >
             <h1>Listado de pasajeros</h1>
-        <table>
+        <table style="line-height: 12px;">
             <tr>
                 <td>Dni</td> 
                 <td>Apellido</td> 
@@ -58,7 +58,7 @@
                                             <input type="radio" id="html" name="<%=unPasaje.getDni()%>" value="HTML" checked>
                                             <label style="background-color:rgba(0, 0, 0, 0);color: black;" for="html">Ausente</label>                                     
                                         </td>
-                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unPasaje.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>&dni=<%= unPasaje.getDni() %>">Registrar sintomas</a> 
+                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unPasaje.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>&dni=<%= unPasaje.getDni() %>">Registrar sintomas</a> 
                                         </td>
                                         
 
@@ -67,17 +67,30 @@
                     
       </table>
 <br></br>
-<div style="margin-left: 400px" >
-    <a style="background-color: #0fc370;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>">Iniciar viaje</a>
-        <a style="background-color: #ff0000;color: white;padding: 14px;" href="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>">Finalizar viaje</a>                    
-            
-    </div>
+<div style="display:flex; margin-left: 350px; margin-right: 450px;">
+    <form style="width: 0px; background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>" method="post">   
+        <input style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" type="submit" value="Iniciar viaje" onclick="iniciarViaje()"/>
+    </form>
+        <br></br>
+    <form style="width: 0px;background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>" method="post">
+        <input style="background-color: #ff0000;color: white;padding: 14px;border-radius: 6px" type="submit" value="Finalizar viaje" onclick="finalizarViaje()"/>                    
+    </form>        
+</div>
 <br></br>
         
     </body>
     
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+            function iniciarViaje(){
+                alert("El viaje ha sido iniciado");
+            }
+            function finalizarViaje(){
+                alert("El viaje ha sido finalizado");
+            }
+        </script>    
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>

@@ -110,7 +110,7 @@ public class RegistrarSintomas extends HttpServlet {
                 response.sendRedirect("popUpPasajeroRechazado.jsp");
             }else{
                 control.ActualizarAcompañante(idPasaje, dni, "Rechazado");
-                response.sendRedirect("popUpPasajeroAcompañanteRechazado.jsp");
+                response.sendRedirect("popUpPasajeroAcompanianteRechazado.jsp");
             }              
         }else{
             //el cliente puede viajar
