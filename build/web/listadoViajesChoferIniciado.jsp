@@ -42,7 +42,7 @@
             }
             int cant=0;
             for(Viaje unViaje:listaViajes){
-                if(unViaje.getEstado().equals("Pendiente")){
+                if(unViaje.getEstado().equals("Iniciado")){
                         int idRuta= unViaje.getIdRuta();
                         for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -72,7 +72,7 @@
                          
             </tr>
                      <%for(Viaje unViaje:listaViajes){
-                        if(unViaje.getEstado().equals("Pendiente")){
+                        if(unViaje.getEstado().equals("Iniciado")){
                         int idRuta= unViaje.getIdRuta();%>
                         <%for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -107,7 +107,7 @@
                     else{%>
                         
                              <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-                             <script src="js/sweetAlertNohayViajesPendientes.js"></script>    
+                             <script src="js/sweetAlertNohayViajesIniciados.js"></script>    
                         </div>
             <tr>
                 <td>Origen</td> 

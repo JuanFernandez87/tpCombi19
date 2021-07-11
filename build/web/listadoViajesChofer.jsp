@@ -42,6 +42,7 @@
             }
             int cant=0;
             for(Viaje unViaje:listaViajes){
+                if(unViaje.getEstado().equals("Pendiente")){
                         int idRuta= unViaje.getIdRuta();
                         for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -52,7 +53,7 @@
                                          for(Chofer unChofer:listaChoferes){
                                                if(idC == unChofer.getIdChofer() && idC == idChofer ){
                                                    cant++;
-                                               }}}}}}}
+                                               }}}}}}}}
 
             if(cant > 0){          
         %> 
@@ -71,6 +72,7 @@
                          
             </tr>
                      <%for(Viaje unViaje:listaViajes){
+                        if(unViaje.getEstado().equals("Pendiente")){
                         int idRuta= unViaje.getIdRuta();%>
                         <%for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -101,7 +103,7 @@
                                                     <td style="text-align: center;"><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                                                     <td style="text-align: center;"> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
                                                       </tr>
-                    <%}}}}}}}}
+                    <%}}}}}}}}}
                     else{%>
                         
                              <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

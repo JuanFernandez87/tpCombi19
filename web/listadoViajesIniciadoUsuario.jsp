@@ -69,7 +69,7 @@
             for (Pasaje unPasaje:listaPasajes){
                             
                      if(unPasaje.getIdCliente() == idCliente){
-                        if(unPasaje.getEstado().equals("Pendiente")){  //Pendientes
+                        if(unPasaje.getEstado().equals("Iniciado")){  //Iniciado
                             cant++;
                         }
                      }
@@ -95,7 +95,7 @@
             </tr>
                 <%for (Pasaje unPasaje:listaPasajes){
                             
-                     if((unPasaje.getIdCliente() == idCliente)&&(unPasaje.getEstado().equals("Pendiente"))){%>
+                     if((unPasaje.getIdCliente() == idCliente)&&(unPasaje.getEstado().equals("Iniciado"))){%>
                      <%for (Viaje unViaje:listaViajes){
                      
                             if(unPasaje.getIdViaje() == unViaje.getIdViaje()){%>
@@ -125,7 +125,7 @@
                     <%}}}}}}}
                     else{%>
                      <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-                     <script src="js/sweetAlertNohayPasajesPendientes.js"></script>  
+                     <script src="js/sweetAlertNohayPasajesIniciados.js"></script>  
 
                    
                      <%}

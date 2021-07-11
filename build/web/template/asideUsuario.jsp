@@ -36,9 +36,13 @@
                    </div>
             
                         <!-- boton con menu para Chofer.-->
-                        <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
+                        <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Lstar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="listadoViajes.jsp">Listar</a></li>
+					<li><a href="listadoViajes.jsp">Pendientes</a></li>
+                                        <li><a href="listadoViajesCanceladoUsuario.jsp">Cancelados</a></li>
+                                        <li><a href="listadoViajesFinalizadoUsuario.jsp">Finalizados</a></li>
+                                        <li><a href="listadoViajesIniciadoUsuario.jsp">Iniciados</a></li>
+                                        <li><a href="listadoViajesRechazadoUsuario.jsp">Rechazados</a></li>
 				</ul>
 
 			</li>
