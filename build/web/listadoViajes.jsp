@@ -65,6 +65,19 @@
             if(pag==maxPag){
                 regMax=regMin+control.devolverListaPasajes().size()%10;
             }
+            int cant =0;
+            for (Pasaje unPasaje:listaPasajes){
+                            
+                     if(unPasaje.getIdCliente() == idCliente){
+                        if(unPasaje.getEstado().equals("Pendiente")){  //Pendientes
+                            cant++;
+                        }
+                     }
+            }
+            
+            if(cant > 0){
+                        
+                            
           
         %> 
       
@@ -82,7 +95,7 @@
             </tr>
                 <%for (Pasaje unPasaje:listaPasajes){
                             
-                     if(unPasaje.getIdCliente() == idCliente){%>
+                     if((unPasaje.getIdCliente() == idCliente)&&(unPasaje.getEstado().equals("Pendiente"))){%>
                      <%for (Viaje unViaje:listaViajes){
                      
                             if(unPasaje.getIdViaje() == unViaje.getIdViaje()){%>
@@ -109,7 +122,14 @@
                         <td> <a style="background-color: red;color: white;padding: 5px;" href="CancelarPasajeConfirmacion.jsp?id=<%=unPasaje.getIdPasaje()%>">Cancelar pasaje</a></td>
   
                 </tr>
-                    <%}}}}}}%>  
+                    <%}}}}}}}
+                    else{%>
+                     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                     <script src="js/sweetAlertNohayPasajesPendientes.js"></script>  
+
+                   
+                     <%}
+                    %>   
                
 
     
@@ -146,7 +166,8 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
-
+        
+        
 
     </body>
 </html>

@@ -296,6 +296,8 @@
         }
         
         function cargarTarjeta(e){
+            let anio = document.getElementById("card-expiration-year").value;
+            let mes = document.getElementById("card-expiration-month").value;
             // si al momento de cargar la tarjeta, los datos son validos entonces se oculta el formulario para que se pueda efectuar la compra.
                 if((document.getElementById("card-ccv").value.length === 3)&&
                    ((document.getElementById("card-number").value.length === 4) && (document.getElementById("card-number-1").value.length === 4) 
@@ -303,8 +305,8 @@
                           &&(!document.getElementById("card-holder").value !== "")&& (document.getElementById("card-expiration-year").value >= 2021)){
                       //si la fecha es 2021 verifica que el mes sea mayor al actual. sino informa tarjeta invalida.
                       // si la fecha es menor que la actual entonces informa error. sino acepta la tarjeta como valida.
-                      if(document.getElementById("card-expiration-year").value === 2021){
-                          if(document.getElementById("card-expiration-month").value < 07){
+                      if(anio === "2021"){
+                          if(mes < "07"){
                               tarjetaInvalida.call();
                           }else{
                                $('#checkoutCompra').hide();
@@ -347,7 +349,7 @@
             function descuentoGold(precioPagar){
                 let descuento = 1.0;
                 descuento = precioPagar * 0.9;
-                if(<%=esGold%> === true){
+                if(<%=esGold%> === false){
                      (alert("Se aplicara descuento de 10% por ser usuario Gold. \n\
                             Precio total con descuento:$ "+ descuento));
                 }

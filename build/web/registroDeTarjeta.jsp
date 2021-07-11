@@ -80,13 +80,13 @@
       </div>
     </div>
   </div>
-     <form style="background: #24303c;width: 100%;" action="RegistroTarjeta?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
+     <form style="background: #24303c;width: 100%;" action="RegistroTarjeta?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post" onSubmit = "return cargarTarjeta(event)">
     <fieldset>
       <label style="color:white"  for="card-number">Numero de tarjeta</label>
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" maxlength="4" />
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num1" id="card-number" class="input-cart-number" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num2" id="card-number-1" class="input-cart-number" minlength="4" maxlength="4" onkeypress="return solonumeros(event)" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num3" id="card-number-2" class="input-cart-number" mixlength="4" maxlength="4" onkeypress="return solonumeros(event)" requiered/>
+      <input style="width: 20% ;border: 1px solid #1f53c5;background: none;color: white" type="num" name="num4" id="card-number-3" class="input-cart-number" mixlength="4" maxlength="4" onkeypress="return solonumeros(event)" requiered/>
     </fieldset>
     <fieldset>
       <label  style="color:white" for="card-holder">Titular</label>
@@ -127,14 +127,77 @@
       <label  style="color:white" for="card-ccv">CCV</label>
       <input style="border: 1px solid #1f53c5;background: none;color:white;" type="text" name="codigo" id="card-ccv" maxlength="3" />
     </fieldset>
-    <button class="botons"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
+    <button class="botons" onclick=" return cargarTarjeta(evento)"><i style="color:white;background: none;color: white;" class="fa fa-lock"></i> Enviar</button>
   </form>
 </div>
 
 <a class="the-most" target="_blank">
   <link rel="icon" href="images/logoCombi19" />
 </a>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function solonumeros(e){
+                key = e.keycode || e.which;
+                teclado= String.fromCharCode(key);
+                numeros= "0123456789";
+                especiales = "8-37-38-46";
+                teclado_especial = false;
+                for (var i in especiales){
+                    if (key=== especiales[i]){
+                        teclado_especial = true;
+                    }
+                }
+                if (numeros.indexOf(teclado)=== -1 && !teclado_especial){
+                    return false;
+                }
+            }
+    function tarjetaInvalida(){
+          swal.fire({
+                        title: "Debe ingresar datos de una tarjeta valida.",
+                         icon: 'error',
+                         cancelButtonColor: '#d33',
+                        showConfirmButton:true,
+                        confirmButtonText: "Confirmar"
+                        });  
+        }
         
+        function cargarTarjeta(e){
+            // si al momento de cargar la tarjeta, los datos son validos entonces se oculta el formulario para que se pueda efectuar la compra.
+            let anio = document.getElementById("card-expiration-year").value;
+            let mes = document.getElementById("card-expiration-month").value;
+                if((document.getElementById("card-ccv").value.length === 3)&&
+                   ((document.getElementById("card-number").value.length === 4) && (document.getElementById("card-number-1").value.length === 4) 
+                            && (document.getElementById("card-number-2").value.length === 4) && (document.getElementById("card-number-3").value.length === 4))
+                          &&(!document.getElementById("card-holder").value !== "")&& (document.getElementById("card-expiration-year").value >= 2021)){
+                      //si la fecha es 2021 verifica que el mes sea mayor al actual. sino informa tarjeta invalida.
+                      // si la fecha es menor que la actual entonces informa error. sino acepta la tarjeta como valida.
+                      if(anio === "2021"){
+                          if( mes < "07"){
+                              tarjetaInvalida.call();
+                              e.returnValue = false;
+                          }else{
+                               $('#checkoutCompra').hide();
+                             $('.formularioCompra').removeClass("formularioCompraOculto");
+                            // luego de cargado el formulario y presionado el boton "aceptar" se oculta el formulario de tarjeta.
+                             $('[type=submit]').trigger('click'); // dsps de ocultar el formulario se acciona el boton "comprar" del formulario de compra para invocar al servlet y efectuar la compra.
+                             e.returnValue = true;
+                }
+                      }else{
+                           $('#checkoutCompra').hide();
+                             $('.formularioCompra').removeClass("formularioCompraOculto");
+                             
+                            // luego de cargado el formulario y presionado el boton "aceptar" se oculta el formulario de tarjeta.
+                             $('[type=submit]').trigger('click'); // dsps de ocultar el formulario se acciona el boton "comprar" del formulario de compra para invocar al servlet y efectuar la compra.
+                             e.returnValue = true;
+                      }
+                  }else{
+                     
+                   tarjetaInvalida.call();
+                   e.returnValue = false;
+                   
+                }
+        }
+       </script>       
     <script src="js/registroDeTarjeta.js"></script>    
     <footer>
             <%@include file="/template/footer.jsp"%>

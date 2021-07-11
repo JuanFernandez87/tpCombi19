@@ -90,16 +90,15 @@
     </div>
         <%String idCliente = request.getParameter("idCliente");%>
   </div>
-  <%
-                String num1 = (String)session.getAttribute("num1");
-                String num2 = (String)session.getAttribute("num2");    
-                String num3 = (String)session.getAttribute("num3");    
-                String num4 = (String)session.getAttribute("num4");    
-                String nombre = (String)session.getAttribute("nombre");
-                int codigo = (Integer)session.getAttribute("codigo");    
-                int mes = (Integer)session.getAttribute("mes");    
-                int anio = (Integer)session.getAttribute("anio");   
-             
+  <% 
+                String num1 = (String)request.getAttribute("num1");
+                String num2 = (String)request.getAttribute("num2");    
+                String num3 = (String)request.getAttribute("num3");    
+                String num4 = (String)request.getAttribute("num4");    
+                String nombre = (String)request.getAttribute("nombre");
+                int codigo = (Integer)request.getAttribute("codigo");    
+                int mes = (Integer)request.getAttribute("mes");    
+                int anio = (Integer)request.getAttribute("anio");          
             %>
      <form style="background: #24303c;width: 100%;" action="RegistroTarjetaBasico?idCliente=<%=idCliente%>" class="form" autocomplete="off" novalidate  method="post">
     <fieldset>
@@ -116,7 +115,7 @@
     <fieldset class="fieldset-expiration">
       <label  style="color:white" for="card-expiration-month">Fecha de vencimiento</label>
       <div  style="width: 40% ;border: 1px solid #1f53c5;background: none;" class="select">
-        <select class= "controls2" id="card-expiration-month" name="mes">
+        <select class= "controls2" id="card-expiration-month" name="mes" id="selectMes">
           <option class= "controls2"></option>
           <option class= "controls2">01</option>
           <option class= "controls2">02</option>
@@ -155,7 +154,30 @@
 <a class="the-most" target="_blank">
   <link rel="icon" href="images/logoCombi19" />
 </a>
-        
+        <script>
+                
+        var sel = document.getElementById("card-expiration-month"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
+         //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
+         for (var i = 0; i < 13; i++) {
+              sel[i].value;
+            if(  sel[i].value ==="0<%=mes%>"){
+                sel[i].selected = 'selected';
+            }
+            else{
+                if(sel[i].value ==="<%=mes%>"){
+                   sel[i].selected = 'selected'; 
+                }
+            }
+        } 
+        var dest = document.getElementById("card-expiration-year"); // se obtiene una lista de las opciones. las opciones son los id de los choferes.
+         //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
+         for (var i = 0; i < 7; i++) { 
+              dest[i].value;
+            if(  dest[i].value ==="<%=anio%>"){
+                dest[i].selected = 'selected';
+            }
+        }
+                    </script>  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>     
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

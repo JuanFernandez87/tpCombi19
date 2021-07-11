@@ -22,8 +22,8 @@
         </aside>
         
         <%
-            int idViaje = (Integer)session.getAttribute("idViaje");
-            //int idViaje = Integer.valueOf(request.getParameter("idViaje"));
+            //int idViaje = (Integer)session.getAttribute("idViaje");
+            int idViaje = Integer.valueOf(request.getParameter("idViaje"));
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
