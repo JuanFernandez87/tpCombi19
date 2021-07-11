@@ -71,15 +71,18 @@
     <form style="width: 0px; background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>" method="post">   
         <input style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" type="submit" value="Iniciar viaje" onclick="iniciarViaje()"/>
     </form>
+        
         <br></br>
     <form style="width: 0px;background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>" method="post">
         <input style="background-color: #ff0000;color: white;padding: 14px;border-radius: 6px" type="submit" value="Finalizar viaje" onclick="finalizarViaje()"/>                    
-    </form>        
+    </form>  
+          
 </div>
+
 <br></br>
         
     </body>
-    
+            
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -94,4 +97,6 @@
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>
