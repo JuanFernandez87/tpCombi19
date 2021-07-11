@@ -29,6 +29,16 @@
             List <Cliente> listaClientes = control.devolverListaClientes();
             String iniciado = "Iniciado";
             String finalizado = "Finalizado";
+            int cant=0;
+            for(Viaje unViaje:listaViajes){
+                        
+                     for(Pasaje unPasaje:listaPasajes){
+                            if((unViaje.getIdViaje() == unPasaje.getIdViaje())&&(unPasaje.getEstado().equals("Pendiente"))){
+                                cant++;
+                            }
+                     }
+            }
+            if (cant > 0){         
         %> 
       
         <div class="cajaListado" >
@@ -63,8 +73,7 @@
                                         
 
             </tr>
-                    <%}}}%>  
-                    
+                
       </table>
 <br></br>
 <div style="display:flex; margin-left: 350px; margin-right: 450px;">
@@ -76,6 +85,12 @@
         <input style="background-color: #ff0000;color: white;padding: 14px;border-radius: 6px" type="submit" value="Finalizar viaje" onclick="finalizarViaje()"/>                    
     </form>        
 </div>
+            <%}}}}
+            else{%>  
+                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                 <script src="js/sweetAlertViajeSinPasajeros.js"></script>  
+                      <%}
+                    %>  
 <br></br>
         
     </body>
