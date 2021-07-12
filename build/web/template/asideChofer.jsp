@@ -38,7 +38,7 @@
                         <!-- boton con menu para Chofer.-->
                         <li ><a href="#"><i class="icono izquierda fas fa-globe-americas" ></i>Administrar viajes<i class="icono derecha fas fa-chevron-down"></i></a>
 				<ul>
-					<li><a href="listadoViajesChofer.jsp">Pendientes</a></li>
+					<li><a href="sesionChofer.jsp">Pendientes</a></li>
                                         <li><a href="listadoViajesChoferIniciado.jsp">Iniciados</a></li>
                                         <li><a href="listadoViajesChoferFinalizado.jsp">Finalizado</a></li>
 				</ul>

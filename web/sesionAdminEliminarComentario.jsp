@@ -27,8 +27,8 @@
             <%@include file="/template/asideUsuario.jsp"%>
         </aside>
 		
-        <div style=" position: absolute;background: #fff;top:50%;left: 50%;margin-top: -100px;margin-left: -100px;padding:20px;font-family: inherit;font-size: 1rem;
-        color: #595959;text-align: center;padding: 70px; border: none;border-radius: 5px;">
+        <div style=" position: absolute;background: #424242;top:50%;left: 50%;margin-top: -100px;margin-left: -100px;padding:20px;font-family: inherit;font-size: 1rem;
+        color: white;text-align: center;padding: 70px; border: none;border-radius: 5px;">
              
         <h3>Quiere eliminar el Comentario ?</h3><br>
              <a style="display: inline;color: white; background-color: rgb(48, 133, 214);padding: 10px;border-radius: 5px;" href="eliminarComentario?idComentario=<%=iC%>&idCliente=<%=idC%>">Aceptar</a>

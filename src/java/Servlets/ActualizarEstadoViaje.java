@@ -80,7 +80,7 @@ public class ActualizarEstadoViaje extends HttpServlet {
         Controladora control = new Controladora();
         
         control.ActualizarEstadoViaje(idViaje, estado);
-        response.sendRedirect ("sesionChoferListadoPasajeros.jsp");
+        response.sendRedirect ("sesionChoferPopUpActualizarEstado.jsp");
     }
 
     /**

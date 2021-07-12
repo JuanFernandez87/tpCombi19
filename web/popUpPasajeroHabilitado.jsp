@@ -23,16 +23,26 @@
         
         <%
             int idViaje = (Integer)session.getAttribute("idViaje");
+            //int idViaje = Integer.valueOf(request.getParameter("idViaje")); este no estaba en la version anterior!!!
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Pasaje> listaPasajes = control.devolverListaPasajes();
             List <Cliente> listaClientes = control.devolverListaClientes();
             String iniciado = "Iniciado";
-            String finalizado = "Finalizado";
+            int cant=0;
+            for(Viaje unViaje:listaViajes){
+                        
+                     for(Pasaje unPasaje:listaPasajes){
+                            if((unViaje.getIdViaje() == unPasaje.getIdViaje())&&(unPasaje.getEstado().equals("Pendiente")) && (unViaje.getIdViaje() == idViaje)){
+                                cant++;
+                            }
+                     }
+            }
+            if (cant > 0){               
         %> 
       
-        <div class="cajaListado">
+        <div class="cajaListado" >
             <h1>Listado de pasajeros</h1>
-        <table>
+        <table style="line-height: 12px;">
             <tr>
                 <td>Dni</td> 
                 <td>Apellido</td> 
@@ -44,7 +54,7 @@
                      <%for(Viaje unViaje:listaViajes){%>
                         
                         <%for(Pasaje unPasaje:listaPasajes){
-                            if(unViaje.getIdViaje() == unPasaje.getIdViaje()){%>
+                            if((unViaje.getIdViaje() == unPasaje.getIdViaje()) && (unViaje.getIdViaje() == idViaje)){%>
 
                                         <td><%=unPasaje.getDni()%></td>
                                         <td><%=unPasaje.getApellido()%></td>
@@ -57,43 +67,40 @@
                                             <input type="radio" id="html" name="<%=unPasaje.getDni()%>" value="HTML" checked>
                                             <label style="background-color:rgba(0, 0, 0, 0);color: black;" for="html">Ausente</label>                                     
                                         </td>
-                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unPasaje.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>&dni=<%= unPasaje.getDni() %>">Registrar sintomas</a> 
+                                        <td><a style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" href="sesionChoferRegistrarSintomas.jsp?idCliente=<%=unPasaje.getIdCliente()%>&idPasaje=<%=unPasaje.getIdPasaje()%>&dni=<%= unPasaje.getDni() %>">Registrar sintomas</a> 
                                         </td>
                                         
 
             </tr>
-                    <%}}}%>  
+
+                    <%}}}}
+                else{%>  
+                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                 <script src="js/sweetAlertViajeSinPasajeros.js"></script>  
+                      <%}
+                    %>   
                     
       </table>
-<br></br>
-<div style="display:flex; margin-left: 350px; margin-right: 450px;">
-    <form style="width: 0px; background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=iniciado%>" method="post">   
-        <input style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" type="submit" value="Iniciar viaje" onclick="iniciarViaje()"/>
+    <br></br>
+                                <div style="display:flex; margin-left: 350px; margin-right: 450px;">
+    <form style="width: 0px; background-color: #266aa7;color: white;padding: 0px;" action="IniciarViajeConfirmacion.jsp?idViaje=<%=idViaje%>&estado=<%=iniciado%>" method="post">   
+        <input style="background-color: #0fc370;color: white;padding: 14px;border-radius: 6px" type="submit" value="Iniciar viaje"/>
     </form>
-        <br></br>
-    <form style="width: 0px;background-color: #266aa7;color: white;padding: 0px;" action="ActualizarEstadoViaje?idViaje=<%=idViaje%>&estado=<%=finalizado%>" method="post">
-        <input style="background-color: #ff0000;color: white;padding: 14px;border-radius: 6px" type="submit" value="Finalizar viaje" onclick="finalizarViaje()"/>                    
-    </form>        
+
 </div>
+
+
+
 <br></br>
         
     </body>
-    
+            
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="js/sesion.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-            function iniciarViaje(){
-                alert("El viaje ha sido iniciado");
-            }
-            function finalizarViaje(){
-                alert("El viaje ha sido finalizado");
-            }
-        </script> 
-        
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script src="js/sweetPasajeroHabilitado.js"></script>        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>   
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

@@ -97,7 +97,7 @@
                                                         }
                                                      }%>
                                                         
-                                                        <td style="text-align: center;"><%=pasajes - unViaje.getCantAsientos()%></td>
+                                                        <td style="text-align: center;"><%=pasajes%></td>
                                                     
                                                     <td style="text-align: center;"><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                                                     <td style="text-align: center;"><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>

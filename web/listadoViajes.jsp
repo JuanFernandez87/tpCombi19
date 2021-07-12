@@ -130,8 +130,7 @@
                      <script src="js/sweetAlertNohayPasajesPendientes.js"></script>  
 
                    
-                     <%}
-                    %>   
+                     <%}%>   
                
 
     

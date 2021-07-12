@@ -39,8 +39,8 @@
             List <Cliente> listaClientes = control.devolverListaClientes(); 
             String username = (String)session.getAttribute("username");
             for (Cliente unCliente:listaClientes){
-                if (unCliente.getMail().equals(username)){%>     
-                         
+                if (unCliente.getMail().equals(username)){ 
+                    if(unCliente.getListaComentarios().size() > 0){                         
           
         %> 
         <div class="cajaListado">
@@ -71,8 +71,14 @@
 
                 </tr>
                  
-           <%}}}%>  
+           <%}}           
+            else{%>
+           
+                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                     <script src="js/sweetAlertNoTieneComentarios.js"></script>  
 
+                   
+                     <%}}}%>
         
         <footer>
             <%@include file="/template/footer.jsp"%>

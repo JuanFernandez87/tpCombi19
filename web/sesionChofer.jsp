@@ -30,9 +30,8 @@
             List <Ruta> listaRutas = control.devolverRutas();
             List <Combi> listaCombis = control.devolverListaCombi();   
             List <Chofer> listaChofer = control.devolverListaChoferes();   
-            List <Lugar> listaLugares = control.devolverListaLugares(); 
-            List <Pasaje> listaPasajes = control.devolverListaPasajes();            
-            int pasajes = 0;
+            List <Lugar> listaLugares = control.devolverListaLugares();
+            List <Pasaje> listaPasajes = control.devolverListaPasajes();
             String username = (String)session.getAttribute("username");
             for (Chofer unChofer:listaChoferes){
                     if (unChofer.getMail().equals(username)){
@@ -42,6 +41,7 @@
             }
             int cant=0;
             for(Viaje unViaje:listaViajes){
+                if(unViaje.getEstado().equals("Pendiente")){
                         int idRuta= unViaje.getIdRuta();
                         for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -52,12 +52,12 @@
                                          for(Chofer unChofer:listaChoferes){
                                                if(idC == unChofer.getIdChofer() && idC == idChofer ){
                                                    cant++;
-                                               }}}}}}}
+                                               }}}}}}}}
 
             if(cant > 0){          
         %> 
       
-<div class="cajaListado">
+        <div class="cajaListado">
             <h1>Listado de viajes pendientes</h1>
         <table>
             <tr>
@@ -71,6 +71,8 @@
                          
             </tr>
                      <%for(Viaje unViaje:listaViajes){
+                        int pasajes = 0;
+                        if(unViaje.getEstado().equals("Pendiente")){
                         int idRuta= unViaje.getIdRuta();%>
                         <%for(Ruta unaRuta:listaRutas){
                             if(idRuta == unaRuta.getIdRuta()){
@@ -95,13 +97,13 @@
                                                         }
                                                      }%>
                                                         
-                                                        <td style="text-align: center;"><%=pasajes - unViaje.getCantAsientos()%></td>
+                                                        <td style="text-align: center;"><%=pasajes%></td>
                                                     
                                                     <td style="text-align: center;"><%=unViaje.getDia()%>/<%= unViaje.getMes()%>/<%= unViaje.getAnio()%></td>
                                                     <td style="text-align: center;"><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                                                     <td style="text-align: center;"> <a style="background-color: #0fc370;color: white;padding: 5px;" href="sesionChoferListadoPasajeros.jsp?idViaje=<%=unViaje.getIdViaje()%>">Ver Pasajeros</a> </td>
                                                       </tr>
-                    <%}}}}}}}}
+                    <%}}}}}}}}}
                     else{%>
                         
                              <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
