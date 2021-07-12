@@ -86,7 +86,7 @@ public class ModificarRuta extends HttpServlet {
         request.getSession().setAttribute("distancia", distancia);
         request.getSession().setAttribute("hora", hora);
         request.getSession().setAttribute("minutos", minutos);
-                
+
         Controladora control = new Controladora();
         boolean sinViajes = control.verificarViaje(idRuta);
         if(!sinViajes){ //entra si no tiene viajes asignados
@@ -99,10 +99,12 @@ public class ModificarRuta extends HttpServlet {
                      response.sendRedirect ("popUpErrorRutaExistente.jsp"); //si la ruta ya esta cargada origen+destino+combi+horario
                 }
             }else if (idOrigen == idDestino){
-                response.sendRedirect ("popUpErrorMismoOyDModificacion.jsp"); //si el origen y destino son iguales
+                String direccion = "popUpErrorMismoOyDModificacion.jsp"+"?idRuta="+String.valueOf(idRuta);
+                response.sendRedirect (direccion); //si el origen y destino son iguales
             }
         }else{
-            response.sendRedirect ("popUpErrorRutaConViajeActivo.jsp"); //si tiene viajes asignados
+            String direccion = "popUpErrorRutaConViajeActivo.jsp"+"?idRuta="+String.valueOf(idRuta);
+            response.sendRedirect (direccion); //si tiene viajes asignados
         }
     }   
 

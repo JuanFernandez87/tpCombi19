@@ -28,7 +28,7 @@
     </head>
     
     <body>
-            <%@include file="/template/headerSesiones.jsp"%>
+            <%@include file="/template/headerSesionUsuario.jsp"%>
     
             <%@include file="/template/asideUsuario.jsp"%>
        
@@ -37,6 +37,8 @@
 
  
       <%
+                
+
             int pag=1;
             int idCliente=0;
             List <Pasaje> listaPasajes = control.devolverListaPasajes();

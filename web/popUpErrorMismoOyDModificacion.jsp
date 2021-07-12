@@ -1,3 +1,5 @@
+<%@page import="Logica.Ruta"%>
+<%@page import="Logica.Lugar"%>
 <%@page import="Logica.Combi"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Controladora"%>
@@ -22,49 +24,68 @@
             <%@include file="/template/aside.jsp"%>
         </aside>
             <%
-                    String ori = (String)session.getAttribute("origen");
-                 String des = (String)session.getAttribute("destino");
-                  Integer hora = (Integer)session.getAttribute("hora");
-                 Integer minutos = (Integer)session.getAttribute("minutos");
-                 Integer km = (Integer)session.getAttribute("distancia");
-                 String patente = (String)session.getAttribute("patente");
-                 
-                 
+                    int i = 0;
                     List <Combi> listaCombis = control.devolverListaCombi(); 
                     List <Lugar> listaOrigen = control.devolverListaLugares();
-                    List <Lugar> listaDestino = control.devolverListaLugares(); 
-                    int i = 0; 
+                    List <Lugar> listaDestino = control.devolverListaLugares();
+                    List <Ruta> listaRutas = control.devolverRutas();
+                    Integer idOri = (Integer)session.getAttribute("idOrigen");
+                    
+                 Integer idDes = (Integer)session.getAttribute("idDestino");
+                  Integer hora = (Integer)session.getAttribute("hora");
+                 Integer minutos = (Integer)session.getAttribute("minutos");
+                 Integer distancia = (Integer)session.getAttribute("distancia");
+                 Integer idCombi = (Integer)session.getAttribute("idCombi");
+                 String combiN= "";
+                 String ori = "";
+                 String des = "";
+                    int idRuta = Integer.parseInt(request.getParameter("idRuta"));
+                    for (Combi combi: listaCombi){
+                        if(combi.getIdCombi() == idCombi){
+                            combiN = combi.getPatente();
+                    }
+                    }
+                    for(Lugar lugar: listaOrigen){
+                        if(lugar.getIdLugar() == idOri){
+                            ori = lugar.getNombre();
+                        }
+                            if (lugar.getIdLugar() == idDes){
+                                des = lugar.getNombre();
+                           
+                        }
+                    }
+                  
 
-             %> 		
-            <form action="RegistroRuta" class="formulario-sesiones" method="post">
+             %> 
+            <form action="ModificarRuta?idRuta=<%=idRuta%>" class="formulario-sesiones" method="post">
 				<h4>Modificar ruta</h4>
                 <label>Origen</label>
-                <select class="controls" name="origen" required id="selectOrigen">
+                <select class="controls" name="idOrigen" required id="selectOrigen">
                         <option>Seleccione un origen</option>
                 <%
                     for (Lugar origen: listaOrigen) {
                         if(origen.getIdLugar() > 0){ %>                        
-                        <option value="<%=origen.getNombre()%>"><%=origen.getNombre()%></option>               
+                        <option value="<%=origen.getIdLugar()%>"><%=origen.getNombre()%></option>               
                  <%}}%>
                 </select> 
                 
                 <label>Destino</label>              
-                <select class="controls" name="destino" required id="selectDestino">               
+                <select class="controls" name="idDestino" required id="selectDestino">               
                         <option>Seleccione un destino</option>
                 <%
                     for (Lugar destino: listaDestino) {
                         if(destino.getIdLugar() > 0){ %>%>                        
-                        <option value="<%=destino.getNombre()%>"><%=destino.getNombre()%></option>               
+                        <option value="<%=destino.getIdLugar()%>"><%=destino.getNombre()%></option>               
                  <%}}%>       
                 </select>
                 
                 <label>Combi</label>
-                <select class="controls" name="combi" required id="selectCombi">
+                <select class="controls" name="idCombi" required id="selectCombi">
                         <option>Seleccione una combi</option>
                 <%
                     for (i=0 ; i < listaCombis.size(); ++i) {
                          if(!listaCombis.get(i).getPatente().equals("-1")){%>                        
-                        <option value="<%=listaCombis.get(i).getPatente()%>"><%=listaCombis.get(i).getPatente()%></option>               
+                        <option value="<%=listaCombis.get(i).getIdCombi()%>"><%=listaCombis.get(i).getPatente()%></option>               
                  <%}}%> 
                 </select>
                 <div style="display: inline;">
@@ -73,12 +94,13 @@
                 <input class="controls2" type="numer" name="minutos" required min="0" max="59" placeholder="minutos" value="<%=minutos%>">
                </div>             
                 <label>Distancia</label>
-                <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km" value="<%=km%>">       
+                <input class="controls" type="number" name="distancia" required placeholder="Ingrese distancia en Km" value="<%=distancia%>">       
                 
-                <input class="botons" type="submit" value="Dar de alta ">
+                <input class="botons" type="submit" value="Modificar ruta ">
             </form>
-                
-                 <script> 
+            
+            
+            <script> 
         
         // CON LA SIGUIENTE SECCION SE PONE COMO SELECTED EL CIUDAD QUE SE HAYA ELEGIDO
         
@@ -86,7 +108,7 @@
          //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
          for (var i = 0; i < sel.length; i++) {
              sel[i].value; // este codigo se usa con el alert nada mas, se puede eliminar y no afecta al funcionamiento.
-            if(  sel[i].value === "<%=ori%>"){
+            if(  sel[i].value === "<%=idOri%>"){
                 sel[i].selected = 'selected';
             }
         }
@@ -94,7 +116,7 @@
          //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
          for (var i = 0; i < sel.length; i++) {
               sel[i].value;
-            if(  sel[i].value === "<%=des%>"){
+            if(  sel[i].value === "<%=idDes%>"){
                 sel[i].selected = 'selected';
             }
         }
@@ -102,18 +124,16 @@
          //recorremos la lista preguntando si el id actual "i" es igual al id que se selecciono en la carga del formulario.
          for (var i = 0; i < sel.length; i++) {
               sel[i].value;
-            if(  sel[i].value ==="<%=patente%>"){
+            if(  sel[i].value === "<%=idCombi%>"){
                 sel[i].selected = 'selected';
             }
         }
  
  
      </script>
-     
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/sesion.js"></script>
-    <script src="js/sweetAlertMismoOyD.js"></script>
- 
+ <script src="js/sweetAlertMismoOyD.js"></script>
 
         <footer>
             <%@include file="/template/footer.jsp"%>

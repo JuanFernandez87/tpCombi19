@@ -37,7 +37,6 @@
 
  
       <%
-                
 
             int pag=1;
             int idCliente=0;
@@ -164,7 +163,13 @@
            <br>
             
         </div>
-        
+                       <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+    swal.fire({
+    title: "Se le devolvera 100% de lo gastado.",
+    icon: 'info'
+});
+                       </script>
         <footer>
             <%@include file="/template/footer.jsp"%>
         </footer>
