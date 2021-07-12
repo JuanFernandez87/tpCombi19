@@ -36,42 +36,10 @@
 
       <%
          
-            List <Cliente> listaClientes = control.devolverListaClientes(); 
             String username = (String)session.getAttribute("username");
-            for (Cliente unCliente:listaClientes){
-                if (unCliente.getMail().equals(username)){%>     
-                         
-          
+             
         %> 
-        <div class="cajaListado">
-             <h1>Comentarios</h1>
-            <table>
-        
-           <tr>
-                <td>Comentario</td> 
-                <td>Fecha</td> 
-                <td>Hora</td> 
-                <td></td> 
-                <td></td> 
-           </tr>
-           
-               <%
-                   
-                 for (int i = 0; i < unCliente.getListaComentarios().size(); i++)       {
-                     String fecha=unCliente.getListaComentarios().get(i).substring(0,10);
-                     String hora=unCliente.getListaComentarios().get(i).substring(12,19);
-                     String comentario=unCliente.getListaComentarios().get(i).substring(19);
-                %>
-                <tr>
-                    <td><%= comentario %></td>
-                    <td><%= fecha %></td>
-                    <td><%= hora %></td>
-                     <td> <a style="background-color: orange;color: white;padding: 5px;" href="sesionUsuarioModificarComentario.jsp?unCliente=<%=unCliente.getNombre()%>&pos=<%=i%>" >Modificar</a> </td>
-                    <td> <a style="background-color: red;color: white;padding: 5px;" href="sesionAdminEliminarComentario.jsp?idComentario=<%=i%>&idCliente=<%=unCliente.getIdCliente()%>">Eliminar</a></td>
 
-                </tr>
-                 
-           <%}}}%>  
            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
        
