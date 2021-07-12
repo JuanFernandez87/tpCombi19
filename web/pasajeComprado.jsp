@@ -1,3 +1,4 @@
+<%@page import="Logica.Tarjeta"%>
 <%@page import="Logica.Pasaje"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
@@ -49,8 +50,7 @@
                  tamaño=tamaño+1;
             }
         }
-
-                 
+                    
                  List <Cliente> listaClientes= control.devolverListaClientes();
                 List <Chofer> listaChofer= control.devolverListaChoferes();
 
@@ -64,8 +64,25 @@
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();
-            %>
-               
+            List <Tarjeta> listaTarjetas = control.devolverListaTarjetas();
+            boolean esGold = false;
+            String numTarjeta = "";
+            String ultimos4 = "";
+            Integer var = (Integer)request.getAttribute("idClienteComprado");
+            for (Cliente cliente: listaClientes){
+                if(cliente.getIdCliente() == var ){
+                    if(cliente.getTipoPlan().equals("Gold")){
+                        esGold = true;
+                        for(Tarjeta tarjeta: listaTarjetas){
+                            if(tarjeta.getIdTarjeta() == cliente.getIdTarjeta()){
+                                numTarjeta = tarjeta.getNumero();
+                                ultimos4 = numTarjeta.substring(12,16);
+                            }
+                        }
+                    }
+                }
+            }
+            %> 
         
         <div class="divCompra">
             <form class="formularioCompra" action="ComprarPasaje" method="POST" onSubmit = "return checkForm(event)"> 
@@ -90,7 +107,7 @@
           <fieldset>
               <p><i class="icono far fa-credit-card"></i> Con que tarjeta desea pagar?</p>
               <select class="insumoCompra" name="tarjeta" id="selectTarjetaPago"> 
-              <option> Mi tarjeta registrada </option>
+              <option> Mi tarjeta registrada - <%=ultimos4%></option>
               <option> Otra tarjeta</option>
           </select>
           </fieldset>
@@ -253,6 +270,13 @@
        
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+         <script> 
+            let tarjeta = <%=numTarjeta%>;
+            let select = document.getElementById("selectTarjetaPago");
+            if(tarjeta === ""){
+                select[1].disabled= true;
+            }
+        </script>
         <SCRIPT> 
             function solonumeros(e){
                 key = e.keycode || e.which;
@@ -281,13 +305,16 @@
         function tarjetaInvalida(){
           swal.fire({
                         title: "Debe ingresar datos de una tarjeta valida.",
-                         icon: 'error',
+                         icon: 'info',
                          cancelButtonColor: '#d33',
                         showConfirmButton:true,
                         confirmButtonText: "Confirmar"
                         });  
         }
+        
         function cargarTarjeta(e){
+            let anio = document.getElementById("card-expiration-year").value;
+            let mes = document.getElementById("card-expiration-month").value;
             // si al momento de cargar la tarjeta, los datos son validos entonces se oculta el formulario para que se pueda efectuar la compra.
                 if((document.getElementById("card-ccv").value.length === 3)&&
                    ((document.getElementById("card-number").value.length === 4) && (document.getElementById("card-number-1").value.length === 4) 
@@ -295,8 +322,8 @@
                           &&(!document.getElementById("card-holder").value !== "")&& (document.getElementById("card-expiration-year").value >= 2021)){
                       //si la fecha es 2021 verifica que el mes sea mayor al actual. sino informa tarjeta invalida.
                       // si la fecha es menor que la actual entonces informa error. sino acepta la tarjeta como valida.
-                      if(document.getElementById("card-expiration-year").value === 2021){
-                          if(document.getElementById("card-expiration-month").value < 07){
+                      if(anio === "2021"){
+                          if(mes < "07"){
                               tarjetaInvalida.call();
                           }else{
                                $('#checkoutCompra').hide();
@@ -307,6 +334,7 @@
                       }else{
                            $('#checkoutCompra').hide();
                              $('.formularioCompra').removeClass("formularioCompraOculto");
+                             
                             // luego de cargado el formulario y presionado el boton "aceptar" se oculta el formulario de tarjeta.
                              $('[type=submit]').trigger('click'); // dsps de ocultar el formulario se acciona el boton "comprar" del formulario de compra para invocar al servlet y efectuar la compra.
                     
@@ -335,6 +363,14 @@
                   $('.formularioCompra').removeClass("formularioCompraOculto");
                   $('.formularioCompra').addClass("formularioCompra");
             }
+            function descuentoGold(precioPagar){
+                let descuento = 1.0;
+                descuento = precioPagar * 0.9;
+                if(<%=esGold%> === false){
+                     (alert("Se aplicara descuento de 10% por ser usuario Gold. \n\
+                            Precio total con descuento:$ "+ descuento));
+                }
+            }
 function checkForm(e) { 
    
     var fin=<%=tamaño%> +1;
@@ -360,7 +396,8 @@ function checkForm(e) {
                         if ((window.confirm("Desea realizar la compra por el precio: $"+ precioPagar))){
                          document.getElementById("precioTotal").value = precioPagar;
                          //si se cargo una tarjeta nueva para el pago entonces se efectua la compra. Sino se cancela hasta que se cargue la tarjeta.
-                         if(document.getElementById("selectTarjetaPago").value === "Mi tarjeta registrada"){
+                         if(document.getElementById("selectTarjetaPago").value.includes("Mi tarjeta registrada")){
+                             descuentoGold.call(this,precioPagar);
                              e.returnValue= true;
                          }else{
                              if(tarjetaCargada.call()){
@@ -370,6 +407,7 @@ function checkForm(e) {
                             }        
                         }
                         }else{
+                       
                        e.returnValue = false;
                         } 
  }

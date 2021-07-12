@@ -58,7 +58,7 @@
         %> 
       
 <div class="cajaListado">
-            <h1>Lista viajes</h1>
+            <h1>Listado de viajes pendientes</h1>
         <table>
             <tr>
                 <td style="text-align: center;">Origen</td> 

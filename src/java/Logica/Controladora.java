@@ -1,6 +1,8 @@
 package Logica;
 
 import Persistencia.ControladoraPersistencia;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -225,6 +227,10 @@ public class Controladora {
     public List<Cliente> devolverListaClientes() {
         List listaClientes = controlPersis.getClientes();
         return listaClientes;
+    }
+    public List<Tarjeta> devolverListaTarjetas() {
+        List listaTarjeta = controlPersis.getTarjetas();
+        return listaTarjeta;
     }
 
     public List<Combi> devolverListaCombi() {
@@ -1196,5 +1202,34 @@ public class Controladora {
         }
     }     
 
-}
+    public void cancelarViaje(int idPasaje) {
+        List <Pasaje> listaPasajes = controlPersis.getPasajes();
+        for(Pasaje unPasaje:listaPasajes){
+            if((unPasaje.getIdPasaje() == idPasaje)){
+                unPasaje.setEstado("Cancelado");
+                controlPersis.asignarPasaje(unPasaje);
+            }
+        }
+    }
+
+    public int verificarDevolucion(int idPasaje) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now();  
+        int horaAct = now.getHour();
+        int minAct = now.getMinute();
+        int diaAct = now.getDayOfMonth();
+        int mesAct = now.getMonthValue();
+         List <Pasaje> listaPasajes = controlPersis.getPasajes();
+          for(Pasaje unPasaje:listaPasajes){
+            if((unPasaje.getIdPasaje() == idPasaje)){
+                if((unPasaje.getMes() == mesAct) && ((unPasaje.getDia()- diaAct) <= 2)){
+                    return 1; // dentro de las 48hs -> 50%
+                }
+                }
+            }
+          return 2; // antes de las 48hs; -> se devuelve 100%
+        }
+          
+    }
+
 

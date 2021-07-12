@@ -1,3 +1,4 @@
+<%@page import="Logica.Tarjeta"%>
 <%@page import="Logica.Pasaje"%>
 <%@page import="Logica.Viaje"%>
 <%@page import="Logica.Ruta"%>
@@ -63,11 +64,20 @@
             List <Viaje> listaViajes = control.devolverListaViajes();
             List <Ruta> listaRutas = control.devolverRutas();
             List <Lugar> listaLugares = control.devolverListaLugares();
+            List <Tarjeta> listaTarjetas = control.devolverListaTarjetas();
             boolean esGold = false;
+            String numTarjeta = "";
+            String ultimos4 = "";
             for (Cliente cliente: listaClientes){
                 if(cliente.getIdCliente() == (Integer)request.getAttribute("idCliente")){
                     if(cliente.getTipoPlan().equals("Gold")){
                         esGold = true;
+                        for(Tarjeta tarjeta: listaTarjetas){
+                            if(tarjeta.getIdTarjeta() == cliente.getIdTarjeta()){
+                                numTarjeta = tarjeta.getNumero();
+                                ultimos4 = numTarjeta.substring(12,16);
+                            }
+                        }
                     }
                 }
             }
@@ -97,7 +107,7 @@
           <fieldset>
               <p><i class="icono far fa-credit-card"></i> Con que tarjeta desea pagar?</p>
               <select class="insumoCompra" name="tarjeta" id="selectTarjetaPago"> 
-              <option> Mi tarjeta registrada </option>
+              <option> Mi tarjeta registrada - <%=ultimos4%></option>
               <option> Otra tarjeta</option>
           </select>
           </fieldset>
@@ -260,6 +270,14 @@
        
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script> 
+            let tarjeta = "<%=numTarjeta%>";
+            let select = document.getElementById("selectTarjetaPago");
+            if(tarjeta === ""){
+                select[0].disabled= true;
+                select[1].selected= "selected";
+            }
+        </script>
         <SCRIPT> 
             function solonumeros(e){
                 key = e.keycode || e.which;
@@ -379,7 +397,7 @@ function checkForm(e) {
                         if ((window.confirm("Desea realizar la compra por el precio: $"+ precioPagar))){
                          document.getElementById("precioTotal").value = precioPagar;
                          //si se cargo una tarjeta nueva para el pago entonces se efectua la compra. Sino se cancela hasta que se cargue la tarjeta.
-                         if(document.getElementById("selectTarjetaPago").value === "Mi tarjeta registrada"){
+                         if(document.getElementById("selectTarjetaPago").value.includes("Mi tarjeta registrada")){
                              descuentoGold.call(this,precioPagar);
                              e.returnValue= true;
                          }else{
