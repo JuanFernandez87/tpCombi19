@@ -84,7 +84,7 @@
         %> 
       
         <div class="cajaListado">
-            <h1>Mis pasajes</h1>
+            <h1>Listado de viajes pendientes</h1>
         <table>
             <tr>
                 <td>Origen</td> 
@@ -122,7 +122,7 @@
                         <td><%=unaRuta.getHora()%>:<%=unaRuta.getMinutos()%>hs</td>
                         <td><%= unViaje.getPrecio()%>$</td>
                         <td> <a style="background-color: red;color: white;padding: 5px;" href="CancelarPasajeConfirmacion.jsp?id=<%=unPasaje.getIdPasaje()%>">Cancelar pasaje</a></td>
-  
+                       
                 </tr>
                     <%}}}}}}}
                     else{%>
